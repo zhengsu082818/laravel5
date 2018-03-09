@@ -7,10 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="{{asset('etsc/css/font.css')}}">
-  <link rel="stylesheet" href="{{asset('etsc/css/xadmin.css')}}">
+    <link rel="stylesheet" href="{{asset('etsc/css/xadmin.css')}}">
     <script type="text/javascript" src="{{asset('etsc/js/jquery.min.js')}}"></script>
     <script src="{{asset('etsc/lib/layui/layui.js')}}" charset="utf-8"></script>
     <script type="text/javascript" src="{{asset('etsc/js/xadmin.js')}}"></script>
@@ -28,6 +28,8 @@
 
             <hr class="hr15">
             <input name="password" placeholder="密码"  type="password" class="layui-input">
+            <hr class="hr15">
+            <input name="captcha" type="text" placeholder="验证码" style="width:55%;"> <img src="{{ url('/captcha') }}" onclick="this.src='{{ url('/captcha') }}?r='+Math.random();" alt="">
             <hr class="hr15">
             <input type="checkbox" name="remember"> 记住密码
             <hr class="hr15">
