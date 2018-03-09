@@ -1,33 +1,23 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-  <title>后台登录-考拉</title>
-  <meta name="renderer" content="webkit|ie-comp|ie-stand">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
-    <meta http-equiv="Cache-Control" content="no-siteapp" />
 
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="{{asset('etsc/css/font.css')}}">
-  <link rel="stylesheet" href="{{asset('etsc/css/xadmin.css')}}">
-    <script type="text/javascript" src="{{asset('etsc/js/jquery.min.js')}}"></script>
-    <script src="{{asset('etsc/lib/layui/layui.js')}}" charset="utf-8"></script>
-    <script type="text/javascript" src="{{asset('etsc/js/xadmin.js')}}"></script>
+@extends('layouts.master')
 
-</head>
-<body class="login-bg">
+@section('title', '后台登录-考拉')
+
+
+<body @section('class', 'class="login-bg"')>
     
+    @section('content')
     <div class="login">
-        <div class="message">x-admin2.0-管理登录</div>
+        <div class="message">考拉海购-后台登录</div>
         <div id="darkbannerwrap"></div>
         
          <form method="post" action="{{url('auth/login')}}" class="layui-form" >    
              {{csrf_field()}}        
-            <input name="email" placeholder="用户名"  type="text"  class="layui-input" >
-
+            <input name="email" placeholder="邮箱"  type="text"  class="layui-input" >
             <hr class="hr15">
             <input name="password" placeholder="密码"  type="password" class="layui-input">
+            <hr class="hr15">
+            <input name="captcha" type="text" placeholder="验证码" style="width:55%;"> <img src="{{ url('/captcha') }}" onclick="this.src='{{ url('/captcha') }}?r='+Math.random();" alt="">
             <hr class="hr15">
             <input type="checkbox" name="remember"> 记住密码
             <hr class="hr15">
@@ -45,15 +35,14 @@
         @endif
         <a href="{{url('auth/register')}}">没有账号?去注册</a>
     </div>
+    @endsection
 
+    @section('js')
     <script>
         $(function  () {
             layui.use('form', function(){
               var form = layui.form;
               });
         })
-
-        
     </script>
-</body>
-</html>
+    @endsection
