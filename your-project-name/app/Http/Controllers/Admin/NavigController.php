@@ -39,12 +39,20 @@ class NavigController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    public function store(Request $request)
+    public function store(Request $request )
     {  
         $data=[];
         $pic = new TupianController;
-        $data['url']=$pic->picture($request,'file','storage/uploads/');
-        ;
+         $data['url']=$pic->picture($request,'file','storage/uploads/');
+        $info= Navig::create($data);
+        if($info){
+              flash()->overlay('添加成功', '1');
+                return redirect('navig/index');
+
+                   }else{
+              flash()->overlay('添加失败', '5');
+                return redirect("navig/create");
+                    }
         // var_dump($data['url']);
         return ['code'=>0,'msg'=>'','data'=>['src'=>$data['url']]];
     }

@@ -77,8 +77,8 @@ class NavigationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($input=$request->except('_token'));
-        $input=$request->except('_token');
+        dd($input=$request->except('_token'));
+       $data['name']=$input['name'];
         $data=[];
         $pic = new TupianController;
         // dd($pic);

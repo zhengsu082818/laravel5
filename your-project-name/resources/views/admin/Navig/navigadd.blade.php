@@ -42,7 +42,7 @@
 
         @include('flash::message')
 
-        <form class="layui-form" method="post" action='{{ url("navig/tupian")}}' enctype="multipart/form-data" >
+        <form class="layui-form" method="post" action='{{ url("navig/store")}}' enctype="multipart/form-data" >
           {{csrf_field()}}
           <div class="layui-form-item">
             <input type="hidden" name="id" value="">
@@ -57,10 +57,9 @@
               </div>
           </div>
           <div class="layui-form-item">
-              <label for="username" class="layui-form-label">
+              <label for="L_email" class="layui-form-label">
                   <span class="x-red">*</span>图标
               </label>
-              
               <div class="layui-form-mid layui-word-aux">
                   <button type="button" class="layui-btn" id="test1">
                 <i class="layui-icon">&#xe67c;</i>上传图片
@@ -117,7 +116,6 @@
           ,field:'file'
           ,done: function(res){
             //上传完毕回调
-            return "上传成功！";
           }
           ,error: function(){
             //请求异常回调
