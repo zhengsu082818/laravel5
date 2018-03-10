@@ -2,15 +2,19 @@
 
 @section('title', '考拉海购--后台主站')
 
-  
 @section('content')
     <div class="x-body">
       <div class="x-nav">
       <span class="layui-breadcrumb">
-        <a href="{{url('admin/index')}}">首页</a>
-        <a href="{{url('admin/list')}}">管理员列表</a>
         <a>
-          <cite>注册后台用户</cite></a>
+          <cite>管理员管理</cite>
+        </a>
+        <a>
+          <cite>管理员列表</cite>
+        </a>
+        <a>
+          <cite>注册管理员</cite>
+        </a>
       </span>
       
       <a class="layui-btn" style="line-height:38px;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
@@ -18,24 +22,24 @@
         <a  class="layui-btn" href="{{url('admin/list')}}" style="line-height:38px;margin-top:3px;margin-right: 10px;float:right">返回上一层</a>
     </div>
     <div style="height: 40px;">
-      
+      @include('flash::message')
     </div>
 
-        <form class="layui-form" method="post" action='{{ url("admin/update/$user->id")}}'>
+        <form class="layui-form" method="post" action="{{ url('admin/store')}}">
           {{csrf_field()}}
           <div class="layui-form-item">
               <label for="L_email" class="layui-form-label">
                   <span class="x-red">*</span>邮箱
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="L_email" name="email"  class="layui-input" readonly value="{{$user->email}}">
+                  <input type="text" id="L_email" name="email"  class="layui-input">
               </div>
               <div class="layui-form-mid layui-word-aux">
-                  <span class="x-red">*</span>
+                  <span class="x-red"></span>
                     @if (count($errors) > 0)
                      <span class="x-red">{{ $errors->first('email') }}</span> 
                      @else  
-                     此项不能被修改
+                     将会成为您唯一的登入名
                     @endif             
               </div>
           </div>
@@ -45,21 +49,22 @@
               </label>
               <div class="layui-input-inline">
                   <input type="text" name="name" 
-                  class="layui-input" value="{{$user->name}}">
+                  class="layui-input">
               </div>
               <div class="layui-form-mid layui-word-aux">
-                  <span class="x-red">*</span>
+                  <span class="x-red"></span>
                   @if (count($errors) > 0)
                     <span class="x-red">{{ $errors->first('name') }}</span>  
-                  @endif
+                    @endif
               </div>
           </div>
+<<<<<<< HEAD:your-project-name/resources/views/admin/huiyuan/useradd.blade.php
           <div class="layui-form-item">
               <label for="phone" class="layui-form-label">
                   <span class="x-red">*</span>手机
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="phone" name="phone" class="layui-input" value="{{$user->phone}}">
+                  <input type="text" id="phone" name="phone" class="layui-input">
               </div>
               <div class="layui-form-mid layui-word-aux">
                   <span class="x-red">*</span>
@@ -71,17 +76,13 @@
           <div class="layui-form-item">
               <label class="layui-form-label"><span class="x-red">*</span>角色</label>
               <div class="layui-input-block">
-                <input type="radio" name="ado" lay-skin="primary" title="超级管理员"  value="1"
-                  @if ($user->ado === '1')  
-                    checked
-                  @endif>
-                <input type="radio" name="ado" lay-skin="primary" title="普通管理员" value="2"
-                  @if ($user->ado === '2')
-                    checked
-                  @endif>
-                
+                <input type="radio" name="ado" lay-skin="primary" title="超级管理员" checked="" value="1">
+                <input type="radio" name="ado" lay-skin="primary" title="普通管理员" value="2">
               </div>
           </div>
+=======
+
+>>>>>>> f62d8232ce501f2f471412a6157909e1b8b31274:your-project-name/resources/views/admin/adminuser/useradd.blade.php
           <div class="layui-form-item">
               <label for="L_pass" class="layui-form-label">
                   <span class="x-red">*</span>密码
@@ -105,6 +106,19 @@
                   <input type="password" id="L_repass" name="password_confirmation" class="layui-input">
               </div>
           </div>
+
+          <div class="layui-form-item">
+              <label class="layui-form-label">
+                <span class="x-red">*</span>状态
+              </label>
+              <div class="layui-input-inline" style="width: 190px;height: 38px;">
+                  <select name="stated">
+                    <option value="1">启用</option>
+                    <option value="0">禁用</option>
+                  </select>
+              </div>
+          </div>
+
           <div class="layui-form-item">
               <label for="L_repass" class="layui-form-label">
               </label>
@@ -114,15 +128,6 @@
 
           </div>
       </form>
-<!--       @if (count($errors) > 0)
-          <div class="alert alert-danger">
-              <ul>
-                  @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
-                  @endforeach
-              </ul>
-          </div>
-      @endif -->
     </div>
 @endsection
 
@@ -137,4 +142,4 @@
         });
     </script>
 @endsection
-  
+ 

@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Shang;
 
 use Illuminate\Http\Request;
-use App\User;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class IndexController extends Controller
+class ShangController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return view('admin.zhuye');
+        //
     }
 
     /**
@@ -25,10 +25,25 @@ class IndexController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {  
-        
+    {
+        return view('admin.shang.index');
     }
-
+    public function uplode(Request $request)
+    {
+        // 接受上传文件名
+        $filed = $request->file('file');
+        // dd($filed);
+        // 判断文件是否上传
+        if ($request->file('file')->isValid()) {
+              // 文件上传成功获取后缀
+              $ext = $filed->getClientOriginalExtension();
+              // 文件上传成功设置新文件名
+              $filename = time().rand(1,9999).'.'.$ext;
+              // 文件上传移动文件
+              $path = $filed->move('storage/uploads',$filename);
+        }
+        return ['code'=>0,'msg'=>'','data'=>["src"=>$filename]];
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -37,31 +52,7 @@ class IndexController extends Controller
      */
     public function store(Request $request)
     {
-             // dd($request->all());
-        //验证信息 
-         $this->validate($request,$this->rules,$this->messages);
-         // 接收除_token字段的值
-          $input  = $request->except('password_confirmation');//
-         
-          // dd($input);
-          // //添加数据
-          // remember_token
-            $adda= User::insert([
-            'name' => $input['name'],
-            'email' => $input['email'],
-            'phone' => $input['phone'],
-            'ado' => $input['ado'],
-            'remember_token' => $input['_token'],
-            'password' => bcrypt($input['password']),
-
-        ]);
-          //判断是否添加成功
-            if ($adda) {
-                     return redirect('admin/list')->with('root', '添加成功');
-                }else{
-                     return redirect('admin/create')->with('root', '添加失败');
-                }
-            
+        return $request->all();
     }
 
     /**
@@ -72,7 +63,7 @@ class IndexController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**
