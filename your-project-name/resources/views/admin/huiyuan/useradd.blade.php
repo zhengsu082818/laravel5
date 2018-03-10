@@ -70,8 +70,8 @@
           <div class="layui-form-item">
               <label class="layui-form-label"><span class="x-red">*</span>角色</label>
               <div class="layui-input-block">
-                <input type="checkbox" name="ado" lay-skin="primary" title="超级管理员" checked="" value="1">
-                <input type="checkbox" name="ado" lay-skin="primary" title="普通管理员" value="2">
+                <input type="radio" name="ado" lay-skin="primary" title="超级管理员" checked="" value="1">
+                <input type="radio" name="ado" lay-skin="primary" title="普通管理员" value="2">
               </div>
           </div>
           <div class="layui-form-item">

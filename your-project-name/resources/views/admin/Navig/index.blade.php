@@ -1,7 +1,10 @@
-@extends('layouts.master')
+ @extends('layouts.master')
 
 @section('title', '考拉海购--后台主站')
 
+@section('css')
+    <link rel="stylesheet" href="{{asset('etsc/css/bootstrap.min.css')}}">
+@endsection
 @section('content')
 
     <div class="x-nav">
@@ -36,11 +39,12 @@
                 <td style="text-align: center;">
                   <img src='{{asset("$v->url")}}' style="width: 20px;height: 20px;">
                 </td>
-                <td style="text-align: center;">{{$v->depth}}</td>
+                <td style="text-align: center;">{{ $depth[$v->depth]}}</td>
                 <td style="text-align: center;">{{$v->updated_at}}</td>
                 <td class="td-manage" style="text-align: center;">
-                  <a href='{{url("navigation/edit/$v->id")}}' style="color: #fff;"><span class="layui-btn">修改</span></a>
-                 <a href='{{url("navigation/destroy/$v->id")}}'  style="color: #fff;"> <span class="layui-btn layui-btn-danger">删除</span></a
+                  <a href="{{url('navig/create').'?id='.$v->id}}" style="color: #fff;" title="添加分类"><span class="layui-btn">添加分类</span></a>
+                  <a href='{{url("navig/edit/$v->id")}}' style="color: #fff;"><span class="layui-btn" title="修改">修改</span></a>
+                 <a href='{{url("navig/destroy/$v->id")}}'  style="color: #fff;" title="删除"> <span class="layui-btn layui-btn-danger">删除</span></a
                 </td>
               </tr>
           @endforeach    

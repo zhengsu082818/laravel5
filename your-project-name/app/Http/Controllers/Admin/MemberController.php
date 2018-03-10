@@ -69,9 +69,9 @@ class MemberController extends Controller
         //验证信息 
          $this->validate($request,$this->rules,$this->messages);
          // 接收除_token字段的值
-          $input  = $request->except('password_confirmation');//
+          $input  = $request->exceptept('password_confirmation');//
          
-          // dd($input);
+          // dd($input);    
           // //添加数据
           // remember_token
             $adda= User::insert([

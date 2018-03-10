@@ -28,16 +28,15 @@
 
         @include('flash::message')
 
-        <form class="layui-form" method="post" action='{{ url("navig/store")}}' enctype="multipart/form-data" >
+        <form class="layui-form" method="post" action='{{ url("navig/update/$Navig->id")}}' enctype="multipart/form-data" >
           {{csrf_field()}}
           <div class="layui-form-item">
-            <input type="hidden" name="id" value="">
+            <input type="hidden"  name="id"  class="layui-input" value="{{$Navig->id}}">
               <label for="L_email" class="layui-form-label">
                   <span class="x-red">*</span>类别名
               </label>
               <div class="layui-input-inline">
-                <input type="hidden"  name="id"  class="layui-input" value="{{$id}}">
-                  <input type="text"  name="name"  class="layui-input" value="">
+                  <input type="text"  name="name"  class="layui-input" value="{{$Navig->name}}">
               </div>
               <div class="layui-form-mid layui-word-aux">
                   <span class="x-red">*</span>           
