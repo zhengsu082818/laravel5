@@ -53,3 +53,8 @@ Route::get('navig/create', 'Admin\NavigController@create');
 //执行类别修改
 
 
+// 轮播管理
+Route::get('banner','Admin\BannerController@index');//查看
+Route::get('banner/create','Admin\BannerController@create');
+Route::post('banner/uplode','Admin\BannerController@uplode');
+Route::post('banner/store','Admin\BannerController@store');

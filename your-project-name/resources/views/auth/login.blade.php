@@ -3,7 +3,10 @@
 
 @section('title', '后台登录-考拉')
 
-
+@section('css')
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     
+@endsection
 <body @section('class', 'class="login-bg"')>
     
     @section('content')

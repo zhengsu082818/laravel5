@@ -51,7 +51,7 @@
                   <span class="x-red">*</span>
                   @if (count($errors) > 0)
                     <span class="x-red">{{ $errors->first('name') }}</span>  
-                    @endif
+                  @endif
               </div>
           </div>
           <div class="layui-form-item">
@@ -71,12 +71,14 @@
           <div class="layui-form-item">
               <label class="layui-form-label"><span class="x-red">*</span>角色</label>
               <div class="layui-input-block">
-                <input type="radio" name="ado" lay-skin="primary" title="超级管理员"  value="1" @if ($user->ado === '1')
+                <input type="radio" name="ado" lay-skin="primary" title="超级管理员"  value="1"
+                  @if ($user->ado === '1')  
                     checked
                   @endif>
-                    <input type="radio" name="ado" lay-skin="primary" title="普通管理员" value="2" @if ($user->ado === '2')
-                        checked
-                       @endif>
+                <input type="radio" name="ado" lay-skin="primary" title="普通管理员" value="2"
+                  @if ($user->ado === '2')
+                    checked
+                  @endif>
                 
               </div>
           </div>

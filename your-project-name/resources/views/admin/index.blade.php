@@ -190,9 +190,9 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="echarts1.html">
+                        <a _href="{{url('banner')}}">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>拆线图</cite>
+                            <cite>轮播管理</cite>
                         </a>
                     </li >
                     <li>
