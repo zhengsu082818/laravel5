@@ -58,31 +58,7 @@
                     @endif
               </div>
           </div>
-<<<<<<< HEAD:your-project-name/resources/views/admin/adminuser/useradd.blade.php
-          
-=======
-          <div class="layui-form-item">
-              <label for="phone" class="layui-form-label">
-                  <span class="x-red">*</span>手机
-              </label>
-              <div class="layui-input-inline">
-                  <input type="text" id="phone" name="phone" class="layui-input">
-              </div>
-              <div class="layui-form-mid layui-word-aux">
-                  <span class="x-red">*</span>
-                   @if (count($errors) > 0)
-                    <span class="x-red">{{ $errors->first('phone') }}</span>  
-                    @endif
-              </div>
-          </div>
-          <div class="layui-form-item">
-              <label class="layui-form-label"><span class="x-red">*</span>角色</label>
-              <div class="layui-input-block">
-                <input type="radio" name="ado" lay-skin="primary" title="超级管理员" checked="" value="1">
-                <input type="radio" name="ado" lay-skin="primary" title="普通管理员" value="2">
-              </div>
-          </div>
->>>>>>> 8ef46e453c92cbcce597dfeb495aed2b0005d144:your-project-name/resources/views/admin/huiyuan/useradd.blade.php
+
           <div class="layui-form-item">
               <label for="L_pass" class="layui-form-label">
                   <span class="x-red">*</span>密码

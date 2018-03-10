@@ -54,13 +54,6 @@ Route::get('admin/homedestroy/{id}', 'Admin\HomeuserController@destroy');
 Route::post('admin/homeupdate/{id}', 'Admin\HomeuserController@update');
 
 
-//加载导航栏分类列表页面
-Route::get('navigation/index', 'Admin\NavigationController@Index');
-//加载类别修改页面
-Route::get('navigation/edit/{id}', 'Admin\NavigationController@edit');
-//执行类别修改
-Route::post('navigation/update/{id}','Admin\NavigationController@update');
-//加载导航栏分类列表页面
 Route::get('navig/index', 'Admin\NavigController@Index');
 //加载分类列表添加页面
 Route::get('navig/create', 'Admin\NavigController@create');
