@@ -62,4 +62,4 @@ Route::post('navig/tupiana','Admin\NavigController@tupiana');
 
 //执行类别修改
 
-
+Route::get('navig/aa', 'Admin\NavigController@aa');
