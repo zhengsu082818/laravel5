@@ -19,15 +19,18 @@ Route::get('auth/login', 'Auth\AuthController@getLogin');//加载登录
 Route::post('auth/login', 'Auth\AuthController@postLogin');//执行登录
 Route::get('auth/logout', 'Auth\AuthController@getLogout');//退出登录
 
-// 注册路由...
-Route::get('auth/register', 'Auth\AuthController@getRegister');//加载注册
-Route::post('auth/register', 'Auth\AuthController@postRegister');//执行注册
+
 //认证成功后重定向页面
 Route::get('/admin',function(){
 	return view('admin.index');
-})->middleware('auth');//admin/useradd
+})->middleware('auth');
+
 //加载后台主页桌面
-Route::get('admin/index', 'Admin\IndexController@Index');
+Route::get('admin/index', function () {
+    return view('admin.zhuye');
+});
+
+//加载后台用户页面
 Route::get('admin/list', 'Admin\MemberController@Index');
 //加载后台用户添加页面
 Route::get('admin/create', 'Admin\MemberController@create');
@@ -39,6 +42,8 @@ Route::get('admin/destroy/{id}', 'Admin\MemberController@destroy');
 Route::post('admin/store', 'Admin\MemberController@store');
 //执行后台用户修改
 Route::post('admin/update/{id}', 'Admin\MemberController@update');
+
+
 //加载导航栏分类列表页面
 Route::get('navigation/index', 'Admin\NavigationController@Index');
 //加载类别修改页面
@@ -60,6 +65,5 @@ Route::get('navig/destroy/{id}', 'Admin\NavigController@destroy');
 //执行图片上传
 Route::post('navig/tupiana','Admin\NavigController@tupiana');
 
-//执行类别修改
 
 

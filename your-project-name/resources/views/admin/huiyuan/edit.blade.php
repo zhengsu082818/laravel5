@@ -54,73 +54,18 @@
                     @endif
               </div>
           </div>
-          <div class="layui-form-item">
-              <label for="phone" class="layui-form-label">
-                  <span class="x-red">*</span>手机
-              </label>
-              <div class="layui-input-inline">
-                  <input type="text" id="phone" name="phone" class="layui-input" value="{{$user->phone}}">
-              </div>
-              <div class="layui-form-mid layui-word-aux">
-                  <span class="x-red">*</span>
-                   @if (count($errors) > 0)
-                    <span class="x-red">{{ $errors->first('phone') }}</span>  
-                    @endif
-              </div>
-          </div>
-          <div class="layui-form-item">
-              <label class="layui-form-label"><span class="x-red">*</span>角色</label>
-              <div class="layui-input-block">
-                <input type="radio" name="ado" lay-skin="primary" title="超级管理员"  value="1" @if ($user->ado === '1')
-                    checked
-                  @endif>
-                    <input type="radio" name="ado" lay-skin="primary" title="普通管理员" value="2" @if ($user->ado === '2')
-                        checked
-                       @endif>
-                
-              </div>
-          </div>
-          <div class="layui-form-item">
-              <label for="L_pass" class="layui-form-label">
-                  <span class="x-red">*</span>密码
-              </label>
-              <div class="layui-input-inline">
-                  <input type="password" id="L_pass" name="password" class="layui-input">
-              </div>
-              <div class="layui-form-mid layui-word-aux">
-                  @if (count($errors) > 0)
-                     <span class="x-red">{{ $errors->first('password') }}</span> 
-                     @else  
-                     6到16个字符
-                    @endif
-              </div>
-          </div>
-          <div class="layui-form-item">
-              <label for="L_repass" class="layui-form-label">
-                  <span class="x-red">*</span>确认密码
-              </label>
-              <div class="layui-input-inline">
-                  <input type="password" id="L_repass" name="password_confirmation" class="layui-input">
-              </div>
-          </div>
+          
+          
           <div class="layui-form-item">
               <label for="L_repass" class="layui-form-label">
               </label>
               <button  class="layui-btn">
-                  增加
+                  修改
               </button>
 
           </div>
       </form>
-<!--       @if (count($errors) > 0)
-          <div class="alert alert-danger">
-              <ul>
-                  @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
-                  @endforeach
-              </ul>
-          </div>
-      @endif -->
+
     </div>
 @endsection
 

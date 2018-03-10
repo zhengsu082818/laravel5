@@ -47,7 +47,7 @@ class NavigController extends Controller
     {
         $input=$request->except('_token');
         if(!$request->input('id')){
-            // dd($input);   
+            dd($input);   
             $info =Navig::create($input);
                     }else{
             $data =Navig::findOrFail($request->input('id'));
@@ -95,6 +95,7 @@ class NavigController extends Controller
     public function edit($id)
     {
        $Navig = Navig::where('id',$id)->first();
+
         return view('admin.Navig.edit',['Navig' => $Navig]);
     }
 
@@ -139,17 +140,19 @@ class NavigController extends Controller
     public function destroy($id)
     {
         $aa=Navig::where('parent_id',$id)->get()->toArray();
-        dd($aa);
-       // $des= Navig::where('id',$id)->first();
+        // dd($aa);
+       $des= Navig::where('id',$id)->first();
+       $zl=$des->getDescendants();
+       // dd($zl);
        $bb = [];
        // $qw= Navig::all();
        if($bb === $aa){
             
-              $des->delete();
+            $des->delete();
             flash()->overlay('删除成功', '1');
             return redirect('navig/index');
        }else{
-           flash()->overlay('删除失败，请先删除子类', '5');
+           flash()->overlay('删除失败，请先删除'."$zl", '5');
              return back();
        }
     }
