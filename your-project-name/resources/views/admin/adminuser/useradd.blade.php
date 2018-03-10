@@ -6,10 +6,15 @@
     <div class="x-body">
       <div class="x-nav">
       <span class="layui-breadcrumb">
-        <a href="{{url('admin/index')}}">首页</a>
-        <a href="{{url('admin/list')}}">管理员列表</a>
         <a>
-          <cite>注册后台用户</cite></a>
+          <cite>管理员管理</cite>
+        </a>
+        <a>
+          <cite>管理员列表</cite>
+        </a>
+        <a>
+          <cite>注册管理员</cite>
+        </a>
       </span>
       
       <a class="layui-btn" style="line-height:38px;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
@@ -30,7 +35,7 @@
                   <input type="text" id="L_email" name="email"  class="layui-input">
               </div>
               <div class="layui-form-mid layui-word-aux">
-                  <span class="x-red">*</span>
+                  <span class="x-red"></span>
                     @if (count($errors) > 0)
                      <span class="x-red">{{ $errors->first('email') }}</span> 
                      @else  
@@ -47,33 +52,13 @@
                   class="layui-input">
               </div>
               <div class="layui-form-mid layui-word-aux">
-                  <span class="x-red">*</span>
+                  <span class="x-red"></span>
                   @if (count($errors) > 0)
                     <span class="x-red">{{ $errors->first('name') }}</span>  
                     @endif
               </div>
           </div>
-          <div class="layui-form-item">
-              <label for="phone" class="layui-form-label">
-                  <span class="x-red">*</span>手机
-              </label>
-              <div class="layui-input-inline">
-                  <input type="text" id="phone" name="phone" class="layui-input">
-              </div>
-              <div class="layui-form-mid layui-word-aux">
-                  <span class="x-red">*</span>
-                   @if (count($errors) > 0)
-                    <span class="x-red">{{ $errors->first('phone') }}</span>  
-                    @endif
-              </div>
-          </div>
-          <div class="layui-form-item">
-              <label class="layui-form-label"><span class="x-red">*</span>角色</label>
-              <div class="layui-input-block">
-                <input type="checkbox" name="ado" lay-skin="primary" title="超级管理员" checked="" value="1">
-                <input type="checkbox" name="ado" lay-skin="primary" title="普通管理员" value="2">
-              </div>
-          </div>
+          
           <div class="layui-form-item">
               <label for="L_pass" class="layui-form-label">
                   <span class="x-red">*</span>密码
@@ -97,6 +82,19 @@
                   <input type="password" id="L_repass" name="password_confirmation" class="layui-input">
               </div>
           </div>
+
+          <div class="layui-form-item">
+              <label class="layui-form-label">
+                <span class="x-red">*</span>状态
+              </label>
+              <div class="layui-input-inline" style="width: 190px;height: 38px;">
+                  <select name="stated">
+                    <option value="1">启用</option>
+                    <option value="0">禁用</option>
+                  </select>
+              </div>
+          </div>
+
           <div class="layui-form-item">
               <label for="L_repass" class="layui-form-label">
               </label>

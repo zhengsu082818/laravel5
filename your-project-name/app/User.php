@@ -28,12 +28,11 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password','phone','ado'];
+    protected $fillable = ['name', 'email', 'password','stated'];
 
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
-    protected $hidden = ['password', 'remember_token'];
+
+    public function getStatedAttribute($value){
+        $stated = ['1'=>'启用','0'=>'禁用'];
+        return $stated[$value];
+    }
 }

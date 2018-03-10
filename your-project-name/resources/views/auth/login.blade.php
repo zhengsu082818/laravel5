@@ -3,7 +3,9 @@
 
 @section('title', '后台登录-考拉')
 
-
+@section('css')
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+@endsection
 <body @section('class', 'class="login-bg"')>
     
     @section('content')
@@ -33,7 +35,7 @@
                 </ul>
             </div>
         @endif
-        <a href="{{url('auth/register')}}">没有账号?去注册</a>
+        
     </div>
     @endsection
 

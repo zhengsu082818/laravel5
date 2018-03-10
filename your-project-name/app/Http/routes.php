@@ -14,31 +14,46 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+// 加载后台主页面
+Route::get('/admin/welcome', function(){
+	return view('admin.zhuye');
+});
+
 //登录路由
 Route::get('auth/login', 'Auth\AuthController@getLogin');//加载登录
 Route::post('auth/login', 'Auth\AuthController@postLogin');//执行登录
 Route::get('auth/logout', 'Auth\AuthController@getLogout');//退出登录
 
-// 注册路由...
-Route::get('auth/register', 'Auth\AuthController@getRegister');//加载注册
-Route::post('auth/register', 'Auth\AuthController@postRegister');//执行注册
+
 //认证成功后重定向页面
 Route::get('/admin',function(){
 	return view('admin.index');
-})->middleware('auth');//admin/useradd
-//加载后台主页桌面
-Route::get('admin/index', 'Admin\IndexController@Index');
-Route::get('admin/list', 'Admin\MemberController@Index');
+})->middleware('auth');
+
+//加载后台用户页面
+Route::get('admin/list', 'Admin\AdminuserController@Index');
 //加载后台用户添加页面
-Route::get('admin/create', 'Admin\MemberController@create');
+Route::get('admin/create', 'Admin\AdminuserController@create');
 //加载后台用户修改页面
-Route::get('admin/edit/{id}', 'Admin\MemberController@edit');
+Route::get('admin/edit/{id}', 'Admin\AdminuserController@edit');
 //执行后台用户删除
-Route::get('admin/destroy/{id}', 'Admin\MemberController@destroy');
+Route::get('admin/destroy/{id}', 'Admin\AdminuserController@destroy');
 //执行添加后台用户
-Route::post('admin/store', 'Admin\MemberController@store');
+Route::post('admin/store', 'Admin\AdminuserController@store');
 //执行后台用户修改
-Route::post('admin/update/{id}', 'Admin\MemberController@update');
+Route::post('admin/update/{id}', 'Admin\AdminuserController@update');
+
+//加载前台会员页面
+Route::get('admin/homeindex', 'Admin\HomeuserController@Index');
+//加载前台会员修改页面
+Route::get('admin/homeedit/{id}', 'Admin\HomeuserController@edit');
+//执行前台会员删除
+Route::get('admin/homedestroy/{id}', 'Admin\HomeuserController@destroy');
+//执行前台会员修改
+Route::post('admin/homeupdate/{id}', 'Admin\HomeuserController@update');
+
+
 //加载导航栏分类列表页面
 Route::get('navigation/index', 'Admin\NavigationController@Index');
 //加载类别修改页面
