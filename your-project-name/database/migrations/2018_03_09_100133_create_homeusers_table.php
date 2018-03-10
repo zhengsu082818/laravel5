@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStusTable extends Migration
+class CreateHomeusersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,13 @@ class CreateStusTable extends Migration
      */
     public function up()
     {
-        Schema::create('stuss', function (Blueprint $table) {
+        Schema::create('homeusers', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->string('phone')->unique();
+            $table->string('password', 60);
+            $table->tinyInteger('stated')->default('1');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -25,6 +30,6 @@ class CreateStusTable extends Migration
      */
     public function down()
     {
-         Schema::drop('stuss');
+        Schema::drop('homeusers');
     }
 }

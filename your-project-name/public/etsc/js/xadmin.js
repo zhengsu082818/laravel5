@@ -142,7 +142,7 @@ function x_admin_show(title,url,w,h){
         title=false;
     };
     if (url == null || url == '') {
-        url="404.html";
+        url="";
     };
     if (w == null || w == '') {
         w=($(window).width()*0.9);

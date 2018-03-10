@@ -14,6 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+// 加载后台主页面
+Route::get('/admin/welcome', function(){
+	return view('admin.zhuye');
+});
+
 //登录路由
 Route::get('auth/login', 'Auth\AuthController@getLogin');//加载登录
 Route::post('auth/login', 'Auth\AuthController@postLogin');//执行登录
@@ -25,6 +31,7 @@ Route::get('/admin',function(){
 	return view('admin.index');
 })->middleware('auth');
 
+
 //加载后台主页桌面
 Route::get('admin/index', function () {
     return view('admin.zhuye');
@@ -32,15 +39,19 @@ Route::get('admin/index', function () {
 
 //加载后台用户页面
 Route::get('admin/list', 'Admin\MemberController@Index');
+
+//加载后台用户页面
+Route::get('admin/list', 'Admin\AdminuserController@Index');
 //加载后台用户添加页面
-Route::get('admin/create', 'Admin\MemberController@create');
+Route::get('admin/create', 'Admin\AdminuserController@create');
 //加载后台用户修改页面
-Route::get('admin/edit/{id}', 'Admin\MemberController@edit');
+Route::get('admin/edit/{id}', 'Admin\AdminuserController@edit');
 //执行后台用户删除
-Route::get('admin/destroy/{id}', 'Admin\MemberController@destroy');
+Route::get('admin/destroy/{id}', 'Admin\AdminuserController@destroy');
 //执行添加后台用户
-Route::post('admin/store', 'Admin\MemberController@store');
+Route::post('admin/store', 'Admin\AdminuserController@store');
 //执行后台用户修改
+
 Route::post('admin/update/{id}', 'Admin\MemberController@update');
 
 
@@ -51,6 +62,20 @@ Route::get('navigation/edit/{id}', 'Admin\NavigationController@edit');
 //执行类别修改
 Route::post('navigation/update/{id}','Admin\NavigationController@update');
 //加载导航栏分类列表页面
+
+Route::post('admin/update/{id}', 'Admin\AdminuserController@update');
+
+//加载前台会员页面
+Route::get('admin/homeindex', 'Admin\HomeuserController@Index');
+//加载前台会员修改页面
+Route::get('admin/homeedit/{id}', 'Admin\HomeuserController@edit');
+//执行前台会员删除
+Route::get('admin/homedestroy/{id}', 'Admin\HomeuserController@destroy');
+//执行前台会员修改
+Route::post('admin/homeupdate/{id}', 'Admin\HomeuserController@update');
+
+
+
 Route::get('navig/index', 'Admin\NavigController@Index');
 //加载分类列表添加页面
 Route::get('navig/create', 'Admin\NavigController@create');
@@ -65,5 +90,8 @@ Route::get('navig/destroy/{id}', 'Admin\NavigController@destroy');
 //执行图片上传
 Route::post('navig/tupiana','Admin\NavigController@tupiana');
 
+
+
+Route::get('navig/aa', 'Admin\NavigController@aa');
 
 

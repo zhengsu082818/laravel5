@@ -39,7 +39,8 @@
                 <td style="text-align: center;">
                   <img src='{{asset("$v->url")}}' style="width: 20px;height: 20px;">
                 </td>
-                <td style="text-align: center;">{{ $depth[$v->depth]}}</td>
+                <td style="text-align: center;">
+        <button  onclick='x_admin_show("分类等级","","200","200")'>{{ $depth[$v->depth]}}</button></td>
                 <td style="text-align: center;">{{$v->updated_at}}</td>
                 <td class="td-manage" style="text-align: center;">
                   <a href="{{url('navig/create').'?id='.$v->id}}" style="color: #fff;" title="添加分类"><span class="layui-btn">添加分类</span></a>
