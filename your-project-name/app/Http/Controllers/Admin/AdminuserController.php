@@ -75,6 +75,7 @@ class AdminuserController extends Controller
     public function store(Request $request)
     {
         //验证信息 
+
         $this->validate($request,$this->rules,$this->messages);
         $input  = $request->except('password_confirmation');
         $add= User::create([
@@ -83,6 +84,8 @@ class AdminuserController extends Controller
             'stated' => $input['stated'],
             'password' => bcrypt($input['password']),
         ]);
+      
+          
         //判断是否添加成功
         if ($add) {
             flash()->overlay('添加成功', '1');

@@ -63,8 +63,18 @@ Route::post('navigation/update/{id}','Admin\NavigationController@update');
 //加载导航栏分类列表页面
 Route::get('navig/index', 'Admin\NavigController@Index');
 //加载分类列表添加页面
-Route::post('navig/store','Admin\NavigController@store');
 Route::get('navig/create', 'Admin\NavigController@create');
+//执行添加
+Route::post('navig/store','Admin\NavigController@store');
+//加载类别修改页面
+Route::get('navig/edit/{id}', 'Admin\NavigController@edit');
+//执行类别修改
+Route::post('navig/update/{id}', 'Admin\NavigController@update');
+//执行类别删除
+Route::get('navig/destroy/{id}', 'Admin\NavigController@destroy');
+//执行图片上传
+Route::post('navig/tupiana','Admin\NavigController@tupiana');
+
 //执行类别修改
 
 
