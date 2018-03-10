@@ -17,19 +17,23 @@ class NavigController extends Controller
      */
     public function index()
     {
-        $Navig = Navig::paginate(5);
+        $depth=['0'=>'顶级分类','1'=>'二级分类','2'=>'三级分类','3'=>'四级分类','4'=>'五级分类'];
+        $Navig = Navig::orderBy('id','desc')->paginate(5);
+       
         $count =Navig::count();
-        return view('admin.Navig.index',['Navig' => $Navig,'count'=>$count]);
+        return view('admin.Navig.index',['Navig' => $Navig,'count'=>$count,'depth'=>$depth]);
     }
+
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id='')
     {
-        return view('admin.Navig.navigadd');
+        $id =$_GET['id']?:null;
+        return view('admin.Navig.navigadd',['id'=>$id]);
     }
 
     /**
@@ -39,14 +43,35 @@ class NavigController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    public function store(Request $request)
-    {  
-        $data=[];
-        $pic = new TupianController;
-        $data['url']=$pic->picture($request,'file','storage/uploads/');
-        ;
+    public function store(Request $request )
+    {
+        $input=$request->except('_token');
+        if(!$request->input('id')){
+            // dd($input);   
+            $info =Navig::create($input);
+                    }else{
+            $data =Navig::findOrFail($request->input('id'));
+            $info =$data->children()->create($input);
+
+       }
+       if($info){
+                  flash()->overlay('添加成功', '1');
+                    return redirect('navig/index');
+
+                       }else{
+                  flash()->overlay('添加失败', '5');
+                    return redirect("navig/create");
+                        }
+        
         // var_dump($data['url']);
-        return ['code'=>0,'msg'=>'','data'=>['src'=>$data['url']]];
+        
+    }
+
+    public function tupiana(Request $request)
+    {
+         $pic = new TupianController;
+         $data=$pic->picture($request,'file','storage/uploads/');
+         return ['code'=>0,'msg'=>'','data'=>['src'=>$data]];
     }
 
 
@@ -69,7 +94,8 @@ class NavigController extends Controller
      */
     public function edit($id)
     {
-        //
+       $Navig = Navig::where('id',$id)->first();
+        return view('admin.Navig.edit',['Navig' => $Navig]);
     }
 
     /**
@@ -81,7 +107,27 @@ class NavigController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input=$request->input();
+        // dd($input);
+        //验证规则
+        $this->validate($request,[
+                "name"=>'required|max:255',
+        ],[ "name.required"=>'请输入类别名',"name.max"=>'类别名过长',]);
+
+        if (!$input['url']) {
+            $updatee =Navig::where('id',$id)
+                ->update(['name'=>$input['name']]);
+        }else{
+            $updatee =Navig::where('id',$id)
+                ->update(['name'=>$input['name'],'url'=>$input['url']]);
+        }
+        //判断是否修改成功
+        if ($updatee) {
+            flash()->overlay('修改成功', '1');
+                         return redirect('navig/index');
+        }else{
+             flash()->overlay('修改失败', '5');
+                         return redirect('navig/index');        }
     }
 
     /**
@@ -92,6 +138,19 @@ class NavigController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $aa=Navig::where('parent_id',$id)->get()->toArray();
+        dd($aa);
+       // $des= Navig::where('id',$id)->first();
+       $bb = [];
+       // $qw= Navig::all();
+       if($bb === $aa){
+            
+              $des->delete();
+            flash()->overlay('删除成功', '1');
+            return redirect('navig/index');
+       }else{
+           flash()->overlay('删除失败，请先删除子类', '5');
+             return back();
+       }
     }
 }

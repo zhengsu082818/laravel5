@@ -28,7 +28,7 @@
 
         @include('flash::message')
 
-        <form class="layui-form" method="post" action='{{ url("navig/tupian")}}' enctype="multipart/form-data" >
+        <form class="layui-form" method="post" action='{{ url("navig/store")}}' enctype="multipart/form-data" >
           {{csrf_field()}}
           <div class="layui-form-item">
             <input type="hidden" name="id" value="">
@@ -36,6 +36,7 @@
                   <span class="x-red">*</span>类别名
               </label>
               <div class="layui-input-inline">
+                <input type="hidden"  name="id"  class="layui-input" value="{{$id}}">
                   <input type="text"  name="name"  class="layui-input" value="">
               </div>
               <div class="layui-form-mid layui-word-aux">
@@ -43,21 +44,21 @@
               </div>
           </div>
           <div class="layui-form-item">
-              <label for="username" class="layui-form-label">
+              <label for="L_email" class="layui-form-label">
                   <span class="x-red">*</span>图标
               </label>
-              
               <div class="layui-form-mid layui-word-aux">
                   <button type="button" class="layui-btn" id="test1">
                 <i class="layui-icon">&#xe67c;</i>上传图片
               </button>
-                
+                <input type="hidden"  name="url"  class="layui-input" value="" id="imgur">
                   @if (count($errors) > 0)
 
                     <span class="x-red">{{ $errors->first('url') }}</span>  
                     @endif
               </div>
           </div>
+
           <div class="layui-form-item">
               <label for="L_repass" class="layui-form-label">
               </label>
@@ -80,32 +81,22 @@
 @endsection
 
 @section('js')
-    <script>
-        layui.use(['form','layer'], function(){
-            $ = layui.jquery;
-          var form = layui.form
-          ,layer = layui.layer; 
-          
-        });
-    </script>
-    <script src="/static/build/layui.js"></script>
       <script>
       layui.use('upload', function(){
         var upload = layui.upload;
          var $ = layui.$ ;
          $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-        });
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+         });
         //执行实例
         var uploadInst = upload.render({
           elem: '#test1' //绑定元素
-          ,url: '{{ url("navig/store")}}'//上传接口
+          ,url: '{{ url("navig/tupiana")}}'//上传接口
           ,field:'file'
           ,done: function(res){
-            //上传完毕回调
-            return "上传成功！";
+              $('#imgur').val(res.data.src);    
           }
           ,error: function(){
             //请求异常回调

@@ -7,14 +7,13 @@ use App\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class MemberController extends Controller
+class AdminuserController extends Controller
 {  
 
     // 编写验证规则
     protected $rules =[
         'email' => 'required|email|unique:users',
         "name"=>'required|max:255',
-        'phone'=>'required|numeric|digits:11',
         'password' => 'required|confirmed|min:6|max:16',
     ];
     //编写错误信息
@@ -27,10 +26,7 @@ class MemberController extends Controller
         "password.required"=>'请输入登录密码',
         "password.confirmed"=>'两次密码输入不一致',
         "password.min"=>'密码长度过短',
-        "password.max"=>'密码长度过长',
-        "phone.required"=>'请输入手机号码',
-        "phone.numeric"=>'手机号码格式不正确',
-        "phone.digits"=>'手机号码格式不正确',
+        "password.max"=>'密码长度过长'
     ];
     /**
      * Display a listing of the resource.
@@ -38,12 +34,24 @@ class MemberController extends Controller
      * @return \Illuminate\Http\Response
      * 查询加载用户列表
      */
-    public function index()
+    public function index(Request $request)
     {
-        $stus = User::paginate(5);
-        //dd($stus);
-        $count =count(User::all());
-        return view('admin.huiyuan.list',['stus' => $stus,'count'=>$count]);
+        $where=[];
+        $keywords = $request->name;
+        if ($keywords != '') {
+            $stus = User::where('name','like',"%$keywords%")->orderBy('id','desc')->paginate(env('PAGE_SIZE',5));
+            $count = User::where('name','like',"%$keywords%")->count();
+
+        }else{
+            $stus = User::orderBy('id','desc')->paginate(env('PAGE_SIZE',5));
+            $count = User::count();
+        }
+        return view('admin.adminuser.list',['stus'=>$stus,'count'=>$count,'keywords'=>$keywords]);
+
+        // $stus = User::paginate(5);
+        // //dd($stus);
+        // $count =count(User::all());
+        // return view('admin.huiyuan.list',['stus' => $stus,'count'=>$count]);
     }
 
     /**
@@ -54,7 +62,7 @@ class MemberController extends Controller
      */
     public function create()
     {
-        return view('admin.huiyuan.useradd');
+        return view('admin.adminuser.useradd');
     }
 
     /**
@@ -67,31 +75,25 @@ class MemberController extends Controller
     public function store(Request $request)
     {
         //验证信息 
-         $this->validate($request,$this->rules,$this->messages);
-         // 接收除_token字段的值
-          $input  = $request->except('password_confirmation');//
-         
-          // dd($input);
-          // //添加数据
-          // remember_token
-            $adda= User::insert([
+
+        $this->validate($request,$this->rules,$this->messages);
+        $input  = $request->except('password_confirmation');
+        $add= User::create([
             'name' => $input['name'],
             'email' => $input['email'],
-            'phone' => $input['phone'],
-            'ado' => $input['ado'],
-            'remember_token' => $input['_token'],
+            'stated' => $input['stated'],
             'password' => bcrypt($input['password']),
-
         ]);
-          //判断是否添加成功
-            if ($adda) {
-                    flash()->overlay('添加成功', '1');
-                         return redirect('admin/list');
-
-                }else{
-                    flash()->overlay('添加失败', '5');
-                         return redirect('admin/create');
-                }
+      
+          
+        //判断是否添加成功
+        if ($add) {
+            flash()->overlay('添加成功', '1');
+            return redirect('admin/list');
+        }else{
+            flash()->overlay('添加失败', '5');
+            return redirect('admin/create');
+        }
     }
 
     /**
@@ -115,10 +117,8 @@ class MemberController extends Controller
      */
     public function edit($id)
     {
-        $user = User::where('id',$id)->first();
-        return view('admin.huiyuan.edit',['user' => $user]);
-
-        // dd($user);
+        $user = User::findOrFail($id);
+        return view('admin.adminuser.edit',['user' => $user]);
     }
 
     /**
@@ -130,29 +130,16 @@ class MemberController extends Controller
      */
     public function update(Request $request, $id)
     {   
-        //验证规则
-        $this->validate($request,[
-                "name"=>'required|max:255',
-                'phone'=>'required|numeric|digits:11',
-                'password' => 'required|confirmed|min:6|max:16',
-        ],$this->messages);
-        //接收除_token，password_confirmation字段的数据
-        $input=$request->except('_token','password_confirmation');
-        // dd($input);
-        //加密密码
-        $input['password']=bcrypt($input['password']);
-       
-        //执行修改
-        $updatee =User::where('id',$id)
-                ->update($input);
-                // dd(updatee);
+        $input = $request->except('_token');
+        $update = User::where('id',$id)->update($input);
         //判断是否修改成功
-        if ($updatee) {
+        if($update) {
             flash()->overlay('修改成功', '1');
-                         return redirect('admin/list');
+            return redirect('admin/list');
         }else{
-             flash()->overlay('修改失败', '5');
-                         return redirect('admin/list');        }
+            flash()->overlay('修改失败', '5');
+            return redirect('admin/list');       
+        }
     }
 
     /**
@@ -163,15 +150,14 @@ class MemberController extends Controller
      */
     public function destroy($id)
     {
-        //执行删除
-       $dele =User::where('id',$id)->delete();
+        $dele =User::destroy($id);
         //判断是否删除成功
-       if ($dele) {
-                     flash()->overlay('删除成功', '1');
-                         return redirect('admin/list');
+        if ($dele) {
+            flash()->overlay('删除成功', '1');
+            return redirect('admin/list');
         }else{
             flash()->overlay('删除失败', '5');
-                         return redirect('admin/list');
+            return redirect('admin/list');
         }
 
     }
