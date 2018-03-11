@@ -37,8 +37,6 @@ Route::get('admin/index', function () {
     return view('admin.zhuye');
 });
 
-//加载后台用户页面
-Route::get('admin/list', 'Admin\MemberController@Index');
 
 //加载后台用户页面
 Route::get('admin/list', 'Admin\AdminuserController@Index');
@@ -51,8 +49,7 @@ Route::get('admin/destroy/{id}', 'Admin\AdminuserController@destroy');
 //执行添加后台用户
 Route::post('admin/store', 'Admin\AdminuserController@store');
 //执行后台用户修改
-
-Route::post('admin/update/{id}', 'Admin\MemberController@update');
+Route::post('admin/update/{id}', 'Admin\AdminuserController@update');
 
 
 //加载导航栏分类列表页面
@@ -63,7 +60,6 @@ Route::get('navigation/edit/{id}', 'Admin\NavigationController@edit');
 Route::post('navigation/update/{id}','Admin\NavigationController@update');
 //加载导航栏分类列表页面
 
-Route::post('admin/update/{id}', 'Admin\AdminuserController@update');
 
 //加载前台会员页面
 Route::get('admin/homeindex', 'Admin\HomeuserController@Index');
@@ -90,8 +86,5 @@ Route::get('navig/destroy/{id}', 'Admin\NavigController@destroy');
 //执行图片上传
 Route::post('navig/tupiana','Admin\NavigController@tupiana');
 
-
-
-Route::get('navig/aa', 'Admin\NavigController@aa');
 
 
