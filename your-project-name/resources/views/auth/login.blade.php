@@ -4,12 +4,9 @@
 @section('title', '后台登录-考拉')
 
 @section('css')
-<<<<<<< HEAD
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-     
-=======
+
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
->>>>>>> f62d8232ce501f2f471412a6157909e1b8b31274
+
 @endsection
 <body @section('class', 'class="login-bg"')>
     
