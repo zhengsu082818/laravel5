@@ -32,12 +32,6 @@ Route::get('/admin',function(){
 })->middleware('auth');
 
 
-//加载后台主页桌面
-Route::get('admin/index', function () {
-    return view('admin.zhuye');
-});
-
-
 
 //加载后台用户页面
 Route::get('admin/list', 'Admin\AdminuserController@Index');
@@ -52,16 +46,6 @@ Route::post('admin/store', 'Admin\AdminuserController@store');
 //执行后台用户修改
 Route::post('admin/update/{id}', 'Admin\AdminuserController@update');
 
-
-//加载导航栏分类列表页面
-Route::get('navigation/index', 'Admin\NavigationController@Index');
-//加载类别修改页面
-Route::get('navigation/edit/{id}', 'Admin\NavigationController@edit');
-//执行类别修改
-Route::post('navigation/update/{id}','Admin\NavigationController@update');
-//加载导航栏分类列表页面
-
-
 //加载前台会员页面
 Route::get('admin/homeindex', 'Admin\HomeuserController@Index');
 //加载前台会员修改页面
@@ -72,7 +56,7 @@ Route::get('admin/homedestroy/{id}', 'Admin\HomeuserController@destroy');
 Route::post('admin/homeupdate/{id}', 'Admin\HomeuserController@update');
 
 
-
+//加载侧边导航页面
 Route::get('navig/index', 'Admin\NavigController@Index');
 //加载分类列表添加页面
 Route::get('navig/create', 'Admin\NavigController@create');
@@ -87,3 +71,15 @@ Route::get('navig/destroy/{id}', 'Admin\NavigController@destroy');
 //执行图片上传
 Route::post('navig/tupiana','Admin\NavigController@tupiana');
 
+//加载首页轮播页面
+Route::get('admin/bannerindex', 'Admin\BannerController@Index');
+//加载首页轮播添加页面
+Route::get('admin/bannercreate', 'Admin\BannerController@create');
+//加载首页轮播修改页面
+Route::get('admin/banneredit/{id}', 'Admin\BannerController@edit');
+//执行首页轮播删除
+Route::get('admin/bannerdestroy/{id}', 'Admin\BannerController@destroy');
+//执行图片轮播添加
+Route::post('admin/bannerstore', 'Admin\BannerController@store');
+//执行图片轮播修改
+Route::post('admin/bannerupdate/{id}', 'Admin\BannerController@update');

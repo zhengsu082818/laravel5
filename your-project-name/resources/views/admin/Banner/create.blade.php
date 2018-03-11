@@ -12,15 +12,20 @@
     <div class="x-body">
       <div class="x-nav">
       <span class="layui-breadcrumb">
-        <a href="{{url('')}}">首页</a>
-        <a href="{{url('')}}">分类列表</a>
         <a>
-          <cite>管理分类列表</cite></a>
+          <cite>首页轮播管理</cite>
+        </a>
+        <a>
+          <cite>图片轮播管理</cite>
+        </a>
+        <a>
+          <cite>添加轮播</cite>
+        </a>
       </span>
       
       <a class="layui-btn" style="line-height:38px;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
         <i class="layui-icon" style="line-height:38px">ဂ</i></a>
-        <a  class="layui-btn" href="{{url('banner')}}" style="line-height:38px;margin-top:3px;margin-right: 10px;float:right">返回上一层</a>
+        <a  class="layui-btn" href="{{url('admin/bannerindex')}}" style="line-height:38px;margin-top:3px;margin-right: 10px;float:right">返回上一层</a>
     </div>
     <div style="height: 40px;">
       
@@ -28,7 +33,7 @@
 
         @include('flash::message')
 
-        <form class="layui-form" method="post" action="{{url('banner/store')}}" enctype="multipart/form-data" >
+        <form class="layui-form" method="post" action="{{url('admin/bannerstore')}}" enctype="multipart/form-data" >
           {{csrf_field()}}
           <input type="hidden" name="img" value="" id="img">
           <div class="layui-form-item">
@@ -82,15 +87,7 @@
 
           </div>
         </form>
-<!--       @if (count($errors) > 0)
-          <div class="alert alert-danger">
-              <ul>
-                  @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
-                  @endforeach
-              </ul>
-          </div>
-      @endif -->
+
     </div>
 @endsection
 

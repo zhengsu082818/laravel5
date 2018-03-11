@@ -12,4 +12,9 @@ class Banner extends Model
     protected $primaryKey='id';
     //时间戳自动写入（默认是开启状态）
     public $timestamps = true;
+
+    public function getStaticAttribute($value){
+        $static = ['1'=>'显示','0'=>'隐藏'];
+        return $static[$value];
+    }
 }

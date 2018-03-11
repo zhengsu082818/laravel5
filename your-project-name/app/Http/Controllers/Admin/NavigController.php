@@ -47,9 +47,9 @@ class NavigController extends Controller
     {
         $input=$request->except('_token');
         if(!$request->input('id')){
-            dd($input);   
+            
             $info =Navig::create($input);
-                    }else{
+        }else{
             $data =Navig::findOrFail($request->input('id'));
             $info =$data->children()->create($input);
 
@@ -63,7 +63,6 @@ class NavigController extends Controller
                     return redirect("navig/create");
                         }
         
-        // var_dump($data['url']);
         
     }
 

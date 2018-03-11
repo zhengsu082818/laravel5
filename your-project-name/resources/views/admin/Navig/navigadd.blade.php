@@ -12,10 +12,15 @@
     <div class="x-body">
       <div class="x-nav">
       <span class="layui-breadcrumb">
-        <a href="{{url('admin/index')}}">首页</a>
-        <a href="{{url('admin/list')}}">分类列表</a>
         <a>
-          <cite>管理分类列表</cite></a>
+          <cite>商品分类管理</cite>
+        </a>
+        <a>
+          <cite>侧边导航分类</cite>
+        </a>
+        <a>
+          <cite>添加分类</cite>
+        </a>
       </span>
       
       <a class="layui-btn" style="line-height:38px;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
@@ -37,7 +42,7 @@
               </label>
               <div class="layui-input-inline">
                 <input type="hidden"  name="id"  class="layui-input" value="{{$id}}">
-                  <input type="text"  name="name"  class="layui-input" value="">
+                <input type="text"  name="name"  class="layui-input" value="">
               </div>
               <div class="layui-form-mid layui-word-aux">
                   <span class="x-red">*</span>           
@@ -68,15 +73,6 @@
 
           </div>
         </form>
-<!--       @if (count($errors) > 0)
-          <div class="alert alert-danger">
-              <ul>
-                  @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
-                  @endforeach
-              </ul>
-          </div>
-      @endif -->
     </div>
 @endsection
 

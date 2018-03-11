@@ -29,7 +29,7 @@
     <div class="left-nav">
       <div id="side-nav">
         <ul id="nav">
-             <li>
+            <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe6b8;</i>
                     <cite>会员管理</cite>
@@ -37,12 +37,25 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-
-
                         <a _href="{{url('admin/homeindex')}}">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>会员列表</cite>
-                            
+                        </a>
+                    </li >
+                </ul>
+            </li>
+            
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe6b8;</i>
+                    <cite>首页轮播管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="{{url('admin/bannerindex')}}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>图片轮播列表</cite>
                         </a>
                     </li >
                 </ul>
@@ -66,22 +79,20 @@
                                 <a _href="{{url('navig/index')}}">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>分类列表</cite>
-                                    
                                 </a>
                             </li >
                             <li>
                                 <a _href="{{url('navig/create').'?id='.''}}">
                                     <i class="iconfont">&#xe6a7;</i>
-                                    <cite>添加主类</cite>
-                                    
+                                    <cite>添加分类类</cite>
                                 </a>
                             </li>
                             
                         </ul>
                     </li>
-                   
                 </ul>
             </li>
+
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe726;</i>

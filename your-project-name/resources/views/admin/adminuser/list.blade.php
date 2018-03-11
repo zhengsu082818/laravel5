@@ -67,11 +67,10 @@
               </tr>
           @endforeach    
         </tbody>
-
       </table>
 
             <center>
-            {!! $stus->appends(['id' => $keywords])->render() !!}
+            {!! $stus->appends(['name' => $keywords])->render() !!}
             </center>
     </div>
   @endsection

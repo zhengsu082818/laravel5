@@ -12,10 +12,15 @@
     <div class="x-body">
       <div class="x-nav">
       <span class="layui-breadcrumb">
-        <a href="{{url('admin/index')}}">首页</a>
-        <a href="{{url('admin/list')}}">分类列表</a>
+       <a>
+          <cite>商品分类管理</cite>
+        </a>
         <a>
-          <cite>管理分类列表</cite></a>
+          <cite>侧边导航分类</cite>
+        </a>
+        <a>
+          <cite>分类列表</cite>
+        </a>
       </span>
       
       <a class="layui-btn" style="line-height:38px;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">

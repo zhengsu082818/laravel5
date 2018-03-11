@@ -7,22 +7,29 @@
   @endsection
   
   @section('content')
-    <div class="x-nav">
-      <span class="layui-breadcrumb">
-        <a href="">首页</a>
-        <a href="">管理员列表</a>
-        
-      </span>
-      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
-        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
-    </div>
     <div class="x-body">
-     
-      <xblock>
-        <a class="layui-btn" id="backid" href="{{url('banner/create')}}"><i class="layui-icon"></i>添加</a>
-        <span class="x-right" style="line-height:40px">共有数据：<a href="javascript:;" style="color: red">{{$count}}</a>  条</span>
-      </xblock>
-
+      <div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a>
+          <cite>首页轮播管理</cite>
+        </a>
+        <a>
+          <cite>图片轮播列表</cite>
+        </a>
+      </span>
+      
+      <a class="layui-btn" style="line-height:38px;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:38px">ဂ</i></a>
+    </div>
+    
+    <div class="x-body">
+        <form class="layui-form layui-col-md12 x-so" action="" method="get">
+          <input type="text" name="name"  placeholder="请输入关键字" autocomplete="off" class="layui-input" value="{{$keywords?$keywords:''}}">
+          <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+        </form>
+         <a href="{{url('admin/bannercreate')}}" style="color:#fff;"><span class="x-left layui-btn" style="line-height:40px">添加轮播</span></a>
+        <span class="x-right layui-btn" style="line-height:40px">共有数据：<a href="javascript:;" style="color:#fff;">{{$count}}</a>  条</span>
+       
       <table class="layui-table">
         @include('flash::message')
         <thead>
