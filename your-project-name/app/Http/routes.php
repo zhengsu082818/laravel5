@@ -38,6 +38,7 @@ Route::get('admin/index', function () {
 });
 
 
+
 //加载后台用户页面
 Route::get('admin/list', 'Admin\AdminuserController@Index');
 //加载后台用户添加页面
@@ -85,6 +86,4 @@ Route::post('navig/update/{id}', 'Admin\NavigController@update');
 Route::get('navig/destroy/{id}', 'Admin\NavigController@destroy');
 //执行图片上传
 Route::post('navig/tupiana','Admin\NavigController@tupiana');
-
-
 
