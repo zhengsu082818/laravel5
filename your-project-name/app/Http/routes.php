@@ -58,7 +58,7 @@ Route::post('admin/homeupdate/{id}', 'Admin\HomeuserController@update');
 
 //加载侧边导航页面
 Route::get('navig/index', 'Admin\NavigController@Index');
-//加载分类列表添加页面
+//加载类列表添加页面
 Route::get('navig/create', 'Admin\NavigController@create');
 //执行添加
 Route::post('navig/store','Admin\NavigController@store');
@@ -73,7 +73,6 @@ Route::post('navig/tupiana','Admin\NavigController@tupiana');
 
 //加载分类列表
 Route::get('navig/index/id/{id}', 'Admin\NavigController@Index');
-Route::get('navig/shoq', 'Admin\NavigController@shoq');
 
 //加载首页轮播页面
 Route::get('admin/bannerindex', 'Admin\BannersController@Index');

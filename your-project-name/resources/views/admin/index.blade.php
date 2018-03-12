@@ -89,13 +89,13 @@
                                 </a>
                             </li>
                             <li>    
-                                <a _href="{{url('navig/index/id/b')}}">
+                                <a _href="{{url('navig/index/id/a')}}">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>二级分类列表</cite>
                                 </a>
                             </li >
                             <li>    
-                                <a _href="{{url('navig/index/id/a')}}">
+                                <a _href="{{url('navig/index/id/b')}}">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>三级分类列表</cite>
                                 </a>

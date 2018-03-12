@@ -30,15 +30,14 @@ class NavigController extends Controller
             $count =Navig::where('depth',1)->count();
            return view('admin.Navig.index',['Navig' => $Navig,'count'=>$count,'depth'=>$depth]);
         }elseif ($id =='b') {
-            
+            $Navig = Navig::orderBy('id','desc')->where('depth',2)->paginate(10);
+            $count =Navig::where('depth',2)->count();
+            return view('admin.Navig.index',['Navig' => $Navig,'count'=>$count,'depth'=>$depth]);
+                
         }
 
 
-        $Navig = Navig::orderBy('id','desc')->where('parent_id',null)->paginate(10);
-       
-        $count =Navig::where('parent_id',null)->count();
-        return view('admin.Navig.index',['Navig' => $Navig,'count'=>$count,'depth'=>$depth]);
-
+        
     }
 
 
@@ -102,10 +101,8 @@ class NavigController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function shoq()
+    public function show($id)
     {
-       $id= $_GET['id'];
-       dd($id);
     }
 
     /**

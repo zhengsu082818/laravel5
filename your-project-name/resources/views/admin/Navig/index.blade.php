@@ -23,11 +23,7 @@
     </div>
     
 
-<<<<<<< HEAD
-   
 
-=======
->>>>>>> 7a6bfb89c5c2bf030b07c728020de274f7203911
     <div class="x-body">
         <form class="layui-form layui-col-md12 x-so" action="{{ url('navig/store') }}" method="get">
 
@@ -64,14 +60,21 @@
                 </td>
                 <td style="text-align: center;">{{$v->updated_at}}</td>
                 <td class="td-manage" style="text-align: center;">
-                  <a href="{{url('navig/create').'?id='.$v->id}}" style="color: #fff;" title="添加分类">
-                    <button class="layui-btn layui-btn-mini">添加分类</button>
+                   @if($v->depth=='0')
+                 <a href="{{url('navig/create').'?id='.$v->id}}" style="color: #fff;" title="添加分类">
+                    <button class="layui-btn layui-btn-mini">添加分类</button></a>
+                  @endif
+                  @if($v->depth=='1')
+                 <a href="{{url('navig/create').'?id='.$v->id}}" style="color: #fff;" title="添加分类">
+                    <button class="layui-btn layui-btn-mini">添加分类</button></a>
+                  @endif
                   <a href='{{url("navig/edit/$v->id")}}' style="color: #fff;">
-                    <button class="layui-btn layui-btn-mini">修改</button>
+                    <button class="layui-btn layui-btn-mini">修改</button></a>
                   <a href='{{url("navig/destroy/$v->id")}}'  style="color: #fff;" title="删除">
                      <button class="layui-btn layui-btn-mini layui-btn-danger">删除</button>
                   </a>
                 </td>
+
               </tr>
 
           @endforeach    
