@@ -83,3 +83,8 @@ Route::get('admin/bannerdestroy/{id}', 'Admin\BannerController@destroy');
 Route::post('admin/bannerstore', 'Admin\BannerController@store');
 //执行图片轮播修改
 Route::post('admin/bannerupdate/{id}', 'Admin\BannerController@update');
+
+
+
+//加载订单操作页面
+Route::resource('order','Order\OrderformController');

@@ -6,6 +6,7 @@
 @section('css')
 
 
+   
 
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -13,7 +14,6 @@
 <body @section('class', 'class="login-bg"')>
     
     @section('content')
-   
     <div class="login">
         <div class="message">考拉海购-后台登录</div>
         <div id="darkbannerwrap"></div>

@@ -12,4 +12,6 @@ class Homeuser extends Model
         $stated = ['1'=>'启用','0'=>'禁用'];
         return $stated[$value];
     }
+
+   
 }
