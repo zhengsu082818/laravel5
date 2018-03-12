@@ -6,18 +6,14 @@
     <link rel="stylesheet" href="{{asset('etsc/css/bootstrap.min.css')}}">
 @endsection
 @section('content')
-
      <div class="x-body">
       <div class="x-nav">
       <span class="layui-breadcrumb">
         <a>
-          <cite>商品分类管理</cite>
+          <cite>会员管理</cite>
         </a>
         <a>
-          <cite>侧边导航分类</cite>
-        </a>
-        <a>
-          <cite>分类列表</cite>
+          <cite>会员列表</cite>
         </a>
       </span>
       
@@ -26,13 +22,15 @@
     </div>
     
     <div class="x-body">
-        <form class="layui-form layui-col-md12 x-so" action="" method="get">
-          <input type="text" name="name"  placeholder="请输入关键字" autocomplete="off" class="layui-input" value="{{$keywords?$keywords:''}}">
+        <form class="layui-form layui-col-md12 x-so" action="{{ url('navig/store') }}" method="get">
+          <input type="text" name="name"  placeholder="请输入关键字" autocomplete="off" class="layui-input" value="">
           <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
         </form>
-         
-        <span class="x-right layui-btn" style="line-height:40px">共有数据：<a href="javascript:;" style="color:#fff;">{{$count}}</a>  条</span>
+        <span class="x-left layui-btn" style="line-height:40px">共有数据：<a href="javascript:;" style="color:#fff;">{{$count}}</a>  条</span>
        
+
+      <table class="layui-table">
+        @include('flash::message')
         <thead>
           <tr >
             <th style="text-align: center;">ID</th>

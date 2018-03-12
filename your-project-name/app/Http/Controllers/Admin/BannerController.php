@@ -16,11 +16,10 @@ class BannerController extends Controller
      */
     public function index()
     {
-        // return 111;
-         $banner = Banner::all();
-         // dd($banner);
-         $count =Banner::count();
-         return view('admin.banner.index',['banner'=>$banner,'count'=>$count]);
+        
+        $banner = Banner::orderBy('id','desc')->paginate(env('PAGE_SIZE',5));
+        $count =Banner::count();
+        return view('admin.banner.index',['banner'=>$banner,'count'=>$count]);
     }
 
     /**

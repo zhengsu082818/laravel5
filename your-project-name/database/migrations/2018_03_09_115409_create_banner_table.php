@@ -30,6 +30,6 @@ class CreateBannerTable extends Migration
      */
     public function down()
     {
-         Schema::drop('shang');
+         Schema::drop('banner');
     }
 }
