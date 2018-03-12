@@ -35,6 +35,15 @@
               </label>
               <div class="layui-input-inline">
                   <input type="text" name="name" 
+                  class="layui-input" value="{{$user->username}} " disabled="disabled" style="background: #efefe0">
+              </div>
+          </div>
+           <div class="layui-form-item">
+              <label for="username" class="layui-form-label">
+                  <span class="x-red">*</span>真实姓名
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" name="name" 
                   class="layui-input" value="{{$user->name}} " disabled="disabled" style="background: #efefe0">
               </div>
           </div>

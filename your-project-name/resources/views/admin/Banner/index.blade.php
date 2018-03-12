@@ -49,11 +49,11 @@
                 <td style="text-align: center;">{{$v->url}}</td>
                 <td style="text-align: center;">{{$v->created_at}}</td>
                 <td style="text-align: center;">
-                   @if($v->static == '1')
-                  <span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span>
+                   @if($v->static == '显示')
+                  <span class="layui-btn layui-btn-normal layui-btn-mini">显示</span>
                   @endif
-                  @if($v->static == '2')
-                  <span class="layui-btn layui-btn-normal layui-btn-mini" style="">未启用</span>
+                  @if($v->static == '隐藏')
+                  <span class="layui-btn layui-btn-normal layui-btn-mini" style="">隐藏</span>
                   @endif
                 </td>
                  
@@ -68,7 +68,7 @@
       </table>
 
             <center>
-          
+                 {!! $banner->render() !!}
             </center>
     </div>
   @endsection

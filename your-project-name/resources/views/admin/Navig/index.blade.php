@@ -6,18 +6,14 @@
     <link rel="stylesheet" href="{{asset('etsc/css/bootstrap.min.css')}}">
 @endsection
 @section('content')
-
      <div class="x-body">
       <div class="x-nav">
       <span class="layui-breadcrumb">
         <a>
-          <cite>商品分类管理</cite>
+          <cite>会员管理</cite>
         </a>
         <a>
-          <cite>侧边导航分类</cite>
-        </a>
-        <a>
-          <cite>分类列表</cite>
+          <cite>会员列表</cite>
         </a>
       </span>
       
@@ -25,14 +21,25 @@
         <i class="layui-icon" style="line-height:38px">ဂ</i></a>
     </div>
     
+
    <div class="x-body">
         <form class="layui-form layui-col-md12 x-so" action="{{ url('/admin/homeindex') }}" method="get">
+
+    <div class="x-body">
+        <form class="layui-form layui-col-md12 x-so" action="{{ url('navig/store') }}" method="get">
+
           <input type="text" name="name"  placeholder="请输入关键字" autocomplete="off" class="layui-input" value="">
           <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
         </form>
         <span class="x-left layui-btn" style="line-height:40px">共有数据：<a href="javascript:;" style="color:#fff;">{{$count}}</a>  条</span>
+
         <a href="{{url('navig/create').'?id='.''}}" style="color:#fff;"><span class="x-left layui-btn" style="line-height:40px;float: right;">添加主类</span></a>
        <table class="layui-table">
+
+       
+
+      <table class="layui-table">
+
         @include('flash::message')
         <thead>
           <tr >
