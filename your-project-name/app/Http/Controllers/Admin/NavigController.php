@@ -7,7 +7,7 @@ use App\Models\Navig;
 use App\Http\Requests;
 use App\Http\Controllers\Tupian\TupianController;
 use App\Http\Controllers\Controller;
-
+    
 class NavigController extends Controller
 {
     /**
@@ -18,9 +18,9 @@ class NavigController extends Controller
     public function index()
     {
         $depth=['0'=>'顶级分类','1'=>'二级分类','2'=>'三级分类','3'=>'四级分类','4'=>'五级分类'];
-        $Navig = Navig::orderBy('id','desc')->paginate(5);
+        $Navig = Navig::orderBy('id','desc')->where('parent_id',null)->paginate(10);
        
-        $count =Navig::count();
+        $count =Navig::where('parent_id',null)->count();
         return view('admin.Navig.index',['Navig' => $Navig,'count'=>$count,'depth'=>$depth]);
     }
 
@@ -30,7 +30,7 @@ class NavigController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id='')
+    public function create()
     {
         $id =$_GET['id']?:null;
         return view('admin.Navig.navigadd',['id'=>$id]);
@@ -44,11 +44,16 @@ class NavigController extends Controller
      */
     
     public function store(Request $request )
-    {
+    {  
+        //接收除_token字段的数据
         $input=$request->except('_token');
+        // dd($input);
+        
+        //判断id是否为空
         if(!$request->input('id')){
-            
+            // dd($input);
             $info =Navig::create($input);
+
         }else{
             $data =Navig::findOrFail($request->input('id'));
             $info =$data->children()->create($input);
@@ -142,7 +147,9 @@ class NavigController extends Controller
         // dd($aa);
        $des= Navig::where('id',$id)->first();
        $zl=$des->getDescendants();
-       // dd($zl);
+       // $aa=toArray($zl);
+
+       dd($zl);
        $bb = [];
        // $qw= Navig::all();
        if($bb === $aa){

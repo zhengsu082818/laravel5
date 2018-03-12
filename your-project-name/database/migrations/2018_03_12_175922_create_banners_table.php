@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBannerTable extends Migration
+class CreateBannersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,11 @@ class CreateBannerTable extends Migration
      */
     public function up()
     {
-      if (!Schema::hasTable('banner')) {
-            Schema::create('banner', function (Blueprint $table) {
+        if (!Schema::hasTable('banners')) {
+            Schema::create('banners', function (Blueprint $table) {
                 $table->increments('id');
-                $table->string('img',32);
-                $table->string('url',255);
-                $table->tinyInteger('static');
+                $table->string('img',255);
+                $table->enum('static',['启用','禁用']);
                 $table->timestamps();
             });
         }
@@ -30,6 +29,7 @@ class CreateBannerTable extends Migration
      */
     public function down()
     {
-         Schema::drop('shang');
+        Schema::drop('banners');
     }
+
 }

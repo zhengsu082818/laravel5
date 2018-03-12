@@ -19,24 +19,21 @@
       </span>
       
       <a class="layui-btn" style="line-height:38px;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
-        <i class="layui-icon" style="line-height:38px">ဂ</i></a>
+       <i class="layui-icon" style="line-height:38px">ဂ</i></a>
     </div>
     
     <div class="x-body">
         <form class="layui-form layui-col-md12 x-so" action="" method="get">
-          <input type="text" name="name"  placeholder="请输入关键字" autocomplete="off" class="layui-input" value="{{$keywords?$keywords:''}}">
+          <input type="text" name="name"  placeholder="请输入关键字" autocomplete="off" class="layui-input" value="">
           <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
         </form>
          <a href="{{url('admin/bannercreate')}}" style="color:#fff;"><span class="x-left layui-btn" style="line-height:40px">添加轮播</span></a>
         <span class="x-right layui-btn" style="line-height:40px">共有数据：<a href="javascript:;" style="color:#fff;">{{$count}}</a>  条</span>
-       
       <table class="layui-table">
-        @include('flash::message')
         <thead>
           <tr >
             <th style="text-align: center;">ID</th>
             <th style="text-align: center;">图片</th>
-            <th style="text-align: center;">地址</th>
             <th style="text-align: center;">加入时间</th>
             <th style="text-align: center;">状态</th>
             <th style="text-align: center;">操作</th></tr>
@@ -45,26 +42,34 @@
           @foreach ($banner as $v)
               <tr>
                 <td style="text-align: center;">{{$v->id}}</td>
-                <td style="text-align: center;"><img src="/storage/uploads/{{$v->img}}"></td>
-                <td style="text-align: center;">{{$v->url}}</td>
+                <td style="text-align: center;"><img src='{{ URL::asset("storage/uploads/$v->img") }}''></td>
                 <td style="text-align: center;">{{$v->created_at}}</td>
                 <td style="text-align: center;">
-                   @if($v->static == '1')
-                  <span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span>
+                   @if($v->static === '启用')
+                  <span class="layui-btn layui-btn-mini layui-btn-normal ">启用</span>
+
                   @endif
-                  @if($v->static == '2')
-                  <span class="layui-btn layui-btn-normal layui-btn-mini" style="">未启用</span>
+                  @if($v->static === '禁用')
+                  <span class="layui-btn layui-btn-mini layui-btn-warm ">禁用</span>
                   @endif
                 </td>
                  
+               
+
                 <td class="td-manage" style="text-align: center;">
-                 <span class="layui-btn"> <a href='{{url("admin/edit/$v->id")}}' style="color: #fff;">修改</a></span>
-                   <span class="layui-btn layui-btn-danger"><a href='{{url("admin/destroy/$v->id")}}'  style="color: #fff;">删除</a></span>
+                  <a href='{{url("admin/banneredit/$v->id")}}' style="color:#fff;">
+                    <button class="layui-btn layui-btn-mini">修改</button>
+                  </a>
+                  <a href='{{url("admin/bannerdestroy/$v->id")}}' style="color:#fff;">
+                    <button class="layui-btn layui-btn-mini layui-btn-danger">删除</button>
+                  </a>
                 </td>
               </tr>
-          @endforeach    
-        </tbody>
+          @endforeach  
 
+        </tbody>
+           {!! $banner->render() !!}  
+           @include('flash::message')
       </table>
 
             <center>

@@ -35,4 +35,5 @@ class User extends Model implements AuthenticatableContract,
         $stated = ['1'=>'启用','0'=>'禁用'];
         return $stated[$value];
     }
+    public $timestamps = true;
 }

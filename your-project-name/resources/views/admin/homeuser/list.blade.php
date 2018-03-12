@@ -34,8 +34,13 @@
           <tr >
             <th style="text-align: center;">ID</th>
             <th style="text-align: center;">用户名</th>
+            <th style="text-align: center;">真实姓名</th>
+            <th style="text-align: center;">性别</th>
+            <th style="text-align: center;">头像</th>
             <th style="text-align: center;">手机号</th>
-            <th style="text-align: center;">加入时间</th>
+            <th style="text-align: center;">邮箱</th>
+            <th style="text-align: center;">居住地</th>
+            <th style="text-align: center;">注册时间</th>
             <th style="text-align: center;">状态</th>
             <th style="text-align: center;">操作</th></tr>
         </thead>
@@ -43,8 +48,15 @@
           @foreach ($stus as $v)
               <tr>
                 <td style="text-align: center;">{{$v->id}}</td>
+                 <td style="text-align: center;">{{$v->username}}</td>
                 <td style="text-align: center;">{{$v->name}}</td>
+                <td style="text-align: center;">{{$v->sex}}</td>
+
+                 <td style="text-align: center;">{{$v->img}}</td>
+
                 <td style="text-align: center;">{{$v->phone}}</td>
+                 <td style="text-align: center;">{{$v->email}}</td>
+                  <td style="text-align: center;">{{$v->address}}</td>
                 <td style="text-align: center;">{{$v->created_at}}</td>
                 <td class="td-status" style="text-align: center;">
                   @if($v->stated == '启用')

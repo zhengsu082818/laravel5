@@ -13,5 +13,14 @@ class Homeuser extends Model
         return $stated[$value];
     }
 
-   
+    public $timestamps = true;
+
+
+    public function getSexAttribute($value){
+        $sex = ['m'=>'男','w'=>'女'];
+        return $sex[$value];
+    }
+
+    
+
 }
