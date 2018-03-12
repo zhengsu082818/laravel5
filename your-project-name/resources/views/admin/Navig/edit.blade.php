@@ -67,7 +67,7 @@
               <label for="L_repass" class="layui-form-label">
               </label>
               <button  class="layui-btn">
-                  确认添加
+                  确认修改
               </button>
 
           </div>

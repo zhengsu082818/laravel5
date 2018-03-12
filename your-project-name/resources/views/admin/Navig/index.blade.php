@@ -53,7 +53,11 @@
                <tr>
                 <td style="text-align: center;">{{$v->name}}</td>
                 <td style="text-align: center;">
+                  @if(!$v->url=='')
                   <img src='{{asset("$v->url")}}' style="width: 20px;height: 20px;">
+                  @else
+                    <span>此处没图</span>
+                  @endif
                 </td>
                 <td style="text-align: center;">
                     <button class="layui-btn layui-btn-mini" value="">{{$depth[$v->depth]}}</button>
