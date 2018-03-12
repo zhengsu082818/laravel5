@@ -21,4 +21,5 @@ class Homeuser extends Model
         return $sex[$value];
     }
 
+    
 }

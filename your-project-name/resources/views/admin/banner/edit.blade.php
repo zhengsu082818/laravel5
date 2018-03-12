@@ -19,7 +19,7 @@
           <cite>图片轮播管理</cite>
         </a>
         <a>
-          <cite>添加轮播</cite>
+          <cite>修改轮播</cite>
         </a>
       </span>
       
@@ -30,10 +30,8 @@
     <div style="height: 40px;">
       
     </div>
-      
         @include('flash::message')
-
-        <form class="layui-form" method="post" action="{{url('admin/bannerstore')}}" enctype="multipart/form-data" >
+        <form class="layui-form" method="post" action='{{url("admin/bannerupdate/$banner->id")}}' enctype="multipart/form-data" >
           {{csrf_field()}}
          
           <div class="layui-form-item">
@@ -41,13 +39,32 @@
                   <span class="x-red">*</span>状态
               </label>
 
-              <input type="hidden" name="img" value="" id="img">
+              <input type="hidden" name="imgurl" value="{{$banner->img}}" id="imgurl">
               <div class="layui-input-inline">
-                  <select name='static'>
-                      <option value="启用">启用</option>
-                      <option value="禁用">禁用</option>
+                  <select name="static">
+                    <option value="启用" 
+                      @if($banner->static === '启用')
+                        selected
+                      @endif >启用
+                    </option>
+                    
+                    <option value="禁用"  
+                      @if($banner->static === '禁用')
+                         selected
+                      @endif>禁用
+                    </option>
+                     
+                  
                   </select>
               </div>
+           
+          </div>
+           <div class="layui-form-item">
+            <input type="hidden" name="id" value="">
+              <label for="L_email" class="layui-form-label">
+                  <span class="x-red">*</span>图片
+              </label>
+              <img src="/storage/uploads/{{$banner->img}}" style="width:200px;height:100px;" id="cc">
           </div>
           <div class="layui-form-item">
               <label for="username" class="layui-form-label">
@@ -91,9 +108,10 @@
           ,url: '{{ url("admin/banneruplode")}}'//上传接口到那个控制器
           ,field:'file'//设置字段名 控制器接受
           ,done: function(res){
-           $name = res.data.src;
+           // $name = ;
            // alert($name);  
-           $('#img').val($name);
+           $('#imgurl').val(res.data.src);
+           $('#cc').attr('src',"/storage/uploads/"+res.data.src);
           }
           ,error: function(){
             

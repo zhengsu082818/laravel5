@@ -20,7 +20,7 @@ class NavigController extends Controller
         $depth=['0'=>'顶级分类','1'=>'二级分类','2'=>'三级分类','3'=>'四级分类','4'=>'五级分类'];
         $Navig = Navig::orderBy('id','desc')->where('parent_id',null)->paginate(10);
        
-        $count =Navig::count();
+        $count =Navig::where('parent_id',null)->count();
         return view('admin.Navig.index',['Navig' => $Navig,'count'=>$count,'depth'=>$depth]);
     }
 

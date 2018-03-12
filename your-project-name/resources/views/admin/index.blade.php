@@ -42,6 +42,7 @@
                             <cite>会员列表</cite>
                         </a>
                     </li >
+                 
                 </ul>
             </li>
             
@@ -84,7 +85,7 @@
                             <li>
                                 <a _href="{{url('navig/create').'?id='.''}}">
                                     <i class="iconfont">&#xe6a7;</i>
-                                    <cite>添加分类</cite>
+                                    <cite>添加主类</cite>
                                 </a>
                             </li>
                             

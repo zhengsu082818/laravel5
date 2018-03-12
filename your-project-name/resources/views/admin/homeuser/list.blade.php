@@ -39,6 +39,7 @@
             <th style="text-align: center;">头像</th>
             <th style="text-align: center;">手机号</th>
             <th style="text-align: center;">邮箱</th>
+            <th style="text-align: center;">居住地</th>
             <th style="text-align: center;">注册时间</th>
             <th style="text-align: center;">状态</th>
             <th style="text-align: center;">操作</th></tr>
@@ -55,6 +56,7 @@
 
                 <td style="text-align: center;">{{$v->phone}}</td>
                  <td style="text-align: center;">{{$v->email}}</td>
+                  <td style="text-align: center;">{{$v->address}}</td>
                 <td style="text-align: center;">{{$v->created_at}}</td>
                 <td class="td-status" style="text-align: center;">
                   @if($v->stated == '启用')

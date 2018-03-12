@@ -10,10 +10,10 @@
       <div class="x-nav">
       <span class="layui-breadcrumb">
         <a>
-          <cite>会员管理</cite>
+          <cite>侧边导航分类</cite>
         </a>
         <a>
-          <cite>会员列表</cite>
+          <cite>主类列表</cite>
         </a>
       </span>
       
@@ -21,9 +21,6 @@
         <i class="layui-icon" style="line-height:38px">ဂ</i></a>
     </div>
     
-
-   <div class="x-body">
-        <form class="layui-form layui-col-md12 x-so" action="{{ url('/admin/homeindex') }}" method="get">
 
     <div class="x-body">
         <form class="layui-form layui-col-md12 x-so" action="{{ url('navig/store') }}" method="get">
@@ -43,7 +40,6 @@
         @include('flash::message')
         <thead>
           <tr >
-<!--             <th style="text-align: center;">ID</th> -->
             <th style="text-align: center;">类别名</th>
             <th style="text-align: center;">图标</th>
             <th style="text-align: center;">嵌套等级</th>
@@ -52,8 +48,7 @@
         </thead>
         <tbody>
           @foreach ($Navig as $v)
-              <tr>
-<!--                 <td style="text-align: center;">{{$v->id}}</td> -->
+               <tr>
                 <td style="text-align: center;">{{$v->name}}</td>
                 <td style="text-align: center;">
                   <img src='{{asset("$v->url")}}' style="width: 20px;height: 20px;">
@@ -70,6 +65,7 @@
                   </a>
                 </td>
               </tr>
+
           @endforeach    
         </tbody>
 
