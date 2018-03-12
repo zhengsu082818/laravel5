@@ -10,7 +10,7 @@
 
 @endsection
 <body @section('class', 'class="login-bg"')>
-    
+    <?php echo bcrypt('123123')?>
     @section('content')
    
     <div class="login">
