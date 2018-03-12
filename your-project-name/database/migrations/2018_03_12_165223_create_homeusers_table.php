@@ -12,7 +12,7 @@ class CreateHomeusersTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('homeusers')) {
+         if (!Schema::hasTable('homeusers')) {
             Schema::create('homeusers', function (Blueprint $table) {
                 $table->increments('id');
                 $table->string('img',255);
@@ -23,7 +23,7 @@ class CreateHomeusersTable extends Migration
                 $table->string('password', 60);
                 $table->string('address',255);
                 $table->tinyInteger('stated')->default('1');
-                $table->string('phone')->unique();
+                $table->decimal('phone',11)->unique();
                 $table->timestamps();
             });
         }
@@ -36,6 +36,6 @@ class CreateHomeusersTable extends Migration
      */
     public function down()
     {
-         Schema::drop('homeusers');
+        Schema::drop('homeusers');
     }
 }

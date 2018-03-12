@@ -23,8 +23,11 @@
     </div>
     
 
+<<<<<<< HEAD
    
 
+=======
+>>>>>>> 7a6bfb89c5c2bf030b07c728020de274f7203911
     <div class="x-body">
         <form class="layui-form layui-col-md12 x-so" action="{{ url('navig/store') }}" method="get">
 
@@ -43,7 +46,6 @@
         @include('flash::message')
         <thead>
           <tr >
-<!--             <th style="text-align: center;">ID</th> -->
             <th style="text-align: center;">类别名</th>
             <th style="text-align: center;">图标</th>
             <th style="text-align: center;">嵌套等级</th>
@@ -52,8 +54,7 @@
         </thead>
         <tbody>
           @foreach ($Navig as $v)
-              <tr>
-<!--                 <td style="text-align: center;">{{$v->id}}</td> -->
+               <tr>
                 <td style="text-align: center;">{{$v->name}}</td>
                 <td style="text-align: center;">
                   <img src='{{asset("$v->url")}}' style="width: 20px;height: 20px;">
@@ -72,6 +73,7 @@
                   </a>
                 </td>
               </tr>
+
           @endforeach    
         </tbody>
 
