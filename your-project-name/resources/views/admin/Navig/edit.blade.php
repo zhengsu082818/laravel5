@@ -25,7 +25,7 @@
       
       <a class="layui-btn" style="line-height:38px;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
         <i class="layui-icon" style="line-height:38px">ဂ</i></a>
-        <a  class="layui-btn" href="{{url('navigation/index')}}" style="line-height:38px;margin-top:3px;margin-right: 10px;float:right">返回上一层</a>
+        <a  class="layui-btn" href="{{url('navig/index')}}" style="line-height:38px;margin-top:3px;margin-right: 10px;float:right">返回上一层</a>
     </div>
     <div style="height: 40px;">
       
@@ -67,7 +67,7 @@
               <label for="L_repass" class="layui-form-label">
               </label>
               <button  class="layui-btn">
-                  确认添加
+                  确认修改
               </button>
 
           </div>

@@ -68,12 +68,12 @@
           @endforeach  
 
         </tbody>
-           {!! $banner->render() !!}  
+         
            @include('flash::message')
       </table>
 
             <center>
-          
+            {!! $banner->render() !!}  
             </center>
     </div>
   @endsection
