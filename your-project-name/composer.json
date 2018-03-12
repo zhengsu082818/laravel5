@@ -10,7 +10,8 @@
         "baum/baum": "^1.1",
         "laracasts/flash": "^3.0",
         "mews/captcha": "^2.1",
-        "overtrue/laravel-lang": "^3.0"
+        "overtrue/laravel-lang": "^3.0",
+        "nesbot/carbon":"1.22.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

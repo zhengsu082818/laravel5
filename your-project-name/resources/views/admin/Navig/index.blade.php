@@ -25,17 +25,18 @@
         <i class="layui-icon" style="line-height:38px">ဂ</i></a>
     </div>
     
-    <div class="x-body">
-        <form class="layui-form layui-col-md12 x-so" action="" method="get">
-          <input type="text" name="name"  placeholder="请输入关键字" autocomplete="off" class="layui-input" value="{{$keywords?$keywords:''}}">
+   <div class="x-body">
+        <form class="layui-form layui-col-md12 x-so" action="{{ url('/admin/homeindex') }}" method="get">
+          <input type="text" name="name"  placeholder="请输入关键字" autocomplete="off" class="layui-input" value="">
           <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
         </form>
-         
-        <span class="x-right layui-btn" style="line-height:40px">共有数据：<a href="javascript:;" style="color:#fff;">{{$count}}</a>  条</span>
-       
+        <span class="x-left layui-btn" style="line-height:40px">共有数据：<a href="javascript:;" style="color:#fff;">{{$count}}</a>  条</span>
+        <a href="{{url('navig/create').'?id='.''}}" style="color:#fff;"><span class="x-left layui-btn" style="line-height:40px;float: right;">添加主类</span></a>
+       <table class="layui-table">
+        @include('flash::message')
         <thead>
           <tr >
-            <th style="text-align: center;">ID</th>
+<!--             <th style="text-align: center;">ID</th> -->
             <th style="text-align: center;">类别名</th>
             <th style="text-align: center;">图标</th>
             <th style="text-align: center;">嵌套等级</th>
@@ -45,13 +46,12 @@
         <tbody>
           @foreach ($Navig as $v)
               <tr>
-                <td style="text-align: center;">{{$v->id}}</td>
+<!--                 <td style="text-align: center;">{{$v->id}}</td> -->
                 <td style="text-align: center;">{{$v->name}}</td>
                 <td style="text-align: center;">
                   <img src='{{asset("$v->url")}}' style="width: 20px;height: 20px;">
                 </td>
-                <td style="text-align: center;">
-                  <button  onclick='x_admin_show("分类等级","","200","200")'>{{$v->depth}}</button></td>
+                <td style="text-align: center;">{{$depth[$v->depth]}}</td>
                 <td style="text-align: center;">{{$v->updated_at}}</td>
                 <td class="td-manage" style="text-align: center;">
                   <a href="{{url('navig/create').'?id='.$v->id}}" style="color: #fff;" title="添加分类">

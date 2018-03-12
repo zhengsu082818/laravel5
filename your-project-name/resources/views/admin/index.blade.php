@@ -78,13 +78,13 @@
                             <li>    
                                 <a _href="{{url('navig/index')}}">
                                     <i class="iconfont">&#xe6a7;</i>
-                                    <cite>分类列表</cite>
+                                    <cite>主类列表</cite>
                                 </a>
                             </li >
                             <li>
                                 <a _href="{{url('navig/create').'?id='.''}}">
                                     <i class="iconfont">&#xe6a7;</i>
-                                    <cite>添加分类类</cite>
+                                    <cite>添加分类</cite>
                                 </a>
                             </li>
                             

@@ -25,7 +25,7 @@
       
       <a class="layui-btn" style="line-height:38px;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
         <i class="layui-icon" style="line-height:38px">ဂ</i></a>
-        <a  class="layui-btn" href="{{url('navigation/index')}}" style="line-height:38px;margin-top:3px;margin-right: 10px;float:right">返回上一层</a>
+        <a  class="layui-btn" href="{{url('navig/index')}}" style="line-height:38px;margin-top:3px;margin-right: 10px;float:right">返回上一层</a>
     </div>
     <div style="height: 40px;">
       
@@ -54,9 +54,10 @@
               </label>
               <div class="layui-form-mid layui-word-aux">
                   <button type="button" class="layui-btn" id="test1">
-                <i class="layui-icon">&#xe67c;</i>上传图片
-              </button>
+                    <i class="layui-icon">&#xe67c;</i>上传图片
+                  </button>
                 <input type="hidden"  name="url"  class="layui-input" value="" id="imgur">
+                <input type="hidden"  name="img"  class="layui-input" value="" id="img">
                   @if (count($errors) > 0)
 
                     <span class="x-red">{{ $errors->first('url') }}</span>  
@@ -73,6 +74,10 @@
 
           </div>
         </form>
+        <hr>
+        <span>*注：当您在添加主类时，上传图片框是为主类添加图标的展示图片;</span><br>
+        <span>*注：当您在添加分类时，上传图片框是为分类类添加入口的展示图片！！</span>
+
     </div>
 @endsection
 
