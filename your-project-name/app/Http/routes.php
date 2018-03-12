@@ -71,6 +71,10 @@ Route::get('navig/destroy/{id}', 'Admin\NavigController@destroy');
 //执行图片上传
 Route::post('navig/tupiana','Admin\NavigController@tupiana');
 
+//加载分类列表
+Route::get('navig/index/id/{id}', 'Admin\NavigController@Index');
+Route::get('navig/shoq', 'Admin\NavigController@shoq');
+
 //加载首页轮播页面
 Route::get('admin/bannerindex', 'Admin\BannerController@Index');
 //加载首页轮播添加页面

@@ -15,13 +15,23 @@ class NavigController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id =null)
     {
         $depth=['0'=>'顶级分类','1'=>'二级分类','2'=>'三级分类','3'=>'四级分类','4'=>'五级分类'];
-        $Navig = Navig::orderBy('id','desc')->where('parent_id',null)->paginate(10);
-       
-        $count =Navig::count();
-        return view('admin.Navig.index',['Navig' => $Navig,'count'=>$count,'depth'=>$depth]);
+        if ($id==null) {
+            $Navig = Navig::orderBy('id','desc')->where('parent_id',null)->paginate(10);
+            $count =Navig::where('parent_id',null)->count();
+            return view('admin.Navig.index',['Navig' => $Navig,'count'=>$count,'depth'=>$depth]);
+        }elseif($id =='a'){
+            // dd($id);
+            $Navig = Navig::orderBy('id','desc')->where('depth',1)->paginate(10);
+
+            $count =Navig::where('depth',1)->count();
+           return view('admin.Navig.index',['Navig' => $Navig,'count'=>$count,'depth'=>$depth]);
+        }elseif ($id =='b') {
+            
+        }
+
     }
 
 
@@ -61,7 +71,7 @@ class NavigController extends Controller
        }
        if($info){
                   flash()->overlay('添加成功', '1');
-                    return redirect('navig/index');
+                    return back();
 
                        }else{
                   flash()->overlay('添加失败', '5');
@@ -85,9 +95,10 @@ class NavigController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function shoq()
     {
-        //
+       $id= $_GET['id'];
+       dd($id);
     }
 
     /**
@@ -146,10 +157,16 @@ class NavigController extends Controller
         $aa=Navig::where('parent_id',$id)->get()->toArray();
         // dd($aa);
        $des= Navig::where('id',$id)->first();
-       $zl=$des->getDescendants();
+       $zl=$des->getDescendants()->toArray();
        // $aa=toArray($zl);
+       // dd($zl);
+       $va =[];
+       foreach ($zl as  $k => $v) {
 
-       dd($zl);
+           $va[$k] = $v['name'];
+
+       }
+       // dd($va);
        $bb = [];
        // $qw= Navig::all();
        if($bb === $aa){
@@ -158,7 +175,7 @@ class NavigController extends Controller
             flash()->overlay('删除成功', '1');
             return redirect('navig/index');
        }else{
-           flash()->overlay('删除失败，请先删除'."$zl", '5');
+           flash()->overlay('删除失败，请先删除'."“$va[$k]类别”", '5');
              return back();
        }
     }

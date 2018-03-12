@@ -4,16 +4,17 @@
 
 @section('css')
     <link rel="stylesheet" href="{{asset('etsc/css/bootstrap.min.css')}}">
+     <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
 @section('content')
      <div class="x-body">
       <div class="x-nav">
       <span class="layui-breadcrumb">
         <a>
-          <cite>会员管理</cite>
+          <cite>侧边导航分类</cite>
         </a>
         <a>
-          <cite>会员列表</cite>
+          <cite>主类列表</cite>
         </a>
       </span>
       
@@ -22,8 +23,7 @@
     </div>
     
 
-   <div class="x-body">
-        <form class="layui-form layui-col-md12 x-so" action="{{ url('/admin/homeindex') }}" method="get">
+   
 
     <div class="x-body">
         <form class="layui-form layui-col-md12 x-so" action="{{ url('navig/store') }}" method="get">
@@ -58,7 +58,9 @@
                 <td style="text-align: center;">
                   <img src='{{asset("$v->url")}}' style="width: 20px;height: 20px;">
                 </td>
-                <td style="text-align: center;">{{$depth[$v->depth]}}</td>
+                <td style="text-align: center;">
+                    <button class="layui-btn layui-btn-mini" value="">{{$depth[$v->depth]}}</button>
+                </td>
                 <td style="text-align: center;">{{$v->updated_at}}</td>
                 <td class="td-manage" style="text-align: center;">
                   <a href="{{url('navig/create').'?id='.$v->id}}" style="color: #fff;" title="添加分类">
@@ -81,4 +83,31 @@
     </div>
 
 @endsection
- 
+<!-- <script type="text/javascript" src="{{asset('/etsc/jquery.min.js')}}"></script>
+
+  <script type="text/javascript">
+        function login() {
+          $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+});
+            $.ajax({
+            //几个参数需要注意一下
+                type: "GET",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: '{{url("navig/shoq")}}'+'?id='+$('#qtdj').val(),//url
+                // processData:false,  
+                success: function (result) {
+                    // console.log(result);//打印服务端返回的数据(调试用)
+                    if (result.resultCode == 200) {
+                        // console.log(data);
+                    }
+                    ;
+                },
+                 error : function() {
+                    alert("异常！");
+                }
+            });
+        }
+    </script> -->
