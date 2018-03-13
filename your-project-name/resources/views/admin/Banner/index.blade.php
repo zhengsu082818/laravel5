@@ -23,8 +23,9 @@
     </div>
     
     <div class="x-body">
-        <form class="layui-form layui-col-md12 x-so" action="" method="get">
-          <input type="text" name="name"  placeholder="请输入关键字" autocomplete="off" class="layui-input" value="">
+        <form class="layui-form layui-col-md12 x-so" action="{{url('admin/bannerindex')}}" method="get">
+          <input type="text" name="static"  placeholder="根据状态搜索" autocomplete="off" class="layui-input" 
+          value="{{$keywords?$keywords:''}}">
           <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
         </form>
          <a href="{{url('admin/bannercreate')}}" style="color:#fff;"><span class="x-left layui-btn" style="line-height:40px">添加轮播</span></a>
@@ -73,7 +74,7 @@
       </table>
 
             <center>
-            {!! $banner->render() !!}  
+             {!! $banner->appends(['static' => $keywords])->render() !!}  
             </center>
     </div>
   @endsection

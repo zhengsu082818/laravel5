@@ -11,10 +11,10 @@
       <div class="x-nav">
       <span class="layui-breadcrumb">
         <a>
-          <cite>商品分类列表</cite>
+          <cite>侧边导航分类</cite>
         </a>
         <a>
-          <cite>所有分类列表</cite>
+          <cite>分类列表</cite>
         </a>
       </span>
       
@@ -25,18 +25,12 @@
 
 
     <div class="x-body">
-        <form class="layui-form layui-col-md12 x-so" action="{{ url('navig/index') }}" method="get">
-
-          <input type="text" name="name"  placeholder="请输入类别名" autocomplete="off" class="layui-input" 
-          value="{{$keywords?$keywords:''}}">
-          <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
-        </form>
-        <span class="x-left layui-btn" style="line-height:40px">共有数据：<a href="javascript:;" style="color:#fff;">{{$count}}</a>  条</span>
+        
+        <span class="x-left layui-btn" style="line-height:40px">共有数据：<a href="javascript:;" style="color:#fff;">{{$counts}}</a> 条</span>
 
         <a href="{{url('navig/create').'?id='.''}}" style="color:#fff;"><span class="x-left layui-btn" style="line-height:40px;float: right;">添加主类</span></a>
        <table class="layui-table">
 
-       
 
       <table class="layui-table">
 
@@ -45,15 +39,16 @@
           <tr >
             <th style="text-align: center;">类别名</th>
             <th style="text-align: center;">图片</th>
-            <th style="text-align: center;">嵌套等级</th>
-
+             <th style="text-align: center;">嵌套等级</th>
+             <th style="text-align: center;">所属类名</th>
+           
+            
             <th style="text-align: center;">添加时间</th>
             <th style="text-align: center;">操作</th></tr>
         </thead>
-        <tbody>
-          @foreach ($Navig as $v)
+        <tbody>  
+         @foreach ($select as $v)
                <tr>
-             
                 <td style="text-align: center;"><a href='{{url("naving/select/$v->id")}}'>{{$v->name}}</a></td>
                 <td style="text-align: center;">
                   @if(!$v->url=='')
@@ -65,14 +60,13 @@
                 <td style="text-align: center;">
                     <button class="layui-btn layui-btn-mini layui-btn-normal" value="">{{$depth[$v->depth]}}</button>
                 </td>
-               
+              
+                <td style="text-align: center;">{{$leiname}}</td>
+                
                 <td style="text-align: center;">{{$v->created_at}}</td>
                 <td class="td-manage" style="text-align: center;">
-                   @if($v->depth=='0')
-                  <a href="{{url('navig/create').'?id='.$v->id}}" style="color: #fff;" title="添加分类">
-                    <button class="layui-btn layui-btn-mini">添加分类</button></a>
-                  @endif
-                   @if($v->depth=='1')
+                 
+                  @if($v->depth=='1')
                   <a href="{{url('navig/create').'?id='.$v->id}}" style="color: #fff;" title="添加分类">
                     <button class="layui-btn layui-btn-mini">添加分类</button></a>
                   @endif
@@ -95,16 +89,16 @@
                      <button class="layui-btn layui-btn-mini layui-btn-danger">删除</button>
                   </a>
                 </td>
-
+    
               </tr>
 
-          @endforeach    
+         @endforeach 
         </tbody>
 
       </table>
 
             <center>
-            {!! $Navig->appends(['name' => $keywords])->render() !!}
+                 {!! $select->render() !!}
             </center>
     </div>
 

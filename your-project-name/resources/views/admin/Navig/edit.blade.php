@@ -16,10 +16,10 @@
           <cite>商品分类管理</cite>
         </a>
         <a>
-          <cite>侧边导航分类</cite>
+          <cite>商品分类列表</cite>
         </a>
         <a>
-          <cite>分类列表</cite>
+          <cite>所有分类列表</cite>
         </a>
       </span>
       
