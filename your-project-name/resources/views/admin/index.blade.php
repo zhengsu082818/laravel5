@@ -32,17 +32,22 @@
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe6b8;</i>
-                    <cite>会员管理</cite>
+                    <cite>前台用户中心</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
                     <li>
                         <a _href="{{url('admin/homeindex')}}">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>会员列表</cite>
+                            <cite>用户列表</cite>
                         </a>
-                    </li >
-                 
+                    </li>
+                    <li>
+                        <a _href="{{url('admin/personalindex')}}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>用户收货地址</cite>
+                        </a>
+                    </li>                 
                 </ul>
             </li>
             
@@ -105,7 +110,6 @@
                     </li>
                 </ul>
             </li>
-
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe726;</i>
