@@ -71,4 +71,4 @@
             <center>
             </center>
     </div>
-  <!-- @endsection -->
+  @endsection

@@ -137,7 +137,7 @@ return [
         Overtrue\LaravelLang\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Zizaco\Entrust\EntrustServiceProvider::class,
+
 
         /*
          * Application Service Providers...
@@ -149,7 +149,6 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
         Baum\Providers\BaumServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
-
         Zizaco\Entrust\EntrustServiceProvider::class,
 
 

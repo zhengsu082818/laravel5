@@ -77,7 +77,7 @@ class Bannerscontroller extends Controller
        // $banner->static = $request->static;
        $banner->save();
         flash()->overlay('添加成功','1');
-       return redirect()->action('Admin\BannersController@Index');
+       return redirect()->action('Admin\BannersController@index');
     }
 
     /**
@@ -116,7 +116,7 @@ class Bannerscontroller extends Controller
           ->update(['img' => $request->imgurl,'static'=>$request->static]);
          if($list){
              flash()->overlay('修改成功','1');
-             return redirect()->action('Admin\BannersController@Index');
+             return redirect()->action('Admin\BannersController@index');
          }else{
              flash()->overlay('修改失败','5');
              return redirect()->action('Admin\BannersController@edit');
@@ -135,6 +135,6 @@ class Bannerscontroller extends Controller
          $flight = Banner::find($id);
          $banner = $flight->delete();
          flash()->overlay('删除成功','1');
-         return redirect()->action('Admin\BannersController@Index');
+         return redirect()->action('Admin\BannersController@index');
     }
 }
