@@ -42,6 +42,12 @@
                             <cite>会员列表</cite>
                         </a>
                     </li >
+                    <li>
+                        <a _href="{{url('admin/personalindex')}}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>个人收货地址</cite>
+                        </a>
+                    </li >
                  
                 </ul>
             </li>

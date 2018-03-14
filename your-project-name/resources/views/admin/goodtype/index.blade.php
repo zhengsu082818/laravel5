@@ -44,7 +44,7 @@
           @foreach ($goodtype as $v)
               <tr>
                 <td style="text-align: center;">{{$v->id}}</td>
-                <td style="text-align: center;">{{$v->gt_id}}</td>
+                <td style="text-align: center;">{{$v->nav_id}}</td>
                 <td style="text-align: center;">{{$v->gt_name}}</td>
                 <td style="text-align: center;">{{$v->created_at}}</td>
                 <td class="td-manage" style="text-align: center;">

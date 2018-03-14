@@ -7,20 +7,30 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Models\Good;
-class GoodsController extends Controller
+use App\Models\Personal;
+
+class PersonalsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $list = good::with('navig')->get()->toArray();
-        dd($list);
-        // $list = good::with('goodtypeval')->get()->toArray();
-        // dd($list);
+        $where=[];
+        $keywords = $request->name;
+        if ($keywords != '') {
+            $username = Personal::where('name','like',"%$keywords%")->orderBy('id','desc')->with('homeuser')->paginate(5);
+       
+            $count = Personal::where('name','like',"%$keywords%")->count();
+
+        }else{
+            $username = Personal::with('homeuser')->orderBy('id','desc')->paginate(5);
+            $count = Personal::count();
+        }
+
+         return view('admin.personal.index',['username'=>$username,'count'=>$count,'keywords'=>$keywords]);
     }
 
     /**

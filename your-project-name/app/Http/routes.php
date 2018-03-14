@@ -107,3 +107,7 @@ Route::get('admin/goodtypedestroy/{id}', 'Admin\GoodtypesController@destroy');
 Route::get('admin/goodindex', 'Admin\GoodsController@index');
 //加载商品属性值
 Route::get('admin/goodtypevalindex', 'Admin\GoodtypevalsController@index');
+
+
+//加载用户中心收货地址主页
+Route::get('admin/personalindex', 'Admin\PersonalsController@index');

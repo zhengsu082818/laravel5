@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGoodtypesTable extends Migration
+class CreatePersonalsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,14 +12,17 @@ class CreateGoodtypesTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('goodtypes')) {
-            Schema::create('goodtypes', function (Blueprint $table) {
+        if (!Schema::hasTable('personals')) {
+            Schema::create('personals', function (Blueprint $table) {
                 $table->increments('id');
-                $table->string('gt_name',255);//商品属性名
+                $table->string('pid');
+                $table->string('name',255);
+                $table->string('shdz',255);
+                $table->decimal('phone',11);
                 $table->timestamps();
             });
         }
-        
+       
     }
 
     /**
@@ -29,6 +32,6 @@ class CreateGoodtypesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('goodtypes');
+        Schema::drop('personals');
     }
 }
