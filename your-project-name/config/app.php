@@ -138,6 +138,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+
         /*
          * Application Service Providers...
          */
@@ -148,7 +149,8 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
         Baum\Providers\BaumServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
-        
+        Zizaco\Entrust\EntrustServiceProvider::class,
+
 
     ],
     /*
@@ -197,6 +199,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
     ],
 
 ];

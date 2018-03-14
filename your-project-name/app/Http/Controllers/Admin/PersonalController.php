@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-
+use App\Models\Personal;
+use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Models\Homeuser;
 
-class HomeuserController extends Controller
+class PersonalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,22 +17,29 @@ class HomeuserController extends Controller
      */
     public function index(Request $request)
     {
-        $where=[];
-        $keywords = $request->username;
-        if ($keywords != '') {
 
-            $stus = homeuser::where('username','like',"%$keywords%")->orderBy('id','desc')->paginate(5);
-            $count = homeuser::where('username','like',"%$keywords%")->count();
+        
+        // dd($username);
+        // $info =request()->user();
+        // dd($info->id);
+        
+       $where=[];
+        $keywords = $request->name;
+        if ($keywords != '') {
+            $username = Personal::where('name','like',"%$keywords%")->orderBy('id','desc')->with('homeuser')->get();
+       //      $list = Personal::where('name','like',"%$keywords%")->orderBy('id','desc')->paginate(5);
+       //      // dd($list);
+            $count = Personal::where('name','like',"%$keywords%")->count();
 
         }else{
-            $stus = homeuser::orderBy('id','desc')->paginate(5);
-            $count = homeuser::count();
+            $username = Personal::with('homeuser')->orderBy('id','desc')->get();
+            $count = Personal::count();
         }
-        return view('admin.homeuser.list',['stus'=>$stus,'count'=>$count,'keywords'=>$keywords]);
 
+         return view('admin.Personal.index',['username'=>$username,'count'=>$count]);
     }
-
     /**
+     * 'list'=>$list,'count'=>$count,'keywords'=>$keywords,
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -72,8 +79,7 @@ class HomeuserController extends Controller
      */
     public function edit($id)
     {
-        $user = homeuser::findOrFail($id);
-        return view('admin.homeuser.edit',['user' => $user]);
+        //
     }
 
     /**
@@ -85,16 +91,7 @@ class HomeuserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $input = $request->except('_token');
-        $update = homeuser::where('id',$id)->update($input);
-        //判断是否修改成功
-        if($update) {
-            flash()->overlay('修改成功', '1');
-            return redirect('admin/homeindex');
-        }else{
-            flash()->overlay('修改失败', '5');
-            return redirect('admin/homeindex');       
-        }
+        //
     }
 
     /**
@@ -105,14 +102,6 @@ class HomeuserController extends Controller
      */
     public function destroy($id)
     {
-        $dele =homeuser::destroy($id);
-        //判断是否删除成功
-        if ($dele) {
-            flash()->overlay('删除成功', '1');
-            return redirect('admin/homeindex');
-        }else{
-            flash()->overlay('删除失败', '5');
-            return redirect('admin/homeindex');
-        }
+        //
     }
 }

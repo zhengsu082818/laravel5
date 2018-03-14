@@ -66,8 +66,7 @@
                   </a>
                 </td>
               </tr>
-          @endforeach  
-
+          @endforeach
         </tbody>
          
            @include('flash::message')

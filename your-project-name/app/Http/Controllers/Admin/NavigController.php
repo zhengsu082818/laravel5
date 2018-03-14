@@ -30,13 +30,26 @@ class NavigController extends Controller
         }else{
             $Navig = Navig::orderBy('lft')->paginate(10);
             $count = Navig::count();
+
         }
+
         return view('admin.Navig.index',['Navig'=>$Navig,'count'=>$count,'keywords'=>$keywords,'depth'=>$depth]);
 
 
     }
 
+        public function select($id)
+    {
+        // dd($id);
+        $depth=['0'=>'顶级分类','1'=>'二级分类','2'=>'三级分类','3'=>'四级分类','4'=>'五级分类'];
+        $leiname = Navig::findOrFail($id)->name;
+        
+        $select = Navig::where('parent_id',$id)->paginate(2);
+        $count =Navig::where('parent_id',$id)->count();
+        // dd($select->toArray());
 
+        return view('admin.Navig.twoindex',['leiname'=>$leiname,'select'=>$select,'count'=>$count,'depth'=>$depth]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -75,7 +88,9 @@ class NavigController extends Controller
             $info =Navig::create($input);
         }else{
             $data =Navig::findOrFail($request->input('id'));
+            // dd($data);
             $info =$data->children()->create($input);
+            // dd($info);
 
         }
         if($info){
@@ -181,11 +196,12 @@ class NavigController extends Controller
         if($bb === $aa){
             $des->delete();
             flash()->overlay('删除成功', '1');
-            return back();
+            return redirect('navig/index');
         }else{
-           flash()->overlay('删除失败，请先删除'."“$va[$k]类别”", '5');
-             return back();
-       }
+            flash()->overlay('删除失败，请先删除'."“$va[$k]”类别", '5');
+            return back();
+           
+        }
     }
 
 

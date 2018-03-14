@@ -34,7 +34,7 @@ Route::get('/admin',function(){
 
 
 //加载后台用户页面
-Route::get('admin/list', 'Admin\AdminuserController@index');
+Route::get('admin/list', 'Admin\AdminuserController@Index');
 //加载后台用户添加页面
 Route::get('admin/create', 'Admin\AdminuserController@create');
 //加载后台用户修改页面
@@ -47,7 +47,7 @@ Route::post('admin/store', 'Admin\AdminuserController@store');
 Route::post('admin/update/{id}', 'Admin\AdminuserController@update');
 
 //加载前台会员页面
-Route::get('admin/homeindex', 'Admin\HomeuserController@index');
+Route::get('admin/homeindex', 'Admin\HomeuserController@Index');
 //加载前台会员修改页面
 Route::get('admin/homeedit/{id}', 'Admin\HomeuserController@edit');
 //执行前台会员删除
@@ -57,7 +57,7 @@ Route::post('admin/homeupdate/{id}', 'Admin\HomeuserController@update');
 
 
 //加载侧边导航页面
-Route::get('navig/index', 'Admin\NavigController@index');
+Route::get('navig/index', 'Admin\NavigController@Index');
 //加载类列表添加页面
 Route::get('navig/create', 'Admin\NavigController@create');
 //执行添加
@@ -70,11 +70,12 @@ Route::post('navig/update/{id}', 'Admin\NavigController@update');
 Route::get('navig/destroy/{id}', 'Admin\NavigController@destroy');
 //执行图片上传
 Route::post('navig/tupiana','Admin\NavigController@tupiana');
+
 //加载分类列表
 Route::get('navig/index/id/{id}', 'Admin\NavigController@Index');
 
 //加载首页轮播页面
-Route::get('admin/bannerindex', 'Admin\BannersController@index');
+Route::get('admin/bannerindex', 'Admin\BannersController@Index');
 //加载首页轮播添加页面
 Route::get('admin/bannercreate', 'Admin\BannersController@create');
 //加载首页轮播修改页面
@@ -87,6 +88,19 @@ Route::post('admin/bannerstore', 'Admin\BannersController@store');
 Route::post('admin/bannerupdate/{id}', 'Admin\BannersController@update');
 // ajax图片上传
 Route::post('admin/banneruplode', 'Admin\BannersController@uplode');
+
+//加载个人收货地址页面
+Route::get('admin/addressindex', 'Home\AddresController@Index');
+
+// 加载商品评论页面
+Route::get('admin/comment','Admin\Commentcontroller@index');
+// 添加数据
+Route::get('admin/commentstore','Admin\Commentcontroller@store');
+// 加载回复页面
+Route::get('admin/commentedit/{id}','Admin\Commentcontroller@show');
+Route::post('admin/commentupdate/{id}','Admin\Commentcontroller@edit');
+
+
 
 
 // 加载商品属性

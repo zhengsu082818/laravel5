@@ -21,9 +21,6 @@
       <a class="layui-btn" style="line-height:38px;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
         <i class="layui-icon" style="line-height:38px">ဂ</i></a>
     </div>
-    
-
-
     <div class="x-body">
         <form class="layui-form layui-col-md12 x-so" action="{{ url('navig/index') }}" method="get">
 
@@ -35,11 +32,7 @@
 
         <a href="{{url('navig/create').'?id='.''}}" style="color:#fff;"><span class="x-left layui-btn" style="line-height:40px;float: right;">添加主类</span></a>
        <table class="layui-table">
-
-       
-
       <table class="layui-table">
-
         @include('flash::message')
         <thead>
           <tr >
@@ -52,9 +45,11 @@
         </thead>
         <tbody>
           @foreach ($Navig as $v)
+        
                <tr>
-             
+
                 <td style="text-align: center;">{{$v->name}}</td>
+
                 <td style="text-align: center;">
                   @if(!$v->url=='')
                   <img src='{{asset("$v->url")}}' style="width: 20px;height: 20px;">
@@ -108,15 +103,14 @@
                   <a href="{{url('navig/create').'?id='.$v->id}}" style="color: #fff;" title="添加分类">
                     <button class="layui-btn layui-btn-mini">添加分类</button></a>
                   @endif
-                  <a href='{{url("navig/edit/$v->id")}}' style="color: #fff;">
+                  <a href='{{url("navig/edit/$v->id")}}' style="color: #fff;" title="点击修改">
                     <button class="layui-btn layui-btn-mini">修改</button></a>
                   <a href='{{url("navig/destroy/$v->id")}}'  style="color: #fff;" title="删除">
                      <button class="layui-btn layui-btn-mini layui-btn-danger">删除</button>
                   </a>
                 </td>
-
               </tr>
-
+          
           @endforeach    
         </tbody>
 
