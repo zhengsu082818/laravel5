@@ -91,3 +91,17 @@ Route::post('admin/banneruplode', 'Admin\BannersController@uplode');
 
 //加载个人收货地址页面
 Route::get('admin/addressindex', 'Home\AddresController@Index');
+
+// 加载商品评论页面
+Route::get('admin/comment','Admin\Commentcontroller@index');
+// 添加数据
+Route::get('admin/commentstore','Admin\Commentcontroller@store');
+// 加载回复页面
+Route::get('admin/commentedit/{id}','Admin\Commentcontroller@show');
+Route::post('admin/commentupdate/{id}','Admin\Commentcontroller@edit');
+
+
+
+
+
+// 加载前台登录

@@ -142,6 +142,22 @@
                 </ul>
             </li>
 
+             <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe726;</i>
+                    <cite>商品评论管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="{{url('admin/comment')}}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>用户评论</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
+
         </ul>
       </div>
     </div>

@@ -21,5 +21,11 @@ class Homeuser extends Model
         return $sex[$value];
     }
 
+    //  public function comment()
+    // {
+    //     return $this->hasMany('App\Models\Comment','id');
+    // }
+
+    
     
 }

@@ -21,6 +21,7 @@ class NavigController extends Controller
 
         if ($id==null) {
             $Navig = Navig::orderBy('id','desc')->where('parent_id',null)->paginate(10);
+            // dd($Navig);
             $count =Navig::where('parent_id',null)->count();
             return view('admin.Navig.index',['Navig' => $Navig,'count'=>$count,'depth'=>$depth]);
         }elseif($id =='a'){
@@ -72,7 +73,9 @@ class NavigController extends Controller
 
         }else{
             $data =Navig::findOrFail($request->input('id'));
+            // dd($data);
             $info =$data->children()->create($input);
+            // dd($info);
 
        }
        if($info){
