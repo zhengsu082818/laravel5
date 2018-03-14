@@ -52,9 +52,11 @@
         </thead>
         <tbody>
           @foreach ($Navig as $v)
+        
                <tr>
-             
+
                 <td style="text-align: center;">{{$v->name}}</td>
+
                 <td style="text-align: center;">
                   @if(!$v->url=='')
                   <img src='{{asset("$v->url")}}' style="width: 20px;height: 20px;">
@@ -108,15 +110,14 @@
                   <a href="{{url('navig/create').'?id='.$v->id}}" style="color: #fff;" title="添加分类">
                     <button class="layui-btn layui-btn-mini">添加分类</button></a>
                   @endif
-                  <a href='{{url("navig/edit/$v->id")}}' style="color: #fff;">
+                  <a href='{{url("navig/edit/$v->id")}}' style="color: #fff;" title="点击修改">
                     <button class="layui-btn layui-btn-mini">修改</button></a>
                   <a href='{{url("navig/destroy/$v->id")}}'  style="color: #fff;" title="删除">
                      <button class="layui-btn layui-btn-mini layui-btn-danger">删除</button>
                   </a>
                 </td>
-
               </tr>
-
+          
           @endforeach    
         </tbody>
 

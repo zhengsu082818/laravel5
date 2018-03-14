@@ -31,6 +31,8 @@ Route::get('/admin',function(){
 	return view('admin.index');
 })->middleware('auth');
 
+//加载用户中心收货地址主页
+Route::get('admin/personalindex', 'Admin\PersonalController@Index');
 
 
 //加载后台用户页面
@@ -72,6 +74,12 @@ Route::get('navig/destroy/{id}', 'Admin\NavigController@destroy');
 Route::post('navig/tupiana','Admin\NavigController@tupiana');
 //加载分类列表
 Route::get('navig/index/id/{id}', 'Admin\NavigController@Index');
+Route::get('navig/select/{id}', 'Admin\NavigController@select');
+Route::get('navig/date/{id}',function(){
+	  return 111;
+});
+
+
 
 //加载首页轮播页面
 Route::get('admin/bannerindex', 'Admin\BannersController@index');
