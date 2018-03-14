@@ -14,6 +14,7 @@ class Navig extends Node {
    */
   protected $table = 'navigs';
 
+  
   //////////////////////////////////////////////////////////////////////////////
 
   //
@@ -100,7 +101,11 @@ class Navig extends Node {
   // to hook your own callbacks/observers into this events:
   // http://laravel.com/docs/5.0/eloquent#model-events
   // 
- 
   
+  //定义分类表与属性名的多对多
+  public function goodtype()
+  {
+        return $this->belongsToMany('App\Models\Goodtype','gt_navs','id','gt_id');
+  }
 
 }

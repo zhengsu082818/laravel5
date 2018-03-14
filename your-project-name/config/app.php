@@ -138,6 +138,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+
         /*
          * Application Service Providers...
          */
@@ -149,7 +150,7 @@ return [
         Baum\Providers\BaumServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
-        
+
 
     ],
     /*

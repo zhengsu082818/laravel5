@@ -14,13 +14,20 @@ class Bannerscontroller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-         // return 111;
-         $banner = Banner::orderby('id','desc')->paginate(5);
-         // dd($banner);
-         $count =Banner::count();
-         return view('admin.banner.index',['banner'=>$banner,'count'=>$count]);
+
+        $where=[];
+        $keywords = $request->static;
+        if ($keywords != '') {
+            $banner = Banner::where('static','like',"%$keywords%")->orderBy('id','desc')->paginate(5);
+            $count = Banner::where('static','like',"%$keywords%")->count();
+
+        }else{
+            $banner = Banner::orderBy('id','desc')->paginate(5);
+            $count = Banner::count();
+        }
+        return view('admin.banner.index',['banner'=>$banner,'count'=>$count,'keywords'=>$keywords]);
     }
 
     /**
@@ -70,7 +77,7 @@ class Bannerscontroller extends Controller
        // $banner->static = $request->static;
        $banner->save();
         flash()->overlay('添加成功','1');
-       return redirect()->action('Admin\BannersController@Index');
+       return redirect()->action('Admin\BannersController@index');
     }
 
     /**
@@ -109,7 +116,7 @@ class Bannerscontroller extends Controller
           ->update(['img' => $request->imgurl,'static'=>$request->static]);
          if($list){
              flash()->overlay('修改成功','1');
-             return redirect()->action('Admin\BannersController@Index');
+             return redirect()->action('Admin\BannersController@index');
          }else{
              flash()->overlay('修改失败','5');
              return redirect()->action('Admin\BannersController@edit');
@@ -128,6 +135,6 @@ class Bannerscontroller extends Controller
          $flight = Banner::find($id);
          $banner = $flight->delete();
          flash()->overlay('删除成功','1');
-         return redirect()->action('Admin\BannersController@Index');
+         return redirect()->action('Admin\BannersController@index');
     }
 }

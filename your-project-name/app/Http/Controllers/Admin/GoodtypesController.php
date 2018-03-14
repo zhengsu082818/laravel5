@@ -6,30 +6,37 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Models\Homeuser;
 
-class HomeuserController extends Controller
+use App\Models\Goodtype;
+
+use App\Models\Navig;
+
+class GoodtypesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
+        $list = navig::with('goodtype')->get()->toArray();
+        dd($list);
         $where=[];
-        $keywords = $request->username;
+        $keywords = Request()->gt_name;
         if ($keywords != '') {
-
-            $stus = homeuser::where('username','like',"%$keywords%")->orderBy('id','desc')->paginate(5);
-            $count = homeuser::where('username','like',"%$keywords%")->count();
+            $goodtype = goodtype::where('gt_name','like',"%$keywords%")->orderBy('id','desc')->paginate(5);
+            $count = goodtype::where('gt_name','like',"%$keywords%")->count();
 
         }else{
-            $stus = homeuser::orderBy('id','desc')->paginate(5);
-            $count = homeuser::count();
+            $goodtype = goodtype::orderBy('id','desc')->paginate(5);
+            $count = goodtype::count();
         }
-        return view('admin.homeuser.list',['stus'=>$stus,'count'=>$count,'keywords'=>$keywords]);
+        return view('admin.goodtype.index',['goodtype'=>$goodtype,'count'=>$count,'keywords'=>$keywords]);
 
+
+        // $list = Goodtype::with('goodtypeval')->get()->toArray();
+        // dd($list);
     }
 
     /**
@@ -39,7 +46,7 @@ class HomeuserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.goodtype.create');
     }
 
     /**
@@ -72,8 +79,8 @@ class HomeuserController extends Controller
      */
     public function edit($id)
     {
-        $user = homeuser::findOrFail($id);
-        return view('admin.homeuser.edit',['user' => $user]);
+        $goodtype = goodtype::findOrFail($id);
+        return view('admin.goodtype.edit',['goodtype'=>$goodtype]);
     }
 
     /**
@@ -85,16 +92,7 @@ class HomeuserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $input = $request->except('_token');
-        $update = homeuser::where('id',$id)->update($input);
-        //判断是否修改成功
-        if($update) {
-            flash()->overlay('修改成功', '1');
-            return redirect('admin/homeindex');
-        }else{
-            flash()->overlay('修改失败', '5');
-            return redirect('admin/homeindex');       
-        }
+        //
     }
 
     /**
@@ -105,14 +103,6 @@ class HomeuserController extends Controller
      */
     public function destroy($id)
     {
-        $dele =homeuser::destroy($id);
-        //判断是否删除成功
-        if ($dele) {
-            flash()->overlay('删除成功', '1');
-            return redirect('admin/homeindex');
-        }else{
-            flash()->overlay('删除失败', '5');
-            return redirect('admin/homeindex');
-        }
+        //
     }
 }

@@ -102,5 +102,3 @@ Route::post('admin/commentupdate/{id}','Admin\Commentcontroller@edit');
 
 
 
-
-
