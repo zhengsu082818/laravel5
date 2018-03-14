@@ -14,13 +14,20 @@ class Bannerscontroller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-         // return 111;
-         $banner = Banner::orderby('id','desc')->paginate(5);
-         // dd($banner);
-         $count =Banner::count();
-         return view('admin.banner.index',['banner'=>$banner,'count'=>$count]);
+
+        $where=[];
+        $keywords = $request->static;
+        if ($keywords != '') {
+            $banner = Banner::where('static','like',"%$keywords%")->orderBy('id','desc')->paginate(5);
+            $count = Banner::where('static','like',"%$keywords%")->count();
+
+        }else{
+            $banner = Banner::orderBy('id','desc')->paginate(5);
+            $count = Banner::count();
+        }
+        return view('admin.banner.index',['banner'=>$banner,'count'=>$count,'keywords'=>$keywords]);
     }
 
     /**

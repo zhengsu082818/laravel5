@@ -24,7 +24,8 @@
     
     <div class="x-body">
         <form class="layui-form layui-col-md12 x-so" action="{{ url('/admin/homeindex') }}" method="get">
-          <input type="text" name="name"  placeholder="请输入关键字" autocomplete="off" class="layui-input" value="{{$keywords?$keywords:''}}">
+          <input type="text" name="username"  placeholder="根据用户名进行搜索" autocomplete="off" class="layui-input" 
+          value="{{$keywords?$keywords:''}}">
           <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
         </form>
         <span class="x-left layui-btn" style="line-height:40px">共有数据：<a href="javascript:;" style="color:#fff;">{{$count}}</a>  条</span>
@@ -81,7 +82,7 @@
       </table>
 
             <center>
-            {!! $stus->appends(['name' => $keywords])->render() !!}
+            {!! $stus->appends(['username' => $keywords])->render() !!}
             </center>
     </div>
   @endsection

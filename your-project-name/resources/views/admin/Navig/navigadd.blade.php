@@ -35,21 +35,29 @@
 
         <form class="layui-form" method="post" action='{{ url("navig/store")}}' enctype="multipart/form-data" >
           {{csrf_field()}}
+           
+          @if($id!=null)
           <div class="layui-form-item">
-            <input type="hidden" name="id" value="">
-              <label for="L_email" class="layui-form-label">
+              <label for="username" class="layui-form-label" style="width: 90px;">
+                  <span class="x-red">*</span>所属类名
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" name="" 
+                  class="layui-input" value="{{$leiall}} " disabled="disabled" style="background: #efefe0">
+              </div>
+          </div>
+          @endif
+          <input type="hidden"  name="id"  class="layui-input" value="{{$id}}">
+          <div class="layui-form-item">
+              <label for="L_email" class="layui-form-label" style="width: 90px;">
                   <span class="x-red">*</span>类别名
               </label>
               <div class="layui-input-inline">
-                <input type="hidden"  name="id"  class="layui-input" value="{{$id}}">
                 <input type="text"  name="name"  class="layui-input" value="">
-              </div>
-              <div class="layui-form-mid layui-word-aux">
-                  <span class="x-red">*</span>           
               </div>
           </div>
           <div class="layui-form-item">
-              <label for="L_email" class="layui-form-label">
+              <label for="L_email" class="layui-form-label" style="width: 90px;">
                   <span class="x-red">*</span>图标
               </label>
               <div class="layui-form-mid layui-word-aux">
@@ -66,7 +74,7 @@
           </div>
 
           <div class="layui-form-item">
-              <label for="L_repass" class="layui-form-label">
+              <label for="L_repass" class="layui-form-label" style="width: 90px;">
               </label>
               <button  class="layui-btn">
                   确认添加
@@ -74,9 +82,7 @@
 
           </div>
         </form>
-        <hr>
-        <span>*注：当您在添加主类时，上传图片框是为主类添加图标的展示图片;</span><br>
-        <span>*注：当您在添加分类时，上传图片框是为分类类添加入口的展示图片！！</span>
+       
 
     </div>
 @endsection

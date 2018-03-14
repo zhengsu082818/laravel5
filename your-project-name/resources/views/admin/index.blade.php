@@ -74,40 +74,48 @@
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
-                    <li>
-                        <a href="javascript:;">
-                            <i class="iconfont">&#xe70b;</i>
-                            <cite>侧边导航分类</cite>
-                            <i class="iconfont nav_right">&#xe697;</i>
+                    <li>    
+                        <a _href="{{url('navig/index')}}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>商品分类列表</cite>
                         </a>
-                        <ul class="sub-menu">
-                            <li>    
-                                <a _href="{{url('navig/index')}}">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>主类列表</cite>
-                                </a>
-                            </li >
-                            <li>
-                                <a _href="{{url('navig/create').'?id='.''}}">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>添加主类</cite>
-                                </a>
-                            </li>
-                            <li>    
-                                <a _href="{{url('navig/index/id/a')}}">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>二级分类列表</cite>
-                                </a>
-                            </li >
-                            <li>    
-                                <a _href="{{url('navig/index/id/b')}}">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>三级分类列表</cite>
-                                </a>
-                            </li >
-                            
-                        </ul>
+                    </li >
+                    <li>
+                        <a _href="{{url('navig/create').'?id='.''}}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>添加主类</cite>
+                        </a>
                     </li>
+                </ul>
+          
+            </li>
+           
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe6b8;</i>
+                    <cite>商品管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="{{url('admin/goodindex')}}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>商品列表</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="{{url('admin/goodtypeindex')}}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>商品属性表</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="{{url('admin/goodtypevalindex')}}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>商品属性值表</cite>
+                        </a>
+                    </li >
+                 
                 </ul>
             </li>
             <li>

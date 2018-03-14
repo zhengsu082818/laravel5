@@ -11,10 +11,10 @@
       <div class="x-nav">
       <span class="layui-breadcrumb">
         <a>
-          <cite>侧边导航分类</cite>
+          <cite>商品分类列表</cite>
         </a>
         <a>
-          <cite>主类列表</cite>
+          <cite>所有分类列表</cite>
         </a>
       </span>
       
@@ -25,9 +25,10 @@
 
 
     <div class="x-body">
-        <form class="layui-form layui-col-md12 x-so" action="{{ url('navig/store') }}" method="get">
+        <form class="layui-form layui-col-md12 x-so" action="{{ url('navig/index') }}" method="get">
 
-          <input type="text" name="name"  placeholder="请输入关键字" autocomplete="off" class="layui-input" value="">
+          <input type="text" name="name"  placeholder="请输入类别名" autocomplete="off" class="layui-input" 
+          value="{{$keywords?$keywords:''}}">
           <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
         </form>
         <span class="x-left layui-btn" style="line-height:40px">共有数据：<a href="javascript:;" style="color:#fff;">{{$count}}</a>  条</span>
@@ -43,17 +44,19 @@
         <thead>
           <tr >
             <th style="text-align: center;">类别名</th>
-            <th style="text-align: center;">图标</th>
+            <th style="text-align: center;">图片</th>
             <th style="text-align: center;">嵌套等级</th>
-            <th style="text-align: center;">修改时间</th>
+
+            <th style="text-align: center;">添加时间</th>
             <th style="text-align: center;">操作</th></tr>
         </thead>
         <tbody>
           @foreach ($Navig as $v)
         
                <tr>
-                  
-                <td style="text-align: center;"><a href='{{url("navig/select/$v->id")}}' title="点击查看子类">{{$v->name}}</a></td>
+
+                <td style="text-align: center;">{{$v->name}}</td>
+
                 <td style="text-align: center;">
                   @if(!$v->url=='')
                   <img src='{{asset("$v->url")}}' style="width: 20px;height: 20px;">
@@ -62,16 +65,49 @@
                   @endif
                 </td>
                 <td style="text-align: center;">
-                    <button class="layui-btn layui-btn-mini" value="">{{$depth[$v->depth]}}</button>
+                    @if($v->depth == 0)
+                    <button class="layui-btn layui-btn-mini layui-btn-normal" value="">
+                      {{$depth[$v->depth]}}</button>
+                    @endif
+                    @if($v->depth == 1)
+                    <button class="layui-btn layui-btn-mini layui-btn-normal" value="" style="margin-left: 40px;">
+                      {{$depth[$v->depth]}}</button>
+                    @endif
+                    @if($v->depth == 2)
+                    <button class="layui-btn layui-btn-mini layui-btn-normal" value="" style="margin-left: 80px;">
+                      {{$depth[$v->depth]}}</button>
+                    @endif
+                    @if($v->depth == 3)
+                    <button class="layui-btn layui-btn-mini layui-btn-normal" value="" style="margin-left: 120px;">
+                      {{$depth[$v->depth]}}</button>
+                    @endif
+                    @if($v->depth == 4)
+                    <button class="layui-btn layui-btn-mini layui-btn-normal" value="" style="margin-left: 160px;">
+                      {{$depth[$v->depth]}}</button>
+                    @endif
                 </td>
-                <td style="text-align: center;">{{$v->updated_at}}</td>
+               
+                <td style="text-align: center;">{{$v->created_at}}</td>
                 <td class="td-manage" style="text-align: center;">
                    @if($v->depth=='0')
-                 <a href="{{url('navig/create').'?id='.$v->id}}" style="color: #fff;" title="添加分类">
+                  <a href="{{url('navig/create').'?id='.$v->id}}" style="color: #fff;" title="添加分类">
                     <button class="layui-btn layui-btn-mini">添加分类</button></a>
                   @endif
-                  @if($v->depth=='1')
-                 <a href="{{url('navig/create').'?id='.$v->id}}" style="color: #fff;" title="添加分类">
+                   @if($v->depth=='1')
+                  <a href="{{url('navig/create').'?id='.$v->id}}" style="color: #fff;" title="添加分类">
+                    <button class="layui-btn layui-btn-mini">添加分类</button></a>
+                  @endif
+
+                   @if($v->depth=='2')
+                  <a href="{{url('navig/create').'?id='.$v->id}}" style="color: #fff;" title="添加分类">
+                    <button class="layui-btn layui-btn-mini">添加分类</button></a>
+                  @endif
+                   @if($v->depth=='3')
+                  <a href="{{url('navig/create').'?id='.$v->id}}" style="color: #fff;" title="添加分类">
+                    <button class="layui-btn layui-btn-mini">添加分类</button></a>
+                  @endif
+                   @if($v->depth=='4')
+                  <a href="{{url('navig/create').'?id='.$v->id}}" style="color: #fff;" title="添加分类">
                     <button class="layui-btn layui-btn-mini">添加分类</button></a>
                   @endif
                   <a href='{{url("navig/edit/$v->id")}}' style="color: #fff;" title="点击修改">
@@ -88,36 +124,8 @@
       </table>
 
             <center>
-            {!! $Navig->render() !!}
+            {!! $Navig->appends(['name' => $keywords])->render() !!}
             </center>
     </div>
 
 @endsection
-<!-- <script type="text/javascript" src="{{asset('/etsc/jquery.min.js')}}"></script>
-
-  <script type="text/javascript">
-        function login() {
-          $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-});
-            $.ajax({
-            //几个参数需要注意一下
-                type: "GET",//方法类型
-                dataType: "json",//预期服务器返回的数据类型
-                url: '{{url("navig/shoq")}}'+'?id='+$('#qtdj').val(),//url
-                // processData:false,  
-                success: function (result) {
-                    // console.log(result);//打印服务端返回的数据(调试用)
-                    if (result.resultCode == 200) {
-                        // console.log(data);
-                    }
-                    ;
-                },
-                 error : function() {
-                    alert("异常！");
-                }
-            });
-        }
-    </script> -->
