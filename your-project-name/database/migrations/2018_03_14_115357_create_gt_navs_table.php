@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGoodtypesTable extends Migration
+class CreateGtNavsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,15 +12,12 @@ class CreateGoodtypesTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('goodtypes')) {
-            Schema::create('goodtypes', function (Blueprint $table) {
-                $table->increments('id');
+        if (!Schema::hasTable('gt_navs')) {
+            Schema::create('gt_navs', function (Blueprint $table) {
+                $table->tinyInteger('id');//无限分类三级分类id
                 $table->tinyInteger('gt_id');//商品属性id
-                $table->string('gt_name',255);//商品属性名
-                $table->timestamps();
             });
         }
-        
     }
 
     /**
@@ -30,6 +27,6 @@ class CreateGoodtypesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('goodtypes');
+        Schema::drop('gt_navs');
     }
 }

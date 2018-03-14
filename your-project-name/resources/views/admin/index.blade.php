@@ -93,19 +93,19 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="">
+                        <a _href="{{url('admin/goodindex')}}">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>商品列表</cite>
                         </a>
                     </li >
                     <li>
-                        <a _href="">
+                        <a _href="{{url('admin/goodtypeindex')}}">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>商品属性表</cite>
                         </a>
                     </li >
                     <li>
-                        <a _href="">
+                        <a _href="{{url('admin/goodtypevalindex')}}">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>商品属性值表</cite>
                         </a>

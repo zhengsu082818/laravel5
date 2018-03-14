@@ -18,16 +18,17 @@ class NavigController extends Controller
     public function index()
     {
 
+        
         $depth=['0'=>'顶级分类','1'=>'二级分类','2'=>'三级分类','3'=>'四级分类','4'=>'五级分类'];
         
         $where=[];
         $keywords = Request()->name;
         if ($keywords != '') {
-            $Navig = Navig::where('name','like',"%$keywords%")->paginate(10);
+            $Navig = Navig::where('name','like',"%$keywords%")->orderBy('lft')->paginate(10);
             $count = Navig::where('name','like',"%$keywords%")->count();
 
         }else{
-            $Navig = Navig::orderBy('depth','desc')->paginate(10);
+            $Navig = Navig::orderBy('lft')->paginate(10);
             $count = Navig::count();
         }
         return view('admin.Navig.index',['Navig'=>$Navig,'count'=>$count,'keywords'=>$keywords,'depth'=>$depth]);
@@ -79,7 +80,7 @@ class NavigController extends Controller
         }
         if($info){
             flash()->overlay('添加成功', '1');
-            return back();
+            return redirect("navig/index");
 
         }else{
             flash()->overlay('添加失败', '5');
@@ -116,8 +117,10 @@ class NavigController extends Controller
     public function edit($id)
     {
         $Navig = Navig::where('id',$id)->first();
-
-        return view('admin.Navig.edit',['Navig' => $Navig]);
+        $idd = $Navig->parent_id;
+        $upname = Navig::findOrFail($idd)->name;
+        
+        return view('admin.Navig.edit',['Navig' => $Navig,'upname'=>$upname ]);
     }
 
     /**
@@ -176,10 +179,9 @@ class NavigController extends Controller
         $bb = [];
        
         if($bb === $aa){
-            
             $des->delete();
             flash()->overlay('删除成功', '1');
-            return redirect('navig/index');
+            return back();
         }else{
            flash()->overlay('删除失败，请先删除'."“$va[$k]类别”", '5');
              return back();
@@ -187,21 +189,5 @@ class NavigController extends Controller
     }
 
 
-    // 点击主类名跳分类列表
-    public function select($id){
-
-        $depth=['0'=>'顶级分类','1'=>'二级分类','2'=>'三级分类','3'=>'四级分类','4'=>'五级分类'];
-        //所属类别名
-        $leiname = Navig::findOrFail($id)->name;
-        
-        $select = Navig::where('parent_id',$id)->paginate(5);
-       
-        //条数
-        $counts = Navig::where('parent_id',$id)->count();
-
-        if($select->toArray()['data'] === []){
-            return view('errors.404');
-        }
-        return view('admin.Navig.twoindex',['leiname'=>$leiname,'select'=>$select,'depth'=>$depth,'counts'=>$counts]);
-    }
+    
 }

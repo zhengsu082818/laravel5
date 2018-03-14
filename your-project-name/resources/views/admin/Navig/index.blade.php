@@ -54,7 +54,7 @@
           @foreach ($Navig as $v)
                <tr>
              
-                <td style="text-align: center;"><a href='{{url("naving/select/$v->id")}}'>{{$v->name}}</a></td>
+                <td style="text-align: center;">{{$v->name}}</td>
                 <td style="text-align: center;">
                   @if(!$v->url=='')
                   <img src='{{asset("$v->url")}}' style="width: 20px;height: 20px;">
@@ -63,7 +63,26 @@
                   @endif
                 </td>
                 <td style="text-align: center;">
-                    <button class="layui-btn layui-btn-mini layui-btn-normal" value="">{{$depth[$v->depth]}}</button>
+                    @if($v->depth == 0)
+                    <button class="layui-btn layui-btn-mini layui-btn-normal" value="">
+                      {{$depth[$v->depth]}}</button>
+                    @endif
+                    @if($v->depth == 1)
+                    <button class="layui-btn layui-btn-mini layui-btn-normal" value="" style="margin-left: 40px;">
+                      {{$depth[$v->depth]}}</button>
+                    @endif
+                    @if($v->depth == 2)
+                    <button class="layui-btn layui-btn-mini layui-btn-normal" value="" style="margin-left: 80px;">
+                      {{$depth[$v->depth]}}</button>
+                    @endif
+                    @if($v->depth == 3)
+                    <button class="layui-btn layui-btn-mini layui-btn-normal" value="" style="margin-left: 120px;">
+                      {{$depth[$v->depth]}}</button>
+                    @endif
+                    @if($v->depth == 4)
+                    <button class="layui-btn layui-btn-mini layui-btn-normal" value="" style="margin-left: 160px;">
+                      {{$depth[$v->depth]}}</button>
+                    @endif
                 </td>
                
                 <td style="text-align: center;">{{$v->created_at}}</td>

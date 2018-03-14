@@ -34,7 +34,7 @@ Route::get('/admin',function(){
 
 
 //加载后台用户页面
-Route::get('admin/list', 'Admin\AdminuserController@Index');
+Route::get('admin/list', 'Admin\AdminuserController@index');
 //加载后台用户添加页面
 Route::get('admin/create', 'Admin\AdminuserController@create');
 //加载后台用户修改页面
@@ -47,7 +47,7 @@ Route::post('admin/store', 'Admin\AdminuserController@store');
 Route::post('admin/update/{id}', 'Admin\AdminuserController@update');
 
 //加载前台会员页面
-Route::get('admin/homeindex', 'Admin\HomeuserController@Index');
+Route::get('admin/homeindex', 'Admin\HomeuserController@index');
 //加载前台会员修改页面
 Route::get('admin/homeedit/{id}', 'Admin\HomeuserController@edit');
 //执行前台会员删除
@@ -72,11 +72,9 @@ Route::get('navig/destroy/{id}', 'Admin\NavigController@destroy');
 Route::post('navig/tupiana','Admin\NavigController@tupiana');
 //加载分类列表
 Route::get('navig/index/id/{id}', 'Admin\NavigController@Index');
-//点击主类名跳分类列表
-Route::get('naving/select/{id}','Admin\NavigController@select');
 
 //加载首页轮播页面
-Route::get('admin/bannerindex', 'Admin\BannersController@Index');
+Route::get('admin/bannerindex', 'Admin\BannersController@index');
 //加载首页轮播添加页面
 Route::get('admin/bannercreate', 'Admin\BannersController@create');
 //加载首页轮播修改页面
@@ -91,4 +89,21 @@ Route::post('admin/bannerupdate/{id}', 'Admin\BannersController@update');
 Route::post('admin/banneruplode', 'Admin\BannersController@uplode');
 
 
-// 加载商品列表页
+// 加载商品属性
+Route::get('admin/goodtypeindex', 'Admin\GoodtypesController@index');
+//加载商品属性添加页
+Route::get('admin/goodtypecreate', 'Admin\GoodtypesController@create');
+//执行添加
+Route::post('admin/goodtypestore', 'Admin\GoodtypesController@store');
+//加载商品属性修改页面
+Route::get('admin/goodtypeedit/{id}', 'Admin\GoodtypesController@edit');
+//执行修改
+Route::post('admin/goodtypeupdate/{id}', 'Admin\GoodtypesController@update');
+//执行删除
+Route::get('admin/goodtypedestroy/{id}', 'Admin\GoodtypesController@destroy');
+
+
+// 加载商品列表
+Route::get('admin/goodindex', 'Admin\GoodsController@index');
+//加载商品属性值
+Route::get('admin/goodtypevalindex', 'Admin\GoodtypevalsController@index');
