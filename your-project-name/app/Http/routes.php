@@ -104,4 +104,3 @@ Route::post('admin/commentupdate/{id}','Admin\Commentcontroller@edit');
 
 
 
-// 加载前台登录
