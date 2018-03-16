@@ -12,6 +12,7 @@ class EntrustSetupTables extends Migration
     public function up()
     {
         DB::beginTransaction();
+
         // Create table for storing roles
         // 存储角色记录表
         Schema::create('roles', function (Blueprint $table) {
