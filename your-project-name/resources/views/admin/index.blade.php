@@ -132,9 +132,9 @@
                         </a>
                     </li >
                     <li>
-                        <a _href="admin-role.html">
+                        <a _href="{{url('admin/role')}}">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>角色管理</cite>
+                            <cite>职位管理</cite>
                         </a>
                     </li >
                     <li>
@@ -144,7 +144,7 @@
                         </a>
                     </li >
                     <li>
-                        <a _href="admin-cate.html">
+                        <a _href="{{url('admin/permission')}}">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>权限管理</cite>
                         </a>

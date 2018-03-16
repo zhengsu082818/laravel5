@@ -7,7 +7,7 @@ use App\Models\Navig;
 use App\Http\Requests;
 use App\Http\Controllers\Tupian\TupianController;
 use App\Http\Controllers\Controller;
-
+//后台管理分类列表控制器
 class NavigController extends Controller
 {
     /**

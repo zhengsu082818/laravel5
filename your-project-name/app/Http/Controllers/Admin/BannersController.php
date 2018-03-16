@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Banner;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+//管理轮播图控制器
 class Bannerscontroller extends Controller
 {
     /**

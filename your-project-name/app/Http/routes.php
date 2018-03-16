@@ -115,3 +115,30 @@ Route::get('admin/goodtypedestroy/{id}', 'Admin\GoodtypesController@destroy');
 Route::get('admin/goodindex', 'Admin\GoodsController@index');
 //加载商品属性值
 Route::get('admin/goodtypevalindex', 'Admin\GoodtypevalsController@index');
+
+
+//加载职位管理列表
+Route::get('admin/role', 'Admin\RolesController@index');
+//加载职位添加页面
+Route::get('admin/role/create', 'Admin\RolesController@create');
+//执行职位添加页面
+Route::post('admin/role/store', 'Admin\RolesController@store');
+//加载职位修改页面
+Route::get('admin/role/edit/{id}', 'Admin\RolesController@edit');
+//执行职位修改页面
+Route::post('admin/role/update/{id}', 'Admin\RolesController@update');
+//删除职位
+Route::get('admin/role/destroy/{id}', 'Admin\RolesController@destroy');
+
+//加载权限管理列表
+Route::get('admin/permission', 'Admin\PermissionsController@index');
+//加载权限添加页面
+Route::get('admin/permission/create', 'Admin\PermissionsController@create');
+//执行添加页面
+Route::post('admin/permission/store', 'Admin\PermissionsController@store');
+//加载权限修改页面
+Route::get('admin/permission/edit/{id}', 'Admin\PermissionsController@edit');
+//执行权限修改
+Route::post('admin/permission/update/{id}', 'Admin\PermissionsController@update');
+//删除权限
+Route::get('admin/permission/destroy/{id}', 'Admin\PermissionsController@destroy');
