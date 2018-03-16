@@ -10,7 +10,7 @@
 
 @endsection
 <body @section('class', 'class="login-bg"')>
-    
+  
     @section('content')
    
     <div class="login">

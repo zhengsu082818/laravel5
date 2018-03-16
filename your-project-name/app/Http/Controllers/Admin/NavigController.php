@@ -7,9 +7,23 @@ use App\Models\Navig;
 use App\Http\Requests;
 use App\Http\Controllers\Tupian\TupianController;
 use App\Http\Controllers\Controller;
+
 //后台管理分类列表控制器
+
+
+use App\Models\Good;
+
 class NavigController extends Controller
 {
+    // 编写验证规则
+    protected $rules =[
+        "name"=>'required|max:32',
+    ];
+    //编写错误信息
+    protected $messages =[
+        "name.required"=>'类别名必填',
+        "name.max"=>'类别名过长',
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +31,6 @@ class NavigController extends Controller
      */
     public function index()
     {
-
         
         $depth=['0'=>'顶级分类','1'=>'二级分类','2'=>'三级分类','3'=>'四级分类','4'=>'五级分类'];
         
@@ -30,6 +43,7 @@ class NavigController extends Controller
         }else{
             $Navig = Navig::orderBy('lft')->paginate(10);
             $count = Navig::count();
+
         }
 
         return view('admin.Navig.index',['Navig'=>$Navig,'count'=>$count,'keywords'=>$keywords,'depth'=>$depth]);
@@ -37,18 +51,6 @@ class NavigController extends Controller
 
     }
 
-        public function select($id)
-    {
-        // dd($id);
-        $depth=['0'=>'顶级分类','1'=>'二级分类','2'=>'三级分类','3'=>'四级分类','4'=>'五级分类'];
-        $leiname = Navig::findOrFail($id)->name;
-        
-        $select = Navig::where('parent_id',$id)->paginate(2);
-        $count =Navig::where('parent_id',$id)->count();
-        // dd($select->toArray());
-
-        return view('admin.Navig.twoindex',['leiname'=>$leiname,'select'=>$select,'count'=>$count,'depth'=>$depth]);
-    }
     /**
      * Show the form for creating a new resource.
      *
@@ -78,6 +80,7 @@ class NavigController extends Controller
     
     public function store(Request $request )
     {  
+        $this->validate($request,$this->rules,$this->messages);
         //接收除_token字段的数据
         $input=$request->except('_token');
        
@@ -87,7 +90,9 @@ class NavigController extends Controller
             $info =Navig::create($input);
         }else{
             $data =Navig::findOrFail($request->input('id'));
+            // dd($data);
             $info =$data->children()->create($input);
+            // dd($info);
 
         }
         if($info){
@@ -130,8 +135,12 @@ class NavigController extends Controller
     {
         $Navig = Navig::where('id',$id)->first();
         $idd = $Navig->parent_id;
-        $upname = Navig::findOrFail($idd)->name;
-        
+        if($idd != null){
+            $upname = Navig::findOrFail($idd)->name;
+        }else{
+            $upname = '顶级分类';
+        }
+    
         return view('admin.Navig.edit',['Navig' => $Navig,'upname'=>$upname ]);
     }
 
@@ -176,29 +185,31 @@ class NavigController extends Controller
      */
     public function destroy($id)
     {
+
         $aa=Navig::where('parent_id',$id)->get()->toArray();
-        
-        $des= Navig::where('id',$id)->first();
-        $zl=$des->getDescendants()->toArray();
+        $idArray = good::where('nav_id',$id)->get()->toArray();
        
-        $va =[];
-        foreach ($zl as  $k => $v) {
-
-           $va[$k] = $v['name'];
-
-        }
-      
-        $bb = [];
-       
-        if($bb === $aa){
-            $des->delete();
-            flash()->overlay('删除成功', '1');
-            return redirect('navig/index');
+        if(!$idArray){
+            $des= Navig::where('id',$id)->first();
+            $zl=$des->getDescendants()->toArray();
+            $va =[];
+            foreach ($zl as  $k => $v) {
+               $va[$k] = $v['name'];
+            }
+            $bb = [];
+            if($bb === $aa){
+                $des->delete();
+                flash()->overlay('删除成功', '1');
+                return redirect('navig/index');
+            }else{
+                flash()->overlay('删除失败，请先删除'."“$va[$k]”类别", '5');
+                return back();
+            }
         }else{
-            flash()->overlay('删除失败，请先删除'."“$va[$k]”类别", '5');
-            return back();
-           
+            flash()->overlay('删除失败,该类别下还有商品','5');
+            return redirect('navig/index');
         }
+
     }
 
 

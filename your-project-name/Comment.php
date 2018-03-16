@@ -1,20 +1,18 @@
 <?php
-namespace App\Models;
 use Baum\Node;
 
 /**
-* Navig
+* Comment
 */
-class Navig extends Node {
+class Comment extends Node {
 
   /**
    * Table name.
    *
    * @var string
    */
-  protected $table = 'navigs';
+  protected $table = 'comments';
 
-  
   //////////////////////////////////////////////////////////////////////////////
 
   //
@@ -100,8 +98,5 @@ class Navig extends Node {
   // Please refer the Laravel documentation for further instructions on how
   // to hook your own callbacks/observers into this events:
   // http://laravel.com/docs/5.0/eloquent#model-events
-  // 
-  
-  
 
 }

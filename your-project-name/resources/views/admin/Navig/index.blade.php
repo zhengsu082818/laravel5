@@ -21,9 +21,6 @@
       <a class="layui-btn" style="line-height:38px;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
         <i class="layui-icon" style="line-height:38px">ဂ</i></a>
     </div>
-    
-
-
     <div class="x-body">
         <form class="layui-form layui-col-md12 x-so" action="{{ url('navig/index') }}" method="get">
 
@@ -35,11 +32,7 @@
 
         <a href="{{url('navig/create').'?id='.''}}" style="color:#fff;"><span class="x-left layui-btn" style="line-height:40px;float: right;">添加主类</span></a>
        <table class="layui-table">
-
-       
-
       <table class="layui-table">
-
         @include('flash::message')
         <thead>
           <tr >

@@ -3,6 +3,7 @@
 @section('title', '考拉海购--后台主站')
 
 @section('content')
+
     <!-- 顶部开始 -->
     <div class="container">
         <div class="logo"><a href="javascript:;">考拉海购 -- 后台主站</a></div>
@@ -41,13 +42,14 @@
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>用户列表</cite>
                         </a>
-                    </li>
+                    </li >
                     <li>
                         <a _href="{{url('admin/personalindex')}}">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>用户收货地址</cite>
+                            <cite>个人收货地址</cite>
                         </a>
-                    </li>                 
+                    </li >
+                 
                 </ul>
             </li>
             
@@ -150,6 +152,22 @@
                         </a>
                     </li >
                   
+                </ul>
+            </li>
+
+             <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe726;</i>
+                    <cite>商品评论管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="{{url('admin/comment')}}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>用户评论</cite>
+                        </a>
+                    </li >
                 </ul>
             </li>
 

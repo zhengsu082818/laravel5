@@ -31,12 +31,10 @@ Route::get('/admin',function(){
 	return view('admin.index');
 })->middleware('auth');
 
-//加载用户中心收货地址主页
-Route::get('admin/personalindex', 'Admin\PersonalController@Index');
 
 
 //加载后台用户页面
-Route::get('admin/list', 'Admin\AdminuserController@index');
+Route::get('admin/list', 'Admin\AdminuserController@Index');
 //加载后台用户添加页面
 Route::get('admin/create', 'Admin\AdminuserController@create');
 //加载后台用户修改页面
@@ -49,7 +47,7 @@ Route::post('admin/store', 'Admin\AdminuserController@store');
 Route::post('admin/update/{id}', 'Admin\AdminuserController@update');
 
 //加载前台会员页面
-Route::get('admin/homeindex', 'Admin\HomeuserController@index');
+Route::get('admin/homeindex', 'Admin\HomeuserController@Index');
 //加载前台会员修改页面
 Route::get('admin/homeedit/{id}', 'Admin\HomeuserController@edit');
 //执行前台会员删除
@@ -59,7 +57,7 @@ Route::post('admin/homeupdate/{id}', 'Admin\HomeuserController@update');
 
 
 //加载侧边导航页面
-Route::get('navig/index', 'Admin\NavigController@index');
+Route::get('navig/index', 'Admin\NavigController@Index');
 //加载类列表添加页面
 Route::get('navig/create', 'Admin\NavigController@create');
 //执行添加
@@ -72,13 +70,6 @@ Route::post('navig/update/{id}', 'Admin\NavigController@update');
 Route::get('navig/destroy/{id}', 'Admin\NavigController@destroy');
 //执行图片上传
 Route::post('navig/tupiana','Admin\NavigController@tupiana');
-//加载分类列表
-Route::get('navig/index/id/{id}', 'Admin\NavigController@Index');
-Route::get('navig/select/{id}', 'Admin\NavigController@select');
-Route::get('navig/date/{id}',function(){
-	  return 111;
-});
-
 
 
 //加载首页轮播页面
@@ -97,6 +88,17 @@ Route::post('admin/bannerupdate/{id}', 'Admin\BannersController@update');
 Route::post('admin/banneruplode', 'Admin\BannersController@uplode');
 
 
+// 加载商品评论页面
+Route::get('admin/comment','Admin\Commentcontroller@index');
+// 添加数据
+Route::get('admin/commentstore','Admin\Commentcontroller@store');
+// 加载回复页面
+Route::get('admin/commentedit/{id}','Admin\Commentcontroller@show');
+Route::post('admin/commentupdate/{id}','Admin\Commentcontroller@edit');
+
+
+
+
 // 加载商品属性
 Route::get('admin/goodtypeindex', 'Admin\GoodtypesController@index');
 //加载商品属性添加页
@@ -111,10 +113,9 @@ Route::post('admin/goodtypeupdate/{id}', 'Admin\GoodtypesController@update');
 Route::get('admin/goodtypedestroy/{id}', 'Admin\GoodtypesController@destroy');
 
 
-// 加载商品列表
-Route::get('admin/goodindex', 'Admin\GoodsController@index');
 //加载商品属性值
 Route::get('admin/goodtypevalindex', 'Admin\GoodtypevalsController@index');
+
 
 
 //加载职位管理列表
@@ -142,3 +143,35 @@ Route::get('admin/permission/edit/{id}', 'Admin\PermissionsController@edit');
 Route::post('admin/permission/update/{id}', 'Admin\PermissionsController@update');
 //删除权限
 Route::get('admin/permission/destroy/{id}', 'Admin\PermissionsController@destroy');
+
+//加载商品属性值添加页
+Route::get('admin/goodtypevalcreate', 'Admin\GoodtypevalsController@create');
+//执行添加
+Route::post('admin/goodtypevalstore', 'Admin\GoodtypevalsController@store');
+//加载商品属性值修改页面
+Route::get('admin/goodtypevaledit/{id}', 'Admin\GoodtypevalsController@edit');
+//执行修改
+Route::post('admin/goodtypevalupdate/{id}', 'Admin\GoodtypevalsController@update');
+//执行删除
+Route::get('admin/goodtypevaldestroy/{id}', 'Admin\GoodtypevalsController@destroy');
+
+// 加载商品列表
+Route::get('admin/goodindex', 'Admin\GoodsController@index');
+//加载商品添加页
+Route::get('admin/goodcreate', 'Admin\GoodsController@create');
+//执行添加
+Route::post('admin/goodstore', 'Admin\GoodsController@store');
+//加载商品属性值修改页面
+Route::get('admin/goodedit/{id}', 'Admin\GoodsController@edit');
+//执行修改
+Route::post('admin/goodupdate/{id}', 'Admin\GoodsController@update');
+//执行删除
+Route::get('admin/gooddestroy/{id}', 'Admin\GoodsController@destroy');
+// ajax图片上传
+Route::post('admin/gooduplode', 'Admin\GoodsController@uplode');
+//ajax二级联动
+Route::get('admin/creategood','Admin\GoodsController@creategood');
+
+//加载用户中心收货地址主页
+Route::get('admin/personalindex', 'Admin\PersonalsController@index');
+

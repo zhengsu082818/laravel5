@@ -28,11 +28,8 @@
         <a  class="layui-btn" href="{{url('navig/index')}}" style="line-height:38px;margin-top:3px;margin-right: 10px;float:right">返回上一层</a>
     </div>
     <div style="height: 40px;">
-      
     </div>
-
         @include('flash::message')
-
         <form class="layui-form" method="post" action='{{ url("navig/update/$Navig->id")}}' enctype="multipart/form-data" >
           {{csrf_field()}}
           <input type="hidden"  name="id"  class="layui-input" value="{{$Navig->id}}">

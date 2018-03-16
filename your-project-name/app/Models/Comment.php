@@ -5,16 +5,36 @@ use Baum\Node;
 /**
 * Navig
 */
-class Navig extends Node {
+class Comment extends Node {
 
   /**
    * Table name.
    *
    * @var string
    */
-  protected $table = 'navigs';
+  // 关联表名
+  protected $table = 'comments';
+  // 时间戳管理
+  public $timestamps = true;
+  // 批量赋值
+  protected $fillable = ['sid', 'uid', 'comment','reply'];
+ 
+  // 修改器
+  // public function getUidAttribute($value)
+  // {
+  //    $home = Homeuser::all();
+  //    dd($home);
+  //    foreach($home as $v){
+  //    	return $v['id'] = $v['name'];
+  //    }
+     
+     public function homeuser()
+    {
+        return $this->belongsTo('App\Models\Homeuser','uid','id');
+    }
+     
+ 
 
-  
   //////////////////////////////////////////////////////////////////////////////
 
   //
@@ -101,7 +121,9 @@ class Navig extends Node {
   // to hook your own callbacks/observers into this events:
   // http://laravel.com/docs/5.0/eloquent#model-events
   // 
-  
+ 
   
 
 }
+
+
