@@ -15,16 +15,16 @@
           <cite>商品管理</cite>
         </a>
         <a>
-          <cite>商品属性管理</cite>
+          <cite>商品属性值管理</cite>
         </a>
         <a>
-          <cite>添加商品属性</cite>
+          <cite>添加商品属性值</cite>
         </a>
       </span>
       
       <a class="layui-btn" style="line-height:38px;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
        <i class="layui-icon" style="line-height:38px">ဂ</i></a>
-        <a  class="layui-btn" href="{{url('admin/goodtypeindex')}}" style="line-height:38px;margin-top:3px;margin-right: 10px;float:right">返回上一层</a>
+        <a  class="layui-btn" href="{{url('admin/goodtypevalindex')}}" style="line-height:38px;margin-top:3px;margin-right: 10px;float:right">返回上一层</a>
     </div>
     <div style="height: 40px;">
       
@@ -32,41 +32,39 @@
       
         @include('flash::message')
 
-        <form class="layui-form" method="post" action="{{url('admin/goodtypestore')}}">
+        <form class="layui-form" method="post" action="{{url('admin/goodtypevalstore')}}">
           {{csrf_field()}}
          
           <div class="layui-form-item">
               <label for="L_email" class="layui-form-label" style="width: 100px;">
-                  <span class="x-red">*</span>选择分类名
+                  <span class="x-red">*</span>所属属性名
               </label>
               <div class="layui-input-inline">
-                  <select name='flname'>
-                    <option>请选择分类名</option>
-                    @foreach ($data as $k => $v) 
-                    <option value="{{$v['name']}}">{{$v['name']}}</option>
+                   <select name='name'>
+                    <option>请选择属性名</option>
+                    @foreach ($gt as $v)
+                      <option value="{{$v->gt_name}}"  
+                       
+                        >{{$v->gt_name}}
+                      </option>
                     @endforeach
                   </select>
+                 
               </div>
-              <div class="layui-form-mid layui-word-aux">
-                  <span class="x-red"></span>
-                  @if (count($errors) > 0)
-                    <span class="x-red">{{ $errors->first('flname') }}</span>  
-                    @endif
-              </div> 
           </div>
           <div class="layui-form-item">
               <label for="username" class="layui-form-label" style="width: 100px;">
-                  <span class="x-red">*</span>属性名
+                  <span class="x-red">*</span>属性值
               </label>
                <div class="layui-input-inline">
-                  <input type="text" name="gt_name"  class="layui-input">
+                  <input type="text" name="gtv_name"  class="layui-input">
               </div>
-              <div class="layui-form-mid layui-word-aux">
+               <div class="layui-form-mid layui-word-aux">
                   <span class="x-red"></span>
                   @if (count($errors) > 0)
-                    <span class="x-red">{{ $errors->first('gt_name') }}</span>  
+                    <span class="x-red">{{ $errors->first('gtv_name') }}</span>  
                     @endif
-              </div> 
+              </div>  
           </div>
           <div class="layui-form-item">
               <label for="L_repass" class="layui-form-label" style="width: 100px;">

@@ -71,11 +71,9 @@ Route::get('navig/destroy/{id}', 'Admin\NavigController@destroy');
 //执行图片上传
 Route::post('navig/tupiana','Admin\NavigController@tupiana');
 
-//加载分类列表
-Route::get('navig/index/id/{id}', 'Admin\NavigController@Index');
 
 //加载首页轮播页面
-Route::get('admin/bannerindex', 'Admin\BannersController@Index');
+Route::get('admin/bannerindex', 'Admin\BannersController@index');
 //加载首页轮播添加页面
 Route::get('admin/bannercreate', 'Admin\BannersController@create');
 //加载首页轮播修改页面
@@ -89,8 +87,6 @@ Route::post('admin/bannerupdate/{id}', 'Admin\BannersController@update');
 // ajax图片上传
 Route::post('admin/banneruplode', 'Admin\BannersController@uplode');
 
-//加载个人收货地址页面
-Route::get('admin/addressindex', 'Home\AddresController@Index');
 
 // 加载商品评论页面
 Route::get('admin/comment','Admin\Commentcontroller@index');
@@ -117,11 +113,35 @@ Route::post('admin/goodtypeupdate/{id}', 'Admin\GoodtypesController@update');
 Route::get('admin/goodtypedestroy/{id}', 'Admin\GoodtypesController@destroy');
 
 
-// 加载商品列表
-Route::get('admin/goodindex', 'Admin\GoodsController@index');
 //加载商品属性值
 Route::get('admin/goodtypevalindex', 'Admin\GoodtypevalsController@index');
+//加载商品属性值添加页
+Route::get('admin/goodtypevalcreate', 'Admin\GoodtypevalsController@create');
+//执行添加
+Route::post('admin/goodtypevalstore', 'Admin\GoodtypevalsController@store');
+//加载商品属性值修改页面
+Route::get('admin/goodtypevaledit/{id}', 'Admin\GoodtypevalsController@edit');
+//执行修改
+Route::post('admin/goodtypevalupdate/{id}', 'Admin\GoodtypevalsController@update');
+//执行删除
+Route::get('admin/goodtypevaldestroy/{id}', 'Admin\GoodtypevalsController@destroy');
 
+// 加载商品列表
+Route::get('admin/goodindex', 'Admin\GoodsController@index');
+//加载商品添加页
+Route::get('admin/goodcreate', 'Admin\GoodsController@create');
+//执行添加
+Route::post('admin/goodstore', 'Admin\GoodsController@store');
+//加载商品属性值修改页面
+Route::get('admin/goodedit/{id}', 'Admin\GoodsController@edit');
+//执行修改
+Route::post('admin/goodupdate/{id}', 'Admin\GoodsController@update');
+//执行删除
+Route::get('admin/gooddestroy/{id}', 'Admin\GoodsController@destroy');
+// ajax图片上传
+Route::post('admin/gooduplode', 'Admin\GoodsController@uplode');
+//ajax二级联动
+Route::get('admin/creategood','Admin\GoodsController@creategood');
 
 //加载用户中心收货地址主页
 Route::get('admin/personalindex', 'Admin\PersonalsController@index');

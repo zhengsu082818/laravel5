@@ -35,13 +35,11 @@
 
         <form class="layui-form" method="post" action="{{url('admin/bannerstore')}}" enctype="multipart/form-data" >
           {{csrf_field()}}
-         
+         <input type="hidden" name="img" value="" id="img">
           <div class="layui-form-item">
               <label for="L_email" class="layui-form-label">
                   <span class="x-red">*</span>状态
               </label>
-
-              <input type="hidden" name="img" value="" id="img">
               <div class="layui-input-inline">
                   <select name='static'>
                       <option value="启用">启用</option>

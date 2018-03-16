@@ -71,12 +71,10 @@ class Bannerscontroller extends Controller
        $banner->static = $request->static;
        if(!$banner->img = $request->img ){
         flash()->overlay('添加失败,没有图片上传','5');
-        return redirect()->action('Admin\BannersController@create');
+        return back();
        }
-       // dd($banner->static = $request->static);
-       // $banner->static = $request->static;
        $banner->save();
-        flash()->overlay('添加成功','1');
+       flash()->overlay('添加成功','1');
        return redirect()->action('Admin\BannersController@index');
     }
 

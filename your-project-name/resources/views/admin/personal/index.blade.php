@@ -40,7 +40,6 @@
             <th style="text-align: center;">手机号</th>
             <th style="text-align: center;">收货地址</th>
             <th style="text-align: center;">注册时间</th>
-            <th style="text-align: center;">状态</th>
         </thead>
         <tbody>
           @foreach ($username as $v)
@@ -54,14 +53,7 @@
                 <td style="text-align: center;">{{$v->phone}}</td>
                  <td style="text-align: center;">{{$v->shdz}}</td>
                 <td style="text-align: center;">{{$v->created_at}}</td>
-                <td class="td-status" style="text-align: center;">
-                  @if($v->static == '启用')
-                  <span class="layui-btn layui-btn-mini layui-btn-normal">{{$v->static}}</span>
-                  @endif
-                  @if($v->static == '禁用')
-                  <span class="layui-btn layui-btn-mini layui-btn-warm">{{$v->static}}</span>
-                  @endif
-                </td>
+               
               </tr>
           @endforeach    
         </tbody>
