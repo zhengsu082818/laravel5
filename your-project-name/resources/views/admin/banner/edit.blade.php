@@ -39,7 +39,7 @@
                   <span class="x-red">*</span>状态
               </label>
 
-              <input type="hidden" name="imgurl" value="{{$banner->img}}" id="imgurl">
+             
               <div class="layui-input-inline">
                   <select name="static">
                     <option value="启用" 
@@ -59,8 +59,9 @@
               </div>
            
           </div>
-           <div class="layui-form-item">
+          <div class="layui-form-item">
             <input type="hidden" name="id" value="">
+             <input type="hidden" name="imgurl" value="{{$banner->img}}" id="imgurl">
               <label for="L_email" class="layui-form-label">
                   <span class="x-red">*</span>图片
               </label>

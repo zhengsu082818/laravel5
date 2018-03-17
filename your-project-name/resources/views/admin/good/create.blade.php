@@ -38,24 +38,27 @@
           <input type="hidden" name="img" value="" id="img">
           <div class="layui-form-item">
               <label for="L_email" class="layui-form-label" style="width: 100px;">
-                  <span class="x-red">*</span>所属分类
+                  <span class="x-red">*</span>选择类别
               </label>
               <div class="layui-input-inline">
-                  <select name='' >
-                    <option>请选择分类名</option>
+                  <select name='nav_id' lay-filter="test">
+                    <option value="0">请选择分类名</option>
                     @foreach ($data as $k => $v) 
-                    <option value="{{$v['name']}}">{{$v['name']}}</option>
+                    <option value="{{$v['id']}}">{{$v['name']}}</option>
                     @endforeach
                   </select>
-                  <br> 
-                  <select name='' >
-                      <option value="">请选择商品属性</option>
+              </div>
+              <div class="layui-input-inline">
+                  <select name='gt_id' lay-filter="test2" id="ming1" >
+                    <option  value="{{$v['id']}}">请选择属性名</option>
+                   
                   </select>
-                   <br>
-                  <select name="type_id" id="kkk" lay-ignore>
-                    <option value="">请选择商品属性值</option>
+              </div>
+              <div class="layui-input-inline">
+                  <select name='gtv_id' id="ming2" >
+                    <option value="0">请选择属性值</option>
+                    
                   </select>
-
               </div>
           
           </div>
@@ -64,21 +67,31 @@
                   <span class="x-red">*</span>商品名
               </label>
                <div class="layui-input-inline">
-                  <input type="text" name="title"  class="layui-input">
+                  <input type="text" name="title"  class="layui-input" value="{{old('title')}}">
               </div>
+               <div class="layui-form-mid layui-word-aux">
+                  <span class="x-red"></span>
+                  @if (count($errors) > 0)
+                    <span class="x-red">{{ $errors->first('title') }}</span>  
+                    @endif
+              </div>  
           </div>
 
           <div class="layui-form-item">
               <label for="username" class="layui-form-label" style="margin-left: 20px;">
                   <span class="x-red">*</span>图片
               </label>
-              
               <div class="layui-form-mid layui-word-aux">
-                  <button type="button" class="layui-btn" id="test1">
-                <i class="layui-icon">&#xe67c;</i>上传图片
-              </button>
-                
+                <button type="button" class="layui-btn" id="test1">
+                  <i class="layui-icon">&#xe67c;</i>上传图片
+                </button>
               </div>
+              <div class="layui-form-item">
+              <label for="L_email" class="layui-form-label" style="width: 100px;">
+                  <span class="x-red">*</span>显示图片
+              </label>
+              <img src=""  id="cc">
+          </div>
           </div>
           
            <div class="layui-form-item">
@@ -86,8 +99,14 @@
                   <span class="x-red">*</span>价格
               </label>
                <div class="layui-input-inline">
-                  <input type="text" name="price"  class="layui-input">
+                  <input type="text" name="price"  class="layui-input" value="{{old('price')}}">
               </div>
+               <div class="layui-form-mid layui-word-aux">
+                  <span class="x-red"></span>
+                  @if (count($errors) > 0)
+                    <span class="x-red">{{ $errors->first('price') }}</span>  
+                    @endif
+              </div>  
           </div>
 
            <div class="layui-form-item">
@@ -95,8 +114,14 @@
                   <span class="x-red">*</span>库存数量
               </label>
                <div class="layui-input-inline">
-                  <input type="text" name="nums"  class="layui-input">
+                  <input type="text" name="nums"  class="layui-input" value="{{old('nums')}}">
               </div>
+               <div class="layui-form-mid layui-word-aux">
+                  <span class="x-red"></span>
+                  @if (count($errors) > 0)
+                    <span class="x-red">{{ $errors->first('nums') }}</span>  
+                    @endif
+              </div>  
           </div>
           
           <div class="layui-form-item">
@@ -123,7 +148,7 @@
 
 @section('js')
       <script>
-      layui.use('upload', function(){
+      layui.use(['upload','form'], function(){
         var upload = layui.upload;
          var $ = layui.$ ;
          $.ajaxSetup({
@@ -140,10 +165,50 @@
            $name = res.data.src;
            // alert($name);  
            $('#img').val($name);
+            $('#cc').attr('src',"/storage/uploads/"+res.data.src);
+            $("#cc").css("width","100px","height","100px");
           }
           ,error: function(){
             
           }
+        });
+
+        var form = layui.form;
+        form.on('select(test)', function(data){
+          $.ajax({
+            type:"GET",
+            url:'{{ url("admin/goodSjld1") }}?id='+data.value,
+            success:function(msg){
+              var ming1 = $("#ming1");
+              ming1.find("option").remove();
+              for(var i = 0; i<msg.data.length; i++){ 
+                ming1.append("<option value='"+msg.data[i].id+"'>"+msg.data[i].gt_name+"</option>");
+              }
+             form.render('select'); 
+            },
+            error:function(data){
+
+            }
+          })
+        });
+         var form = layui.form;
+        form.on('select(test2)', function(data){
+          $.ajax({
+            type:"GET",
+            url:'{{ url("admin/goodSjld2") }}?id='+data.value,
+            success:function(msg){
+              var ming2 = $("#ming2");
+              ming2.find("option").remove();
+
+              for(var i = 0; i<msg.data.length; i++){ 
+                ming2.append("<option value='"+msg.data[i].id+"'>"+msg.data[i].gtv_name+"</option>");
+              }
+             form.render('select'); 
+            },
+            error:function(data){
+
+            }
+          })
         });
 
         

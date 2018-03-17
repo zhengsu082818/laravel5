@@ -37,7 +37,7 @@
          
           <div class="layui-form-item">
               <label for="L_email" class="layui-form-label" style="width: 100px;">
-                  <span class="x-red">*</span>选择分类名
+                  <span class="x-red">*</span>所属分类名
               </label>
               <div class="layui-input-inline">
                   <select name='flname'>

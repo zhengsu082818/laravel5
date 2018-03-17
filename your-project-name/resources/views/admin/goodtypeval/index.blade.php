@@ -35,7 +35,8 @@
         <thead>
           <tr >
             <th style="text-align: center;">ID</th>
-            <th style="text-align: center;">所属属性</th>
+            <th style="text-align: center;">分类名</th>
+            <th style="text-align: center;">属性名</th>
             <th style="text-align: center;">属性值</th>
             <th style="text-align: center;">添加时间</th>
             <th style="text-align: center;">操作</th></tr>
@@ -44,6 +45,7 @@
           @foreach ($goodtypeval as $v)
               <tr>
                 <td style="text-align: center;">{{$v->id}}</td>
+                <td style="text-align: center;">{{$data[$v->lei_id]}}</td>
                 <td style="text-align: center;">{{$v->goodtypes->gt_name}}</td>
                 <td style="text-align: center;">{{$v->gtv_name}}</td>
                 <td style="text-align: center;">{{$v->created_at}}</td>

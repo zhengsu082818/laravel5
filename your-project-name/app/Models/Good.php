@@ -18,10 +18,6 @@ class Good extends Model
         return $this->belongsTo('App\Models\Goodtypeval','gtv_id','id');
     }
 
-    //定义商品属于哪个属性 多对一
-    public function gt()
-    {
-        return $this->belongsTo('App\Models\Goodtype','gt_id','id');
-    }
+    
    
 }

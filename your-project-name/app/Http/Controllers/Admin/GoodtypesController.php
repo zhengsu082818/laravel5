@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Models\Goodtype;
-
+use App\Models\Goodtypeval;
 use App\Models\Navig;
 
 class GoodtypesController extends Controller
@@ -149,14 +149,21 @@ class GoodtypesController extends Controller
      */
     public function destroy($id)
     {
-        $dele =goodtype::destroy($id);
-        //判断是否删除成功
-        if ($dele) {
-            flash()->overlay('删除成功', '1');
-            return redirect('admin/goodtypeindex');
+        $gtv = goodtypeval::where('gtt_id',$id)->first();
+        if($gtv == null){
+            $dele =goodtype::destroy($id);
+            //判断是否删除成功
+            if ($dele) {
+                flash()->overlay('删除成功', '1');
+                return redirect('admin/goodtypeindex');
+            }else{
+                flash()->overlay('删除失败', '5');
+                return redirect('admin/goodtypeindex');
+            }
         }else{
-            flash()->overlay('删除失败', '5');
+            flash()->overlay('删除失败,该属性名下还有属性值', '5');
             return redirect('admin/goodtypeindex');
         }
+       
     }
 }

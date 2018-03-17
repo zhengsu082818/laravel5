@@ -40,5 +40,11 @@ class RouteServiceProvider extends ServiceProvider
         $router->group(['namespace' => $this->namespace], function ($router) {
             require app_path('Http/routes.php');
         });
+
+        //设置前台路由文件
+         $router->group(['namespace'=>$this->namespace],function($router){
+            require app_path('Http/home_routes.php');
+        });
+        
     }
 }
