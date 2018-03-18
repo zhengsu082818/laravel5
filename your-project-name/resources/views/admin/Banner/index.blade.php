@@ -43,7 +43,7 @@
           @foreach ($banner as $v)
               <tr>
                 <td style="text-align: center;">{{$v->id}}</td>
-                <td style="text-align: center;"><img src='{{ URL::asset("storage/uploads/$v->img") }}''></td>
+                <td style="text-align: center;"><img src='{{ URL::asset("storage/uploads/$v->img") }}' style="width: 20px;height: 20px;"></td>
                 <td style="text-align: center;">{{$v->created_at}}</td>
                 <td style="text-align: center;">
                    @if($v->static === '启用')

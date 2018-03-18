@@ -44,7 +44,7 @@
                   <select name='' >
                     <option>请选择分类名</option>
                     @foreach ($data as $k => $v) 
-                    <option value="{{$v['name']}}">{{$v['name']}}</option>
+                    <option value="{{$v['id']}}">{{$v['name']}}</option>
                     @endforeach
                   </select>
                   <br> 

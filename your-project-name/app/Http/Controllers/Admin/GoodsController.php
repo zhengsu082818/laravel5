@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Good;
 use App\Models\Navig;
-
+//商品的增删改查控制器
 class GoodsController extends Controller
 {
     /**

@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Goodtypeval;
 use App\Models\Goodtype;
 use App\Models\Good;
-
+//商品属性值控制器
 class GoodtypevalsController extends Controller
 {
       // 编写验证规则

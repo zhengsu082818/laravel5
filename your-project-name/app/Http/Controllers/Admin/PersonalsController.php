@@ -13,7 +13,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Personal;
 
 class PersonalsController extends Controller
-
 {
     /**
      * Display a listing of the resource.

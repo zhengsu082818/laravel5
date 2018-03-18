@@ -11,15 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // 加载后台主页面
 Route::get('/admin/welcome', function(){
 	return view('admin.zhuye');
 });
 
+// 加载前台主页面
+Route::get('/', function(){
+	return view('home.login');
+});
 //登录路由
 Route::get('auth/login', 'Auth\AuthController@getLogin');//加载登录
 Route::post('auth/login', 'Auth\AuthController@postLogin');//执行登录
@@ -144,6 +148,8 @@ Route::post('admin/permission/update/{id}', 'Admin\PermissionsController@update'
 //删除权限
 Route::get('admin/permission/destroy/{id}', 'Admin\PermissionsController@destroy');
 
+
+
 //加载商品属性值添加页
 Route::get('admin/goodtypevalcreate', 'Admin\GoodtypevalsController@create');
 //执行添加
@@ -155,6 +161,8 @@ Route::post('admin/goodtypevalupdate/{id}', 'Admin\GoodtypevalsController@update
 //执行删除
 Route::get('admin/goodtypevaldestroy/{id}', 'Admin\GoodtypevalsController@destroy');
 
+
+	
 // 加载商品列表
 Route::get('admin/goodindex', 'Admin\GoodsController@index');
 //加载商品添加页
