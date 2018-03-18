@@ -56,7 +56,7 @@
               <label for="L_email" class="layui-form-label" style="width: 100px;">
                   <span class="x-red">*</span>图片
               </label>
-              <img src="/storage/uploads/{{$good->img}}" style="width:100px;height:100px;" id="cc">
+              <img src="/storage/uploads/goods/{{$good->img}}" style="width:100px;height:100px;" id="cc">
           </div>
           <div class="layui-form-item">
               <label for="username" class="layui-form-label" style="width: 100px;">
@@ -137,7 +137,7 @@
            $name = res.data.src;
            // alert($name);  
            $('#img').val($name);
-            $('#cc').attr('src',"/storage/uploads/"+res.data.src);
+            $('#cc').attr('src',"/storage/uploads/goods"+res.data.src);
           }
           ,error: function(){
             

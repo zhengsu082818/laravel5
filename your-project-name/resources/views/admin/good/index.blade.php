@@ -53,7 +53,7 @@
                 <td style="text-align: center;">{{$data[$v->gt_id]}}</td>
                 <td style="text-align: center;">{{$v->goodtypevals->gtv_name}}</td>
                 <td style="text-align: center;">{{$v->title}}</td>
-                <td style="text-align: center;"><img src='{{ URL::asset("storage/uploads/$v->img") }}'></td>
+                <td style="text-align: center;"><img src='{{ URL::asset("storage/uploads/goods/$v->img") }}'></td>
                 <td style="text-align: center;">{{$v->price}}</td>
                 <td style="text-align: center;">{{$v->nums}}</td>
                 <td style="text-align: center;">{{$v->created_at}}</td>

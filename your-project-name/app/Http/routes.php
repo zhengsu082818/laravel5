@@ -111,6 +111,10 @@ Route::get('admin/goodtypeedit/{id}', 'Admin\GoodtypesController@edit');
 Route::post('admin/goodtypeupdate/{id}', 'Admin\GoodtypesController@update');
 //执行删除
 Route::get('admin/goodtypedestroy/{id}', 'Admin\GoodtypesController@destroy');
+//ajax三级联动1
+Route::get('admin/goodtypeSjld1','Admin\GoodtypesController@goodtypeSjld1');
+//ajax三级联动2
+Route::get('admin/goodtypeSjld2','Admin\GoodtypesController@goodtypeSjld2');
 
 
 //加载商品属性值

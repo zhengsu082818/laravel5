@@ -18,7 +18,7 @@
           <cite>商品属性管理</cite>
         </a>
         <a>
-          <cite>修改商品属性</cite>
+          <cite>修改属性名</cite>
         </a>
       </span>
       
@@ -36,15 +36,15 @@
           {{csrf_field()}}
          
           <div class="layui-form-item">
-              <label for="L_email" class="layui-form-label" style="width: 100px;">
-                  <span class="x-red">*</span>所属分类
+              <label for="L_email" class="layui-form-label" style="width: 150px;">
+                  <span class="x-red">*</span>所属三级分类
               </label>
               <div class="layui-input-inline">
                   <input type="text"  name=""  class="layui-input" value="{{$name2->name}}" disabled="disabled" style="background: #efefe0">
               </div>
           </div>
           <div class="layui-form-item">
-              <label for="username" class="layui-form-label" style="width: 100px;">
+              <label for="username" class="layui-form-label" style="width: 150px;">
                   <span class="x-red">*</span>属性名
               </label>
                <div class="layui-input-inline">
@@ -58,7 +58,7 @@
               </div> 
           </div>
           <div class="layui-form-item">
-              <label for="L_repass" class="layui-form-label" style="width: 100px;">
+              <label for="L_repass" class="layui-form-label" style="width: 150px;">
               </label>
               <button  class="layui-btn">
                   修改

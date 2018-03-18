@@ -57,7 +57,7 @@ class GoodtypesController extends Controller
      */
     public function create()
     {
-        $data = Navig::where('depth','2')->get()->toArray();
+        $data = Navig::where('depth','0')->get()->toArray();
         return view('admin.goodtype.create' ,['data' => $data]);
     }
 
@@ -69,17 +69,17 @@ class GoodtypesController extends Controller
      */
     public function store(Request $request)
     {
-
+        if($request->one_id==0 || $request->two_id==0 || $request->nav_id==0){
+            flash()->overlay('添加失败,请选择类别', '5');
+            return back();
+        }
         $this->validate($request,$this->rules,$this->messages);
         $input=$request->except('_token');
-        $gt_name = $input['gt_name'];
-        $nav_name = $input['flname'];
-        $list = Navig::where('name',$nav_name)->first()->id;
-        // dd($list);
         $gt = new goodtype;
-        $gt->nav_id = $list;
-
-        $gt->gt_name =  $gt_name;
+        $gt->one_id =  $input['one_id'];
+        $gt->two_id =  $input['two_id'];
+        $gt->nav_id =  $input['nav_id'];
+        $gt->gt_name = $input['gt_name'];
         $gt->save();
         
         flash()->overlay('添加成功', '1');
@@ -165,5 +165,19 @@ class GoodtypesController extends Controller
             return redirect('admin/goodtypeindex');
         }
        
+    }
+
+    //执行三级联动1
+    public function goodtypeSjld1(Request $request){
+        $all = navig::where('parent_id',$request->id)->get()->toArray();
+
+        return ['code'=>0,'msg'=>'','data'=>$all];
+    }
+    
+    //执行三级联动2
+    public function goodtypeSjld2(Request $request){
+        $all2 = navig::where('parent_id',$request->id)->get()->toArray();
+
+        return ['code'=>0,'msg'=>'','data'=>$all2];
     }
 }

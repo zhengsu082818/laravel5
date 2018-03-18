@@ -60,7 +60,6 @@
                     
                   </select>
               </div>
-          
           </div>
           <div class="layui-form-item">
               <label for="username" class="layui-form-label" style="width: 100px;">
@@ -165,7 +164,7 @@
            $name = res.data.src;
            // alert($name);  
            $('#img').val($name);
-            $('#cc').attr('src',"/storage/uploads/"+res.data.src);
+            $('#cc').attr('src',"/storage/uploads/goods"+res.data.src);
             $("#cc").css("width","100px","height","100px");
           }
           ,error: function(){
