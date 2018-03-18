@@ -80,7 +80,7 @@ class GoodsController extends Controller
               // 文件上传成功设置新文件名
               $filename = time().rand(1,9999).'.'.$ext;
               // 文件上传移动文件
-              $path = $filed->move('storage/uploads/goods',$filename);
+              $path = $filed->move('/storage/uploads/good/',$filename);
         }
         return ['code'=>0,'msg'=>'','data'=>["src"=>$filename]];
        
@@ -94,6 +94,7 @@ class GoodsController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         if($request->nav_id==0 || $request->gt_id==0 || $request->gtv_id==0){
             flash()->overlay('添加失败,请选择类别', '5');
             return back();

@@ -127,10 +127,22 @@
               <label for="username" class="layui-form-label" style="width: 100px;">
                   <span class="x-red">*</span>商品详情
               </label>
-               <div class="layui-input-inline">
-                  <textarea name="content" class="layui-textarea"></textarea>
-              </div>
+              <div class="col-sm-10"> 
+                @include('vendor.UEditor.head')  
+                <!-- 加载编辑器的容器 -->  
+                <script id="container" name="content" type="text/plain" style='width:600px;height:200px;margin-left: -15px;'>  
+                   
+                </script>  
+                <!-- 实例化编辑器 -->  
+                <script type="text/javascript">  
+                    var ue = UE.getEditor('container');  
+                    ue.ready(function(){  
+                        ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');   
+                    });  
+                </script>  
+              </div>  
           </div>
+
 
           <div class="layui-form-item">
               <label for="L_repass" class="layui-form-label" style="width: 100px;">
@@ -164,7 +176,7 @@
            $name = res.data.src;
            // alert($name);  
            $('#img').val($name);
-            $('#cc').attr('src',"/storage/uploads/goods"+res.data.src);
+            $('#cc').attr('src',"/storage/uploads/good/"+res.data.src);
             $("#cc").css("width","100px","height","100px");
           }
           ,error: function(){

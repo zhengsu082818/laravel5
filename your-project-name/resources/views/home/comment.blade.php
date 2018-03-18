@@ -216,7 +216,7 @@
                                       <a href="">更多 > </a>
                                     </div>
                                     <p>
-                                        <a href="" class="font-color">洁面</a>
+                                        <a href="{{url('home/prolistindex')}}" class="font-color">洁面</a>
                                         <a href="" >卸妆</a>
                                         <a href="" class="font-color">爽肤水</a>
                                         <a href="" class="font-color">面霜</a>
