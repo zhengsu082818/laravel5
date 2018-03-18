@@ -1,7 +1,7 @@
 <?php
 namespace App\Models;
 use Baum\Node;
-
+use App\Models\Good;
 /**
 * Navig
 */
@@ -31,6 +31,18 @@ class Comment extends Node {
      public function homeuser()
     {
         return $this->belongsTo('App\Models\Homeuser','uid','id');
+    }
+
+    public function getSidAttribute($value)
+    {
+        $a = Good::all();
+        // dd($a);
+        $array = [];
+        foreach($a as $v){
+           $array[$v['id']] = $v['title'];
+           // dd($array[$v['id']]);
+        }
+        return $array[$value];
     }
      
  
@@ -121,9 +133,10 @@ class Comment extends Node {
   // to hook your own callbacks/observers into this events:
   // http://laravel.com/docs/5.0/eloquent#model-events
   // 
+    }
  
   
 
-}
+
 
 

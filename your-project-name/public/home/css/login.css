@@ -1,0 +1,163 @@
+body,div,img{
+	margin:0;
+	padding:0;
+}
+.logo{
+	width:1090px;
+	height:100px;
+	border-bottom:1px solid #eee;
+	margin: auto;
+}
+.logo .one{
+	width:220px;
+	margin-top: 26px;
+}
+.logo .two{
+	/*margin-left:200px;*/
+	float: right;
+}
+.content{
+	width: 1090px;
+	/*height:500px;*/
+	background: #F8F8F8;
+	margin: auto;
+}
+.content div{
+	width: 800px;
+	/*height: 500px;*/
+	margin:auto;
+}
+.content div img{
+	margin-top:140px;
+}
+.content div .login{
+	float: right;
+	width: 340px;
+	/*height:340px;*/
+	border: 1px solid #ddd;
+	/*margin-right: 30px;*/
+	margin-top: 60px;
+}
+.content .login div{
+	width: 340px;
+	height: 38px;
+	border-bottom: 1px solid #ddd;
+}
+.content .login div h3{
+	font-size: 18px;
+	margin-left: 50px;
+	color:#E31436;
+}
+.content .login div h3 span{
+	font-size: 12px;
+	margin-left: 30px;
+	color:#000;
+}
+.content .login div h3 a{
+	font-size: 12px;
+	color:#5EB8F1;
+}
+.content .login .Login_yan{
+	width: 340px;
+	/*height: 244px;*/
+	background-color: #fff;
+}
+.content .login .Login_yan .Login_yanzheng{
+	width: 270px;
+	/*height: 283px;*/	
+	/*border: 1px solid red;*/
+	margin: 0 auto;
+}
+.content .login .Login_yan .Login_yanzheng span a{
+	font-size: 14px;
+	color:#000;
+	text-decoration: none;
+	float: right;
+	margin: 10px 0; 
+}
+.content .login .Login_yan .Login_yanzheng span a:hover{
+	color:#E31436;
+}
+.content .login .Login_yan .Login_yanzheng input{
+	width: 264px;
+	height: 30px;
+	/*float: left;*/
+	/*margin-bottom: 18px;*/
+	margin-top: 22px;
+}
+.content .login .Login_yan .Login_yanzheng button{
+	width: 100px;
+	height: 36px;
+	float: right;
+	margin-top: 22px;
+
+}
+.content .login .Login_yan .Login_yanzheng .erge{
+	width: 164px;
+	height: 30px;
+	float: right;
+}
+.content .login .Login_yan .Login_yanzheng .denglu{
+	width: 270px;
+	height: 36px;
+	background-color: #E31436;
+	color:#fff;
+	border: 0;
+	margin-top: 22px;
+	margin-bottom: 24px;
+}
+.content .login .Login_yan .Login_yanzheng p{
+	font-size: 12px;
+	color:#aaa;
+	
+}
+.content .login .Login_yan .Login_yanzheng p a{
+	font-size: 12px;
+	color:#aaa;
+	text-decoration: none;
+	margin-left:50px;
+}
+.content .login .Login_yan .Login_yanzheng p a:hover{
+	color:#E31436;
+}
+/*底*/
+.foot-two-box{
+	width: 100%;
+	height: 160px;
+	box-sizing: border-box;
+	background: #fff;
+}
+.foot-two-box .foot-two-cont{
+	width: 1090px;
+	height: 160px;
+	margin:10px auto;
+	text-align: center;
+}
+.foot-two-box .foot-two-cont p{
+	width: 900px;
+	height: 40px;
+	margin:0 auto;
+}
+.foot-two-box .foot-two-cont p a{
+	line-height: 40px;
+	font-size: 13px;
+	color: #000;
+	text-decoration: none;
+}
+.foot-two-box .foot-two-cont p span{
+	line-height: 40px;
+	font-size: 13px;
+	color: #000;
+	margin: 0 10px;
+}
+.foot-two-box .foot-two-cont p a:hover{
+	text-decoration:underline;
+}
+.foot-two-box .foot-two-cont div{
+	width: 900px;
+	height: 40px;
+	margin:0 auto;
+}
+.foot-two-box .foot-two-cont div img{
+	margin:5px 10px;
+}

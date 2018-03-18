@@ -7,6 +7,7 @@ use App\Models\Comment;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Homeuser;
+use App\Models\Good;
 use Baum\Node;
 class Commentcontroller extends Controller
 {
@@ -17,6 +18,8 @@ class Commentcontroller extends Controller
      */
     public function index(Request $request)
     {
+        // $a = Good::all();
+        // dd($a);
         // 接受传的name值
        $keywords= $request->name;
         // dd( $keywords);
@@ -26,7 +29,6 @@ class Commentcontroller extends Controller
             $count = Comment::where('comment','like',"%$keywords%")->count();
        }else{
             $homeuser = Comment::orderBy('id','desc')->with('homeuser')->paginate(10);
-            // dd($homeuser->toArray());
             $count = Comment::count();
        }
        // 加载主页面并传参数
@@ -51,10 +53,10 @@ class Commentcontroller extends Controller
      */
     public function store(Request $request)
     {
-        // $root = Comment::create(['sid'=>'1','uid'=>'1','comment'=>'wwww','reply'=>'wwwwwww']);
-        // $root1 = $root -> children() ->create(['sid'=>'1','uid'=>'1','comment'=>'wwww1','reply'=>'wwwwwww1']);
-        // $root2 = $root1 -> children() ->create(['sid'=>'1','uid'=>'1','comment'=>'wwww2','reply'=>'wwwwwww2']);
-        // $root3= $root2 -> children() ->create(['sid'=>'1','uid'=>'1','comment'=>'wwww3','reply'=>'wwwwwww3']);
+        // $root = Comment::create(['sid'=>'2','uid'=>'1','comment'=>'wwww','reply'=>'wwwwwww']);
+        // $root1 = $root -> children() ->create(['sid'=>'2','uid'=>'1','comment'=>'wwww1','reply'=>'wwwwwww1']);
+        // $root2 = $root1 -> children() ->create(['sid'=>'2','uid'=>'1','comment'=>'wwww2','reply'=>'wwwwwww2']);
+        // $root3= $root2 -> children() ->create(['sid'=>'2','uid'=>'1','comment'=>'wwww3','reply'=>'wwwwwww3']);
         // $root11 = Comment::create(['sid'=>'2','uid'=>'2','comment'=>'qqq','reply'=>'qqq']);
         // $root12 = $root11 -> children() ->create(['sid'=>'2','uid'=>'2','comment'=>'wwww12','reply'=>'wwwwwww12']);
         // $root13 = $root12 -> children() ->create(['sid'=>'2','uid'=>'2','comment'=>'wwww13','reply'=>'wwwwwww13']);

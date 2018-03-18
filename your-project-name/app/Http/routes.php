@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.index');
 });
 
 // 加载后台主页面
@@ -75,7 +75,7 @@ Route::post('navig/tupiana','Admin\NavigController@tupiana');
 Route::get('navig/index/id/{id}', 'Admin\NavigController@Index');
 
 //加载首页轮播页面
-Route::get('admin/bannerindex', 'Admin\BannersController@Index');
+Route::get('admin/bannerindex', 'Admin\BannersController@index');
 //加载首页轮播添加页面
 Route::get('admin/bannercreate', 'Admin\BannersController@create');
 //加载首页轮播修改页面
@@ -90,7 +90,7 @@ Route::post('admin/bannerupdate/{id}', 'Admin\BannersController@update');
 Route::post('admin/banneruplode', 'Admin\BannersController@uplode');
 
 //加载个人收货地址页面
-Route::get('admin/addressindex', 'Home\AddresController@Index');
+Route::get('admin/addressindex', 'Home\AddresController@index');
 
 // 加载商品评论页面
 Route::get('admin/comment','Admin\Commentcontroller@index');
@@ -102,3 +102,14 @@ Route::post('admin/commentupdate/{id}','Admin\Commentcontroller@edit');
 
 
 
+//加载登录页面
+Route::get('authindex/login','Authindex\AuthindexController@store');
+// 登录成功
+Route::post('authindex/index','Authindex\AuthindexController@create');
+// 点击退出跳转
+Route::get('authindex/out','Authindex\AuthindexController@show');
+// 加载注册页面
+Route::get('authindex/register','Authindex\AuthindexController@edit');
+Route::post('authindex/update','Authindex\AuthindexController@update');
+// 找回密码路由
+Route::get('authindex/password','Authindex\AuthindexController@destroy');

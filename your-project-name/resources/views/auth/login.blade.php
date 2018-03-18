@@ -4,9 +4,8 @@
 @section('title', '后台登录-考拉')
 
 @section('css')
-
-  
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
 @endsection
 <body @section('class', 'class="login-bg"')>
@@ -39,7 +38,7 @@
                 </ul>
             </div>
         @endif
-        
+     @include('flash::message')
     </div>
     @endsection
 

@@ -17,4 +17,9 @@ class Good extends Model
     {
         return $this->belongsTo('App\Models\Goodtypeval','gtv_id','id');
     }
+
+    public function comment()
+    {
+        return $this->hasMany('App\Models\Comment','sid','id');
+    }
 }
