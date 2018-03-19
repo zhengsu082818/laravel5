@@ -174,7 +174,7 @@
           ,field:'file'//设置字段名 控制器接受
           ,done: function(res){
            $name = res.data.src;
-           // alert($name);  
+           // alert($name);
            $('#img').val($name);
             $('#cc').attr("src","/storage/uploads/shopping/"+$name);
             $("#cc").css("width","100px","height","100px");

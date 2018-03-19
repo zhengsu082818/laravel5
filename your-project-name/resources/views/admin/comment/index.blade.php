@@ -27,7 +27,6 @@
           <input type="text" name="name"  placeholder="请输入关键字" autocomplete="off" class="layui-input" value="{{$keywords?$keywords:''}}">
           <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
         </form>
-        <!--  -->
          <a href="{{url('admin/commentstore')}}" style="color:#fff;"><span class="x-left layui-btn" style="line-height:40px">添加数据</span></a>
         <span class="x-right layui-btn" style="line-height:40px">共有数据：<a href="javascript:;" style="color:#fff;">{{$count}}</a>  条</span>
       <table class="layui-table">

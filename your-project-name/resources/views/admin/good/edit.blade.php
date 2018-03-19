@@ -149,6 +149,9 @@
            // alert($name);  
            $('#img').val($name);
             $('#cc').attr("src","/storage/uploads/shopping/"+res.data.src);
+
+            $("#cc").css("width","100px","height","100px");
+
           }
           ,error: function(){
             
