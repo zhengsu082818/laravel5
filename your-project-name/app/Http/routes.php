@@ -109,6 +109,7 @@ Route::post('authindex/index','Authindex\AuthindexController@create');
 Route::get('authindex/out','Authindex\AuthindexController@show');
 // 加载注册页面
 Route::get('authindex/register','Authindex\AuthindexController@edit');
+
 Route::post('authindex/update','Authindex\AuthindexController@update');
 // 找回密码路由
 Route::get('authindex/password','Authindex\AuthindexController@destroy');
@@ -144,8 +145,7 @@ Route::get('admin/goodtypevaledit/{id}', 'Admin\GoodtypevalsController@edit');
 Route::post('admin/goodtypevalupdate/{id}', 'Admin\GoodtypevalsController@update');
 //删除属性值
 Route::get('admin/goodtypevaldestroy/{id}', 'Admin\GoodtypevalsController@destroy');
-//执行ajax二级联动
-Route::get('admin/goodtypevalejld', 'Admin\GoodtypevalsController@ejld');
+
 
 
 //加载职位管理列表

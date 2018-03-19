@@ -27,6 +27,7 @@ class AuthindexController extends Controller
      */
     public function create(Request $request)
     {
+        // dd($request->all());
         // 编写验证规则
             $this->validate($request, [
                 'phone' => 'required', 'password' => 'required','captcha'=>'required|captcha'
@@ -43,9 +44,10 @@ class AuthindexController extends Controller
                  flash()->overlay('账号不存在','5');
                  return back();
             }
+            $password = bcrypt($a['password']);
         // 查看数据库和表单提交密码
-            $c = Homeuser::where('password',$a['password'])->first();  
-        // dd($c); 
+            $c = Homeuser::where('password',$password)->first();  
+            dd($c); 
             if(!$a['password'] = $c){
                  flash()->overlay('密码不正确','5');
                  return back();
@@ -61,7 +63,7 @@ class AuthindexController extends Controller
         // 存入session
             $request->session()->put('phone',$request->phone); 
         // 加载模板文件
-            return view('home.index');
+           return redirect('/');
     }
     /**
      * Store a newly created resource in storage.
@@ -111,8 +113,9 @@ class AuthindexController extends Controller
     public function update(Request $request)
     {
     // 接受表单数据
-        $input = $request->all();
-        // dd($input);
+        $input = $request->only(['phone', 'password','captcha']);
+      
+       
     // 编写验证规则
         $this->validate($request, [
             'phone' => 'required|regex:/^1[34578][0-9]{9}$/|max:11',
@@ -133,7 +136,7 @@ class AuthindexController extends Controller
         $home->password = bcrypt($request->password);
         $home->save();
     // 添加到数据库跳转到登录页面
-        return view('home.login');
+        return redirect('authindex/login');
     }
 
     /**

@@ -8,6 +8,7 @@ li{
 a{
 	text-decoration: none;
 }
+
 /*开头*/
 .header{
 	width: 100%;
@@ -24,7 +25,7 @@ a{
 .header-cont .hc-box1{
 	width: 200px;
 	height: 30px;
-	/*background: red;*/
+	background: red;
 	float: left;
 }
 .hc-box1 span{
@@ -304,39 +305,45 @@ a{
 	cursor: pointer;
 	position: relative;
 }
-.cbl{
+.ce-box{
+	width: 1090px;
+	height: 400px;
+
+/*	background: red;*/
+}
+.ce-box .cbl{
 	width: 160px;
 	height: 400px;
 	border-bottom: 1px solid #000;
-	display: none;
 	position:absolute;
 	top:41px;
 	z-index: 10;
+	display:none;
 }
-.dhxg .dhxg1:hover .cbl{
+.dhxg .dhxg1:hover .ce-box .cbl{
 	display: block;
 }
-.cbl li{
+.ce-box .cbl li{
 	width: 160px;
 	height: 40px;
 	background: rgba(15,15,15,0.82);
 	box-sizing: border-box;
 	cursor: pointer;
 }
-.cbl li img{
+.ce-box .cbl li img{
 	float: left;
 	height: 22px;
     color: #929496;
   	margin:9px 8px 0 25px;
     width: 22px;
 }
-.cbl li span{
+.ce-box .cbl li span{
 	display: inline-block;
 	margin:9px 0 0 9px;
 	font-size: 15px;
 	color: #fff;
 }
-.cbl li span:nth-child(3){
+.ce-box .cbl li span:nth-child(3){
 	color: #929496;
 }
 .cbl li:hover{
@@ -359,34 +366,7 @@ a{
 	background:#fff;
 	float: left;
 	border-bottom: 1px solid #000;
-}
-.cbl .erji .erji-2{
-	width: 265px;
-	height: 400px;
-	background: #f6f6f6;
-	float: left;
-	padding: 0 10px;
-	text-align: center;
-	border-bottom: 1px solid #000;
-	border-right: 1px solid #000;
-}
-.cbl .erji .erji-2 img{
-	width: 246px;
-	height: 246px;
-	margin: 15px 10px 0 10px;
-	float: left:;
-	text-align: center;
-}
-.cbl .erji .erji-2 a{
-	display: block;
-	width: 246px;
-	height: 110px;
-	margin: 275px 10px 10px 10px;
-}
-.cbl .erji .erji-2 a img{
-	width: 244px;
-	height: 100px;
-	float: right;
+
 }
 .erji .erji-1 .ej-cont{
 	width: 500px;
@@ -407,23 +387,19 @@ a{
 }
 .ej-cont p{
 	width: 500px;
-	height: 30px;
-	
 }
 .ej-cont p a{
 	font-size: 12px;
 	color: #666;
 	margin-left: 10px;
-	line-height: 30px;
+
 	display: inline-block;
 }
 .ej-cont p a:first-child{
 	margin:0;
 }
-.ej-cont .font-color{
-	color: #e31436;
-}
-.cbl li:hover .erji{
+
+.ce-box .cbl li:hover .erji{
 	display: block;
 }
 .dhxg .dhxg1 img{
@@ -441,7 +417,6 @@ a{
 	display: inline-block;
 	margin-left: 18px;
 }
-
 .dhxg .cbl2{
 	width: 700px;
 	height: 40px;
@@ -473,7 +448,6 @@ a{
 .dhxg .dhxg-last{
 	clear: both;
 }
-
 /*分类表头*/
 .fjx{
 	width: 100%;

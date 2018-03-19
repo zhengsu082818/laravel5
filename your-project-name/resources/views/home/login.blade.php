@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>register</title>
+	<title>网易考拉海购--登录</title>
+	<link rel="icon" href="{{asset('static/images/index_images/log_tb.jpg')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('home/css/register.css')}}">
 	<script src="{{asset('etsc/lib/layui/layui.js')}}" charset="utf-8"></script>
 </head>
 <body>
- <form action="{{url('authindex/index')}}" method="post">
- 	{{ csrf_field() }}
+ 
+ 	
  	@include('flash::message')
 	<div class="logo">
-		<a href="index.html"><img class="one" src="../home/images/logres_images/login1.jpg"></a>
+		<a href="{{url('/')}}"><img class="one" src="../home/images/logres_images/login1.jpg"></a>
 		<img class="two" src="../home/images/logres_images/login2.jpg">
 	</div>
 	<div class="content">
@@ -24,6 +25,8 @@
 						<a href="{{url('authindex/register')}}">去注册></a>
 					</h3>
 				</div>
+				<form action="{{url('authindex/index')}}" method="post">
+					{{ csrf_field() }}
 				<div class="Login_yan" >
 					<div class="Login_yanzheng">
 						<input type="" name="phone" placeholder="请输入手机号" >
@@ -46,6 +49,7 @@
 				                    @endforeach
 				        @endif
 						<button class="denglu" >登录</button>
+						</form>
 						<p style="float:left;">我同意<a href=""><<服务条款>></a>和<a href=""><<网易隐私政策>></a></p>
 					</div>
 				</div>
@@ -91,6 +95,6 @@
 			</div>
 		</div>
 	</div>
- </form>
+ 
 </body>
 </html>

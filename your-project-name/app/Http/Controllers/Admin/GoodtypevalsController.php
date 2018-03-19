@@ -40,12 +40,12 @@ class GoodtypevalsController extends Controller
         $where=[];
         $keywords = Request()->gtv_name;
         if ($keywords != '') {
-            $goodtypeval = goodtypeval::where('gtv_name','like',"%$keywords%")->orderBy('gtt_id','desc')->paginate(10);
+            $goodtypeval = goodtypeval::where('gtv_name','like',"%$keywords%")->orderBy('gt_id','desc')->paginate(10);
             $count = goodtypeval::where('gtv_name','like',"%$keywords%")->count();
 
         }else{
-            $goodtypeval = goodtypeval::orderBy('gtt_id','desc')->paginate(10);
-
+            $goodtypeval = goodtypeval::orderBy('gt_id','desc')->paginate(10);
+            // dd($goodtypeval);
             $count = goodtypeval::count();
         }
         return view('admin.goodtypeval.index',['goodtypeval'=>$goodtypeval,'count'=>$count,'keywords'=>$keywords ,'data'=>$data]);
@@ -168,9 +168,5 @@ class GoodtypevalsController extends Controller
         
     }
 
-    //执行二级联动
-    public function ejld(Request $request){
-        $all = goodtype::where('nav_id',$request->id)->get()->toArray();
-        return ['code'=>0,'msg'=>'','data'=>$all];
-    }
+    
 }

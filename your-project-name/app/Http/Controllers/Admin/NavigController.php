@@ -37,11 +37,11 @@ class NavigController extends Controller
         $where=[];
         $keywords = Request()->name;
         if ($keywords != '') {
-            $Navig = Navig::where('name','like',"%$keywords%")->orderBy('lft')->paginate(10);
+            $Navig = Navig::where('name','like',"%$keywords%")->orderBy('rgt','desc')->paginate(10);
             $count = Navig::where('name','like',"%$keywords%")->count();
 
         }else{
-            $Navig = Navig::orderBy('lft')->paginate(10);
+            $Navig = Navig::orderBy('rgt','desc')->paginate(19);
             $count = Navig::count();
 
         }

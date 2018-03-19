@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\Navig;
 
 class IndexsController extends Controller
 {
@@ -16,7 +17,8 @@ class IndexsController extends Controller
      */
     public function index()
     {
-        return view('home.index');
+        $list = navig::get()->toHierarchy();
+        return view('home.index',['list'=>$list]);
     }
 
     /**

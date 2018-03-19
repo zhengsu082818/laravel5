@@ -340,7 +340,7 @@ a{
 .ce-box .cbl li span:nth-child(3){
 	color: #929496;
 }
-.sty{
+.ce-box .cbl li:hover{
 	background:#555 url(../images/index_images/bg-1.png) no-repeat;
 }
 
@@ -360,34 +360,7 @@ a{
 	background:#fff;
 	float: left;
 	border-bottom: 1px solid #000;
-}
-.cbl .erji .erji-2{
-	width: 265px;
-	height: 400px;
-	background: #f6f6f6;
-	float: left;
-	padding: 0 10px;
-	text-align: center;
-	border-bottom: 1px solid #000;
-	border-right: 1px solid #000;
-}
-.cbl .erji .erji-2 img{
-	width: 246px;
-	height: 246px;
-	margin: 15px 10px 0 10px;
-	float: left:;
-	text-align: center;
-}
-.cbl .erji .erji-2 a{
-	display: block;
-	width: 246px;
-	height: 110px;
-	margin: 275px 10px 10px 10px;
-}
-.cbl .erji .erji-2 a img{
-	width: 244px;
-	height: 100px;
-	float: right;
+
 }
 .erji .erji-1 .ej-cont{
 	width: 500px;
@@ -400,7 +373,7 @@ a{
 .ej-cont div a{
 	font-size: 14px;
 	color:#333;
-	line-height: 39px;
+	line-height: 33px;
 	font-weight: bold;
 }
 .ej-cont div a:last-child{
@@ -408,22 +381,18 @@ a{
 }
 .ej-cont p{
 	width: 500px;
-	height: 30px;
 	
 }
 .ej-cont p a{
 	font-size: 12px;
 	color: #666;
 	margin-left: 10px;
-	line-height: 30px;
 	display: inline-block;
 }
 .ej-cont p a:first-child{
 	margin:0;
 }
-.ej-cont .font-color{
-	color: #e31436;
-}
+
 .ce-box .cbl li:hover .erji{
 	display: block;
 }

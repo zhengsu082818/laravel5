@@ -97,27 +97,8 @@ $(function(){
   })
 
 
-  //侧边栏
-  $('.ce-box .cbl li').mouseover(function(){
-  	 var zs = $(this);
-  	 zs.css("background","#555 url(../images/index_images/bg-1.png) no-repeat").siblings().css("background", "rgba(15,15,15,0.82)");
-    }).mouseout(function(){
-	   var zs = $(this);
-	   zs.css("background", "rgba(15,15,15,0.82)");
-  })
 
   
-
-  //热门品牌换一换
-  var pinpai = 0;
-  $('.day-title .hyh').click(function(){
-    if(pinpai == $('.day-box .rm ul').length-1){
-      pinpai = 0;
-    }else{
-      pinpai++;
-    }
-    $('.day-box .rm ul').eq(pinpai).show().siblings('.day-box .rm ul').hide();
-  })
 
   //美妆换一换
   var mzhyh = 0;

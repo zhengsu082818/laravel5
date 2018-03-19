@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Models\Navig;
 class ShopgoodsController extends Controller
 {
     /**
@@ -16,7 +17,8 @@ class ShopgoodsController extends Controller
      */
     public function index()
     {
-        return view('home.shop_good');
+        $list = navig::get()->toHierarchy();
+        return view('home.shop_good',['list'=>$list]);
     }
 
     /**
