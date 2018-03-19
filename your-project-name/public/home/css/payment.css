@@ -1,0 +1,192 @@
+.contents{
+	width:100%;
+	height:auto;
+	
+}
+.con_con{
+	padding:45px;
+	width:1000px;
+	height:auto;
+	margin:0 auto;
+	background-color:#fff;
+	position:relative;
+}
+.con_con b{
+	position: relative;
+    top: 6px;
+    left: 0;
+	display:inline-block;
+	width: 24px;
+    height: 24px;
+	background-image:url(../image/orderGroup_24.png);
+	background-position:-2px -360px;
+	margin-right:10px;
+}
+.con_con strong{
+	font-size:18px;
+}
+.con_con p{
+	color:#333;
+	line-height:10px;
+	font-size:12px;
+	margin-top:10px;
+}
+.con_con hr{
+	margin:20px 0;
+	border:none;
+	border-top:1px solid #eee;
+}
+.pos_dingdan{
+	position:absolute;
+	top:120px;
+	right:45px;
+}
+.pos_dingdan a{
+	color:#aaa;
+	font-size:14px;
+}
+.pos_dingdan a:hover{
+	text-decoration:underline;
+}
+.con_zhifu{
+	width:100%;
+	height:auto;
+	margin-top:24px;
+}
+.zhifu_con{
+	padding:10px 45px;
+	width:1000px;
+	height:auto;
+	margin:0 auto;
+	background-color:#fff;
+	position:relative;
+}
+.zhifu_con p{
+	line-height:30px;
+	font-size:14px;
+}
+.zhifu_con span{
+	font-size: 24px;
+    font-weight: bold;
+    color: #d12147;
+}
+.zhifu_con hr{
+	margin:10px 0;
+	border:none;
+	border-top:1px solid #eee;
+}
+.zhifu_con a{
+	float:right;
+	color:#999;
+}
+.zhifu_con a:hover{
+	color:#d12147;
+}
+.zhifu_con button{
+	position: relative;
+    margin-top: 20px;
+    width: 186px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #d12147;
+    cursor: pointer;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: "Microsoft YaHei";
+    border:none;
+}
+.cen{
+	text-align: center;
+}
+.cen_con{
+  /*  height: 40px;*/
+  padding:20px 0;
+    text-align: center;
+}
+.cen_con ul li{
+	display:inline-block;
+	border:2px solid #ccc;
+	border-radius:5px;
+}
+.cen_con input{
+	width:32px;
+	height:32px;
+	padding:4px;
+	border:none;
+	font-size:22px;
+}
+
+
+
+
+/*支付框*/
+.content{
+ width: 400px;
+ height: 50px;
+ margin: 30px auto;
+ 
+}
+.title{
+ font-family: '微软雅黑';
+ font-size: 16px;
+}
+.box{
+ width: 190px;
+ height: 30px;
+ border:1px solid #ccc;
+ margin-top: 10px;
+ line-height: 30px;
+}
+.content .box,.forget{
+ display: inline-block;
+}
+.content .forget{
+ width: 100px;
+ color:lightskyblue;
+ vertical-align: super;
+ font-size: 14px;
+}
+.box input.paw{
+ width: 30px;
+ height: 20px;
+ line-height: 20px;
+ margin-left: -9px;
+ border:none;
+ border-right: 1px dashed #ccc;
+ text-align: center;
+}
+.box input.paw:nth-child(1){
+ margin-left: 0;
+}
+.content .box .pawDiv:nth-child(6) input.paw{
+ border: none;
+}
+.content .box input.paw:focus{outline:0;}
+.content .box .pawDiv{
+ display: inline-block;
+ line-height: 30px;
+ width: 31px;
+ height: 31px;
+ margin-top: -2px;
+ float: left;
+}
+.point{
+ font-size: 14px;
+ color: #ccc;
+ margin: 5px 0;
+}
+.errorPoint{
+ color: red;
+ display: none;
+}
+.getPasswordBtn{
+ width: 100px;
+ height: 30px;
+ background-color: cornflowerblue;
+ font-size: 14px;
+ font-family: '微软雅黑';
+ color: white;
+ border: none;
+}

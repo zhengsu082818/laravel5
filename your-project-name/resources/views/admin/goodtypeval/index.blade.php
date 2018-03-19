@@ -48,6 +48,7 @@
                 <td style="text-align: center;">{{$data[$v->lei_id]}}</td>
                 <td style="text-align: center;">{{$v->goodtypes->gt_name}}</td>
                 <td style="text-align: center;">{{$v->gtv_name}}</td>
+
                 <td style="text-align: center;">{{$v->created_at}}</td>
                 <td class="td-manage" style="text-align: center;">
                   <a href='{{url("admin/goodtypevaledit/$v->id")}}' style="color:#fff;">

@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('/', function (){
     return view('home.index');
 });
@@ -88,6 +89,7 @@ Route::post('admin/bannerupdate/{id}', 'Admin\BannersController@update');
 Route::post('admin/banneruplode', 'Admin\BannersController@uplode');
 
 
+
 // 加载商品评论页面
 Route::get('admin/comment','Admin\Commentcontroller@index');
 // 添加数据
@@ -97,6 +99,19 @@ Route::get('admin/commentedit/{id}','Admin\Commentcontroller@show');
 Route::post('admin/commentupdate/{id}','Admin\Commentcontroller@edit');
 
 
+
+
+//加载登录页面
+Route::get('authindex/login','Authindex\AuthindexController@store');
+// 登录成功
+Route::post('authindex/index','Authindex\AuthindexController@create');
+// 点击退出跳转
+Route::get('authindex/out','Authindex\AuthindexController@show');
+// 加载注册页面
+Route::get('authindex/register','Authindex\AuthindexController@edit');
+Route::post('authindex/update','Authindex\AuthindexController@update');
+// 找回密码路由
+Route::get('authindex/password','Authindex\AuthindexController@destroy');
 
 
 // 加载商品属性
