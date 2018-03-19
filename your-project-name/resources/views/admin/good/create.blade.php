@@ -81,7 +81,7 @@
                   <span class="x-red">*</span>图片
               </label>
               <div class="layui-form-mid layui-word-aux">
-                <button type="button" class="layui-btn" id="test1">
+                <button type="button" class="layui-btn" id="tubiao">
                   <i class="layui-icon">&#xe67c;</i>上传图片
                 </button>
               </div>
@@ -169,14 +169,14 @@
         });
         //执行实例
         var uploadInst = upload.render({
-          elem: '#test1' //绑定id
+          elem: '#tubiao' //绑定id
           ,url: '{{ url("admin/gooduplode")}}'//上传接口到那个控制器
           ,field:'file'//设置字段名 控制器接受
           ,done: function(res){
            $name = res.data.src;
-           // alert($name);  
+           // alert($name);
            $('#img').val($name);
-            $('#cc').attr('src',"/storage/uploads/good/"+res.data.src);
+            $('#cc').attr("src","/storage/uploads/shopping"+$name);
             $("#cc").css("width","100px","height","100px");
           }
           ,error: function(){

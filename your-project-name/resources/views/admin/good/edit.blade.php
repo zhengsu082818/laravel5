@@ -56,7 +56,7 @@
               <label for="L_email" class="layui-form-label" style="width: 100px;">
                   <span class="x-red">*</span>图片
               </label>
-              <img src="/storage/uploads/goods/{{$good->img}}" style="width:100px;height:100px;" id="cc">
+              <img src="/storage/uploads/shopping/{{$good->img}}" style="width:100px;height:100px;" id="cc">
           </div>
           <div class="layui-form-item">
               <label for="username" class="layui-form-label" style="width: 100px;">
@@ -64,7 +64,7 @@
               </label>
               
               <div class="layui-form-mid layui-word-aux">
-                  <button type="button" class="layui-btn" id="test1">
+                  <button type="button" class="layui-btn" id="tubiao">
                 <i class="layui-icon">&#xe67c;</i>上传图片
               </button>
               </div>
@@ -105,7 +105,7 @@
                 @include('vendor.UEditor.head')  
                 <!-- 加载编辑器的容器 -->  
                 <script id="container" name="content" type="text/plain" style='width:600px;height:200px;margin-left: -15px;'>  
-                  
+                  {!!$good->content!!}
                 </script>  
                 <!-- 实例化编辑器 -->  
                 <script type="text/javascript">  
@@ -141,14 +141,15 @@
         });
          //执行实例
         var uploadInst = upload.render({
-          elem: '#test1' //绑定id
+          elem: '#tubiao' //绑定id
           ,url: '{{ url("admin/gooduplode")}}'//上传接口到那个控制器
           ,field:'file'//设置字段名 控制器接受
           ,done: function(res){
            $name = res.data.src;
            // alert($name);  
            $('#img').val($name);
-            $('#cc').attr('src',"/storage/uploads/goods"+res.data.src);
+            $('#cc').attr("src","/storage/uploads/shopping/"+res.data.src);
+            $("#cc").css("width","100px","height","100px");
           }
           ,error: function(){
             

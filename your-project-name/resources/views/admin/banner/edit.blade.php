@@ -112,7 +112,7 @@
            // $name = ;
            // alert($name);  
            $('#imgurl').val(res.data.src);
-           $('#cc').attr('src',"/storage/uploads/banner"+res.data.src);
+           // $('#cc').attr('src',"/storage/uploads/banner"+res.data.src);
           }
           ,error: function(){
             
