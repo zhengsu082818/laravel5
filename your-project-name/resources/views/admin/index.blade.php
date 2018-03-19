@@ -42,13 +42,14 @@
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>用户列表</cite>
                         </a>
-                    </li>
+                    </li >
                     <li>
                         <a _href="{{url('admin/personalindex')}}">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>用户收货地址</cite>
+                            <cite>个人收货地址</cite>
                         </a>
-                    </li>                 
+                    </li >
+                 
                 </ul>
             </li>
             
@@ -133,19 +134,13 @@
                         </a>
                     </li >
                     <li>
-                        <a _href="admin-role.html">
+                        <a _href="{{url('admin/role')}}">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>角色管理</cite>
+                            <cite>职位管理</cite>
                         </a>
                     </li >
                     <li>
-                        <a _href="admin-cate.html">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>权限分类</cite>
-                        </a>
-                    </li >
-                    <li>
-                        <a _href="admin-cate.html">
+                        <a _href="{{url('admin/permission')}}">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>权限管理</cite>
                         </a>

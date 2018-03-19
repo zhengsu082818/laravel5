@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+//管理后台用户控制器（登录注册验证）
 class AdminuserController extends Controller
 {  
 

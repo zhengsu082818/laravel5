@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/', function () {
+
+Route::get('/', function (){
     return view('home.index');
 });
 
@@ -71,8 +72,6 @@ Route::get('navig/destroy/{id}', 'Admin\NavigController@destroy');
 //执行图片上传
 Route::post('navig/tupiana','Admin\NavigController@tupiana');
 
-//加载分类列表
-Route::get('navig/index/id/{id}', 'Admin\NavigController@Index');
 
 //加载首页轮播页面
 Route::get('admin/bannerindex', 'Admin\BannersController@index');
@@ -89,8 +88,7 @@ Route::post('admin/bannerupdate/{id}', 'Admin\BannersController@update');
 // ajax图片上传
 Route::post('admin/banneruplode', 'Admin\BannersController@uplode');
 
-//加载个人收货地址页面
-Route::get('admin/addressindex', 'Home\AddresController@index');
+
 
 // 加载商品评论页面
 Route::get('admin/comment','Admin\Commentcontroller@index');
@@ -99,6 +97,7 @@ Route::get('admin/commentstore','Admin\Commentcontroller@store');
 // 加载回复页面
 Route::get('admin/commentedit/{id}','Admin\Commentcontroller@show');
 Route::post('admin/commentupdate/{id}','Admin\Commentcontroller@edit');
+
 
 
 
@@ -113,3 +112,89 @@ Route::get('authindex/register','Authindex\AuthindexController@edit');
 Route::post('authindex/update','Authindex\AuthindexController@update');
 // 找回密码路由
 Route::get('authindex/password','Authindex\AuthindexController@destroy');
+
+
+// 加载商品属性
+Route::get('admin/goodtypeindex', 'Admin\GoodtypesController@index');
+//加载商品属性添加页
+Route::get('admin/goodtypecreate', 'Admin\GoodtypesController@create');
+//执行添加
+Route::post('admin/goodtypestore', 'Admin\GoodtypesController@store');
+//加载商品属性修改页面
+Route::get('admin/goodtypeedit/{id}', 'Admin\GoodtypesController@edit');
+//执行修改
+Route::post('admin/goodtypeupdate/{id}', 'Admin\GoodtypesController@update');
+//执行删除
+Route::get('admin/goodtypedestroy/{id}', 'Admin\GoodtypesController@destroy');
+//ajax三级联动1
+Route::get('admin/goodtypeSjld1','Admin\GoodtypesController@goodtypeSjld1');
+//ajax三级联动2
+Route::get('admin/goodtypeSjld2','Admin\GoodtypesController@goodtypeSjld2');
+
+
+//加载商品属性值
+Route::get('admin/goodtypevalindex', 'Admin\GoodtypevalsController@index');
+//添加商品属性值
+Route::get('admin/goodtypevalcreate', 'Admin\GoodtypevalsController@create');
+//执行添加
+Route::post('admin/goodtypevalstore', 'Admin\GoodtypevalsController@store');
+//修改商品属性值
+Route::get('admin/goodtypevaledit/{id}', 'Admin\GoodtypevalsController@edit');
+//执行修改
+Route::post('admin/goodtypevalupdate/{id}', 'Admin\GoodtypevalsController@update');
+//删除属性值
+Route::get('admin/goodtypevaldestroy/{id}', 'Admin\GoodtypevalsController@destroy');
+//执行ajax二级联动
+Route::get('admin/goodtypevalejld', 'Admin\GoodtypevalsController@ejld');
+
+
+//加载职位管理列表
+Route::get('admin/role', 'Admin\RolesController@index');
+//加载职位添加页面
+Route::get('admin/role/create', 'Admin\RolesController@create');
+//执行职位添加页面
+Route::post('admin/role/store', 'Admin\RolesController@store');
+//加载职位修改页面
+Route::get('admin/role/edit/{id}', 'Admin\RolesController@edit');
+//执行职位修改页面
+Route::post('admin/role/update/{id}', 'Admin\RolesController@update');
+//删除职位
+Route::get('admin/role/destroy/{id}', 'Admin\RolesController@destroy');
+
+//加载权限管理列表
+Route::get('admin/permission', 'Admin\PermissionsController@index');
+//加载权限添加页面
+Route::get('admin/permission/create', 'Admin\PermissionsController@create');
+//执行添加页面
+Route::post('admin/permission/store', 'Admin\PermissionsController@store');
+//加载权限修改页面
+Route::get('admin/permission/edit/{id}', 'Admin\PermissionsController@edit');
+//执行权限修改
+Route::post('admin/permission/update/{id}', 'Admin\PermissionsController@update');
+//删除权限
+Route::get('admin/permission/destroy/{id}', 'Admin\PermissionsController@destroy');
+
+
+// 加载商品列表
+Route::get('admin/goodindex', 'Admin\GoodsController@index');
+//加载商品添加页
+Route::get('admin/goodcreate', 'Admin\GoodsController@create');
+//执行添加
+Route::post('admin/goodstore', 'Admin\GoodsController@store');
+//加载商品属性值修改页面
+Route::get('admin/goodedit/{id}', 'Admin\GoodsController@edit');
+//执行修改
+Route::post('admin/goodupdate/{id}', 'Admin\GoodsController@update');
+//执行删除
+Route::get('admin/gooddestroy/{id}', 'Admin\GoodsController@destroy');
+// ajax图片上传
+Route::post('admin/gooduplode', 'Admin\GoodsController@uplode');
+//ajax三级联动1
+Route::get('admin/goodSjld1','Admin\GoodsController@goodSjld1');
+//ajax三级联动2
+Route::get('admin/goodSjld2','Admin\GoodsController@goodSjld2');
+
+
+//加载用户中心收货地址主页
+Route::get('admin/personalindex', 'Admin\PersonalsController@index');
+

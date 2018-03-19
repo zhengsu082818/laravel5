@@ -5,5 +5,10 @@
       layer.msg('{!! $body !!}',{icon:{{$title}}}); 
     });    
      
+
  </script>
+
+
+
+
 

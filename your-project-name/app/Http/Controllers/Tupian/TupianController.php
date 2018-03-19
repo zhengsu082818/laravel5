@@ -23,6 +23,7 @@ class TupianController extends Controller
                          return back();
                 }else{
                     $destinationPath = $dest; //public 文件夹下面建 storage/uploads 文件夹
+                  
                     //修改图片后缀
                     $extension = $file->getClientOriginalExtension();
                     //随机上传的图片名称

@@ -16,10 +16,11 @@
           <cite>商品分类管理</cite>
         </a>
         <a>
-          <cite>侧边导航分类</cite>
+          <cite>商品分类列表</cite>
         </a>
+
         <a>
-          <cite>添加分类</cite>
+          <cite>添加类别</cite>
         </a>
       </span>
       
@@ -54,6 +55,12 @@
               </label>
               <div class="layui-input-inline">
                 <input type="text"  name="name"  class="layui-input" value="">
+              </div>
+              <div class="layui-form-mid layui-word-aux">
+                  <span class="x-red"></span>
+                  @if (count($errors) > 0)
+                    <span class="x-red">{{ $errors->first('name') }}</span>  
+                    @endif
               </div>
           </div>
           <div class="layui-form-item">

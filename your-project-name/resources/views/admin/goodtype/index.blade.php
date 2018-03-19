@@ -34,7 +34,6 @@
         @include('flash::message')
         <thead>
           <tr >
-            <th style="text-align: center;">ID</th>
             <th style="text-align: center;">所属分类</th>
             <th style="text-align: center;">属性名</th>
             <th style="text-align: center;">添加时间</th>
@@ -43,8 +42,13 @@
         <tbody>
           @foreach ($goodtype as $v)
               <tr>
-                <td style="text-align: center;">{{$v->id}}</td>
-                <td style="text-align: center;">{{$v->gt_id}}</td>
+                <td style="text-align: center;"> 
+                  <button class="layui-btn layui-btn-mini layui-btn-normal" value="">{{$data[$v->one_id]}}</button>
+                  <i class="layui-icon">&#xe602;</i>  
+                  <button class="layui-btn layui-btn-mini layui-btn-normal" value="">{{$data[$v->two_id]}}</button>
+                  <i class="layui-icon">&#xe602;</i>
+                  <button class="layui-btn layui-btn-mini layui-btn-normal" value="">{{$data[$v->nav_id]}}</button>
+                </td>
                 <td style="text-align: center;">{{$v->gt_name}}</td>
                 <td style="text-align: center;">{{$v->created_at}}</td>
                 <td class="td-manage" style="text-align: center;">
