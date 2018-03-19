@@ -29,12 +29,12 @@
 		<div class="content2-box">
 			<div class="tu">
 				<div class="datu">
-					<img src="../images/product_details/details1.jpg">
+					<img src="../home/images/product_details/details1.jpg">
 				</div>
 				<div class="xiaotu">
-					<a href=""><img src="../images/product_details/details1.jpg" style="margin-left: 90px;"></a>
-					<a href=""><img src="../images/product_details/details2.jpg"></a>
-					<a href=""><img src="../images/product_details/details3.jpg"></a>
+					<a href=""><img src="../home/images/product_details/details1.jpg" style="margin-left: 90px;"></a>
+					<a href=""><img src="../home/images/product_details/details2.jpg"></a>
+					<a href=""><img src="../home/images/product_details/details3.jpg"></a>
 				</div>
 			</div>
 			<div class="neirong">

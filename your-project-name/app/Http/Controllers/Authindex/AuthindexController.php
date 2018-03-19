@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Homeuser;
 use Illuminate\Support\Facades\Session;
+use Route;
 class AuthindexController extends Controller
 {
     /**
@@ -17,7 +18,7 @@ class AuthindexController extends Controller
      */
     public function index()
     {
-        
+        return view('home.index');
     }
 
     /**
@@ -61,7 +62,7 @@ class AuthindexController extends Controller
         // 存入session
             $request->session()->put('phone',$request->phone); 
         // 加载模板文件
-            return view('home.index');
+           return redirect('authindex/redirect');
     }
     /**
      * Store a newly created resource in storage.
@@ -133,7 +134,7 @@ class AuthindexController extends Controller
         $home->password = bcrypt($request->password);
         $home->save();
     // 添加到数据库跳转到登录页面
-        return view('home.login');
+        return redirect();
     }
 
     /**
@@ -145,5 +146,10 @@ class AuthindexController extends Controller
     public function destroy(Request $request)
     {
         return view('home.password');
+    }
+
+    public function login()
+    {
+        return view('home.login');
     }
 }

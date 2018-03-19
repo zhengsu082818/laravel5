@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="../home/css/register.css">
 </head>
 <body>
-  <form method="get" action="http://106.ihuyi.com/webservice/sms.php?method=Submit">
+  <form method="get" action="/authindex/password">
 	<div class="logo">
 		<a href="index.html"><img class="one" src="../home/images/logres_images/login1.jpg"></a>
 		<img class="two" src="../home/images/logres_images/login2.jpg">
@@ -26,7 +26,6 @@
 						<input id="zphone" type="button" value=" 发送手机验证码 " style="width: 50%;height: 35px;margin-left: 10px;">
 						<button class="denglu" >提交</button>
 						<p>我同意<a href=""><<服务条款>></a>和<a href=""><<网易隐私政策>></a></p>
-						
 					</div>
 				</div>
 			</div>

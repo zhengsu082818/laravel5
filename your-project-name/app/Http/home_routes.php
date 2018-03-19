@@ -1,7 +1,4 @@
 <?php
-
-
-
 //加载前台首页
 Route::get('/', 'Home\IndexsController@index');
 
