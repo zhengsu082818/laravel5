@@ -6,8 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="../home/css/register.css">
 </head>
 <body>
-  <form method="post" action="{{url('http://106.ihuyi.com/webservice/sms.php?method=Submit')}}">
-  		{{ csrf_field() }}
+  <form method="get" action="http://106.ihuyi.com/webservice/sms.php?method=Submit">
 	<div class="logo">
 		<a href="index.html"><img class="one" src="../home/images/logres_images/login1.jpg"></a>
 		<img class="two" src="../home/images/logres_images/login2.jpg">
@@ -23,8 +22,6 @@
 				<div class="Login_yan">
 					<div class="Login_yanzheng">
 						<input  type="text" name="phone"  placeholder="请输入手机号">
-						<!-- <input type="password" name="password" placeholder="请输入密码">
-						<input type="password" name="password_confirmation" placeholder="请再次输入密码"> -->
 						<input class="erge"  type="text" name="captcha"  placeholder="请输入短信验证码" style="float: left;width: 40%">
 						<input id="zphone" type="button" value=" 发送手机验证码 " style="width: 50%;height: 35px;margin-left: 10px;">
 						<button class="denglu" >注册</button>
