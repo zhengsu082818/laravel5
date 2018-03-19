@@ -11,6 +11,7 @@
 	<meta name="description" content="jQuery实现省、市、区三级联动的代码网上应该已经挺多了，今天群里一名成员投了篇关于省、市、区三级联动的实现代码，不同的一点是他将代码片段封装成了jQuery插件。" />
 
 	<link rel="stylesheet" href="{{asset('static/css/My Receiving address.css')}}" type="text/css">
+	<link href="{{asset('static/css/Province_css/city.css')}}" rel="stylesheet" type="text/css" />
 	<script type="text/javascript" src="{{asset('static/js/MyAccount management.js')}}"></script>
 	<script type="text/javascript" src="{{asset('static/js/My Receiving address.js/jquery.min_1.js')}}"></script>
 	<script type="text/javascript" src="{{asset('static/js/My Receiving address.js/city.min.js')}}"></script>
@@ -41,89 +42,121 @@
 			<div class="ybcshdz">
 				<p>
 					<b>已保存收货地址</b><span>(共 1 条)</span>
-					<a href="">+新增收货地址</a>
+					<a href="javascript:void(0);" onclick="naver('A')">+新增收货地址</a>
 				</p>
+				<table cellspacing="0px" cellspadding="0px" style="width:900px;border:1px solid #ccc;cursor: pointer;margin-top: 20px;	" >
+				<thead>
+					<tr style="line-height: 30px; ">
+						<th style="width:100px;">收货人</th>
+						<th>收货地址</th>
+						<th>联系电话</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach ($personals as $v)
+					<tr class="table_nav"  >
+						<th>{{$v->name}}</th>
+						<th>{{$v->shdz}}</th>
+						<th>{{$v->phone}}</th>
+						<th><a href="">修改 </a><a href='{{url("home/personal/destroy/$v->id")}}'> 删除</a></th>
+				
+					</tr>
+					
+					@endforeach 
+					<style type="text/css">
+						.table_nav{
+							width:208px;
+							height:40px;
+							line-height:40px;
+							/*border-bottom:1px solid #ccc;*/
+						}
+						.table_nav:hover{
+							width:208px;
+							height:40px;
+							line-height:40px;
+							background-color: #ccc;
+							/*border-bottom:1px solid #ccc;*/
+						}
+						.table_nav tr th{
+                             line-height:30px;
+						}
+					</style>
+				</tbody>
+
+			</table>
+
 			</div>
-			<div class="cht">
-				<p>收货人</p>
-				<p>收货地址</p>
-				<p style="margin-left: 250px;">联系电话</p>
-				<p style="margin-left: 150px;">操作</p>
-			</div>
-			<div class="xx">
-				<div>
-					<p>收货人</p>
-				</div>
-				<div>
-					<p>山西省 运城市 盐湖区 人民北路鑫鹏大厦 </p>
-				</div>
-				<div style="margin-left: 90px;">
-					<p>137****9028</p>
-					<p style="margin-left: 20px;">0359-</p>
-				</div>				
-				<div style="margin-left: 120px;">
-					<p class="teshu"><a href="">修改</a>  |  <a href="">删除</a></p>
-				</div>
-				<div style="margin-left: 110px;">
-					<p style="width: 80px; height: 16px; color:red;border:1px solid #e31436; border-radius: 10px 10px;"><span style="margin-left: 17px; font-size: 12px;">默认地址</span></p>
-				</div>
-			</div>
+         </div>
+	<div style="clear: both;" id="A"></div>
 			<div class="xzshdi">
 				<b>新增收货地址</b>
 				<div style="margin-top: 30px; margin-left: 96px;">
 					<span>
 						<b>*</b> 所在地区
-			            <div class="infolist" style="margin-left:20px; margin-top: -14px;">
-			                <div class="liststyle" style="margin-left:0;">
-			                    <span id="Province" >
-			                        <i>请选择省份</i>
-			                        <ul style="height:200px;overflow:auto;">
-			                            <li><a href="javascript:void(0)" alt="请选择省份">请选择省份</a></li>
-			                        </ul>
-			                        <input type="hidden" name="cho_Province" value="请选择省份">
-			                    </span>
-			                    <span id="City">
-			                        <i>请选择城市</i>
-			                       <ul style="height:200px;overflow:auto;">
-			                            <li><a href="javascript:void(0)" alt="请选择城市">请选择城市</a></li>
-			                        </ul>
-			                        <input type="hidden" name="cho_City" value="请选择城市">
-			                    </span>
-			                    <span id="Area">
-			                        <i>请选择地区</i>
-			                        <ul style="height:200px;overflow:auto;">
-			                            <li><a href="javascript:void(0)" alt="请选择地区">请选择地区</a></li>
-			                        </ul>
-			                        <input type="hidden" name="cho_Area" value="请选择地区">
-			                    </span>
-			                </div>
-			            </div>
-					</span>
-				</div>
-				<div style="margin-left: 94px;">
-					<span class="ziti">
-						<b>*</b> 详细地址<input type="text" style="height: 70px;" placeholder="无需重复填写省市区,小于75个字">
-					</span>
-				</div>
-				<div>
-					<span class="ziti">
-						<b>*</b> 收货人姓名<input type="text" placeholder="不能为昵称、X先生、X小姐等，请使用真实姓名">
-					</span>
-				</div>
-				<div style="margin-left: 94px;">
-					<span class="ziti">
-						<b>*</b> 手机号码<input type="text" placeholder="手机号码、电话号码必须填一项">
-					</span>
-				</div>
-				
-				<div style="margin-left: 132px;">
-					<span class="ziti">
-						邮箱<input type="text" placeholder="接受订单提醒邮件，便于您及时了解订单状态">
-					</span>
-				</div>
-				<a href=""><button>保存新地址</button></a>
-			</div>
-		</div>
+						@include('flash::message')
+					<form method="post" action='{{ url("home/personal/store")}}'>
+						{{csrf_field()}}
+						            <div class="infolist" style="margin-left:20px; margin-top: -14px;">
+						                <div class="liststyle" style="margin-left:0;">
+						                    <span id="Province" >
+						                        <i>请选择省份</i>
+						                        <ul style="height:200px;overflow:auto;">
+						                            <li><a href="javascript:void(0)" alt="请选择省份">请选择省份</a></li>
+						                        </ul>
+						                        <input type="hidden" name="cho_Province" value="请选择省份">
+						                    </span>
+						                    <span id="City">
+						                        <i>请选择城市</i>
+						                       <ul style="height:200px;overflow:auto;">
+						                            <li><a href="javascript:void(0)" alt="请选择城市">请选择城市</a></li>
+						                        </ul>
+						                        <input type="hidden" name="cho_City" value="请选择城市">
+						                    </span>
+						                    <span id="Area">
+						                        <i>请选择地区</i>
+						                        <ul style="height:200px;overflow:auto;">
+						                            <li><a href="javascript:void(0)" alt="请选择地区">请选择地区</a></li>
+						                        </ul>
+						                        <input type="hidden" name="cho_Area" value="请选择地区">
+						                    </span>
+						                </div>
+						            </div>
+								</span>
+							</div>
+							<div style="margin-left: 94px;">
+								<span class="ziti">
+									<b>*</b> 详细地址<input type="text" name="shdz" style="height: 70px;" placeholder="无需重复填写省市区,小于75个字">
+								</span>
+							</div>
+							<div>
+								<span class="ziti">
+									<b>*</b> 收货人姓名<input type="text" name="name" placeholder="请使用真实姓名">
+								</span>
+							</div>
+							<div style="margin-left: 94px;">
+								<span class="ziti">
+									<b>*</b> 手机号码<input type="text" name="phone" placeholder="请输入收货人手机号码">
+								</span>
+							</div>
+							
+							<div style="margin-left: 132px;">
+								<span class="ziti">
+									邮箱<input type="text" name="email" placeholder="接受订单提醒邮件，便于您及时了解订单状态">
+								</span>
+							</div>
+							<button>保存新地址</button>
+						</div>
+					</form>	
+		
+		<script>
+//设置锚点
+function naver(id){
+  var obj = document.getElementById(id);
+  var oPos = obj.offsetTop;
+  return window.scrollTo(0, oPos-36);
+}
+</script>
 	</div>
 	
 	@endsection

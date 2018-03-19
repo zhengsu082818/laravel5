@@ -119,6 +119,7 @@ a{
 	color:#e31436;
 
 }
+
 .header-cont ul li .per_cen{
 	width: 85px;
 	box-shadow: 0 1px 1px rgba(0,0,0,0.12);
@@ -449,9 +450,11 @@ a{
 	color: #333;
     font-size: 15px;
     font-weight: bold;
+    transition:all 0.3s;
 }
 .dhxg .cbl2 li a:hover{
 	color:#e31436;
+	
 	text-decoration: none;
 }
 .dhxg2{
@@ -505,7 +508,7 @@ a{
 }
 .Chinese .Chinese-lie{
 	width: 1090px;
-	height: 400px;
+	/*height: 400px;*/
 }
 .Chinese .Chinese-lie ul{
 	float: left;
@@ -527,7 +530,7 @@ a{
 }
 .Chinese .ybcshdz{
 	width: 940px;
-	height: 50px;
+	/*height: 50px;*/
 	float:right;
 	/*border:1px solid red;*/
 }
@@ -595,10 +598,10 @@ a{
 }
 .Chinese .xzshdi{
 	width: 940px;
-	height: 500px;
+	/*height: 500px;*/
 	/*border:1px solid red;*/
 	margin-top: 50px;
-	float:right;
+	
 }
 .Chinese .xzshdi b{
 	font-size: 14px;

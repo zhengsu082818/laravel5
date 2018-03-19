@@ -45,7 +45,7 @@
                     <img src="{{asset('static/images/index_images/sanjiao.png')}}">
                     <div class="per_cen">
                         <a href="My Account management.html">完善个人信息</a>
-                        <a href="My Receiving address.html">管理收货地址</a>
+                        <a href="{{url('home/personal')}}">管理收货地址</a>
                         
                     </div>
                 </li>
