@@ -137,9 +137,7 @@ return [
         Overtrue\LaravelLang\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Toplan\PhpSms\PhpSmsServiceProvider::class,
-        Toplan\Sms\SmsManagerServiceProvider::class, 
-
+        
 
         /*
          * Application Service Providers...
@@ -203,8 +201,7 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
-        'PhpSms' => Toplan\PhpSms\Facades\Sms::class,
-        'SmsManager' => Toplan\Sms\Facades\SmsManager::class,
+        
     ],
 
 ];

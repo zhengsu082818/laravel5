@@ -15,6 +15,7 @@ class CreateGoodtypevalsTable extends Migration
         if (!Schema::hasTable('goodtypevals')) {
             Schema::create('goodtypevals', function (Blueprint $table) {
                 $table->increments('id');
+                 $table->tinyInteger('lei_id');
                 $table->tinyInteger('gtt_id');
                 $table->string('gtv_name',32);
                 $table->timestamps();

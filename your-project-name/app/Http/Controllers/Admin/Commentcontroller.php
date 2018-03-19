@@ -29,6 +29,7 @@ class Commentcontroller extends Controller
             $count = Comment::where('comment','like',"%$keywords%")->count();
        }else{
             $homeuser = Comment::orderBy('id','desc')->with('homeuser')->paginate(10);
+            // dd($homeuser);
             $count = Comment::count();
        }
        // 加载主页面并传参数
@@ -71,6 +72,7 @@ class Commentcontroller extends Controller
     {
         // 接受id传过来的数据
         $comment = Comment::findOrFail($id);
+        // dd($comment->toArray());
         // baum安装包方法 查看这个节点以上所有的父节点
         $parent = $comment->getAncestors();
         // dd($comment->getAncestors()->toArray());

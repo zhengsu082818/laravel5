@@ -80,7 +80,7 @@ class GoodsController extends Controller
               // 文件上传成功设置新文件名
               $filename = time().rand(1,9999).'.'.$ext;
               // 文件上传移动文件
-              $path = $filed->move('/storage/uploads/good/',$filename);
+              $path = $filed->move('storage/uploads/shopping',$filename);
         }
         return ['code'=>0,'msg'=>'','data'=>["src"=>$filename]];
        

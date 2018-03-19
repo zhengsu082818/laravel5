@@ -24,7 +24,7 @@
 						<input  type="text" name="phone"  placeholder="请输入手机号">
 						<input class="erge"  type="text" name="captcha"  placeholder="请输入短信验证码" style="float: left;width: 40%">
 						<input id="zphone" type="button" value=" 发送手机验证码 " style="width: 50%;height: 35px;margin-left: 10px;">
-						<button class="denglu" >注册</button>
+						<button class="denglu" >提交</button>
 						<p>我同意<a href=""><<服务条款>></a>和<a href=""><<网易隐私政策>></a></p>
 						
 					</div>
