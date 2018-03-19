@@ -42,25 +42,24 @@
               <th style="text-align: center;">图片</th>
                <th style="text-align: center;">价格</th>
                 <th style="text-align: center;">库存数量</th>
+                <th style="text-align: center;">商品详情</th>
             <th style="text-align: center;">添加时间</th>
             <th style="text-align: center;">操作</th></tr>
         </thead>
         <tbody>
-          @foreach ($goods as $v)
+          @foreach($goods as $v)
               <tr>
                 <td style="text-align: center;">{{$v->id}}</td>
-                <td style="text-align: center;">{{$v->navig->name}}</td>
+                <td style="text-align: center;">{{$v->nav_id}}</td>
                 <td style="text-align: center;">{{$data[$v->gt_id]}}</td>
-                <td style="text-align: center;">{{$v->goodtypevals->gtv_name}}</td>
+                <td style="text-align: center;">{{$v->gtv_id}}</td>
                 <td style="text-align: center;">{{$v->title}}</td>
-                <td style="text-align: center;"><img src='{{ URL::asset("/storage/uploads/good/$v->img") }}'></td>
+                <td style="text-align: center;"><img src='{{ URL::asset("storage/uploads/shopping/$v->img") }}' style="width: 50px;height: 50px;"></td>
                 <td style="text-align: center;">{{$v->price}}</td>
                 <td style="text-align: center;">{{$v->nums}}</td>
+                 <td style="text-align: center;">{!!$v->content!!}</td>
                 <td style="text-align: center;">{{$v->created_at}}</td>
                 <td class="td-manage" style="text-align: center;">
-                  <a href='{{url("/admin/goodedit/$v->id")}}' style="color:#fff;">
-                    <button class="layui-btn layui-btn-mini  layui-btn-normal">查看商品详情</button>
-                  </a>
                   <a href='{{url("/admin/goodedit/$v->id")}}' style="color:#fff;">
                     <button class="layui-btn layui-btn-mini">修改</button>
                   </a>

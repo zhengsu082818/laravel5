@@ -50,15 +50,11 @@
                 <td style="text-align: center;">
                    @if($v->static === '启用')
                   <span class="layui-btn layui-btn-mini layui-btn-normal ">启用</span>
-
                   @endif
                   @if($v->static === '禁用')
                   <span class="layui-btn layui-btn-mini layui-btn-warm ">禁用</span>
                   @endif
                 </td>
-                 
-               
-
                 <td class="td-manage" style="text-align: center;">
                   <a href='{{url("admin/banneredit/$v->id")}}' style="color:#fff;">
                     <button class="layui-btn layui-btn-mini">修改</button>

@@ -23,10 +23,18 @@
     <div class="header">
         <div class="header-cont">
             <div class="hc-box1">
+                @if(session('phone')==null)
                 <span>考拉欢迎你！</span>
-                <a href="login.html" class="log">登录</a>
+                <a href="{{url('authindex/login')}}" class="log">登录</a>
                 <b>丨</b>
                 <a href="register.html">注册</a>
+                @endif
+                @if(!session('phone')==null)
+                 <span>您好！</span>
+                <a href="" class="log">{{session('phone')}}</a>
+                <b>丨</b>
+                <a href="{{url('authindex/out')}}">退出</a>
+                @endif
             </div>
             <div class="hc-box2">
                 <img src="{{asset('static/images/index_images/phone2.png')}}" class="shouji">

@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('/', function (){
     return view('home.index');
 });
@@ -92,6 +93,18 @@ Route::post('admin/bannerupdate/{id}', 'Admin\BannersController@update');
 // ajax图片上传
 Route::post('admin/banneruplode', 'Admin\BannersController@uplode');
 
+// 加载导航
+Route::get('admin/navindex','Admin\NavController@index');
+// 加载导航添加页面
+Route::get('admin/navcreate','Admin\NavController@create');
+// 导航添加
+Route::post('admin/navstore','Admin\NavController@store');
+// 删除导航
+Route::get('admin/navdestroy/{id}','Admin\NavController@destroy');
+// 加载修改页面
+Route::get('admin/navedit/{id}','Admin\NavController@edit');
+// 执行修改
+Route::post('admin/navupdate/{id}','Admin\NavController@update');
 
 // 加载商品评论页面
 Route::get('admin/comment','Admin\Commentcontroller@index');
@@ -102,6 +115,23 @@ Route::get('admin/commentedit/{id}','Admin\Commentcontroller@show');
 Route::post('admin/commentupdate/{id}','Admin\Commentcontroller@edit');
 
 
+
+
+//加载登录页面
+Route::get('authindex/login','Authindex\AuthindexController@store');
+// 登录成功
+Route::post('authindex/index','Authindex\AuthindexController@create');
+// 点击退出跳转
+Route::get('authindex/out','Authindex\AuthindexController@show');
+// 加载注册页面
+Route::get('authindex/register','Authindex\AuthindexController@edit');
+Route::post('authindex/update','Authindex\AuthindexController@update');
+// 注册成功跳转登录
+Route::get('authindex/success','Authindex\AuthindexController@login');
+// 找回密码路由
+Route::get('authindex/password','Authindex\PasswordController@index');
+// 加载主页
+Route::get('authindex/redirect','Authindex\AuthindexController@index');
 
 
 // 加载商品属性
