@@ -11,9 +11,10 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function (){
+    return view('home.index');
+});
+
 
 // 加载后台主页面
 Route::get('/admin/welcome', function(){
@@ -115,11 +116,26 @@ Route::get('admin/goodtypeedit/{id}', 'Admin\GoodtypesController@edit');
 Route::post('admin/goodtypeupdate/{id}', 'Admin\GoodtypesController@update');
 //执行删除
 Route::get('admin/goodtypedestroy/{id}', 'Admin\GoodtypesController@destroy');
+//ajax三级联动1
+Route::get('admin/goodtypeSjld1','Admin\GoodtypesController@goodtypeSjld1');
+//ajax三级联动2
+Route::get('admin/goodtypeSjld2','Admin\GoodtypesController@goodtypeSjld2');
 
 
 //加载商品属性值
 Route::get('admin/goodtypevalindex', 'Admin\GoodtypevalsController@index');
-
+//添加商品属性值
+Route::get('admin/goodtypevalcreate', 'Admin\GoodtypevalsController@create');
+//执行添加
+Route::post('admin/goodtypevalstore', 'Admin\GoodtypevalsController@store');
+//修改商品属性值
+Route::get('admin/goodtypevaledit/{id}', 'Admin\GoodtypevalsController@edit');
+//执行修改
+Route::post('admin/goodtypevalupdate/{id}', 'Admin\GoodtypevalsController@update');
+//删除属性值
+Route::get('admin/goodtypevaldestroy/{id}', 'Admin\GoodtypevalsController@destroy');
+//执行ajax二级联动
+Route::get('admin/goodtypevalejld', 'Admin\GoodtypevalsController@ejld');
 
 
 //加载职位管理列表
@@ -162,6 +178,7 @@ Route::post('admin/goodtypevalupdate/{id}', 'Admin\GoodtypevalsController@update
 Route::get('admin/goodtypevaldestroy/{id}', 'Admin\GoodtypevalsController@destroy');
 
 
+
 	
 // 加载商品列表
 Route::get('admin/goodindex', 'Admin\GoodsController@index');
@@ -177,8 +194,11 @@ Route::post('admin/goodupdate/{id}', 'Admin\GoodsController@update');
 Route::get('admin/gooddestroy/{id}', 'Admin\GoodsController@destroy');
 // ajax图片上传
 Route::post('admin/gooduplode', 'Admin\GoodsController@uplode');
-//ajax二级联动
-Route::get('admin/creategood','Admin\GoodsController@creategood');
+//ajax三级联动1
+Route::get('admin/goodSjld1','Admin\GoodsController@goodSjld1');
+//ajax三级联动2
+Route::get('admin/goodSjld2','Admin\GoodsController@goodSjld2');
+
 
 //加载用户中心收货地址主页
 Route::get('admin/personalindex', 'Admin\PersonalsController@index');

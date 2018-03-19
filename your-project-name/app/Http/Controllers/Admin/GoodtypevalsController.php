@@ -10,7 +10,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Goodtypeval;
 use App\Models\Goodtype;
 use App\Models\Good;
-//商品属性值控制器
+
+use App\Models\Navig;
+
+
 class GoodtypevalsController extends Controller
 {
       // 编写验证规则
@@ -21,7 +24,6 @@ class GoodtypevalsController extends Controller
     protected $messages =[
         "gtv_name.required"=>'属性值必填',
         "gtv_name.unique"=>'属性值重复',
-
         "gtv_name.max"=>'属性值过长',
     ];
     /**
@@ -31,19 +33,24 @@ class GoodtypevalsController extends Controller
      */
     public function index()
     {
-        
+        $nav = Navig::get(['id','name'])->toArray();
+        $data = [];
+        foreach ($nav as $k => $v) {
+           $data[$v['id']]=$v['name'];
+        }
+       
         $where=[];
         $keywords = Request()->gtv_name;
         if ($keywords != '') {
-            $goodtypeval = goodtypeval::where('gtv_name','like',"%$keywords%")->orderBy('id','desc')->paginate(10);
+            $goodtypeval = goodtypeval::where('gtv_name','like',"%$keywords%")->orderBy('gtt_id','desc')->paginate(10);
             $count = goodtypeval::where('gtv_name','like',"%$keywords%")->count();
 
         }else{
-            $goodtypeval = goodtypeval::orderBy('id','desc')->paginate(10);
+            $goodtypeval = goodtypeval::orderBy('gtt_id','desc')->paginate(10);
 
             $count = goodtypeval::count();
         }
-        return view('admin.goodtypeval.index',['goodtypeval'=>$goodtypeval,'count'=>$count,'keywords'=>$keywords]);
+        return view('admin.goodtypeval.index',['goodtypeval'=>$goodtypeval,'count'=>$count,'keywords'=>$keywords ,'data'=>$data]);
 
     }
 
@@ -54,9 +61,8 @@ class GoodtypevalsController extends Controller
      */
     public function create()
     {
-        $gt = goodtype::get();
-  
-       return view('admin.goodtypeval.create',['gt'=>$gt]);
+        $nav = Navig::where('depth',2)->get()->toArray();
+       return view('admin.goodtypeval.create',['nav'=>$nav]);
     }
 
     /**
@@ -67,19 +73,18 @@ class GoodtypevalsController extends Controller
      */
     public function store(Request $request)
     {
+        if($request->lei_id==0 || $request->gtt_id==0){
+            flash()->overlay('添加失败,请选择分类', '5');
+            return back();
+        }
         $this->validate($request,$this->rules,$this->messages);
+
         $input=$request->except('_token');
-
-        $gtv_name = $input['gtv_name'];
-
-        $id = $input['name'];
-        $list = goodtype::where('gt_name',$id)->first()->id;
-        // dd($list);
         $gtv = new goodtypeval;
-        $gtv->gtt_id = $list;
-        $gtv->gtv_name =  $gtv_name;
+        $gtv->lei_id = $input['lei_id'];
+        $gtv->gtt_id = $input['gtt_id'];
+        $gtv->gtv_name = $input['gtv_name'];
         $gtv->save();
-
         flash()->overlay('添加成功', '1');
         return redirect("admin/goodtypevalindex");
 
@@ -106,13 +111,15 @@ class GoodtypevalsController extends Controller
      */
     public function edit($id)
     {
-
         $goodtypeval =  goodtypeval::with('goodtypes')->findOrFail($id);
-        // dd( $goodtypeval->toArray());
-        $gt = goodtype::get();
-        // dd($gt->toArray());
-        
-        return view('admin.goodtypeval.edit',['goodtypeval'=>$goodtypeval,'gt'=>$gt]);
+        $gtvid =  goodtypeval::findOrFail($id)->lei_id;//获取分类的id
+        $nav_name = Navig::where('id',$gtvid)->get()->toArray();
+        //通过分类id获取分类名
+        $data = [];
+        foreach ($nav_name as $k => $v) {
+            $data[$v['id']] = $v['name'];
+        }
+        return view('admin.goodtypeval.edit',['goodtypeval'=>$goodtypeval,'data'=>$data]);
     }
 
     /**
@@ -124,16 +131,9 @@ class GoodtypevalsController extends Controller
      */
     public function update(Request $request,$id)
     {
+        $this->validate($request,$this->rules,$this->messages);
         $input = $request->except('_token');
-       
-        $idd = $input['name'];
-        $idd2 = goodtype::where('gt_name',$idd)->first()->id;
-
-        $update = goodtypeval::where('id',$id)->update([
-            'gtt_id'=>$idd2,
-            'gtv_name'=>$input['gtv_name'],
-        ]);
-        
+        $update = goodtypeval::where('id',$id)->update($input);
         //判断是否修改成功
         if($update) {
             flash()->overlay('修改成功', '1');
@@ -168,5 +168,11 @@ class GoodtypevalsController extends Controller
             return redirect('admin/goodtypevalindex');
         }
         
+    }
+
+    //执行二级联动
+    public function ejld(Request $request){
+        $all = goodtype::where('nav_id',$request->id)->get()->toArray();
+        return ['code'=>0,'msg'=>'','data'=>$all];
     }
 }

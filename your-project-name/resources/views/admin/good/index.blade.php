@@ -50,18 +50,21 @@
               <tr>
                 <td style="text-align: center;">{{$v->id}}</td>
                 <td style="text-align: center;">{{$v->navig->name}}</td>
-                <td style="text-align: center;">{{$v->gt->gt_name}}</td>
+                <td style="text-align: center;">{{$data[$v->gt_id]}}</td>
                 <td style="text-align: center;">{{$v->goodtypevals->gtv_name}}</td>
                 <td style="text-align: center;">{{$v->title}}</td>
-                <td style="text-align: center;">{{$v->img}}</td>
+                <td style="text-align: center;"><img src='{{ URL::asset("/storage/uploads/good/$v->img") }}'></td>
                 <td style="text-align: center;">{{$v->price}}</td>
                 <td style="text-align: center;">{{$v->nums}}</td>
                 <td style="text-align: center;">{{$v->created_at}}</td>
                 <td class="td-manage" style="text-align: center;">
-                  <a href='{{url("admin/goodedit/$v->id")}}' style="color:#fff;">
+                  <a href='{{url("/admin/goodedit/$v->id")}}' style="color:#fff;">
+                    <button class="layui-btn layui-btn-mini  layui-btn-normal">查看商品详情</button>
+                  </a>
+                  <a href='{{url("/admin/goodedit/$v->id")}}' style="color:#fff;">
                     <button class="layui-btn layui-btn-mini">修改</button>
                   </a>
-                  <a href='{{url("admin/gooddestroy/$v->id")}}' style="color:#fff;">
+                  <a href='{{url("/admin/gooddestroy/$v->id")}}' style="color:#fff;">
                     <button class="layui-btn layui-btn-mini layui-btn-danger">删除</button>
                   </a>
                 </td>

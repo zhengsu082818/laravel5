@@ -150,6 +150,7 @@ return [
         Baum\Providers\BaumServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
+        Stevenyangecho\UEditor\UEditorServiceProvider::class,
 
 
     ],

@@ -38,21 +38,20 @@
          <input type="hidden" name="id" value="{{$goodtypeval->id}}">
           <div class="layui-form-item">
               <label for="L_email" class="layui-form-label" style="width: 100px;">
-                  <span class="x-red">*</span>所属属性名
+                  <span class="x-red">*</span>分类名
               </label>
               <div class="layui-input-inline">
-
-                  <select name='name'>
-                    @foreach ($gt as $v)
-                      <option value="{{$v->gt_name}}"  
-                        @if($goodtypeval->goodtypes->gt_name == $v->gt_name)
-                        selected
-                        @endif
-                        >{{$v->gt_name}}
-                      </option>
-                    @endforeach
-                  </select>
-
+                  <input type="text" name="" 
+                  class="layui-input" value="{{$data[$goodtypeval->lei_id]}}" disabled="disabled" style="background: #efefe0">
+              </div>
+          </div>
+          <div class="layui-form-item">
+              <label for="L_email" class="layui-form-label" style="width: 100px;">
+                  <span class="x-red">*</span>属性名
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" name="" 
+                  class="layui-input" value="{{$goodtypeval->goodtypes->gt_name}}" disabled="disabled" style="background: #efefe0">
               </div>
           </div>
           <div class="layui-form-item">
@@ -62,7 +61,12 @@
                <div class="layui-input-inline">
                   <input type="text" name="gtv_name"  class="layui-input" value="{{$goodtypeval->gtv_name}}">
               </div>
-                  
+              <div class="layui-form-mid layui-word-aux">
+                  <span class="x-red"></span>
+                  @if (count($errors) > 0)
+                    <span class="x-red">{{ $errors->first('gtv_name') }}</span>  
+                    @endif
+              </div> 
           </div>
           <div class="layui-form-item">
               <label for="L_repass" class="layui-form-label" style="width: 100px;">

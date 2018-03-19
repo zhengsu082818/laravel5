@@ -20,7 +20,7 @@ class CreateGoodsTable extends Migration
                 $table->tinyInteger('gtv_id');//属性值id
                 $table->string('title',255);//商品标题
                 $table->string('img',255);//商品图片
-                $table->tinyInteger('price');//商品价格
+                $table->decimal('price','11');//商品价格
                 $table->tinyInteger('nums');//商品库存数量
                 $table->string('content');//商品详情
                 $table->timestamps();

@@ -3,6 +3,7 @@
 @section('title', '考拉海购--后台主站')
 
 @section('css')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{asset('etsc/css/bootstrap.min.css')}}">
 @endsection
 
@@ -37,19 +38,20 @@
          
           <div class="layui-form-item">
               <label for="L_email" class="layui-form-label" style="width: 100px;">
-                  <span class="x-red">*</span>所属属性名
+                  <span class="x-red">*</span>所属分类名
               </label>
               <div class="layui-input-inline">
-                   <select name='name'>
-                    <option>请选择属性名</option>
-                    @foreach ($gt as $v)
-                      <option value="{{$v->gt_name}}"  
-                       
-                        >{{$v->gt_name}}
-                      </option>
+                  <select name='lei_id' lay-filter="test">
+                    <option value ="0">请选择三级类别</option>
+                    @foreach($nav as $v)
+                      <option value="{{$v['id']}}">{{$v['name']}}</option>
                     @endforeach
                   </select>
-                 
+              </div>
+              <div class="layui-input-inline">
+                  <select name="gtt_id"  id="ming">
+                    <option value ="0">请选择属性名</option>
+                  </select>
               </div>
           </div>
           <div class="layui-form-item">
@@ -78,5 +80,41 @@
 
     </div>
 @endsection
+
+
+@section('js')
+      <script>
+      layui.use(['form'], function(){
+         var $ = layui.$ ;
+         $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        var form = layui.form;
+        form.on('select(test)', function(data){
+         
+          $.ajax({
+            type:"GET",
+            url:'{{ url("admin/goodtypevalejld") }}?id='+data.value,
+            success:function(msg){
+              var ming = $("#ming");
+              ming.find("option").remove();
+
+              for(var i = 0; i<msg.data.length; i++){ 
+                ming.append("<option value='"+msg.data[i].id+"'>"+msg.data[i].gt_name+"</option>");
+              }
+             form.render('select'); 
+            },
+            error:function(data){
+
+            }
+          })
+        });
+  
+      });
+      </script>
+@endsection
+
 
 
