@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Models\Personal;
 use App\Http\Controllers\Controller;
 use App\Models\Homeuser;
+use App\Models\Navig;
 //管理前台用户控制器
 class HomeuserController extends Controller
 {
@@ -40,6 +41,7 @@ class HomeuserController extends Controller
      */
     public function create()
     {
+        
         $phone =session('phone');//获取当前用户的登录号
         // dd($phone);
         $personals =Homeuser::where('phone',$phone)->firstOrFail();//获取当前用户的完整数据

@@ -39,7 +39,7 @@ $(function(){
 	})
 	//自动轮播的实现
   function fade(){
- 		if(index1 == 5){
+ 		if(index1 == $('.banner-box ul li').length-1){
     	    index1 = 0;
  		}else{
  			index1++;
@@ -69,7 +69,7 @@ $(function(){
     //左箭头的方法
 	function fadeLeft(){
        if(index1 == 0){
-          index1 = 5;
+          index1 = $('.banner-box ul li').length-1;
        }else{
        	 index1--;
        }

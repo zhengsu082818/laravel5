@@ -21,7 +21,7 @@ class IndexsController extends Controller
     {
         $list = navig::get()->toHierarchy();//遍历商品导航
         $banner = banner::where('static','启用')->get();//遍历轮播图片
-        $bancount = banner::count();//轮播个数
+        $bancount = banner::where('static','启用')->count();//轮播个数
 
         // $gengxin = DB::table('goods')->where('nums', '<>', 0)->get();
         // dd($gengxin);
