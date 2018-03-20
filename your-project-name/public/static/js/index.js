@@ -141,9 +141,13 @@ $(function(){
     // ++++++++++++快速回顶部图标的隐藏和显示+++++++++++++++++
     $(window).scroll(function(){
         if($(window).scrollTop() > 1000){
+            
             $('#side > .top').show();
+           
         }else{
+           
             $('#side > .top').hide();
+          
         }
     })
 })

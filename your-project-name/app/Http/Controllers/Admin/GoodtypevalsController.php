@@ -45,7 +45,7 @@ class GoodtypevalsController extends Controller
 
         }else{
             $goodtypeval = goodtypeval::orderBy('gt_id','desc')->paginate(10);
-            // dd($goodtypeval);
+            // dd($goodtypeval->toArray());
             $count = goodtypeval::count();
         }
         return view('admin.goodtypeval.index',['goodtypeval'=>$goodtypeval,'count'=>$count,'keywords'=>$keywords ,'data'=>$data]);
@@ -59,7 +59,8 @@ class GoodtypevalsController extends Controller
      */
     public function create()
     {
-        $nav = Navig::where('depth',2)->get()->toArray();
+        $nav = Navig::where('depth',0)->get()->toArray();
+        // dd($nav);
        return view('admin.goodtypeval.create',['nav'=>$nav]);
     }
 
@@ -71,7 +72,7 @@ class GoodtypevalsController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->lei_id==0 || $request->gtt_id==0){
+        if($request->yiji_id==0 || $request->erji_id==0 || $request->sanji_id==0 || $request->gt_id==0){
             flash()->overlay('添加失败,请选择分类', '5');
             return back();
         }
@@ -79,8 +80,10 @@ class GoodtypevalsController extends Controller
 
         $input=$request->except('_token');
         $gtv = new goodtypeval;
-        $gtv->lei_id = $input['lei_id'];
-        $gtv->gtt_id = $input['gtt_id'];
+        $gtv->yiji_id = $input['yiji_id'];
+        $gtv->erji_id = $input['erji_id'];
+        $gtv->sanji_id = $input['sanji_id'];
+        $gtv->gt_id = $input['gt_id'];
         $gtv->gtv_name = $input['gtv_name'];
         $gtv->save();
         flash()->overlay('添加成功', '1');
@@ -110,7 +113,7 @@ class GoodtypevalsController extends Controller
     public function edit($id)
     {
         $goodtypeval =  goodtypeval::with('goodtypes')->findOrFail($id);
-        $gtvid =  goodtypeval::findOrFail($id)->lei_id;//获取分类的id
+        $gtvid =  goodtypeval::findOrFail($id)->sanji_id;//获取分类的id
         $nav_name = Navig::where('id',$gtvid)->get()->toArray();
         //通过分类id获取分类名
         $data = [];
@@ -168,5 +171,24 @@ class GoodtypevalsController extends Controller
         
     }
 
+     //执行四级联动1
+    public function goodtypevalfour(Request $request){
+        $all = navig::where('parent_id',$request->id)->get()->toArray();
+        return ['code'=>0,'msg'=>'','data'=>$all];
+    }
+    
+    //执行四级联动2
+    public function goodtypevalfour2(Request $request){
+        $all2 = navig::where('parent_id',$request->id)->get()->toArray();
+
+        return ['code'=>0,'msg'=>'','data'=>$all2];
+    }
+
+    //执行四级联动3
+    public function goodtypevalfour3(Request $request){
+        $all3 = goodtype::where('nav_id',$request->id)->get()->toArray();
+        
+        return ['code'=>0,'msg'=>'','data'=>$all3];
+    }
     
 }

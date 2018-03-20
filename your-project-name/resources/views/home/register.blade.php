@@ -12,13 +12,13 @@
 
  	@include('flash::message')
 	<div class="logo">
-		<a href="index.html"><img class="one" src="../home/images/logres_images/login1.jpg"></a>
+		<a href="{{url('/')}}"><img class="one" src="../home/images/logres_images/login1.jpg"></a>
 		<img class="two" src="../home/images/logres_images/login2.jpg">
 	</div>
-	<div class="content">
+	<div class="content" style="height: 560px;">
 		<div>
 			<a href="index.html"><img src="../home/images/logres_images/login3.jpg"></a>
-			<div class="login" style="height:360px;">
+			<div class="login" style="height:425px;">
 				<div>
 					<h3>欢迎注册
 						<span>已有账号?</span>
@@ -27,23 +27,23 @@
 				</div>
 				 <form action="{{url('authindex/update')}}" method="post">
 				 	 	{{ csrf_field() }}
-				<div class="Login_yan" >
-					<div class="Login_yanzheng">
-						<input type="" name="phone" placeholder="请输入手机号" >
+				<div class="Login_yan" style="height:370px; ">
+					<div class="Login_yanzheng" style="border:none;">
+						<input type="" name="phone" placeholder="请输入手机号" style="margin-top: 20px;" >
 						@if (count($errors) > 0)
 				                    @foreach ($errors->get('phone') as $error)
 				                        <li>{{ $error }}</li>
 				                    @endforeach
 				        @endif
-				        <input type="password" name="password" placeholder="请输入密码">
+				        <input type="password" name="password" placeholder="请输入密码" style="margin-top: 20px;" >
 				        @if (count($errors) > 0)
 				                    @foreach ($errors->get('password') as $error)
 				                       <li>{{ $error }}</li>
 				                    @endforeach
 				        @endif
-                        <input type="password" name="password_confirmation" placeholder="请再次输入密码">
-						<input class="erge" style="width:130px;font-size:12px;float:left" type="" name="captcha" placeholder="请输入短信验证码">
-						<img style="margin:22px 0px 0px; height:36px;width:114px;" src="{{ url('/captcha') }}" onclick="this.src='{{ url('/captcha') }}?r='+Math.random();" alt="">
+                        <input type="password" name="password_confirmation" placeholder="请再次输入密码" style="margin-top: 20px;" >
+						<input class="erge" style="width:130px;font-size:12px;float:left; margin-top: 20px;"  type="" name="captcha" placeholder="请输入短信验证码">
+						<img style="margin:20px 0px 0px; height:36px;width:114px;" src="{{ url('/captcha') }}" onclick="this.src='{{ url('/captcha') }}?r='+Math.random();" alt="">
 						 @if (count($errors) > 0)
 				                    @foreach ($errors->get('captcha') as $error)
 				                       <li>{{ $error }}</li>
@@ -52,7 +52,7 @@
 						<button class="denglu" >注册</button>
 						 </form>
 
-						<p style="float:left;">我同意<a href=""><<服务条款>></a>和<a href=""><<网易隐私政策>></a></p>
+						
 					</div>
 				</div>
 			</div>

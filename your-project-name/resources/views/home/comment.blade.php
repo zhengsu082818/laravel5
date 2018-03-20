@@ -27,7 +27,7 @@
                 <span>考拉欢迎你！</span>
                 <a href="{{url('authindex/login')}}" class="log">登录</a>
                 <b>丨</b>
-                <a href="register.html">注册</a>
+                <a href="{{url('authindex/register')}}">注册</a>
                 @endif
                 @if(!session('phone')==null)
                  <span>您好！</span>
@@ -150,7 +150,7 @@
         </div>
         
         <ul class="cbl2">
-            <li><a href="index.html">首页</a></li>
+            <li><a href="javascript:;">首页</a></li>
             <li><a href="">每日上新</a></li>
             <li><a href="">国家馆</a></li>
             <li><a href="">全球旗舰</a></li>
@@ -159,7 +159,7 @@
             <li><a href="">工厂店</a></li>
         </ul>
         <div class="dhxg2">
-            <a href="login.html">
+            <a href="javascript:;">
                 <img src="{{asset('static/images/index_images/dh.gif')}}">
             </a>
         </div>

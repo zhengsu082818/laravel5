@@ -41,22 +41,37 @@
                   <span class="x-red">*</span>选择类别
               </label>
               <div class="layui-input-inline">
-                  <select name='nav_id' lay-filter="test">
-                    <option value="0">请选择分类名</option>
+                  <select name='djid' lay-filter="good">
+                    <option value="0">请选择一级类名</option>
                     @foreach ($data as $k => $v) 
                     <option value="{{$v['id']}}">{{$v['name']}}</option>
                     @endforeach
                   </select>
               </div>
               <div class="layui-input-inline">
-                  <select name='gt_id' lay-filter="test2" id="ming1" >
-                    <option  value="{{$v['id']}}">请选择属性名</option>
+                  <select name='cjid' lay-filter="good1" id="erlei" >
+                     <option value="0">请选择二级级类名</option>
+                    <option  value="{{$v['id']}}"></option>
+                   
+                  </select>
+              </div>
+              <div class="layui-input-inline">
+                  <select name='sj_id' lay-filter="good2" id="sanlei">
+                    <option value="0">请选择三级级类名</option>
+                    <option value="{{$v['id']}}"></option>
+                  </select>
+              </div>
+              <div class="layui-input-inline">
+                  <select name='gt_id' lay-filter="good3" id="ming1" >
+                    <option value="0">请选择属性名</option>
+                    <option  value="{{$v['id']}}"></option>
                    
                   </select>
               </div>
               <div class="layui-input-inline">
                   <select name='gtv_id' id="ming2" >
                     <option value="0">请选择属性值</option>
+                    <option></option>
                     
                   </select>
               </div>
@@ -133,6 +148,12 @@
                 <script id="container" name="content" type="text/plain" style='width:600px;height:200px;margin-left: -15px;'>  
                    
                 </script>  
+                <div class="layui-form-mid layui-word-aux">
+                  <span class="x-red"></span>
+                  @if (count($errors) > 0)
+                    <span class="x-red">{{ $errors->first('content') }}</span>  
+                    @endif
+                </div>  
                 <!-- 实例化编辑器 -->  
                 <script type="text/javascript">  
                     var ue = UE.getEditor('container');  
@@ -185,13 +206,53 @@
         });
 
         var form = layui.form;
-        form.on('select(test)', function(data){
+        form.on('select(good)', function(data){
           $.ajax({
             type:"GET",
-            url:'{{ url("admin/goodSjld1") }}?id='+data.value,
+            url:'{{ url("admin/goodwjld") }}?id='+data.value,
+            success:function(msg){
+              var erlei = $("#erlei");
+              erlei.find("option").remove();
+              for(var i = 0; i<msg.data.length; i++){ 
+                erlei.append("<option value='"+msg.data[i].id+"'>"+msg.data[i].name+"</option>");
+              }
+             form.render('select'); 
+            },
+            error:function(data){
+
+            }
+          })
+        });
+
+        var form = layui.form;
+        form.on('select(good1)', function(data){
+          $.ajax({
+            type:"GET",
+            url:'{{ url("admin/goodwjld2") }}?id='+data.value,
+            success:function(msg){
+              var sanlei = $("#sanlei");
+              sanlei.find("option").remove();
+
+              for(var i = 0; i<msg.data.length; i++){ 
+                sanlei.append("<option value='"+msg.data[i].id+"'>"+msg.data[i].name+"</option>");
+              }
+             form.render('select'); 
+            },
+            error:function(data){
+
+            }
+          })
+        });
+
+        var form = layui.form;
+        form.on('select(good2)', function(data){
+          $.ajax({
+            type:"GET",
+            url:'{{ url("admin/goodwjld3") }}?id='+data.value,
             success:function(msg){
               var ming1 = $("#ming1");
               ming1.find("option").remove();
+
               for(var i = 0; i<msg.data.length; i++){ 
                 ming1.append("<option value='"+msg.data[i].id+"'>"+msg.data[i].gt_name+"</option>");
               }
@@ -202,11 +263,12 @@
             }
           })
         });
-         var form = layui.form;
-        form.on('select(test2)', function(data){
+
+        var form = layui.form;
+        form.on('select(good3)', function(data){
           $.ajax({
             type:"GET",
-            url:'{{ url("admin/goodSjld2") }}?id='+data.value,
+            url:'{{ url("admin/goodwjld4") }}?id='+data.value,
             success:function(msg){
               var ming2 = $("#ming2");
               ming2.find("option").remove();
@@ -221,6 +283,7 @@
             }
           })
         });
+
 
         
       });

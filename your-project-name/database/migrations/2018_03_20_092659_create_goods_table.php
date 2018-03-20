@@ -15,7 +15,9 @@ class CreateGoodsTable extends Migration
         if (!Schema::hasTable('goods')) {
             Schema::create('goods', function (Blueprint $table) {
                 $table->increments('id');//商品编号
-                $table->tinyInteger('nav_id');//无限分类三级类别id
+                $table->tinyInteger('djid');//一级分类编号
+                $table->tinyInteger('cjid');//二级分类编号
+                $table->tinyInteger('sj_id');//无限分类三级类别id
                 $table->tinyInteger('gt_id');//商品属性名
                 $table->tinyInteger('gtv_id');//属性值id
                 $table->string('title',255);//商品标题
@@ -26,7 +28,6 @@ class CreateGoodsTable extends Migration
                 $table->timestamps();
             });
         }
-        
     }
 
     /**

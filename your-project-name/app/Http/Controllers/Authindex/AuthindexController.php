@@ -44,10 +44,10 @@ class AuthindexController extends Controller
                  flash()->overlay('账号不存在','5');
                  return back();
             }
-            $password = bcrypt($a['password']);
+            $password = md5($a['password']);
         // 查看数据库和表单提交密码
             $c = Homeuser::where('password',$password)->first();  
-            dd($c); 
+            // dd($c); 
             if(!$a['password'] = $c){
                  flash()->overlay('密码不正确','5');
                  return back();
@@ -118,12 +118,14 @@ class AuthindexController extends Controller
        
     // 编写验证规则
         $this->validate($request, [
-            'phone' => 'required|regex:/^1[34578][0-9]{9}$/|max:11',
+            'phone' => 'required|regex:/^1[34578][0-9]{9}$/|max:11|unique:homeusers',
             'password' => 'required|confirmed|min:6|',
             'captcha'=>'required|captcha',
         ],[
         "phone.required"=>'请填写手机号',
-        "name.max"=>'手机号过长',
+        "phone.max"=>'手机号过长',
+        "phone.regex"=>'手机号格式不正确',
+        "phone.unique"=>'手机号已注册',
         "password.required"=>'请填写密码',
         "password.confirmed"=>'两次密码不一样',
         "password.min"=>'最少6位密码',
@@ -133,7 +135,7 @@ class AuthindexController extends Controller
      // 验证规则完成添加数据到数据库
         $home = new Homeuser;
         $home->phone = $request->phone;
-        $home->password = bcrypt($request->password);
+        $home->password = md5($request->password);
         $home->save();
     // 添加到数据库跳转到登录页面
         return redirect('authindex/login');

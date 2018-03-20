@@ -10,3 +10,5 @@ Route::get('home/prolistindex', 'Home\ProlistsController@index');
 
 // 加载加入购物车页面
 Route::get('home/shopgoodindex', 'Home\ShopgoodsController@index');
+
+

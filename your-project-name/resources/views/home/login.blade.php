@@ -18,7 +18,7 @@
 	<div class="content">
 		<div>
 			<a href="index.html"><img src="../home/images/logres_images/login3.jpg"></a>
-			<div class="login" style="height:360px;">
+			<div class="login" style="height:380px;">
 				<div>
 					<h3>欢迎登录
 						<span>没有账号?</span>
@@ -27,8 +27,8 @@
 				</div>
 				<form action="{{url('authindex/index')}}" method="post">
 					{{ csrf_field() }}
-				<div class="Login_yan" >
-					<div class="Login_yanzheng">
+				<div class="Login_yan" style="height:320px;border:none;">
+					<div class="Login_yanzheng" style="border:none;">
 						<input type="" name="phone" placeholder="请输入手机号" >
 						@if (count($errors) > 0)
 				                    @foreach ($errors->get('phone') as $error)
@@ -48,9 +48,10 @@
 				                       <li>{{ $error }}</li>
 				                    @endforeach
 				        @endif
-						<button class="denglu" >登录</button>
+						<button class="denglu" style="margin-bottom:3px;">登录</button>
 						</form>
-						<p style="float:left;">我同意<a href=""><<服务条款>></a>和<a href=""><<网易隐私政策>></a></p>
+						<p >我同意<a href=""><<服务条款>></a>和<a href=""><<网易隐私政策>></a></p>
+
 					</div>
 				</div>
 			</div>

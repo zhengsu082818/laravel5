@@ -313,7 +313,7 @@ a{
 }
 .ce-box .cbl{
 	width: 160px;
-	height: 400px;
+	/*height: 400px;*/
 	border-bottom: 1px solid #000;
 	position:absolute;
 	top:41px;
@@ -353,7 +353,7 @@ a{
 /*侧边二级导航*/
 .cbl .erji{
 	width: 860px;
-	height: 400px;
+	/*height: 400px;*/
 	position: absolute;
 	left:160px;
 	top:0;
@@ -379,7 +379,7 @@ a{
 .ej-cont div a{
 	font-size: 14px;
 	color:#333;
-	line-height: 39px;
+	line-height: 33px;
 	font-weight: bold;
 }
 .ej-cont div a:last-child{
@@ -392,7 +392,7 @@ a{
 	font-size: 12px;
 	color: #666;
 	margin-left: 10px;
-
+	line-height: 25px;
 	display: inline-block;
 }
 .ej-cont p a:first-child{

@@ -15,20 +15,16 @@
     <!-- 轮播 -->
     <div class="banner-box">
         <ul class="lb">
-             <li><img src="{{asset('static/images/index_images/banner1.jpg')}}"></li>
-             <li><img src="{{asset('static/images/index_images/banner2.jpg')}}"></li>
-             <li><img src="{{asset('static/images/index_images/banner3.jpg')}}"></li>
-             <li><img src="{{asset('static/images/index_images/banner4.jpg')}}"></li>
-             <li><img src="{{asset('static/images/index_images/banner5.jpg')}}"></li>
-             <li><img src="{{asset('static/images/index_images/banner6.jpg')}}"></li>
+             @foreach($banner as $v)
+             <li><img src="/storage/uploads/banner/{{$v->img}}"></li>
+             @endforeach
         </ul>
         <ol>
-          <li class="selected">1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-          <li>5</li>
-          <li>6</li>
+         
+          <li class="selected"></li>
+          @for($i = 1;$i < $bancount;$i++)
+            <li></li>
+          @endfor
         </ol>
         <img src="{{asset('static/images/index_images/left.png')}}" class="arrow leftjt">
         <img src="{{asset('static/images/index_images/right.png')}}" class="arrow right">
@@ -64,129 +60,10 @@
                     </p>
                     <p class="img-cont2"> 
                         <b>￥699</b>
-                        <del>￥1710</del>
+                       
                     </p>
                 </li>
-                <li>
-                    <a href="" class="img-img">
-                        <img src="{{asset('static/images/index_images/mrsx2.jpg')}}" alt="">
-                    </a>
-                    <p class="img-cont1">
-                        NOVELLA 那绯澜 PRIZIA女性私处护理液 无香型 150毫升/瓶
-                    </p>
-                    <p class="img-cont2"> 
-                        <b>￥79</b>
-                        <del>￥168</del>
-                    </p>
-                </li>
-                <li>
-                    <a href="" class="img-img">
-                        <img src="{{asset('static/images/index_images/mrsx3.jpg')}}" alt="">
-                    </a>
-                    <p class="img-cont1">
-                        益智手工 小猪佩奇趣味贴纸游戏书（共8册） 3-6岁
-                    </p>
-                    <p class="img-cont2"> 
-                        <b>￥59</b>
-                        <del>￥96</del>
-                    </p>
-                </li>
-                <li>
-                    <a href="" class="img-img">
-                        <img src="{{asset('static/images/index_images/mrsx4.jpg')}}" alt="">
-                    </a>
-                    <p class="img-cont1">
-                        unicharm 尤妮佳 乐互宜成人尿不湿卫生护理垫纸尿垫 瞬吸除臭 女性专用 29厘米*16片
-                    </p>
-                    <p class="img-cont2"> 
-                        <b>￥58</b>
-                        <del>￥106</del>
-                    </p>
-                </li>
-                <li>
-                    <a href="" class="img-img">
-                        <img src="../images/index_images/mrsx5.jpg" alt="">
-                    </a>
-                    <p class="img-cont1">
-                        Kenneth Cole LANCÔME 兰蔻 臻白美颜套装
-                    </p>
-                    <p class="img-cont2"> 
-                        <b>￥169</b>
-                        <del>￥399</del>
-                    </p>
-                </li>
-                <li>
-                    <a href="" class="img-img">
-                        <img src="../images/index_images/mrsx6.jpg" alt="">
-                    </a>
-                    <p class="img-cont1">
-                        低幼绘本 好饿的小蛇 1-4岁
-                    </p>
-                    <p class="img-cont2"> 
-                        <b>￥25</b>
-                        <del>￥36</del>
-                    </p>
-                </li>
-                <li>
-                    <a href="" class="img-img">
-                        <img src="../images/index_images/mrsx7.jpg" alt="">
-                    </a>
-                    <p class="img-cont1">
-                        Calvin Klein 卡文克莱 女士印花无袖T恤42G5379
-                    </p>
-                    <p class="img-cont2"> 
-                        <b>￥78</b>
-                        <del>￥128</del>
-                    </p>
-                </li>
-                <li>
-                    <a href="" class="img-img">
-                        <img src="../images/index_images/mrsx8.jpg" alt="">
-                    </a>
-                    <p class="img-cont1">
-                        Kenneth Cole 女士镂空透视玫瑰金色镶钻时尚腕表 10031428
-                    </p>
-                    <p class="img-cont2"> 
-                        <b>￥178</b>
-                        <del>￥309</del>
-                    </p>
-                </li>
-                <li>
-                    <a href="" class="img-img">
-                        <img src="../images/index_images/mrsx9.jpg" alt="">
-                    </a>
-                    <p class="img-cont1">
-                        Kao 花王 厨房油污清洁喷雾 400毫升/瓶
-                    </p>
-                    <p class="img-cont2"> 
-                        <b>￥39</b>
-                        <del>￥49</del>
-                    </p>
-                </li>
-                <li>
-                    <a href="" class="img-img">
-                        <img src="../images/index_images/mrsx10.jpg" alt="">
-                    </a>
-                    <p class="img-cont1">
-                        ST小鸡 Shaldan Suteki Plus 室内扩香香薰瓶 复古樱桃香 45毫升/瓶
-                    </p>
-                    <p class="img-cont2"> 
-                        <b>￥36</b>
-                        <del>￥45</del>
-                    </p>
-                </li>
-                <li>
-                    <a href="" class="img-img">
-                        <img src="../images/index_images/mrsx11.jpg" alt="">
-                    </a>
-                    <p class="img-cont1">
-                        【增肌套餐】MUSCLETECH 肌肉科技 金牌乳清蛋白粉+白金肌酸粉+支链氨基酸套餐
-                    </p>
-                    <p class="img-cont2"> 
-                        <b>￥599</b>
-                        <del>￥799</del>
-                    </p>
-                </li>
+               
             </ul>
         </div>
         

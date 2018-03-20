@@ -145,7 +145,12 @@ Route::get('admin/goodtypevaledit/{id}', 'Admin\GoodtypevalsController@edit');
 Route::post('admin/goodtypevalupdate/{id}', 'Admin\GoodtypevalsController@update');
 //删除属性值
 Route::get('admin/goodtypevaldestroy/{id}', 'Admin\GoodtypevalsController@destroy');
-
+//ajax四级联动1
+Route::get('admin/goodtypevalfour','Admin\GoodtypevalsController@goodtypevalfour');
+//ajax四级联动2
+Route::get('admin/goodtypevalfour2','Admin\GoodtypevalsController@goodtypevalfour2');
+//ajax四级联动3
+Route::get('admin/goodtypevalfour3','Admin\GoodtypevalsController@goodtypevalfour3');
 
 
 //加载职位管理列表
@@ -189,11 +194,14 @@ Route::post('admin/goodupdate/{id}', 'Admin\GoodsController@update');
 Route::get('admin/gooddestroy/{id}', 'Admin\GoodsController@destroy');
 // ajax图片上传
 Route::post('admin/gooduplode', 'Admin\GoodsController@uplode');
-//ajax三级联动1
-Route::get('admin/goodSjld1','Admin\GoodsController@goodSjld1');
-//ajax三级联动2
-Route::get('admin/goodSjld2','Admin\GoodsController@goodSjld2');
-
+//ajax五级联动1
+Route::get('admin/goodwjld','Admin\GoodsController@goodwjld');
+//ajax五级联动2
+Route::get('admin/goodwjld2','Admin\GoodsController@goodwjld2');
+//ajax五级联动3
+Route::get('admin/goodwjld3','Admin\GoodsController@goodwjld3');
+//ajax五级联动4
+Route::get('admin/goodwjld4','Admin\GoodsController@goodwjld4');
 
 //加载用户中心收货地址主页
 Route::get('admin/personalindex', 'Admin\PersonalsController@index');

@@ -306,12 +306,12 @@ a{
 }
 .ce-box{
 	width: 1090px;
-	height: 400px;
+	/*height: 400px;*/
 /*	background: red;*/
 }
 .ce-box .cbl{
 	width: 160px;
-	height: 400px;
+	/*height: 400px;*/
 	border-bottom: 1px solid #000;
 	position:absolute;
 	top:41px;
@@ -347,7 +347,7 @@ a{
 /*侧边二级导航*/
 .cbl .erji{
 	width: 860px;
-	height: 400px;
+	/*height: 400px;*/
 	position: absolute;
 	left:160px;
 	top:0;
@@ -360,7 +360,6 @@ a{
 	background:#fff;
 	float: left;
 	border-bottom: 1px solid #000;
-
 }
 .erji .erji-1 .ej-cont{
 	width: 500px;
@@ -387,6 +386,7 @@ a{
 	font-size: 12px;
 	color: #666;
 	margin-left: 10px;
+	line-height: 25px;
 	display: inline-block;
 }
 .ej-cont p a:first-child{
@@ -465,8 +465,8 @@ a{
 	/*background: yellow;*/
 }
 .banner-box ol li{
-	width: 20px;
-	height: 22px;
+	width: 15px;
+	height: 15px;
 	float: left;
 	margin-left: 10px;
 	background: #666;
@@ -1017,7 +1017,7 @@ del{
         height:165px;
         position:fixed;
         right:10px;
-        bottom:43px;
+        bottom:-20px;
     }
     #side .block{
         width:45px;

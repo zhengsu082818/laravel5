@@ -43,25 +43,30 @@
               <div class="layui-input-inline">
                   <select name='yiji_id' lay-filter="gtv">
                     <option value="0">请选择一级类名</option>
-                    @foreach ($data as $k => $v) 
+                    @foreach ($nav as $k => $v) 
                     <option value="{{$v['id']}}">{{$v['name']}}</option>
                     @endforeach
                   </select>
               </div>
               <div class="layui-input-inline">
                   <select name='erji_id' lay-filter="gtv1" id="twolei" >
-                    <option  value="{{$v['id']}}">请选择二级类名</option>
+                     <option value="0">请选择二级级类名</option>
+                    <option  value="{{$v['id']}}"></option>
                    
                   </select>
               </div>
               <div class="layui-input-inline">
                   <select name='sanji_id' id="threelei" lay-filter="gtv2">
-                    <option  value="{{$v['id']}}">请选择三级类名</option>
+                     <option value="0">请选择三级类名</option>
+
+                    <option  value="{{$v['id']}}"></option>
                   </select>
               </div>
                <div class="layui-input-inline">
                   <select name='gt_id' id="fourlei" >
-                    <option  value="{{$v['id']}}">请选择属性类名</option>
+                     <option value="0">请选择属性类名</option>
+                    
+                    <option  value="{{$v['id']}}"></option>
                   </select>
               </div>
               
@@ -148,11 +153,11 @@
             type:"GET",
             url:'{{ url("admin/goodtypevalfour3") }}?id='+data.value,
             success:function(msg){
-              var threelei = $("#fourlei");
-              threelei.find("option").remove();
+              var fourlei = $("#fourlei");
+              fourlei.find("option").remove();
 
               for(var i = 0; i<msg.data.length; i++){ 
-                threelei.append("<option value='"+msg.data[i].id+"'>"+msg.data[i].gt_name+"</option>");
+                fourlei.append("<option value='"+msg.data[i].id+"'>"+msg.data[i].gt_name+"</option>");
               }
              form.render('select'); 
             },
