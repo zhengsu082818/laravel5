@@ -38,6 +38,7 @@ class AuthindexController extends Controller
             ]);
         // 获取表单提交账号密码
             $a = ['phone'=>$request->phone,'password'=>$request->password];
+            // dd($a);
         // 查案数据库和表单账号
             $b = Homeuser::where('phone',$a['phone'])->first();
             if(!$a['phone'] = $b){
@@ -45,7 +46,7 @@ class AuthindexController extends Controller
                  return back();
             }
         // 查看数据库和表单提交密码
-            $c = Homeuser::where('password',$a['password'])->first();  
+            $c = Homeuser::where('password',md5($a['password']))->first();  
         // dd($c); 
             if(!$a['password'] = $c){
                  flash()->overlay('密码不正确','5');
@@ -60,7 +61,7 @@ class AuthindexController extends Controller
                 }
             }
         // 存入session
-            $request->session()->put('phone',$request->phone); 
+           $request->session()->put('phone',$request->phone); 
         // 加载模板文件
            return redirect('authindex/redirect');
     }
@@ -131,10 +132,10 @@ class AuthindexController extends Controller
      // 验证规则完成添加数据到数据库
         $home = new Homeuser;
         $home->phone = $request->phone;
-        $home->password = bcrypt($request->password);
+        $home->password = md5($request->password);
         $home->save();
     // 添加到数据库跳转到登录页面
-        return redirect();
+        return redirect('authindex/login');
     }
 
     /**

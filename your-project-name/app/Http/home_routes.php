@@ -15,5 +15,7 @@ Route::get('home/shopgoodindex', 'Home\ShopgoodsController@index');
 Route::get('home/personal', 'Home\PersonalsController@index');
 //执行新增收货地址
 Route::post('home/personal/store', 'Home\PersonalsController@store');
+//执行删除收货地址
 Route::get('home/personal/destroy/{id}', 'Home\PersonalsController@destroy');
-
+//加载修改收货地址
+Route::get('home/personal/edit/{id}', 'Home\PersonalsController@edit');

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Models\Personal;
+use App\Models\Homeuser;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -13,15 +15,23 @@ class PersonalsController extends Controller
         "cho_Province"=>'required',
         "cho_City"=>'required',
         "cho_Area"=>'required',
-        "shdz"=>'required|',
+        "shdz"=>'required|max:75',
+        "name"=>'required|min:5',
+        "phone"=>'required|min:11|max:11',
 
 
 
     ];
     //编写错误信息
     protected $messages =[
-        "name.required"=>'类别名必填',
-        "name.max"=>'类别名过长',
+        "shdz.required"=>'请输入您的详细收货地址',
+        "shdz.max"=>'请输入正确收货地址',
+        "name.required"=>'请输入收件人的姓名',
+        "name.min"=>'请正确输入收件人的姓名',
+        "phone.required"=>'请输入收件人的手机号码',
+        "phone.min"=>'请正确输入收件人的手机号',
+        "phone.max"=>'请正确输入收件人的手机号',
+
     ];
     /**
      * Display a listing of the resource.
@@ -30,8 +40,15 @@ class PersonalsController extends Controller
      */
     public function index()
     {
-        $personals =Personal::all();
-        return view('home.good_receipt',['personals'=>$personals]);
+
+        $phone =session('phone');//获取当前用户的登录号
+        // dd($phone);
+        $id =Homeuser::where('phone',$phone)->firstOrFail()->id;//获取当前用户的id
+        
+        $personals = Personal::where('pid',$id)->get();
+        $count =Personal::where('pid',$id)->count();
+
+        return view('home.good_receipt',['personals'=>$personals,'count'=>$count]);
     }
 
     /**
@@ -55,11 +72,18 @@ class PersonalsController extends Controller
         // dd($request->input());
         //接收除_token字段的值
         $input =$request->except('_token');
+        $this->validate($request,$this->rules,$this->messages);//执行字段验证
+
+        $phone =session('phone');//获取当前用户的登录号
+        // dd($phone);
+        $id =Homeuser::where('phone',$phone)->firstOrFail()->id;
         // dd($input);
         //给数据库赋值
         $personals =new Personal;
         $personals->name =$input['name'];
         $personals->phone =$input['phone'];
+        $personals->pid =$id;
+
         $personals->shdz =$input['cho_Province'].' '.$input['cho_City'].' '.$input['cho_Area'].' '.$input['shdz'];
         $personals->save();//执行添加数据库
         flash()->overlay('添加成功', '1');
@@ -86,7 +110,9 @@ class PersonalsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $personals =Personal::where('id',$id)->firstOrFail();//根据id查询需要修改的数据
+        $count =Personal::count();
+       return  view("home.good_receipt",['personals'=>$personals,'count'=>$count]);
     }
 
     /**

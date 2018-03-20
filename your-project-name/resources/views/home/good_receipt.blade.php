@@ -14,6 +14,7 @@
 	<link href="{{asset('static/css/Province_css/city.css')}}" rel="stylesheet" type="text/css" />
 	<script type="text/javascript" src="{{asset('static/js/MyAccount management.js')}}"></script>
 	<script type="text/javascript" src="{{asset('static/js/My Receiving address.js/jquery.min_1.js')}}"></script>
+
 	<script type="text/javascript" src="{{asset('static/js/My Receiving address.js/city.min.js')}}"></script>
 
 @endsection
@@ -41,7 +42,7 @@
 			</ul>
 			<div class="ybcshdz">
 				<p>
-					<b>已保存收货地址</b><span>(共 1 条)</span>
+					<b>已保存收货地址</b><span>(共 {{$count}} 条)</span>
 					<a href="javascript:void(0);" onclick="naver('A')">+新增收货地址</a>
 				</p>
 				<table cellspacing="0px" cellspadding="0px" style="width:900px;border:1px solid #ccc;cursor: pointer;margin-top: 20px;	" >
@@ -59,7 +60,7 @@
 						<th>{{$v->name}}</th>
 						<th>{{$v->shdz}}</th>
 						<th>{{$v->phone}}</th>
-						<th><a href="">修改 </a><a href='{{url("home/personal/destroy/$v->id")}}'> 删除</a></th>
+						<th><a href='{{url("home/personal/destroy/$v->id")}}'> 删除</a></th>
 				
 					</tr>
 					
@@ -121,30 +122,37 @@
 						                        <input type="hidden" name="cho_Area" value="请选择地区">
 						                    </span>
 						                </div>
+						                	
 						            </div>
 								</span>
 							</div>
 							<div style="margin-left: 94px;">
 								<span class="ziti">
-									<b>*</b> 详细地址<input type="text" name="shdz" style="height: 70px;" placeholder="无需重复填写省市区,小于75个字">
+									<b>*</b> 详细地址<input type="text" name="shdz" style="color:#333;text-indent: 6px;" placeholder="无需重复填写省市区,小于75个字">
 								</span>
+							    
+							             @if (count($errors) > 0)
+							               <span class="x-red" style="color: red;">{{ $errors->first('shdz') }}</span>
+							              @endif             
 							</div>
+							
 							<div>
 								<span class="ziti">
-									<b>*</b> 收货人姓名<input type="text" name="name" placeholder="请使用真实姓名">
+									<b>*</b> 收货人姓名<input type="text" style="color:#333;text-indent: 6px;" name="name" placeholder="请使用真实姓名">
 								</span>
+								@if (count($errors) > 0)
+							               <span class="x-red" style="color: red;">{{ $errors->first('name') }}</span>
+							    @endif
 							</div>
 							<div style="margin-left: 94px;">
 								<span class="ziti">
-									<b>*</b> 手机号码<input type="text" name="phone" placeholder="请输入收货人手机号码">
+									<b>*</b> 手机号码<input type="text"  style="color:#333;text-indent: 6px;" name="phone" placeholder="请输入收货人手机号码">
 								</span>
+								@if (count($errors) > 0)
+							               <span class="x-red" style="color: red;">{{ $errors->first('phone') }}</span>
+							    @endif
 							</div>
-							
-							<div style="margin-left: 132px;">
-								<span class="ziti">
-									邮箱<input type="text" name="email" placeholder="接受订单提醒邮件，便于您及时了解订单状态">
-								</span>
-							</div>
+
 							<button>保存新地址</button>
 						</div>
 					</form>	
