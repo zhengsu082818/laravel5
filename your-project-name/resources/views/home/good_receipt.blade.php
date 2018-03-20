@@ -37,8 +37,8 @@
 			<ul>
 				<li>&nbsp;</li>
 				<li><a href="My orders.html">我的订单</a></li>
-				<li><a href="">账号管理</a></li>
-				<li style="border-left: 2px solid red;"><a href="My Receiving address.html"  style="color:red">管理收货地址</a></li>
+				<li><a href="{{url('home/home/number')}}">账号管理</a></li>
+				<li style="border-left: 2px solid red;"><a href=""  style="color:red">管理收货地址</a></li>
 			</ul>
 			<div class="ybcshdz">
 				<p>

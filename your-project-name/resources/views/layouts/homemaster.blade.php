@@ -6,7 +6,7 @@
 	
 	<link rel="icon" href="{{asset('static/images/index_images/log_tb.jpg')}}">
 	<script type="text/javascript" src="{{asset('static/js/jquery.js')}}"></script>
-	
+	<script src="{{asset('etsc/lib/layui/layui.js')}}" charset="utf-8"></script>
 	@section('css js')
 		
     @show
