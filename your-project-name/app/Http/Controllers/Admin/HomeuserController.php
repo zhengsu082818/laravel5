@@ -108,22 +108,6 @@ class HomeuserController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $dele =homeuser::destroy($id);
-        //判断是否删除成功
-        if ($dele) {
-            flash()->overlay('删除成功', '1');
-            return redirect('admin/homeindex');
-        }else{
-            flash()->overlay('删除失败', '5');
-            return redirect('admin/homeindex');
-        }
-    }
+    
+    
 }
