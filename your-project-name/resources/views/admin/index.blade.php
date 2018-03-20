@@ -140,7 +140,7 @@
                 <ul class="sub-menu">
                    
                     <li>
-                        <a _href="{{url('order')}}">
+                        <a _href="{{url('order/')}}">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>所有用户订单</cite>
                         </a>

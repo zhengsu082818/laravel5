@@ -5,13 +5,7 @@
 
 @section('css')
 
-<<<<<<< HEAD
 
-   
-
-=======
-   
->>>>>>> 7a6bfb89c5c2bf030b07c728020de274f7203911
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 @endsection

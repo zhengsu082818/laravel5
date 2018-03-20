@@ -18,7 +18,7 @@ class Order extends Model
      */
 	public function Orderformcount()
 	{
-	    return $this->hasMany('App\Models\Orderformcount');
+	    return $this->hasMany('App\Models\Orderformcount','cid', 'id');
 	}
 
 	/**

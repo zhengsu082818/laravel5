@@ -82,13 +82,20 @@ Route::get('admin/bannerdestroy/{id}', 'Admin\BannersController@destroy');
 //执行图片轮播添加
 Route::post('admin/bannerstore', 'Admin\BannersController@store');
 //执行图片轮播修改
-
 Route::post('admin/bannerupdate/{id}', 'Admin\BannerController@update');
 
-
+Route::post('admin/banneruplode', 'Admin\BannersController@uplode');
 
 //加载订单操作页面
 Route::resource('order','Order\OrderformController');
+//用户id遍历指定用户全部订单
+// Route::resource('order/{id}','Order\OrderformController');
+// //加载修改该用户订单状态
+// Route::resource('order/{id}/edit','Order\OrderformController');
+// //执行修改该用户订单状态
+// Route::resource('order','Order\OrderformController');
+
+
 
 Route::post('admin/bannerupdate/{id}', 'Admin\BannersController@update');
 // ajax图片上传
@@ -97,3 +104,9 @@ Route::post('admin/banneruplode', 'Admin\BannersController@uplode');
 //加载个人收货地址页面
 Route::get('admin/addressindex', 'Home\AddresController@Index');
 
+
+
+
+
+//购物车前台功能实现
+Route::resource('home/shopping','Home\ShoppingController');

@@ -12,7 +12,7 @@ class CreateCommodityTable extends Migration
      */
     public function up()
     {
-        // 商品模拟数据表
+        // 订单数据表
         if (!Schema::hasTable('commodity')) {
             Schema::create('commodity', function (Blueprint $table) {
                 $table->increments('id');
@@ -28,8 +28,12 @@ class CreateCommodityTable extends Migration
                 $table->integer('aotal');
                 // 用户id
                 $table->integer('uid');
+                // 商品id
+                $table->integer('gid');
                 // 状态
                 $table->string('state');
+                //订单号
+                $table->string('orderid');
                 
                 $table->timestamps();
             });

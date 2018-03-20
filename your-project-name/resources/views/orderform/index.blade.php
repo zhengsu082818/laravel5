@@ -10,11 +10,8 @@
     <div class="x-body">
       <div class="x-nav">
       <span class="layui-breadcrumb">
-        <a>
-          <cite>首页轮播管理</cite>
-        </a>
-        <a>
-          <cite>图片轮播列表</cite>
+        <a href="{{url('order')}}">
+          <cite>订单管理</cite>
         </a>
       </span>
       
@@ -23,12 +20,12 @@
     </div>
     
     <div class="x-body">
-        <form class="layui-form layui-col-md12 x-so" action="" method="get">
-          <input type="text" name="name"  placeholder="请输用户名/手机号" autocomplete="off" class="layui-input" value="">
+        <form class="layui-form layui-col-md12 x-so" action="{{url('order')}}" method="get">
+          <input type="text" name="where"  placeholder="请输用户名/手机号" autocomplete="off" class="layui-input" value="">
           <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
         </form>
-         <a href="{{url('admin/bannercreate')}}" style="color:#fff;"><span class="x-left layui-btn" style="line-height:40px">添加轮播</span></a>
-        <span class="x-right layui-btn" style="line-height:40px">共有数据：<a href="javascript:;" style="color:#fff;"></a>  条</span>
+         
+        <span class="x-right layui-btn" style="line-height:40px">共有数据：<a href="javascript:;" style="color:#fff;"></a> {{$count}} 条</span>
        
       <table class="layui-table">
         @include('flash::message')
@@ -38,26 +35,27 @@
             <th style="text-align: center;">用户名</th>
             <th style="text-align: center;">手机号</th>
             <th style="text-align: center;">订单条数</th>
-            <th style="text-align: center;">查看详细订单</th></tr>
+            <th style="text-align: center;">操作</th></tr>
         </thead>
         <tbody>
 
-          @foreach ($info as $v)
+          @for ($i = 0; $i < count($info); $i++)
+ 
               <tr>
-                <td style="text-align: center;">{{$v->id}}</td>
-                <td style="text-align: center;"><img src="/storage/uploads/{{$v->img}}"></td>
-                <td style="text-align: center;">{{$v->name}}</td>
-                <td style="text-align: center;">{{$v->phone}}</td>
-                <td style="text-align: center;">{{$v->num}}</td>
-                 
+                <td style="text-align: center;">{{$id=$info[$i]->id}}</td>
+                <td style="text-align: center;">{{$info[$i]->name}}</td>
+                <td style="text-align: center;">{{$info[$i]->phone}}</td>
+                <td style="text-align: center;">{{$info[$i]->num}}</td>
+                <th style="text-align: center;"><a href={{url("order/$id")}}>查看订单状态</a></th>
               </tr>
-          @endforeach    
+             
+          @endfor
         </tbody>
 
       </table>
-
+             
             <center>
-          
+           {!! $info->appends(['where' => $where])->render() !!}
             </center>
     </div>
   @endsection

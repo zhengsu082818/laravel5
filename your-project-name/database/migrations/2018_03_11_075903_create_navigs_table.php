@@ -20,7 +20,7 @@ class CreateNavigsTable extends Migration {
             $table->integer('depth')->nullable();
             $table->char('name');
             $table->string('url',255);
-             $table->string('img',255);
+            $table->string('img',255);
             $table->timestamps();
           });
     }
