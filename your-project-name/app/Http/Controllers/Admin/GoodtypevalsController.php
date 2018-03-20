@@ -10,7 +10,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Goodtypeval;
 use App\Models\Goodtype;
 use App\Models\Good;
+
 use App\Models\Navig;
+
 
 class GoodtypevalsController extends Controller
 {

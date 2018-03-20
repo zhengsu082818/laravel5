@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Models\Personal;
 use App\Http\Controllers\Controller;
 use App\Models\Homeuser;
 //管理前台用户控制器
@@ -34,23 +35,31 @@ class HomeuserController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
+     *加载完善个人信息页面
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        $phone =session('phone');//获取当前用户的登录号
+        // dd($phone);
+        $personals =Homeuser::where('phone',$phone)->firstOrFail();//获取当前用户的完整数据
+        // dd($personals);
+        return view('home.zhenghao',['personals'=>$personals]);
     }
 
     /**
      * Store a newly created resource in storage.
-     *
+     *执行个人信息完善
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
-        //
+
+        $input = $request->except('_token');//接收除_token字段的数据
+        $update = homeuser::where('id',$id)->update($input);
+        return redirect('home/home/number');
+        
     }
 
     /**

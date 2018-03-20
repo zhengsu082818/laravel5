@@ -9,8 +9,10 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Good;
 use App\Models\Navig;
+
 use App\Models\Goodtype;
 use App\Models\Goodtypeval;
+
 class GoodsController extends Controller
 {
      // 编写验证规则

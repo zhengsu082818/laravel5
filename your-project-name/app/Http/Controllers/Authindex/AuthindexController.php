@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Homeuser;
 use Illuminate\Support\Facades\Session;
+use Route;
 class AuthindexController extends Controller
 {
     /**
@@ -17,7 +18,7 @@ class AuthindexController extends Controller
      */
     public function index()
     {
-        
+        return view('home.index');
     }
 
     /**
@@ -38,6 +39,7 @@ class AuthindexController extends Controller
             ]);
         // 获取表单提交账号密码
             $a = ['phone'=>$request->phone,'password'=>$request->password];
+            // dd($a);
         // 查案数据库和表单账号
             $b = Homeuser::where('phone',$a['phone'])->first();
             if(!$a['phone'] = $b){
@@ -46,8 +48,9 @@ class AuthindexController extends Controller
             }
             $password = md5($a['password']);
         // 查看数据库和表单提交密码
-            $c = Homeuser::where('password',$password)->first();  
-            // dd($c); 
+
+            $c = Homeuser::where('password',$password)->first();   
+
             if(!$a['password'] = $c){
                  flash()->overlay('密码不正确','5');
                  return back();
@@ -61,9 +64,11 @@ class AuthindexController extends Controller
                 }
             }
         // 存入session
-            $request->session()->put('phone',$request->phone); 
+           $request->session()->put('phone',$request->phone); 
         // 加载模板文件
+
            return redirect('/');
+
     }
     /**
      * Store a newly created resource in storage.
@@ -150,5 +155,10 @@ class AuthindexController extends Controller
     public function destroy(Request $request)
     {
         return view('home.password');
+    }
+
+    public function login()
+    {
+        return view('home.login');
     }
 }

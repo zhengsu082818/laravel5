@@ -5,6 +5,9 @@
 	<title>@yield('title')</title>
 	<link rel="icon" href="{{asset('static/images/index_images/log_tb.jpg')}}">
 	<script type="text/javascript" src="{{asset('static/js/jquery.js')}}"></script>
+
+
+
 	@section('css js')
 		
     @show

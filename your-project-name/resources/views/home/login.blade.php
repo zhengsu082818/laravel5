@@ -32,25 +32,28 @@
 						<input type="" name="phone" placeholder="请输入手机号" >
 						@if (count($errors) > 0)
 				                    @foreach ($errors->get('phone') as $error)
-				                        <li>{{ $error }}</li>
+				                        <li style="color:red;">{{ $error }}</li>
 				                    @endforeach
 				        @endif
 				        <input type="password" name="password" placeholder="请输入密码">
 				        @if (count($errors) > 0)
 				                    @foreach ($errors->get('password') as $error)
-				                       <li>{{ $error }}</li>
+				                       <li style="color:red;">{{ $error }}</li>
 				                    @endforeach
 				        @endif
 						<input class="erge" style="width:130px;font-size:12px;float:left" type="" name="captcha" placeholder="请输入短信验证码">
 						<img style="margin:22px 0px 0px; height:36px;width:114px;" src="{{ url('/captcha') }}" onclick="this.src='{{ url('/captcha') }}?r='+Math.random();" alt="">
 						 @if (count($errors) > 0)
 				                    @foreach ($errors->get('captcha') as $error)
-				                       <li>{{ $error }}</li>
+				                       <li style="color:red;">{{ $error }}</li>
 				                    @endforeach
 				        @endif
+
 						<button class="denglu" style="margin-bottom:3px;">登录</button>
 						</form>
-						<p >我同意<a href=""><<服务条款>></a>和<a href=""><<网易隐私政策>></a></p>
+						
+						<p><a href="{{url('authindex/password')}}">忘记密码?</a>
+						</p>
 
 					</div>
 				</div>
