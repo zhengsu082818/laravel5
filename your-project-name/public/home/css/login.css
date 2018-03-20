@@ -24,7 +24,9 @@ body,div,img{
 }
 .content div{
 	width: 800px;
+
 	height: 500px;
+
 	margin:auto;
 }
 .content div img{
@@ -33,7 +35,9 @@ body,div,img{
 .content div .login{
 	float: right;
 	width: 340px;
+
 	height:340px;
+
 	border: 1px solid #ddd;
 	/*margin-right: 30px;*/
 	margin-top: 60px;
@@ -59,12 +63,16 @@ body,div,img{
 }
 .content .login .Login_yan{
 	width: 340px;
+
 	height: 244px;
+
 	background-color: #fff;
 }
 .content .login .Login_yan .Login_yanzheng{
 	width: 270px;
+
 	height: 283px;
+
 	/*border: 1px solid red;*/
 	margin: 0 auto;
 }

@@ -23,8 +23,9 @@
     </div>
     
     <div class="x-body">
-        <form class="layui-form layui-col-md12 x-so" action="" method="get">
-          <input type="text" name="name"  placeholder="请输入关键字" autocomplete="off" class="layui-input" value="">
+        <form class="layui-form layui-col-md12 x-so" action="{{url('admin/bannerindex')}}" method="get">
+          <input type="text" name="static"  placeholder="根据状态搜索" autocomplete="off" class="layui-input" 
+          value="{{$keywords?$keywords:''}}">
           <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
         </form>
          <a href="{{url('admin/bannercreate')}}" style="color:#fff;"><span class="x-left layui-btn" style="line-height:40px">添加轮播</span></a>
@@ -42,20 +43,18 @@
           @foreach ($banner as $v)
               <tr>
                 <td style="text-align: center;">{{$v->id}}</td>
-                <td style="text-align: center;"><img src='{{ URL::asset("storage/uploads/$v->img") }}''></td>
+
+                <td style="text-align: center;"><img src='{{ URL::asset("storage/uploads/banner/$v->img") }}'></td>
+
                 <td style="text-align: center;">{{$v->created_at}}</td>
                 <td style="text-align: center;">
                    @if($v->static === '启用')
                   <span class="layui-btn layui-btn-mini layui-btn-normal ">启用</span>
-
                   @endif
                   @if($v->static === '禁用')
                   <span class="layui-btn layui-btn-mini layui-btn-warm ">禁用</span>
                   @endif
                 </td>
-                 
-               
-
                 <td class="td-manage" style="text-align: center;">
                   <a href='{{url("admin/banneredit/$v->id")}}' style="color:#fff;">
                     <button class="layui-btn layui-btn-mini">修改</button>
@@ -65,15 +64,14 @@
                   </a>
                 </td>
               </tr>
-          @endforeach  
-
+          @endforeach
         </tbody>
-           {!! $banner->render() !!}  
+         
            @include('flash::message')
       </table>
 
             <center>
-          
+             {!! $banner->appends(['static' => $keywords])->render() !!}  
             </center>
     </div>
   @endsection

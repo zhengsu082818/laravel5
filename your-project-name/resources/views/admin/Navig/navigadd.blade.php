@@ -16,16 +16,17 @@
           <cite>商品分类管理</cite>
         </a>
         <a>
-          <cite>侧边导航分类</cite>
+          <cite>商品分类列表</cite>
         </a>
+
         <a>
-          <cite>添加分类</cite>
+          <cite>添加类别</cite>
         </a>
       </span>
       
       <a class="layui-btn" style="line-height:38px;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
         <i class="layui-icon" style="line-height:38px">ဂ</i></a>
-        <a  class="layui-btn" href="{{url('navig/index')}}" style="line-height:38px;margin-top:3px;margin-right: 10px;float:right">返回上一层</a>
+        <a  class="layui-btn" href="{{url('navig/index')}}" style="line-height:38px;margin-top:3px;margin-right: 10px;float:right">返回主类列表</a>
     </div>
     <div style="height: 40px;">
       
@@ -35,21 +36,35 @@
 
         <form class="layui-form" method="post" action='{{ url("navig/store")}}' enctype="multipart/form-data" >
           {{csrf_field()}}
+           
+          @if($id!=null)
           <div class="layui-form-item">
-            <input type="hidden" name="id" value="">
-              <label for="L_email" class="layui-form-label">
+              <label for="username" class="layui-form-label" style="width: 90px;">
+                  <span class="x-red">*</span>所属类名
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" name="" 
+                  class="layui-input" value="{{$leiall}} " disabled="disabled" style="background: #efefe0">
+              </div>
+          </div>
+          @endif
+          <input type="hidden"  name="id"  class="layui-input" value="{{$id}}">
+          <div class="layui-form-item">
+              <label for="L_email" class="layui-form-label" style="width: 90px;">
                   <span class="x-red">*</span>类别名
               </label>
               <div class="layui-input-inline">
-                <input type="hidden"  name="id"  class="layui-input" value="{{$id}}">
                 <input type="text"  name="name"  class="layui-input" value="">
               </div>
               <div class="layui-form-mid layui-word-aux">
-                  <span class="x-red">*</span>           
+                  <span class="x-red"></span>
+                  @if (count($errors) > 0)
+                    <span class="x-red">{{ $errors->first('name') }}</span>  
+                    @endif
               </div>
           </div>
           <div class="layui-form-item">
-              <label for="L_email" class="layui-form-label">
+              <label for="L_email" class="layui-form-label" style="width: 90px;">
                   <span class="x-red">*</span>图标
               </label>
               <div class="layui-form-mid layui-word-aux">
@@ -66,7 +81,7 @@
           </div>
 
           <div class="layui-form-item">
-              <label for="L_repass" class="layui-form-label">
+              <label for="L_repass" class="layui-form-label" style="width: 90px;">
               </label>
               <button  class="layui-btn">
                   确认添加
@@ -74,9 +89,7 @@
 
           </div>
         </form>
-        <hr>
-        <span>*注：当您在添加主类时，上传图片框是为主类添加图标的展示图片;</span><br>
-        <span>*注：当您在添加分类时，上传图片框是为分类类添加入口的展示图片！！</span>
+       
 
     </div>
 @endsection

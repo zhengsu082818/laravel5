@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Homeuser;
-
+//管理前台用户控制器
 class HomeuserController extends Controller
 {
     /**
@@ -18,13 +18,14 @@ class HomeuserController extends Controller
     public function index(Request $request)
     {
         $where=[];
-        $keywords = $request->name;
+        $keywords = $request->username;
         if ($keywords != '') {
-            $stus = homeuser::where('name','like',"%$keywords%")->orderBy('id','desc')->paginate(env('PAGE_SIZE',5));
-            $count = homeuser::where('name','like',"%$keywords%")->count();
+
+            $stus = homeuser::where('username','like',"%$keywords%")->orderBy('id','desc')->paginate(5);
+            $count = homeuser::where('username','like',"%$keywords%")->count();
 
         }else{
-            $stus = homeuser::orderBy('id','desc')->paginate(env('PAGE_SIZE',5));
+            $stus = homeuser::orderBy('id','desc')->paginate(5);
             $count = homeuser::count();
         }
         return view('admin.homeuser.list',['stus'=>$stus,'count'=>$count,'keywords'=>$keywords]);

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Banner;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+//管理轮播图控制器
 class Bannerscontroller extends Controller
 {
     /**
@@ -14,13 +14,20 @@ class Bannerscontroller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-         // return 111;
-         $banner = Banner::orderby('id','desc')->paginate(5);
-         // dd($banner);
-         $count =Banner::count();
-         return view('admin.banner.index',['banner'=>$banner,'count'=>$count]);
+
+        $where=[];
+        $keywords = $request->static;
+        if ($keywords != '') {
+            $banner = Banner::where('static','like',"%$keywords%")->orderBy('id','desc')->paginate(5);
+            $count = Banner::where('static','like',"%$keywords%")->count();
+
+        }else{
+            $banner = Banner::orderBy('id','desc')->paginate(5);
+            $count = Banner::count();
+        }
+        return view('admin.banner.index',['banner'=>$banner,'count'=>$count,'keywords'=>$keywords]);
     }
 
     /**
@@ -45,7 +52,7 @@ class Bannerscontroller extends Controller
               // 文件上传成功设置新文件名
               $filename = time().rand(1,9999).'.'.$ext;
               // 文件上传移动文件
-              $path = $filed->move('storage/uploads',$filename);
+              $path = $filed->move('storage/uploads/banner',$filename);
         }
         return ['code'=>0,'msg'=>'','data'=>["src"=>$filename]];
         
@@ -64,13 +71,11 @@ class Bannerscontroller extends Controller
        $banner->static = $request->static;
        if(!$banner->img = $request->img ){
         flash()->overlay('添加失败,没有图片上传','5');
-        return redirect()->action('Admin\BannersController@create');
+        return back();
        }
-       // dd($banner->static = $request->static);
-       // $banner->static = $request->static;
        $banner->save();
-        flash()->overlay('添加成功','1');
-       return redirect()->action('Admin\BannersController@Index');
+       flash()->overlay('添加成功','1');
+       return redirect()->action('Admin\BannersController@index');
     }
 
     /**
@@ -109,7 +114,7 @@ class Bannerscontroller extends Controller
           ->update(['img' => $request->imgurl,'static'=>$request->static]);
          if($list){
              flash()->overlay('修改成功','1');
-             return redirect()->action('Admin\BannersController@Index');
+             return redirect()->action('Admin\BannersController@index');
          }else{
              flash()->overlay('修改失败','5');
              return redirect()->action('Admin\BannersController@edit');
@@ -128,6 +133,6 @@ class Bannerscontroller extends Controller
          $flight = Banner::find($id);
          $banner = $flight->delete();
          flash()->overlay('删除成功','1');
-         return redirect()->action('Admin\BannersController@Index');
+         return redirect()->action('Admin\BannersController@index');
     }
 }

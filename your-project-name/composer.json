@@ -1,4 +1,4 @@
- {
+{
     "name": "laravel/laravel",
     "description": "The Laravel Framework.",
     "keywords": ["framework", "laravel"],
@@ -11,7 +11,9 @@
         "laracasts/flash": "^3.0",
         "mews/captcha": "^2.1",
         "overtrue/laravel-lang": "^3.0",
-        "nesbot/carbon":"1.22.1"
+        "nesbot/carbon":"1.22.1",
+        "zizaco/entrust": "^1.9",
+        "stevenyangecho/laravel-u-editor": "^1.4"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

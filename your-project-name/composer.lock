@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "06c19e123c0ec3db8c35c3514094de19",
+    "content-hash": "2fdcf09a61c877b50406a1c2308c3a15",
     "packages": [
         {
             "name": "baum/baum",
@@ -1422,6 +1422,104 @@
             "time": "2016-03-09T05:03:14+00:00"
         },
         {
+            "name": "qiniu/php-sdk",
+            "version": "v7.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/qiniu/php-sdk.git",
+                "reference": "67852ba9cdd7f48e0e080961abebafee134fb329"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/qiniu/php-sdk/67852ba9cdd7f48e0e080961abebafee134fb329.zip",
+                "reference": "67852ba9cdd7f48e0e080961abebafee134fb329",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "~2.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Qiniu\\": "src/Qiniu"
+                },
+                "files": [
+                    "src/Qiniu/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Qiniu",
+                    "email": "sdk@qiniu.com",
+                    "homepage": "http://www.qiniu.com"
+                }
+            ],
+            "description": "Qiniu Resource (Cloud) Storage SDK for PHP",
+            "homepage": "http://developer.qiniu.com/",
+            "keywords": [
+                "cloud",
+                "qiniu",
+                "sdk",
+                "storage"
+            ],
+            "time": "2018-02-20T13:59:54+00:00"
+        },
+        {
+            "name": "stevenyangecho/laravel-u-editor",
+            "version": "v1.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stevenyangecho/laravel-u-editor.git",
+                "reference": "e8612da55f5a7ec1acf76cc2d03e3504ccb3bff9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/stevenyangecho/laravel-u-editor/e8612da55f5a7ec1acf76cc2d03e3504ccb3bff9.zip",
+                "reference": "e8612da55f5a7ec1acf76cc2d03e3504ccb3bff9",
+                "shasum": ""
+            },
+            "require": {
+                "ext-fileinfo": "*",
+                "illuminate/support": "5.*",
+                "php": ">=5.4.0",
+                "qiniu/php-sdk": "7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Stevenyangecho\\UEditor\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Steven Yang",
+                    "email": "yqmking@163.com"
+                }
+            ],
+            "description": "UEditor for laravel5. Support i18n. UEditor is a Rich Text Web Editor From Baidu.",
+            "keywords": [
+                "laravel",
+                "laravel-u-editor",
+                "laravel5 web text editor",
+                "steven yang",
+                "stevenyangecho",
+                "ueditor"
+            ],
+            "time": "2017-06-21T06:29:09+00:00"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "v5.4.9",
             "source": {
@@ -2364,6 +2462,151 @@
             "time": "2018-01-30T15:53:25+00:00"
         },
         {
+            "name": "toplan/laravel-sms",
+            "version": "2.6.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/toplan/laravel-sms.git",
+                "reference": "9c8427493c768c07a15fb993436267b81f31bae5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/toplan/laravel-sms/9c8427493c768c07a15fb993436267b81f31bae5.zip",
+                "reference": "9c8427493c768c07a15fb993436267b81f31bae5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "toplan/phpsms": "~1.8"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ],
+                "psr-0": {
+                    "Toplan\\Sms": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "toplan",
+                    "email": "toplan710@gmail.com"
+                }
+            ],
+            "description": "A mobile phone number validation solution based on laravel",
+            "keywords": [
+                "laravel",
+                "laravel-sms",
+                "mobile",
+                "phone",
+                "sms"
+            ],
+            "time": "2017-06-23T10:07:04+00:00"
+        },
+        {
+            "name": "toplan/phpsms",
+            "version": "1.8.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/toplan/phpsms.git",
+                "reference": "863918ed0970d335471fb48c09f9f446a4daddbd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/toplan/phpsms/863918ed0970d335471fb48c09f9f446a4daddbd.zip",
+                "reference": "863918ed0970d335471fb48c09f9f446a4daddbd",
+                "shasum": ""
+            },
+            "require": {
+                "jeremeamia/superclosure": "~2.2",
+                "php": ">=5.4.0",
+                "toplan/task-balancer": "~0.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Toplan\\PhpSms\\": [
+                        "src/phpsms/",
+                        "src/phpsms/agents/",
+                        "src/phpsms/interfaces/"
+                    ],
+                    "Toplan\\PhpSms\\Facades\\": [
+                        "src/phpsms/facades/"
+                    ]
+                },
+                "classmap": [
+                    "src/phpsms/lib/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "toplan",
+                    "email": "toplan710@gmail.com"
+                }
+            ],
+            "description": "Probably the most intelligent, elegant sms send library in php",
+            "keywords": [
+                "php",
+                "phpsms",
+                "sms",
+                "sms library"
+            ],
+            "time": "2017-07-10T17:23:21+00:00"
+        },
+        {
+            "name": "toplan/task-balancer",
+            "version": "0.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/toplan/task-balancer.git",
+                "reference": "6ba16aafbf6888de0f0c53ea93dfff844b6ef27f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/toplan/task-balancer/6ba16aafbf6888de0f0c53ea93dfff844b6ef27f.zip",
+                "reference": "6ba16aafbf6888de0f0c53ea93dfff844b6ef27f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Toplan\\TaskBalance\\": "src/TaskBalancer/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "toplan",
+                    "email": "toplan710@gmail.com"
+                }
+            ],
+            "description": "lightweight and powerful task load balancing.",
+            "keywords": [
+                "balance",
+                "load balancing",
+                "task"
+            ],
+            "time": "2017-05-15T03:19:56+00:00"
+        },
+        {
             "name": "vlucas/phpdotenv",
             "version": "v1.1.1",
             "source": {
@@ -2408,6 +2651,84 @@
                 "environment"
             ],
             "time": "2015-05-30T15:59:26+00:00"
+        },
+        {
+            "name": "zizaco/entrust",
+            "version": "1.9.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Zizaco/entrust.git",
+                "reference": "05b2542f5f96ea80998a13800c6e216df6821bff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/Zizaco/entrust/05b2542f5f96ea80998a13800c6e216df6821bff.zip",
+                "reference": "05b2542f5f96ea80998a13800c6e216df6821bff",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/cache": "~5.0",
+                "illuminate/console": "~5.0",
+                "illuminate/support": "~5.0",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "illuminate/database": "~5.0",
+                "mockery/mockery": "dev-master",
+                "phpunit/phpunit": "~4.1",
+                "sami/sami": "dev-master"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Zizaco\\Entrust\\EntrustServiceProvider"
+                    ],
+                    "aliases": {
+                        "Entrust": "Zizaco\\Entrust\\EntrustFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/commands"
+                ],
+                "psr-4": {
+                    "Zizaco\\Entrust\\": "src/Entrust/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrew Elkins",
+                    "homepage": "http://andrewelkins.com"
+                },
+                {
+                    "name": "Zizaco Zizuini",
+                    "email": "zizaco@gmail.com"
+                },
+                {
+                    "name": "Ben Batschelet",
+                    "homepage": "http://github.com/bbatsche"
+                },
+                {
+                    "name": "Michele Angioni",
+                    "email": "michele.angioni@gmail.com"
+                }
+            ],
+            "description": "This package provides a flexible way to add Role-based Permissions to Laravel",
+            "keywords": [
+                "acl",
+                "auth",
+                "illuminate",
+                "laravel",
+                "permission",
+                "roles"
+            ],
+            "time": "2017-11-13T23:25:18+00:00"
         }
     ],
     "packages-dev": [

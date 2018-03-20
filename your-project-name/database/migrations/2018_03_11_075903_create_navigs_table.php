@@ -13,13 +13,16 @@ class CreateNavigsTable extends Migration {
   public function up() {
     if (!Schema::hasTable('navigs')) {
       Schema::create('navigs', function(Blueprint $table) {
-            $table->increments('id');
-            $table->integer('parent_id')->nullable()->index();
+            $table->increments('id');//无限分类三级分类id
+            $table->integer('parent_id')->nullable()->index();//等级类别名
             $table->integer('lft')->nullable()->index();
             $table->integer('rgt')->nullable()->index();
-            $table->integer('depth')->nullable();
-            $table->char('name');
-            $table->string('url',255);
+
+
+            $table->integer('depth')->nullable();//嵌套等级
+            $table->char('name');//类别名
+            $table->string('url',255);//图片
+
             $table->string('img',255);
             $table->timestamps();
           });

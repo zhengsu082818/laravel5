@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Homeuser extends Model
 {
+    protected $table = 'homeusers';
     protected $fillable = ['stated'];
 
     public function getStatedAttribute($value){
@@ -21,6 +22,12 @@ class Homeuser extends Model
         return $sex[$value];
     }
 
+     public function comment()
+    {
+        return $this->hasMany('App\Models\Comment','id');
+    }
+
+    
     
 
 }
