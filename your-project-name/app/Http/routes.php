@@ -120,13 +120,21 @@ Route::post('authindex/index','Authindex\AuthindexController@create');
 Route::get('authindex/out','Authindex\AuthindexController@show');
 // 加载注册页面
 Route::get('authindex/register','Authindex\AuthindexController@edit');
+// 加载注册验证规则
 Route::post('authindex/update','Authindex\AuthindexController@update');
 // 注册成功跳转登录
 Route::get('authindex/success','Authindex\AuthindexController@login');
 // 找回密码路由
 Route::get('authindex/password','Authindex\PasswordController@index');
+// 加载验证码
+Route::post('password/code','Authindex\PasswordController@code');
+// 判断验证码
+Route::get('password/yanz','Authindex\PasswordController@Verification');
+// 加载重置密码页面
+Route::get('password/reset','Authindex\PasswordController@reset');
 // 加载主页
 Route::get('authindex/redirect','Authindex\AuthindexController@index');
+
 
 
 // 加载商品属性

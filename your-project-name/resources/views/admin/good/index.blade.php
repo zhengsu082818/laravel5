@@ -17,7 +17,6 @@
           <cite>商品列表管理</cite>
         </a>
       </span>
-      
       <a class="layui-btn" style="line-height:38px;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
         <i class="layui-icon" style="line-height:38px">ဂ</i></a>
     </div>
@@ -38,11 +37,11 @@
             <th style="text-align: center;">所属分类</th>
             <th style="text-align: center;">所属属性名</th>
             <th style="text-align: center;">所属属性值</th>
-             <th style="text-align: center;">标题</th>
-              <th style="text-align: center;">图片</th>
-               <th style="text-align: center;">价格</th>
-                <th style="text-align: center;">库存数量</th>
-                <th style="text-align: center;">商品详情</th>
+            <th style="text-align: center;">标题</th>
+            <th style="text-align: center;">图片</th>
+            <th style="text-align: center;">价格</th>
+            <th style="text-align: center;">库存数量</th>
+            <th style="text-align: center;">商品详情</th>
             <th style="text-align: center;">添加时间</th>
             <th style="text-align: center;">操作</th></tr>
         </thead>
@@ -57,7 +56,7 @@
                 <td style="text-align: center;"><img src='{{ URL::asset("storage/uploads/shopping/$v->img") }}' style="width: 50px;height: 50px;"></td>
                 <td style="text-align: center;">{{$v->price}}</td>
                 <td style="text-align: center;">{{$v->nums}}</td>
-                 <td style="text-align: center;">{!!$v->content!!}</td>
+                <td style="text-align: center;">{!!$v->content!!}</td>
                 <td style="text-align: center;">{{$v->created_at}}</td>
                 <td class="td-manage" style="text-align: center;">
                   <a href='{{url("/admin/goodedit/$v->id")}}' style="color:#fff;">
@@ -70,9 +69,7 @@
               </tr>
           @endforeach    
         </tbody>
-
       </table>
-
             <center>
             {!! $goods->appends(['name' => $keywords])->render() !!}
             </center>

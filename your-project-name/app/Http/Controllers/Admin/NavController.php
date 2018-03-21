@@ -17,7 +17,7 @@ class NavController extends Controller
     public function index()
     {
         // 查询所有数据
-           $nav = Nav::all();
+           $nav = Nav::orderby('id','desc')->paginate(5);
         // 查询数据总条数
            $count = Nav::count();
         // dd($count);
@@ -56,10 +56,11 @@ class NavController extends Controller
                  flash()->overlay('导航名不能为空', '5');
                  return back();
                }else{
+                 $nav1->save();
                  flash()->overlay('添加成功', '1');
                  return redirect('admin/navindex');
                }
-           $nav1->save(); 
+            
     }
 
     /**

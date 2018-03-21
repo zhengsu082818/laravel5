@@ -19,7 +19,7 @@
 	<div class="content-box">
 		<div class="content1-box">
 			<div>
-				<a href=""><span>首页 ></span></a>
+				<a href="{{url('authindex/redirect')}}"><span>首页 ></span></a>
 				<a href=""><span>美容彩妆 ></span></a>
 				<a href=""><span>护肤 > </span></a>
 				<a href=""><span style="font-size: 14px;" > Avène 雅漾 舒护活泉水喷雾 300毫升 大喷 人手一只</span></a>

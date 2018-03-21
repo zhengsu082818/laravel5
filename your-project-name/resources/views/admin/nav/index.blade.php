@@ -69,7 +69,7 @@
       </table>
 
             <center>
-              
+               {!! $nav->render() !!}  
             </center>
     </div>
   @endsection

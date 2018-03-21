@@ -1,6 +1,5 @@
 <?php
 namespace App\Jobs;
-
 class SendSMS {
 
 	public $target = 'http://106.ihuyi.cn/webservice/sms.php?method=Submit';
@@ -15,11 +14,12 @@ class SendSMS {
 
 		$gets =  $this->xml_to_array($this->post($post_data, $this->target));
 		if($gets['SubmitResult']['code']==2){
-		    $_SESSION['mobile'] = $mobile;
-		    $_SESSION['mobile_code'] = $mobile_code;
-		    return '验证码发送成功';
+		    // SESSION['mobile'] = $mobile;
+		    session(['mobile'=>$mobile,'mobile_code'=>$mobile_code]);
+		    // $_SESSION['mobile_code'] = $mobile_code;
+		    return '验证码发送成功,请注意接受';
 		}else{
-			return '验证码发送失败';	
+		    return 'n';
 		}
 	}
 
