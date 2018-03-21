@@ -25,6 +25,7 @@ class Bannerscontroller extends Controller
 
         }else{
             $banner = Banner::orderBy('id','desc')->paginate(5);
+          
             $count = Banner::count();
         }
         return view('admin.banner.index',['banner'=>$banner,'count'=>$count,'keywords'=>$keywords]);

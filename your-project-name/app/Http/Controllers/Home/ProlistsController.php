@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Models\Navig;
 class ProlistsController extends Controller
 {
     /**
@@ -16,7 +16,8 @@ class ProlistsController extends Controller
      */
     public function index()
     {
-        return view('home.product_list');
+        $list = navig::get()->toHierarchy();
+        return view('home.product_list',['list'=>$list]);
     }
 
     /**

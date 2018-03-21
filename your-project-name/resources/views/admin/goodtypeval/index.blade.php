@@ -45,7 +45,13 @@
           @foreach ($goodtypeval as $v)
               <tr>
                 <td style="text-align: center;">{{$v->id}}</td>
-                <td style="text-align: center;">{{$data[$v->lei_id]}}</td>
+                <td style="text-align: center;">
+                  <button class="layui-btn layui-btn-mini layui-btn-normal" value="">{{$data[$v->yiji_id]}}</button>
+                  <i class="layui-icon">&#xe602;</i>  
+                  <button class="layui-btn layui-btn-mini layui-btn-normal" value="">{{$data[$v->erji_id]}}</button>
+                  <i class="layui-icon">&#xe602;</i>
+                  <button class="layui-btn layui-btn-mini layui-btn-normal" value="">{{$data[$v->sanji_id]}}</button>
+                </td>
                 <td style="text-align: center;">{{$v->goodtypes->gt_name}}</td>
                 <td style="text-align: center;">{{$v->gtv_name}}</td>
 

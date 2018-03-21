@@ -28,6 +28,7 @@ class AuthindexController extends Controller
      */
     public function create(Request $request)
     {
+        // dd($request->all());
         // 编写验证规则
             $this->validate($request, [
                 'phone' => 'required', 'password' => 'required','captcha'=>'required|captcha'
@@ -45,9 +46,11 @@ class AuthindexController extends Controller
                  flash()->overlay('账号不存在','5');
                  return back();
             }
+            $password = md5($a['password']);
         // 查看数据库和表单提交密码
-            $c = Homeuser::where('password',md5($a['password']))->first();  
-        // dd($c); 
+
+            $c = Homeuser::where('password',$password)->first();   
+
             if(!$a['password'] = $c){
                  flash()->overlay('密码不正确','5');
                  return back();
@@ -72,7 +75,9 @@ class AuthindexController extends Controller
             // dd(session('username'));
 
         // 加载模板文件
-           return redirect('authindex/redirect');
+
+           return redirect('/');
+
     }
     /**
      * Store a newly created resource in storage.
@@ -122,16 +127,19 @@ class AuthindexController extends Controller
     public function update(Request $request)
     {
     // 接受表单数据
-        $input = $request->all();
-        // dd($input);
+        $input = $request->only(['phone', 'password','captcha']);
+      
+       
     // 编写验证规则
         $this->validate($request, [
-            'phone' => 'required|regex:/^1[34578][0-9]{9}$/|max:11',
+            'phone' => 'required|regex:/^1[34578][0-9]{9}$/|max:11|unique:homeusers',
             'password' => 'required|confirmed|min:6|',
             'captcha'=>'required|captcha',
         ],[
         "phone.required"=>'请填写手机号',
-        "name.max"=>'手机号过长',
+        "phone.max"=>'手机号过长',
+        "phone.regex"=>'手机号格式不正确',
+        "phone.unique"=>'手机号已注册',
         "password.required"=>'请填写密码',
         "password.confirmed"=>'两次密码不一样',
         "password.min"=>'最少6位密码',

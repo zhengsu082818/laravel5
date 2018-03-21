@@ -30,6 +30,7 @@ class PersonalsController extends Controller
 
         }else{
             $username = Personal::with('homeuser')->orderBy('id','desc')->paginate(5);
+            // dd($username);
             $count = Personal::count();
         }
 

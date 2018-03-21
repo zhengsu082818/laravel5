@@ -27,7 +27,6 @@ class PersonalsController extends Controller
         "shdz.required"=>'请输入您的详细收货地址',
         "shdz.max"=>'请输入正确收货地址',
         "name.required"=>'请输入收件人的姓名',
-        "name.min"=>'请正确输入收件人的姓名',
         "phone.required"=>'请输入收件人的手机号码',
         "phone.regex"=>'收件人的手机号码格式不正确',
         // "phone.min"=>'请正确输入收件人的手机号',

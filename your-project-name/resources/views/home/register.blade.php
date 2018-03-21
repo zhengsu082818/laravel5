@@ -2,52 +2,57 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>register</title>
+	<title>网易考拉海购--注册</title>
+	<link rel="icon" href="{{asset('static/images/index_images/log_tb.jpg')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('home/css/register.css')}}">
 	<script src="{{asset('etsc/lib/layui/layui.js')}}" charset="utf-8"></script>
 </head>
 <body>
- <form action="{{url('authindex/update')}}" method="post">
- 	{{ csrf_field() }}
+
+
  	@include('flash::message')
 	<div class="logo">
-		<a href="index.html"><img class="one" src="../home/images/logres_images/login1.jpg"></a>
+		<a href="{{url('/')}}"><img class="one" src="../home/images/logres_images/login1.jpg"></a>
 		<img class="two" src="../home/images/logres_images/login2.jpg">
 	</div>
-	<div class="content">
+	<div class="content" style="height: 560px;">
 		<div>
 			<a href="index.html"><img src="../home/images/logres_images/login3.jpg"></a>
-			<div class="login" style="height:360px;">
+			<div class="login" style="height:425px;">
 				<div>
 					<h3>欢迎注册
 						<span>已有账号?</span>
 						<a href="{{url('authindex/login')}}">去登陆></a>
 					</h3>
 				</div>
-				<div class="Login_yan" >
-					<div class="Login_yanzheng">
-						<input type="" name="phone" placeholder="请输入手机号" >
+				 <form action="{{url('authindex/update')}}" method="post">
+				 	 	{{ csrf_field() }}
+				<div class="Login_yan" style="height:370px; ">
+					<div class="Login_yanzheng" style="border:none;">
+						<input type="" name="phone" placeholder="请输入手机号" style="margin-top: 20px;" >
 						@if (count($errors) > 0)
 				                    @foreach ($errors->get('phone') as $error)
 				                        <li style="color:red;">{{ $error }}</li>
 				                    @endforeach
 				        @endif
-				        <input type="password" name="password" placeholder="请输入密码">
+				        <input type="password" name="password" placeholder="请输入密码" style="margin-top: 20px;" >
 				        @if (count($errors) > 0)
 				                    @foreach ($errors->get('password') as $error)
 				                       <li style="color:red;">{{ $error }}</li>
 				                    @endforeach
 				        @endif
-                        <input type="password" name="password_confirmation" placeholder="请再次输入密码">
-						<input class="erge" style="width:130px;font-size:12px;float:left" type="" name="captcha" placeholder="请输入短信验证码">
-						<img style="margin:22px 0px 0px; height:36px;width:114px;" src="{{ url('/captcha') }}" onclick="this.src='{{ url('/captcha') }}?r='+Math.random();" alt="">
+                        <input type="password" name="password_confirmation" placeholder="请再次输入密码" style="margin-top: 20px;" >
+						<input class="erge" style="width:130px;font-size:12px;float:left; margin-top: 20px;"  type="" name="captcha" placeholder="请输入短信验证码">
+						<img style="margin:20px 0px 0px; height:36px;width:114px;" src="{{ url('/captcha') }}" onclick="this.src='{{ url('/captcha') }}?r='+Math.random();" alt="">
 						 @if (count($errors) > 0)
 				                    @foreach ($errors->get('captcha') as $error)
 				                       <li style="color:red;">{{ $error }}</li>
 				                    @endforeach
 				        @endif
 						<button class="denglu" >注册</button>
-						<p style="float:left;">我同意<a href=""><<服务条款>></a>和<a href=""><<网易隐私政策>></a></p>
+						 </form>
+
+						
 					</div>
 				</div>
 			</div>
@@ -92,6 +97,5 @@
 			</div>
 		</div>
 	</div>
- </form>
 </body>
 </html>

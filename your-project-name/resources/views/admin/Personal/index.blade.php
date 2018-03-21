@@ -34,7 +34,6 @@
           <tr >
             <th style="text-align: center;">ID</th>
             <th style="text-align: center;">用户名</th>
-
             <th style="text-align: center;">收货人</th>
             <th style="text-align: center;">手机号</th>
             <th style="text-align: center;">收货地址</th>
@@ -44,14 +43,12 @@
           @foreach ($username as $v)
               <tr>
                 <td style="text-align: center;">{{$v->id}}</td>
-                 <td style="text-align: center;">{{$v->homeuser->username}}</td>
+                <td style="text-align: center;">{{$v->homeuser->username}}</td>
                 <td style="text-align: center;">{{$v->name}}</td>
 
-
                 <td style="text-align: center;">{{$v->phone}}</td>
-                 <td style="text-align: center;">{{$v->shdz}}</td>
+                <td style="text-align: center;">{{$v->shdz}}</td>
                 <td style="text-align: center;">{{$v->created_at}}</td>
-               
               </tr>
           @endforeach    
         </tbody>

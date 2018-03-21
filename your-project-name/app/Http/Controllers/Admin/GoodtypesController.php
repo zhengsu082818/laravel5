@@ -149,7 +149,7 @@ class GoodtypesController extends Controller
      */
     public function destroy($id)
     {
-        $gtv = goodtypeval::where('gtt_id',$id)->first();
+        $gtv = goodtypeval::where('gt_id',$id)->first();
         if($gtv == null){
             $dele =goodtype::destroy($id);
             //判断是否删除成功

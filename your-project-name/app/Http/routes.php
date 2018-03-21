@@ -125,6 +125,7 @@ Route::post('authindex/index','Authindex\AuthindexController@create');
 Route::get('authindex/out','Authindex\AuthindexController@show');
 // 加载注册页面
 Route::get('authindex/register','Authindex\AuthindexController@edit');
+
 Route::post('authindex/update','Authindex\AuthindexController@update');
 // 注册成功跳转登录
 Route::get('authindex/success','Authindex\AuthindexController@login');
@@ -164,8 +165,12 @@ Route::get('admin/goodtypevaledit/{id}', 'Admin\GoodtypevalsController@edit');
 Route::post('admin/goodtypevalupdate/{id}', 'Admin\GoodtypevalsController@update');
 //删除属性值
 Route::get('admin/goodtypevaldestroy/{id}', 'Admin\GoodtypevalsController@destroy');
-//执行ajax二级联动
-Route::get('admin/goodtypevalejld', 'Admin\GoodtypevalsController@ejld');
+//ajax四级联动1
+Route::get('admin/goodtypevalfour','Admin\GoodtypevalsController@goodtypevalfour');
+//ajax四级联动2
+Route::get('admin/goodtypevalfour2','Admin\GoodtypevalsController@goodtypevalfour2');
+//ajax四级联动3
+Route::get('admin/goodtypevalfour3','Admin\GoodtypevalsController@goodtypevalfour3');
 
 
 //加载职位管理列表
@@ -224,11 +229,14 @@ Route::post('admin/goodupdate/{id}', 'Admin\GoodsController@update');
 Route::get('admin/gooddestroy/{id}', 'Admin\GoodsController@destroy');
 // ajax图片上传
 Route::post('admin/gooduplode', 'Admin\GoodsController@uplode');
-//ajax三级联动1
-Route::get('admin/goodSjld1','Admin\GoodsController@goodSjld1');
-//ajax三级联动2
-Route::get('admin/goodSjld2','Admin\GoodsController@goodSjld2');
-
+//ajax五级联动1
+Route::get('admin/goodwjld','Admin\GoodsController@goodwjld');
+//ajax五级联动2
+Route::get('admin/goodwjld2','Admin\GoodsController@goodwjld2');
+//ajax五级联动3
+Route::get('admin/goodwjld3','Admin\GoodsController@goodwjld3');
+//ajax五级联动4
+Route::get('admin/goodwjld4','Admin\GoodsController@goodwjld4');
 
 //加载用户中心收货地址主页
 Route::get('admin/personalindex', 'Admin\PersonalsController@index');

@@ -49,17 +49,24 @@
           @foreach ($stus as $v)
               <tr>
                 <td style="text-align: center;">{{$v->id}}</td>
-                 <td style="text-align: center;">{{$v->username}}</td>
+                <td style="text-align: center;">{{$v->username}}</td>
                 <td style="text-align: center;">{{$v->name}}</td>
                 <td style="text-align: center;">
+                  @if($v->sex == 'm')
+                    男
+                  @endif
+                  @if($v->sex == 'w')
+                    女
+                  @endif
 
                 </td>
 
-                 <td style="text-align: center;">{{$v->img}}</td>
-
+                <td style="text-align: center;">
+                  <img src='{{asset("storage/uploads/banner/$v->img")}}' style="width: 50px;height: 50px;">
+                </td>
                 <td style="text-align: center;">{{$v->phone}}</td>
+                <td style="text-align: center;">{{$v->address}}</td>
 
-                  <td style="text-align: center;">{{$v->address}}</td>
                 <td style="text-align: center;">{{$v->created_at}}</td>
                 <td class="td-status" style="text-align: center;">
                   @if($v->stated == '启用')
@@ -73,8 +80,7 @@
                   <a href='{{url("admin/homeedit/$v->id")}}' style="color:#fff;">
                     <button class="layui-btn layui-btn-mini">修改</button>
                   </a>
-                  
-                </td>
+
               </tr>
           @endforeach    
         </tbody>

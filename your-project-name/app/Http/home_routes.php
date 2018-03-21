@@ -11,6 +11,9 @@ Route::get('home/prolistindex', 'Home\ProlistsController@index');
 // 加载加入购物车页面
 Route::get('home/shopgoodindex', 'Home\ShopgoodsController@index');
 
+
+
+
 //加载个人中心-收货地址页面
 Route::get('home/personal', 'Home\PersonalsController@index');
 //执行新增收货地址
@@ -27,3 +30,4 @@ Route::get('home/home/number', 'Admin\HomeuserController@create');
 Route::post('home/home/number/tupiana','Admin\HomeuserController@tupiana');
 //执行修改个人信息页面
 Route::post('home/home/store/{id}', 'Admin\HomeuserController@store');
+

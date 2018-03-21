@@ -41,18 +41,35 @@
                   <span class="x-red">*</span>所属分类名
               </label>
               <div class="layui-input-inline">
-                  <select name='lei_id' lay-filter="test">
-                    <option value ="0">请选择三级类别</option>
-                    @foreach($nav as $v)
-                      <option value="{{$v['id']}}">{{$v['name']}}</option>
+                  <select name='yiji_id' lay-filter="gtv">
+                    <option value="0">请选择一级类名</option>
+                    @foreach ($nav as $k => $v) 
+                    <option value="{{$v['id']}}">{{$v['name']}}</option>
                     @endforeach
                   </select>
               </div>
               <div class="layui-input-inline">
-                  <select name="gtt_id"  id="ming">
-                    <option value ="0">请选择属性名</option>
+                  <select name='erji_id' lay-filter="gtv1" id="twolei" >
+                     <option value="0">请选择二级级类名</option>
+                    <option  value="{{$v['id']}}"></option>
+                   
                   </select>
               </div>
+              <div class="layui-input-inline">
+                  <select name='sanji_id' id="threelei" lay-filter="gtv2">
+                     <option value="0">请选择三级类名</option>
+
+                    <option  value="{{$v['id']}}"></option>
+                  </select>
+              </div>
+               <div class="layui-input-inline">
+                  <select name='gt_id' id="fourlei" >
+                     <option value="0">请选择属性类名</option>
+                    
+                    <option  value="{{$v['id']}}"></option>
+                  </select>
+              </div>
+              
           </div>
           <div class="layui-form-item">
               <label for="username" class="layui-form-label" style="width: 100px;">
@@ -91,18 +108,56 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+        
         var form = layui.form;
-        form.on('select(test)', function(data){
-         
+        form.on('select(gtv)', function(data){
           $.ajax({
             type:"GET",
-            url:'{{ url("admin/goodtypevalejld") }}?id='+data.value,
+            url:'{{ url("admin/goodtypevalfour") }}?id='+data.value,
             success:function(msg){
-              var ming = $("#ming");
-              ming.find("option").remove();
+              var twolei = $("#twolei");
+              twolei.find("option").remove();
+              for(var i = 0; i<msg.data.length; i++){ 
+                twolei.append("<option value='"+msg.data[i].id+"'>"+msg.data[i].name+"</option>");
+              }
+             form.render('select'); 
+            },
+            error:function(data){
+
+            }
+          })
+        });
+         var form = layui.form;
+        form.on('select(gtv1)', function(data){
+          $.ajax({
+            type:"GET",
+            url:'{{ url("admin/goodtypevalfour2") }}?id='+data.value,
+            success:function(msg){
+              var threelei = $("#threelei");
+              threelei.find("option").remove();
 
               for(var i = 0; i<msg.data.length; i++){ 
-                ming.append("<option value='"+msg.data[i].id+"'>"+msg.data[i].gt_name+"</option>");
+                threelei.append("<option value='"+msg.data[i].id+"'>"+msg.data[i].name+"</option>");
+              }
+             form.render('select'); 
+            },
+            error:function(data){
+
+            }
+          })
+        });
+
+         var form = layui.form;
+        form.on('select(gtv2)', function(data){
+          $.ajax({
+            type:"GET",
+            url:'{{ url("admin/goodtypevalfour3") }}?id='+data.value,
+            success:function(msg){
+              var fourlei = $("#fourlei");
+              fourlei.find("option").remove();
+
+              for(var i = 0; i<msg.data.length; i++){ 
+                fourlei.append("<option value='"+msg.data[i].id+"'>"+msg.data[i].gt_name+"</option>");
               }
              form.render('select'); 
             },
