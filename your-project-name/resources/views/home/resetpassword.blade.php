@@ -9,7 +9,7 @@
 	<script src="{{asset('etsc/lib/layui/layui.js')}}" charset="utf-8"></script>
 </head>
 <body>
-  <form method="get" action="{{url('password/yanz')}}">
+  <form method="get" action="{{url('password/reset')}}">
   		@include('flash::message')
 	<div class="logo">
 		<a href="index.html"><img class="one" src="../home/images/logres_images/login1.jpg"></a>
@@ -20,19 +20,15 @@
 			<a href="index.html"><img src="../home/images/logres_images/login3.jpg"></a>
 			<div class="login">
 				<div>
-					<h3>找回密码
+					<h3>重置密码
 					</h3>
 				</div>
 				<div class="Login_yan">
 					<div class="Login_yanzheng">
-						<input  type="text" class="phone" name="mobile"  placeholder="请输入手机号">
-						<input class="erge"  type="text" name="captcha"  placeholder="请输入验证码" style="float: left;width: 40%">
-						<input id="code" type="button" value=" 发送手机验证码 " style="width: 50%;height: 35px;margin-left: 10px;">
-						@if (count($errors) > 0)
-				                    @foreach ($errors->get('captcha') as $error)
-				                        <li style="color:red;font-size: 12px;list-style: none;margin:3px;">{{ $error }}</li>
-				                    @endforeach
-				        @endif
+						<input  type="password"  name="password"  placeholder="请输入密码">
+						<input type="password" name="password_confirmation" placeholder="请再次输入密码">
+						<input class="erge" style="width:130px;font-size:12px;float:left" type="" name="captcha" placeholder="请输入验证码">
+						<img style="margin:22px 0px 0px; height:36px;width:114px;" src="{{ url('/captcha') }}" onclick="this.src='{{ url('/captcha') }}?r='+Math.random();" alt="">
 						<button class="denglu" >提交</button>
 						<p>我同意<a href=""><<服务条款>></a>和<a href=""><<网易隐私政策>></a></p>
 					</div>
@@ -81,27 +77,4 @@
 	</div>
  </form>
 </body>
-</html>		
-      <script>
-      		document.getElementById('code').onclick=function(){
-      			var mobile=document.getElementsByClassName('phone')[0].value;
-      		$.ajaxSetup({
-        		headers: {
-            		'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        		}
-			})
-			$.ajax({
-                type:"POST",
-                url:"/password/code",
-                //dataType:"xml",
-                data:{
-                	'mobile':mobile
-                },
-                success:function(data){
-                   alert(data);
-                },
-                error:function(jqXHR){
-                }
-            })
-      	}
-      </script>
+</html>

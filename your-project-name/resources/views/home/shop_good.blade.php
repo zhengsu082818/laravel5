@@ -16,8 +16,6 @@
 
 	<!-- 分类表头 -->
 	<p class="fjx"></p>
-
-	 <!-- 产品详情 -->
     <article>
         <div id="content" >
             <div id="fadeDiv">
@@ -233,5 +231,6 @@
         </div>
 
     </article>
+
 	
 	@endsection

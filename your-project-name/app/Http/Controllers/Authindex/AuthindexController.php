@@ -46,30 +46,33 @@ class AuthindexController extends Controller
                  flash()->overlay('账号不存在','5');
                  return back();
             }
-            $password = md5($a['password']);
-        // 查看数据库和表单提交密码
+            
+       
+            if(!$a['password']==$c){
+                $password = md5($a['password']);
+                // 查看数据库和表单提交密码
 
-            $c = Homeuser::where('password',$password)->first();   
+                $c = Homeuser::where('password',$password)->first();   
 
-            if(!$a['password'] = $c){
-                 flash()->overlay('密码不正确','5');
-                 return back();
-            }
-        // 判断账号状态
-            $d = Homeuser::get(['stated'])->toArray();
-            foreach($d as $v){
-                if($v['stated'] == '禁用'){
-                    flash()->overlay('账号被禁用','5');
-                    return back();
+                if(!$a['password'] = $c){
+                     flash()->overlay('密码不正确','5');
+                     return back();
                 }
+                // 判断账号状态
+                $d = Homeuser::get(['stated'])->toArray();
+                foreach($d as $v){
+                    if($v['stated'] == '禁用'){
+                        flash()->overlay('账号被禁用','5');
+                        return back();
+                    }
+                }
+                // 存入session
+                $request->session()->put('phone',$request->phone); 
+                // 加载模板文件
+                return redirect('/');
             }
-        // 存入session
-           $request->session()->put('phone',$request->phone); 
-        // 加载模板文件
+    }   
 
-           return redirect('/');
-
-    }
     /**
      * Store a newly created resource in storage.
      *
@@ -128,9 +131,9 @@ class AuthindexController extends Controller
             'captcha'=>'required|captcha',
         ],[
         "phone.required"=>'请填写手机号',
-        "phone.max"=>'手机号过长',
-        "phone.regex"=>'手机号格式不正确',
-        "phone.unique"=>'手机号已注册',
+        "phone.max"=>'手机号最长11位',
+        "phone.unique"=>'该手机号已注册',
+        "phone.regex"=>'手机格式不正确',
         "password.required"=>'请填写密码',
         "password.confirmed"=>'两次密码不一样',
         "password.min"=>'最少6位密码',
