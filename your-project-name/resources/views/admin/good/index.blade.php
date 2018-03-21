@@ -34,9 +34,7 @@
         <thead>
           <tr >
             <th style="text-align: center;">ID</th>
-            <th style="text-align: center;">所属分类</th>
-            <th style="text-align: center;">所属属性名</th>
-            <th style="text-align: center;">所属属性值</th>
+            <th style="text-align: center;">所属分类 > 属性名 > 属性值</th>
             <th style="text-align: center;">标题</th>
             <th style="text-align: center;">图片</th>
             <th style="text-align: center;">价格</th>
@@ -49,9 +47,15 @@
           @foreach($goods as $v)
               <tr>
                 <td style="text-align: center;">{{$v->id}}</td>
-                <td style="text-align: center;">{{$v->nav_id}}</td>
-                <td style="text-align: center;">{{$data[$v->gt_id]}}</td>
-                <td style="text-align: center;">{{$v->gtv_id}}</td>
+                <td style="text-align: center;">
+                  <button class="layui-btn layui-btn-mini layui-btn-normal" value="">{{$datas[$v->djid]}}</button>
+                  <button class="layui-btn layui-btn-mini layui-btn-normal" value="">{{$datas[$v->cjid]}}</button>
+                  <button class="layui-btn layui-btn-mini layui-btn-normal" value="">{{$datas[$v->sj_id]}}</button>
+                  <i class="layui-icon">&#xe602;</i>
+                  <button class="layui-btn layui-btn-mini layui-btn-normal" value=""> {{$data[$v->gt_id]}}</button>
+                  <i class="layui-icon">&#xe602;</i>
+                  <button class="layui-btn layui-btn-mini layui-btn-normal" value=""> {{$gtvs[$v->gtv_id]}}</button>
+                </td>
                 <td style="text-align: center;">{{$v->title}}</td>
                 <td style="text-align: center;"><img src='{{ URL::asset("storage/uploads/shopping/$v->img") }}' style="width: 50px;height: 50px;"></td>
                 <td style="text-align: center;">{{$v->price}}</td>

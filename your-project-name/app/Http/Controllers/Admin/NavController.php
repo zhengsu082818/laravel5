@@ -52,16 +52,24 @@ class NavController extends Controller
            $nav1->name = $request->name;
            $nav1->static = $request->static;
         // 判断添加导航名是否为空
-                if($request->name == null){
+              if($request->name == null){
                  flash()->overlay('导航名不能为空', '5');
                  return back();
                }else{
+
                  $nav1->save();
                  flash()->overlay('添加成功', '1');
                  return redirect('admin/navindex');
                }
             
-    }
+
+                $nav1->save(); 
+                 flash()->overlay('添加成功', '1');
+                 return redirect('admin/navindex');
+               }
+           
+
+
 
     /**
      * Display the specified resource.

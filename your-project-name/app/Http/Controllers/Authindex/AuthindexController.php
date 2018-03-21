@@ -28,6 +28,7 @@ class AuthindexController extends Controller
      */
     public function create(Request $request)
     {
+        // dd($request->all());
         // 编写验证规则
             $this->validate($request, [
                 'phone' => 'required', 'password' => 'required','captcha'=>'required|captcha'
@@ -38,34 +39,40 @@ class AuthindexController extends Controller
             ]);
         // 获取表单提交账号密码
             $a = ['phone'=>$request->phone,'password'=>$request->password];
+            // dd($a);
         // 查案数据库和表单账号
             $b = Homeuser::where('phone',$a['phone'])->first();
             if(!$a['phone'] = $b){
                  flash()->overlay('账号不存在','5');
                  return back();
             }
-            // dd($a['password']);
-        // 查看数据库和表单提交密码
-             $c = Homeuser::where('password',md5($a['password']))->first(); 
-             // dd($c);
-        // dd($c); 
+            
+       
             if(!$a['password']==$c){
-                 flash()->overlay('密码不正确','5');
-                 return back();
-            }
-        // 判断账号状态
-            $d = Homeuser::get(['stated'])->toArray();
-            foreach($d as $v){
-                if($v['stated'] == '禁用'){
-                    flash()->overlay('账号被禁用','5');
-                    return back();
+                $password = md5($a['password']);
+                // 查看数据库和表单提交密码
+
+                $c = Homeuser::where('password',$password)->first();   
+
+                if(!$a['password'] = $c){
+                     flash()->overlay('密码不正确','5');
+                     return back();
                 }
+                // 判断账号状态
+                $d = Homeuser::get(['stated'])->toArray();
+                foreach($d as $v){
+                    if($v['stated'] == '禁用'){
+                        flash()->overlay('账号被禁用','5');
+                        return back();
+                    }
+                }
+                // 存入session
+                $request->session()->put('phone',$request->phone); 
+                // 加载模板文件
+                return redirect('/');
             }
-        // 存入session
-            $request->session()->put('phone',$request->phone); 
-        // 加载模板文件
-           return redirect('authindex/redirect');
-    }
+    }   
+
     /**
      * Store a newly created resource in storage.
      *
@@ -114,8 +121,9 @@ class AuthindexController extends Controller
     public function update(Request $request)
     {
     // 接受表单数据
-        $input = $request->all();
-        // dd($input);
+        $input = $request->only(['phone', 'password','captcha']);
+      
+       
     // 编写验证规则
         $this->validate($request, [
             'phone' => 'required|regex:/^1[34578][0-9]{9}$/|max:11|unique:homeusers',

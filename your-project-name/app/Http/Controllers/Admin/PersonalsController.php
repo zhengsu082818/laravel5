@@ -13,7 +13,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Personal;
 
 class PersonalsController extends Controller
-
 {
     /**
      * Display a listing of the resource.
@@ -31,6 +30,7 @@ class PersonalsController extends Controller
 
         }else{
             $username = Personal::with('homeuser')->orderBy('id','desc')->paginate(5);
+            // dd($username);
             $count = Personal::count();
         }
 

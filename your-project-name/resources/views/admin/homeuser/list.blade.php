@@ -39,7 +39,6 @@
             <th style="text-align: center;">性别</th>
             <th style="text-align: center;">头像</th>
             <th style="text-align: center;">手机号</th>
-            <th style="text-align: center;">邮箱</th>
             <th style="text-align: center;">居住地</th>
             <th style="text-align: center;">注册时间</th>
             <th style="text-align: center;">状态</th>
@@ -49,15 +48,21 @@
           @foreach ($stus as $v)
               <tr>
                 <td style="text-align: center;">{{$v->id}}</td>
-                 <td style="text-align: center;">{{$v->username}}</td>
+                <td style="text-align: center;">{{$v->username}}</td>
                 <td style="text-align: center;">{{$v->name}}</td>
-                <td style="text-align: center;">{{$v->sex}}</td>
-
-                 <td style="text-align: center;">{{$v->img}}</td>
-
+                <td style="text-align: center;">
+                  @if($v->sex == 'm')
+                    男
+                  @endif
+                  @if($v->sex == 'w')
+                    女
+                  @endif
+                </td>
+                <td style="text-align: center;">
+                  <img src='{{asset("storage/uploads/banner/$v->img")}}' style="width: 50px;height: 50px;">
+                </td>
                 <td style="text-align: center;">{{$v->phone}}</td>
-                 <td style="text-align: center;">{{$v->email}}</td>
-                  <td style="text-align: center;">{{$v->address}}</td>
+                <td style="text-align: center;">{{$v->address}}</td>
                 <td style="text-align: center;">{{$v->created_at}}</td>
                 <td class="td-status" style="text-align: center;">
                   @if($v->stated == '启用')
@@ -70,9 +75,6 @@
                 <td class="td-manage" style="text-align: center;">
                   <a href='{{url("admin/homeedit/$v->id")}}' style="color:#fff;">
                     <button class="layui-btn layui-btn-mini">修改</button>
-                  </a>
-                  <a href='{{url("admin/homedestroy/$v->id")}}' style="color:#fff;">
-                    <button class="layui-btn layui-btn-mini layui-btn-danger">删除</button>
                   </a>
                 </td>
               </tr>

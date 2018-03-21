@@ -8,6 +8,6 @@ class Personal extends Model
 {
     public function homeuser()
     {
-        return $this->belongsTo('App\Models\Homeuser','pid');
+        return $this->belongsTo('App\Models\Homeuser','pid','id');
     }
 }

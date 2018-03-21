@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Goodtype;
 use App\Models\Goodtypeval;
 use App\Models\Navig;
-
+//商品属性名控制器
 class GoodtypesController extends Controller
 {
      // 编写验证规则
@@ -149,7 +149,7 @@ class GoodtypesController extends Controller
      */
     public function destroy($id)
     {
-        $gtv = goodtypeval::where('gtt_id',$id)->first();
+        $gtv = goodtypeval::where('gt_id',$id)->first();
         if($gtv == null){
             $dele =goodtype::destroy($id);
             //判断是否删除成功

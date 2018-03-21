@@ -33,9 +33,9 @@ class PermissionsController extends Controller
      */
     public function index()
     {
-        $permission = Permission::orderBy('id','desc')->paginate(5);
-        $count = Permission::count();
-        return view('admin.Permission.index',['permission'=>$permission,'count'=>$count]);
+        $permission = Permission::orderBy('id','desc')->paginate(5);//根据id大小排序查询
+        $count = Permission::count();//查询长度
+        return view('admin.Permission.index',['permission'=>$permission,'count'=>$count]);//加载模板并赋值
     }
 
     /**
@@ -45,7 +45,7 @@ class PermissionsController extends Controller
      */
     public function create()
     {
-        return view('admin.Permission.create');
+        return view('admin.Permission.create');//加载权限添加页面
     }
 
     /**
@@ -59,7 +59,7 @@ class PermissionsController extends Controller
          $this->validate($request,$this->rules,$this->messages);//验证添加的字段
          $input  = $request->except('_token');//接收除_token字段的值
          $permission =new Permission;
-        $permission->name = $input['name'];
+        $permission->name = $input['name'];//更新赋值
         $permission->display_name = $input['display_name'];
         $permission->description = $input['description'];
         $permission->save();//执行添加数据库
@@ -86,9 +86,9 @@ class PermissionsController extends Controller
      */
     public function edit($id)
     {
-        $permission =Permission::findOrFail($id);
+        $permission =Permission::findOrFail($id);//查询要更改的单条数据
         // dd($permission);
-        return view('admin.Permission.edit',['permission' => $permission]);
+        return view('admin.Permission.edit',['permission' => $permission]);//加载修改页面并赋值
     }
 
     /**
