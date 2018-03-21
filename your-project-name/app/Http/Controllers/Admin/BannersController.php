@@ -20,11 +20,11 @@ class Bannerscontroller extends Controller
         $where=[];
         $keywords = $request->static;
         if ($keywords != '') {
-            $banner = Banner::where('static','like',"%$keywords%")->orderBy('id','desc')->paginate(5);
+            $banner = Banner::where('static','like',"%$keywords%")->orderBy('id','desc')->paginate(6);
             $count = Banner::where('static','like',"%$keywords%")->count();
 
         }else{
-            $banner = Banner::orderBy('id','desc')->paginate(5);
+            $banner = Banner::orderBy('id','desc')->paginate(6);
           
             $count = Banner::count();
         }

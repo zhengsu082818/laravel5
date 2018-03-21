@@ -42,10 +42,10 @@ class GoodsController extends Controller
         $where=[];
         $keywords = Request()->name;
         if ($keywords != '') {
-            $goods = good::where('title','like',"%$keywords%")->orderBy('id','desc')->paginate(10);
+            $goods = good::where('title','like',"%$keywords%")->orderBy('gtv_id','desc')->paginate(11);
             $count = good::where('title','like',"%$keywords%")->count();
         }else{
-            $goods = good::orderBy('id','desc')->paginate(10);
+            $goods = good::orderBy('gtv_id','desc')->paginate(11);
             $count = good::count();
         }
 
@@ -138,6 +138,7 @@ class GoodsController extends Controller
     }
 
     /**
+     * 查看商品详情
      * Display the specified resource.
      *
      * @param  int  $id
@@ -145,7 +146,8 @@ class GoodsController extends Controller
      */
     public function show($id)
     {
-        //
+        $good = good::findOrFail($id);
+        return view('admin.good.show',['good'=>$good]);
     }
 
     /**

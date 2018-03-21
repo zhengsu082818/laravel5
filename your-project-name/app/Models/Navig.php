@@ -102,6 +102,10 @@ class Navig extends Node {
   // http://laravel.com/docs/5.0/eloquent#model-events
   // 
   
+  public function pro()
+  {
+      return $this->hasMany('App\Models\Good','djid','id');
+  }
   
 
 }

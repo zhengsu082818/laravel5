@@ -37,11 +37,11 @@ class GoodtypesController extends Controller
         $where=[];
         $keywords = Request()->gt_name;
         if ($keywords != '') {
-            $goodtype = goodtype::where('gt_name','like',"%$keywords%")->orderBy('nav_id','desc')->paginate(5);
+            $goodtype = goodtype::where('gt_name','like',"%$keywords%")->orderBy('nav_id','desc')->paginate(9);
             $count = goodtype::where('gt_name','like',"%$keywords%")->count();
 
         }else{
-            $goodtype = goodtype::orderBy('nav_id','desc')->paginate(5);
+            $goodtype = goodtype::orderBy('nav_id','desc')->paginate(9);
             $count = goodtype::count();
         }
         return view('admin.goodtype.index',['goodtype'=>$goodtype,'count'=>$count,'keywords'=>$keywords,'data'=>$data]);

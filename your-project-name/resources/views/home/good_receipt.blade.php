@@ -185,7 +185,7 @@
 						<b>*</b> 所在地区
 						@include('flash::message')
 					<form method="post" action='{{ url("home/personal/store")}}'>
-						{{csrf_field()}}
+							{{csrf_field()}}
 						            <div class="infolist" style="margin-left:20px; margin-top: -14px;">
 						                <div class="liststyle" style="margin-left:0;">
 						                    <span id="Province" >

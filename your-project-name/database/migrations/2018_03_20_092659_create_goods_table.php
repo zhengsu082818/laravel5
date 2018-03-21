@@ -24,7 +24,7 @@ class CreateGoodsTable extends Migration
                 $table->string('img',255);//商品图片
                 $table->decimal('price','11');//商品价格
                 $table->tinyInteger('nums');//商品库存数量
-                $table->string('content');//商品详情
+                $table->text('content');//商品详情
                 $table->timestamps();
             });
         }

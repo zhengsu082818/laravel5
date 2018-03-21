@@ -385,12 +385,15 @@ a{
 .ej-cont p a{
 	font-size: 12px;
 	color: #666;
-	margin-left: 10px;
+	margin: 3px 0px 0px 10px;
 	line-height: 25px;
 	display: inline-block;
 }
 .ej-cont p a:first-child{
 	margin:0;
+}
+.ej-cont p a:hover{
+	color: #e31436;
 }
 
 .ce-box .cbl li:hover .erji{
@@ -695,7 +698,7 @@ del{
     border-width: 0 1px 1px 0;
     box-sizing: border-box;
 }
-.mz .mz-two ul li div:first-child{
+.mz .mz-two ul li .ttt{
 	width: 203px;
 	height: 22px;
 	margin:15px auto 0;
@@ -703,21 +706,13 @@ del{
 	line-height: 22px;
 	text-align: center;
 }
-.mz .mz-two ul li div:nth-child(2){
-	height: 17px;
-    width: 203px;
-    line-height: 17px;
-    font-size: 14px;
-    text-align: center;
-    color: #999;
-}
-.mz .mz-two ul li div:nth-child(3){
+.mz .mz-two ul li .iii{
 	width: 203px;
 	height: 120px;
 	text-align: center; 
 	position: relative;
 }
-.mz .mz-two ul li div:nth-child(3) img{
+.mz .mz-two ul li .iii img{
 	width: 140px;
 	height: 110px;
 	position: absolute;
@@ -726,7 +721,7 @@ del{
 	transition: transform 1s;
     transform: translateY(0);
 }
-.mz-two ul li div:nth-child(3):hover img{
+.mz-two ul li .iii:hover img{
     transition: transform 1s;
     transform: translateY(-5px);
 }
@@ -735,6 +730,7 @@ del{
 .mz .mz-three{
 	width: 240px;
 	height: 360px;
+	overflow: hidden;
 	float: left;
 }
 .mz .mz-three .mz-three-tit{
@@ -812,7 +808,10 @@ del{
 }
 .mz .mz-three .myet .pro{
 	font-size: 12px;
-
+	width: 200px;
+	height: 32px;
+	
+	overflow: hidden;
 }
 .mz .mz-three .myet .price{
 	font-size: 14px;

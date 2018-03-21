@@ -221,8 +221,10 @@ Route::get('admin/goodindex', 'Admin\GoodsController@index');
 Route::get('admin/goodcreate', 'Admin\GoodsController@create');
 //执行添加
 Route::post('admin/goodstore', 'Admin\GoodsController@store');
-//加载商品属性值修改页面
+//加载商品修改页面
 Route::get('admin/goodedit/{id}', 'Admin\GoodsController@edit');
+//加载商品详情页面
+Route::get('admin/goodshow/{id}', 'Admin\GoodsController@show');
 //执行修改
 Route::post('admin/goodupdate/{id}', 'Admin\GoodsController@update');
 //执行删除

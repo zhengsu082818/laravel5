@@ -51,19 +51,20 @@
                 <li>
                     <img src="{{asset('static/images/index_images/mrsx.jpg')}}">
                 </li>
+                @foreach($gengxin as $v)
                 <li>
                     <a href="" class="img-img">
-                        <img src="{{asset('static/images/index_images/mrsx1.jpg')}}" alt="">
+                        <img src="/storage/uploads/shopping/{{$v->img}}" alt="">
                     </a>
                     <p class="img-cont1">
-                        Kenneth Cole 女士镂空透视玫瑰金色镶钻时尚腕表 10031428
+                        {{$v->title}}
                     </p>
                     <p class="img-cont2"> 
-                        <b>￥699</b>
+                        <b>¥ {{$v->price}}</b>
                        
                     </p>
                 </li>
-               
+                @endforeach
             </ul>
         </div>
         
@@ -77,12 +78,9 @@
             <div class="mz">
                 <div class="mz-one my-one">
                     <div class="mz-leibie">
-                        <a href="">宝宝棉服</a>
-                        <a href="">童鞋</a>
-                        <a href="">萌宝套装 </a>
-                        <a href="">孕妇装</a>
-                        <a href="">洗护喂养</a>
-                        <a href="">毛绒玩具</a>
+                        @foreach($mother as $v)
+                        <a href="">{{$v->name}}</a>
+                        @endforeach
                     </div>
                     <div> 初冬换新 </div>
                     <div>本周TOP热销外套榜单 </div>
@@ -92,45 +90,14 @@
                 </div>
                 <div class="mz-two">
                     <ul>
+                        @foreach($mother as $v)
                         <li>
-                            <div>  宝宝棉服  </div>
-                            <div>
-                                <img src="{{asset('static/images/index_images/my2.jpg')}}">
+                            <div class="ttt">  {{$v->name}}  </div>
+                            <div class="iii">
+                                <img src="{{$v->url}}">
                             </div>
                         </li>
-                        <li>
-                            <div>  萌宝套装  </div>
-                            <div>
-                                <img src="../images/index_images/my3.jpg">
-                            </div>
-                        </li>
-                        <li>
-                            <div>  孕妇装  </div>
-                            
-                            <div>
-                                <img src="../images/index_images/my4.jpg">
-                            </div>
-                        </li>
-                        <li>
-                            <div>  毛绒玩具  </div>
-                            <div>
-                                <img src="../images/index_images/my5.jpg">
-                            </div>
-                        </li>
-                        <li>
-                            <div>  童鞋  </div>
-                            
-                            <div>
-                                <img src="../images/index_images/my6.jpg">
-                            </div>
-                        </li>
-                        <li>
-                            <div>  洗护喂养  </div>
-                            
-                            <div>
-                                <img src="../images/index_images/my7.jpg">
-                            </div>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
                 <div class="mz-three">
@@ -141,46 +108,21 @@
                             <img src="{{asset('static/images/index_images/hyh.png')}}">
                         </span>
                     </div>
-                    
+                    @foreach($mhyh as $v)
                     <div class="myet ">
-                        <img src="{{asset('static/images/index_images/my9.jpg')}}">
+                        <img src="/storage/uploads/shopping/{{$v->img}}">
                         <div>
                         </div>
                         <p class="pro">
-                            秋季新款孕妇时尚外出宽松V领蕾丝镂空孕妇连衣裙潮妈可哺乳长裙
+                            {{$v->title}}
                         </p>
                         <div></div>
                         <p class="price">
-                            ¥ 78.40
-                            <del>¥ 112.00</del>
+                            ¥  {{$v->price}}
+                            <a href="" style="float: right;">查看详情</a>
                         </p>
                     </div>
-                    <div class="myet mz-hyh">
-                        <img src="../images/index_images/my8.jpg">
-                        <div>
-                        </div>
-                        <p class="pro">
-                            春新款儿童休闲鞋糖果色时尚公主鞋一脚蹬表演鞋学生鞋
-                        </p>
-                        <div></div>
-                        <p class="price">
-                            ¥ 54.60
-                            <del>¥ 78.00</del>
-                        </p>
-                    </div>
-                    <div class="myet mz-hyh">
-                        <img src="../images/index_images/my10.jpg">
-                        <div>
-                        </div>
-                        <p class="pro">
-                            孕妇套装春秋新款时尚韩版宽松纯棉上衣孕妇托腹裤运动休闲两件套
-                        </p>
-                        <div></div>
-                        <p class="price">
-                            ¥ 110.00
-                            <del>¥ 158.00</del>
-                        </p>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="mz-four"></div>
             </div>
@@ -196,12 +138,10 @@
             <div class="mz">
                 <div class="mz-one">
                     <div class="mz-leibie">
-                        <a href="">必备面膜</a>
-                        <a href="">美妆大赏</a>
-                        <a href="">底妆遮瑕</a>
-                        <a href="">斩男口红</a>
-                        <a href="">超值套装</a>
-                        <a href="">身体个护</a>
+                        @foreach($mei_rong as $v)
+                        <a href="">{{$v->name}}</a>
+                        @endforeach
+                        
                     </div>
                     <div>护肤彩妆</div>
                     <div>买1送1 大牌满减 </div>
@@ -211,48 +151,15 @@
                 </div>
                 <div class="mz-two">
                     <ul>
+                        @foreach($mei_rong as $v)
                         <li>
-                            <div> 美妆大赏 </div>
+                            <div class="ttt">  {{$v->name}} </div>
                             
-                            <div>
-                                <img src="{{asset('static/images/index_images/mz2.png')}}">
+                            <div class="iii">
+                                 <img src="{{$v->url}}">
                             </div>
                         </li>
-                        <li>
-                            <div> 必备面膜 </div>
-                            
-                            <div>
-                                <img src="{{asset('static/images/index_images/mz3.png')}}">
-                            </div>
-                        </li>
-                        <li>
-                            <div> 超值套装 </div>
-                            
-                            <div>
-                                <img src="../images/index_images/mz4.png">
-                            </div>
-                        </li>
-                        <li>
-                            <div> 底妆遮瑕 </div>
-                            
-                            <div>
-                                <img src="../images/index_images/mz5.png">
-                            </div>
-                        </li>
-                        <li>
-                            <div> 斩男口红 </div>
-                            
-                            <div>
-                                <img src="../images/index_images/mz6.png">
-                            </div>
-                        </li>
-                        <li>
-                            <div> 身体个护 </div>
-                            
-                            <div>
-                                <img src="../images/index_images/mz7.png">
-                            </div>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
                 <div class="mz-three">
@@ -263,45 +170,21 @@
                             <img src="{{asset('static/images/index_images/hyh.png')}}">
                         </span>
                     </div>
+                    @foreach($mrhyh as $v)
                     <div class="mz-three-img ">
-                        <img src="{{asset('static/images/index_images/mz8.png')}}">
+                        <img src="/storage/uploads/shopping/{{$v->img}}">
                         <div>
                         </div>
                         <p class="pro">
-                            泰国正品mistine持久控油定妆修容羽翼粉饼
+                             {{$v->title}}
                         </p>
                         <div></div>
                         <p class="price">
-                            ¥ 45.08
-                            <del>¥ 98.00</del>
+                            ¥ {{$v->price}}
+                            <a href="" style="float: right;">查看详情</a>
                         </p>
                     </div>
-                    <div class="mz-three-img mz-hyh">
-                        <img src="../images/index_images/mz9.png">
-                        <div>
-                        </div>
-                        <p class="pro">
-                            萱宝宝美妆 付爱宝铂金时光五件套 补水保湿提亮肤色超值套装
-                        </p>
-                        <div></div>
-                        <p class="price">
-                            ¥ 1140.00
-                            <del>¥ 1328.90</del>
-                        </p>
-                    </div>
-                    <div class="mz-three-img mz-hyh">
-                        <img src="../images/index_images/mz10.png">
-                        <div>
-                        </div>
-                        <p class="pro">
-                            安美素颜霜学生提亮肤色补水保湿精华V7裸妆打底懒人霜遮瑕面霜
-                        </p>
-                        <div></div>
-                        <p class="price">
-                            ¥ 75.00
-                            <del>¥ 158.00</del>
-                        </p>
-                    </div>
+                   @endforeach
                 </div>
                 <div class="mz-four"></div>
             </div>
@@ -317,12 +200,9 @@
             <div class="mz">
                 <div class="mz-one watch-one">
                     <div class="mz-leibie">
-                        <a href="">棒球帽</a>
-                        <a href="">简约围巾</a>
-                        <a href="">精致手表</a>
-                        <a href="">撩人耳环</a>
-                        <a href="">框架眼镜</a>
-                        <a href="">黄金珠宝</a>
+                       @foreach($wt_ps as $v)
+                        <a href="">{{$v->name}}</a>
+                        @endforeach
                     </div>
                     <div> 气质礼帽 </div>
                     <div>秋日搭配的一点小心机</div>
@@ -332,48 +212,16 @@
                 </div>
                 <div class="mz-two">
                     <ul>
+                        @foreach($wt_ps  as $v)
                         <li>
-                            <div>  简约围巾  </div>
+                            <div class="ttt">  {{$v->name}} </div>
                             
-                            <div>
-                                <img src="{{asset('static/images/index_images/watch2.png')}}">
+                            <div class="iii">
+                                 <img src="{{$v->url}}">
                             </div>
                         </li>
-                        <li>
-                            <div>  棒球帽  </div>
-                            
-                            <div>
-                                <img src="{{asset('static/images/index_images/watch3.png')}}">
-                            </div>
-                        </li>
-                        <li>
-                            <div>  精致手表  </div>
+                        @endforeach
                         
-                            <div>
-                                <img src="../images/index_images/watch4.png">
-                            </div>
-                        </li>
-                        <li>
-                            <div> 撩人耳环 </div>
-                            
-                            <div>
-                                <img src="../images/index_images/watch5.png">
-                            </div>
-                        </li>
-                        <li>
-                            <div> 框架眼镜  </div>
-                        
-                            <div>
-                                <img src="../images/index_images/watch6.png">
-                            </div>
-                        </li>
-                        <li>
-                            <div> 黄金珠宝  </div>
-                        
-                            <div>
-                                <img src="../images/index_images/watch7.png">
-                            </div>
-                        </li>
                     </ul>
                 </div>
                 <div class="mz-three">

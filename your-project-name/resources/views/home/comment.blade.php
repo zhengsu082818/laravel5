@@ -127,6 +127,7 @@
             <div class="ce-box">
                 <ul class="cbl">
                     @foreach($list as $v1)
+                       
                         <li>
                             <img src="/{{$v1['url']}}">
                             <a href=""><span>{{$v1['name']}}</span></a>
@@ -136,6 +137,7 @@
                                 <div class="erji-1" style="border-right: 1px solid #000;">
                                     @foreach($v1['children'] as $k => $v2)
                                     <div class="ej-cont">
+                                       
                                         <div> 
                                             <a href="">{{$v2['name']}}</a>
                                             <a href="">更多 > </a>

@@ -391,12 +391,15 @@ a{
 .ej-cont p a{
 	font-size: 12px;
 	color: #666;
-	margin-left: 10px;
+	margin: 3px 0px 0px 10px;
 	line-height: 25px;
 	display: inline-block;
 }
 .ej-cont p a:first-child{
 	margin:0;
+}
+.ej-cont p a:hover{
+	color: #e31436;
 }
 
 .ce-box .cbl li:hover .erji{
