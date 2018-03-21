@@ -32,7 +32,6 @@
         @include('flash::message')
         <thead>
           <tr >
-            <th style="text-align: center;">ID</th>
             <th style="text-align: center;">用户名</th>
             <th style="text-align: center;">收货人</th>
             <th style="text-align: center;">手机号</th>
@@ -42,7 +41,7 @@
         <tbody>
           @foreach ($username as $v)
               <tr>
-                <td style="text-align: center;">{{$v->id}}</td>
+
                 <td style="text-align: center;">{{$v->homeuser->username}}</td>
                 <td style="text-align: center;">{{$v->name}}</td>
 
@@ -56,6 +55,7 @@
       </table>
 
             <center>
+               {!! $username->appends(['name' => $keywords])->render() !!}
             </center>
     </div>
   @endsection

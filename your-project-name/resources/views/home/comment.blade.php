@@ -22,16 +22,11 @@
     <!-- 标头 -->
     <div class="header">
         <div class="header-cont">
-<<<<<<< HEAD
-            <div class="hc-box1" style="background: none;">
-                @if(!session('username'))
-                1111
-                @endif
-=======
+
+         
 
             <div class="hc-box1" style="background: none;"> 
 
->>>>>>> ac50aa72fe4a7cfb66ac2ecdcb2f34eef2f5d629
                 @if(session('phone')==null)
                 <span>考拉欢迎你！</span>
                 <a href="{{url('authindex/login')}}" class="log">登录</a>

@@ -84,10 +84,6 @@ class GoodtypesController extends Controller
         
         flash()->overlay('添加成功', '1');
         return redirect("admin/goodtypeindex");
-        
-           
-        
-        
     }
 
     /**

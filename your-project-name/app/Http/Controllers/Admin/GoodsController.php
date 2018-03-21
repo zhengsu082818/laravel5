@@ -116,9 +116,10 @@ class GoodsController extends Controller
             flash()->overlay('添加失败,请选择类别', '5');
             return back();
         }
-        $this->validate($request,$this->rules,$this->messages);
+        // $this->validate($request,$this->rules,$this->messages);
         $input=$request->except('_token');
-        
+        $input['img']=explode(',', rtrim($input['img'],','));
+        // dd($input);
         $good = new good;
         $good->djid = $input['djid'];
         $good->cjid = $input['cjid'];
@@ -126,7 +127,10 @@ class GoodsController extends Controller
         $good->gt_id = $input['gt_id'];
         $good->gtv_id = $input['gtv_id'];
         $good->title = $input['title'];
-        $good->img = $input['img'];
+        $good->img = $input['img'][0];
+        $good->img1 = $input['img'][1];
+        $good->img2 = $input['img'][2];
+
         $good->price = $input['price'];
         $good->nums = $input['nums'];
         $good->content = $input['content'];

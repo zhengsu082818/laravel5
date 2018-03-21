@@ -20,40 +20,42 @@
 	 <!-- 产品详情 -->
     <article>
         <div id="content" >
+            @foreach($good as $v)
             <div id="fadeDiv">
                 <div class="fadeDiv" >
                     <div class="fadeLeft">
+
                         <ul>
                             <li style="display: block;">
-                                <img src="{{asset('static/images/deai/mian1.jpg')}}" alt="玫瑰熊-嫣红" width="350" height="350" title="玫瑰熊-嫣红">
+                                <img src='{{ URL::asset("storage/uploads/shopping/$v->img") }}' alt="玫瑰熊-嫣红" width="350" height="350" title="玫瑰熊-嫣红">
                             </li>
                             <li>
-                                <img src="{{asset('static/images/deai/mian2.jpg')}}" alt="玫瑰熊-嫣红" width="350" height="350" title="玫瑰熊-嫣红">
+                                <img src='{{ URL::asset("storage/uploads/shopping/$v->img1") }}' alt="玫瑰熊-嫣红" width="350" height="350" title="玫瑰熊-嫣红">
                             </li>
                             <li>
-                                 <img src="{{asset('static/images/deai/mian3.jpg')}}" alt="玫瑰熊-嫣红" width="350" height="350" title="玫瑰熊-嫣红">
+                                 <img src='{{ URL::asset("storage/uploads/shopping/$v->img2") }}' alt="玫瑰熊-嫣红" width="350" height="350" title="玫瑰熊-嫣红">
                             </li>
                                               
                         </ul>
                         <ol>
                              <li class="selected">
-                                <img src="{{asset('static/images/deai/mian1.jpg')}}" width="55" height="55">
+                                <img src='{{ URL::asset("storage/uploads/shopping/$v->img") }}' width="55" height="55">
                             </li>
                              <li>
-                               <img src="{{asset('static/images/deai/mian2.jpg')}}" width="55" height="55">
+                               <img src='{{ URL::asset("storage/uploads/shopping/$v->img1") }}' width="55" height="55">
                             </li>
                              <li>
-                                <img src="{{asset('static/images/deai/mian3.jpg')}}" width="55" height="55">
+                                <img src='{{ URL::asset("storage/uploads/shopping/$v->img2") }}' width="55" height="55">
                             </li>
                            
                         </ol>
                     </div> 
                     <div class="pro_det" style="margin-top: 50px;">
                          
-                        <p>SNP&nbsp;海洋燕窝高倍补水美白面膜</p>
+                        <p>{{$v->title}}</p>
                        
                         <div class="price">
-                             <p class="font">价格：<b style="font-size: 24px;">¥2399.0</b></p>
+                             <p class="font">价格：<b style="font-size: 24px;">¥{{$v->price}}</b></p>
                             
                              <strong style="display: block;clear:both;"></strong>   
                         </div>
@@ -68,6 +70,9 @@
                          <div class="color">
                             <p class="font"> 服务: <span style="margin-left: 20px;">本商品由 自营保税仓 发货</span></p>
                             <strong style="display: block;clear:both;"></strong>  
+                        </div>
+                        <div class="color">
+                            <p class="font">库存: <span style="margin-left: 20px;">{{$v->nums}}</span></p>
                         </div>
             
                         <div class="number">
@@ -95,25 +100,14 @@
                     <strong style="display: block;clear:both;"></strong>    
                 </div>
             </div>
-             
-           
-
             <div id="detail" style="margin-bottom: 30px;">
                
                 <h2 class="title"><span style="color: red;">商品详情</span><span>买家评论</span></h2>
                 <div class="cont">
-                    <div calss="img" style="display: block">
-                       
-                        <div class="img_deai">
-                            <img src="{{asset('static/images/deai/lame1.jpg')}}" alt="">
-                            <img src="{{asset('static/images/deai/lame2.jpg')}}" alt="">
-                            <img src="{{asset('static/images/deai/lame3.jpg')}}" alt="">
-                            <img src="{{asset('static/images/deai/lame4.jpg')}}" alt="">
-                             <img src="{{asset('static/images/deai/lame5.jpg')}}" alt="">
-                             <img src="{{asset('static/images/deai/lame6.jpg')}}" alt="">
-                             <img src="{{asset('static/images/deai/lame7.jpg')}}" alt="">
-                        </div>
-                        
+                    <div calss="img" style="display: block" >
+                       <center>
+                        {!!$v->content!!}
+                        </center>
                         <strong style="display: block;clear: both;"></strong>
                     </div>
                     <div class="comment">
@@ -222,11 +216,10 @@
                         </ul>
                        
                     </div>
-                </div>
-                    
+                </div>     
             </div>
 
-
+            @endforeach
 
            
             <strong style="display: block;clear: both;"></strong>

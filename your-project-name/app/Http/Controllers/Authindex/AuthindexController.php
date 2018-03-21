@@ -59,7 +59,7 @@ class AuthindexController extends Controller
             $d = Homeuser::get(['stated'])->toArray();
             foreach($d as $v){
                 if($v['stated'] == '禁用'){
-                    flash()->overlay('账号被禁用','5');
+                    flash()->overlay('由于您可能涉嫌违规操作，此账户被禁用，请联系网站管理员','5');
                     return back();
                 }
             }

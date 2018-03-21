@@ -33,12 +33,14 @@
       <table class="layui-table">
         @include('flash::message')
         <thead>
-          <tr >
-            <th style="text-align: center;">ID</th>
+          <tr style="height:50px;">
             <th style="text-align: center;">所属分类 > 属性名 > 属性值</th>
             
              <th style="text-align: center;">标题</th>
-              <th style="text-align: center;">图片</th>
+              <th style="text-align: center;">主图</th>
+              <th style="text-align: center;">副图</th>
+              <th style="text-align: center;">副图</th>
+
                <th style="text-align: center;">价格</th>
                 <th style="text-align: center;">库存数量</th>
                 <th style="text-align: center;">商品详情</th>
@@ -48,7 +50,6 @@
         <tbody>
           @foreach($goods as $v)
               <tr>
-                <td style="text-align: center;">{{$v->id}}</td>
                 <td style="text-align: center;">
                   <button class="layui-btn layui-btn-mini layui-btn-normal" value="">{{$datas[$v->djid]}}</button>
                   <button class="layui-btn layui-btn-mini layui-btn-normal" value="">{{$datas[$v->cjid]}}</button>
@@ -60,9 +61,11 @@
                 </td>
                 <td style="text-align: center;">{{$v->title}}</td>
                 <td style="text-align: center;"><img src='{{ URL::asset("storage/uploads/shopping/$v->img") }}' style="width: 50px;height: 50px;"></td>
+                <td style="text-align: center;"><img src='{{ URL::asset("storage/uploads/shopping/$v->img1") }}' style="width: 50px;height: 50px;"></td>
+                <td style="text-align: center;"><img src='{{ URL::asset("storage/uploads/shopping/$v->img2") }}' style="width: 50px;height: 50px;"></td>
                 <td style="text-align: center;">{{$v->price}}</td>
                 <td style="text-align: center;">{{$v->nums}}</td>
-                 <td style="text-align: center;">{!!$v->content!!}</td>
+                <td style="text-align: center;">{!!$v->content!!}</td>
                 <td style="text-align: center;">{{$v->created_at}}</td>
                 <td class="td-manage" style="text-align: center;">
                   <a href='{{url("/admin/goodedit/$v->id")}}' style="color:#fff;">

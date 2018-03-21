@@ -35,7 +35,7 @@
 
         <form class="layui-form" method="post" action="{{url('admin/goodstore')}}" enctype="multipart/form-data">
           {{csrf_field()}}
-          <input type="hidden" name="img" value="" id="img">
+          
           <div class="layui-form-item">
               <label for="L_email" class="layui-form-label" style="width: 100px;">
                   <span class="x-red">*</span>选择类别
@@ -50,14 +50,14 @@
               </div>
               <div class="layui-input-inline">
                   <select name='cjid' lay-filter="good1" id="erlei" >
-                     <option value="0">请选择二级级类名</option>
+                     <option value="0">请选择二级类名</option>
                     <option  value="{{$v['id']}}"></option>
                    
                   </select>
               </div>
               <div class="layui-input-inline">
                   <select name='sj_id' lay-filter="good2" id="sanlei">
-                    <option value="0">请选择三级级类名</option>
+                    <option value="0">请选择三级类名</option>
                     <option value="{{$v['id']}}"></option>
                   </select>
               </div>
@@ -98,13 +98,18 @@
               <div class="layui-form-mid layui-word-aux">
                 <button type="button" class="layui-btn" id="tubiao">
                   <i class="layui-icon">&#xe67c;</i>上传图片
+                  <input type="hidden" name="img" value="" id="img">
+                  
+                
                 </button>
+                
               </div>
               <div class="layui-form-item">
               <label for="L_email" class="layui-form-label" style="width: 100px;">
-                  <span class="x-red">*</span>显示图片
+                  <span class="x-red">*</span>显示主图
               </label>
               <img src=""  id="cc">
+
           </div>
           </div>
           
@@ -180,6 +185,7 @@
 
 @section('js')
       <script>
+      
       layui.use(['upload','form'], function(){
         var upload = layui.upload;
          var $ = layui.$ ;
@@ -189,19 +195,30 @@
             }
         });
         //执行实例
-        var uploadInst = upload.render({
-          elem: '#tubiao' //绑定id
-          ,url: '{{ url("admin/gooduplode")}}'//上传接口到那个控制器
+
+      var name=[];
+        upload.render({
+          elem: '#tubiao'
+          ,url: '{{ url("admin/gooduplode")}}'
           ,field:'file'//设置字段名 控制器接受
-          ,done: function(res){
-           $name = res.data.src;
-           // alert($name);
-           $('#img').val($name);
+          ,multiple: true
+          ,allDone: function(obj){ //当文件全部被提交后，才触发
+            console.log(obj.total); //得到总文件数
+            console.log(obj.successful); //请求成功的文件数
+            console.log(obj.aborted); //请求失败的文件数
+          }
+          ,done: function(res, index, upload){ //每个文件提交一次触发一次。详见“请求成功的回调”
+            // for(){
+
+            // }
+            $name = res.data.src;
+
+            document.getElementById('img').value+=$name+',';
+             // imgs= $name+=$name;
+            // alert($(".hide").val );
+           // $('.hide')[i].val();
             $('#cc').attr("src","/storage/uploads/shopping/"+$name);
             $("#cc").css("width","100px","height","100px");
-          }
-          ,error: function(){
-            
           }
         });
 

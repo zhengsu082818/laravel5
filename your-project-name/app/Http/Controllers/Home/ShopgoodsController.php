@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Navig;
+use App\Models\Good;
 
 
+//商品详情控制器
 class ShopgoodsController extends Controller
 {
     /**
@@ -19,8 +21,10 @@ class ShopgoodsController extends Controller
     public function index()
     {
 
-        $list = navig::get()->toHierarchy();
-        return view('home.shop_good',['list'=>$list]);
+        $list = navig::get()->toHierarchy();//查询导航分类
+        $good =Good::where('id',6)->get();//模拟id=5的数据，查询这条数据
+        // dd($good);
+        return view('home.shop_good',['list'=>$list,'good'=>$good]);
 
     }
 
