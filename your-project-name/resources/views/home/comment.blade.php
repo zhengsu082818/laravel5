@@ -23,7 +23,9 @@
     <div class="header">
         <div class="header-cont">
             <div class="hc-box1" style="background: none;">
-                
+                @if(!session('username'))
+                1111
+                @endif
                 @if(session('phone')==null)
                 <span>考拉欢迎你！</span>
                 <a href="{{url('authindex/login')}}" class="log">登录</a>

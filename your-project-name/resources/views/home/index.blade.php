@@ -11,7 +11,6 @@
     @section('content')
 
     @include('home.comment')
-
     <!-- 轮播 -->
     <div class="banner-box">
         <ul class="lb">
@@ -33,7 +32,9 @@
         <img src="{{asset('static/images/index_images/left.png')}}" class="arrow leftjt">
         <img src="{{asset('static/images/index_images/right.png')}}" class="arrow right">
     </div>
-    
+    @if(!session('username'))
+    1111
+    @endif
     <!-- 背景颜色 -->
     <div class="back-color">
         <!-- 四张图片 -->

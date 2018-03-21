@@ -19,11 +19,10 @@ class CreateHomeusersTable extends Migration
                 $table->string('username',32);
                 $table->string('name',32);
                 $table->enum('sex', ['w', 'm'])->default('w');
-                $table->string('email')->unique();
                 $table->string('password', 60);
                 $table->string('address',255);
                 $table->tinyInteger('stated')->default('1');
-                $table->decimal('phone',11)->unique();
+                $table->decimal('phone',11);
                 $table->timestamps();
             });
         }

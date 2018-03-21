@@ -62,6 +62,15 @@ class AuthindexController extends Controller
             }
         // 存入session
            $request->session()->put('phone',$request->phone); 
+           // dd(session('phone'));
+           $phone =session('phone');//获取当前用户的登录号
+         // dd($phone);
+            $personals =Homeuser::where('phone',$phone)->firstOrFail()->toArray();//
+            // dd($personals);
+            //存入session
+           $request->session()->put($personals); 
+            // dd(session('username'));
+
         // 加载模板文件
            return redirect('authindex/redirect');
     }
