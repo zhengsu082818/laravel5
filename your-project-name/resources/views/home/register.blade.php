@@ -32,13 +32,13 @@
 						<input type="" name="phone" placeholder="请输入手机号" style="margin-top: 20px;" >
 						@if (count($errors) > 0)
 				                    @foreach ($errors->get('phone') as $error)
-				                        <li style="color:red;">{{ $error }}</li>
+				                        <li style="color:red;font-size: 12px;list-style: none;margin:3px;">{{ $error }}</li>
 				                    @endforeach
 				        @endif
 				        <input type="password" name="password" placeholder="请输入密码" style="margin-top: 20px;" >
 				        @if (count($errors) > 0)
 				                    @foreach ($errors->get('password') as $error)
-				                       <li style="color:red;">{{ $error }}</li>
+				                       <li style="color:red;font-size: 12px;list-style: none;margin:3px;">{{ $error }}</li>
 				                    @endforeach
 				        @endif
                         <input type="password" name="password_confirmation" placeholder="请再次输入密码" style="margin-top: 20px;" >
@@ -46,13 +46,11 @@
 						<img style="margin:20px 0px 0px; height:36px;width:114px;" src="{{ url('/captcha') }}" onclick="this.src='{{ url('/captcha') }}?r='+Math.random();" alt="">
 						 @if (count($errors) > 0)
 				                    @foreach ($errors->get('captcha') as $error)
-				                       <li style="color:red;">{{ $error }}</li>
+				                       <li style="color:red;font-size: 12px;list-style: none;margin:3px;">{{ $error }}</li>
 				                    @endforeach
 				        @endif
 						<button class="denglu" >注册</button>
 						 </form>
-
-						
 					</div>
 				</div>
 			</div>

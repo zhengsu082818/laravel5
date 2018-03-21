@@ -17,7 +17,6 @@
           <cite>商品列表管理</cite>
         </a>
       </span>
-      
       <a class="layui-btn" style="line-height:38px;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
         <i class="layui-icon" style="line-height:38px">ဂ</i></a>
     </div>
@@ -44,6 +43,11 @@
                <th style="text-align: center;">价格</th>
                 <th style="text-align: center;">库存数量</th>
                 <th style="text-align: center;">商品详情</th>
+            <th style="text-align: center;">标题</th>
+            <th style="text-align: center;">图片</th>
+            <th style="text-align: center;">价格</th>
+            <th style="text-align: center;">库存数量</th>
+            <th style="text-align: center;">商品详情</th>
             <th style="text-align: center;">添加时间</th>
             <th style="text-align: center;">操作</th></tr>
         </thead>
@@ -78,9 +82,7 @@
               </tr>
           @endforeach    
         </tbody>
-
       </table>
-
             <center>
             {!! $goods->appends(['name' => $keywords])->render() !!}
             </center>
