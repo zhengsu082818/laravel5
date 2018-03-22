@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Navig;
-
+use App\Models\Good;
 
 class ShopgoodsController extends Controller
 {
@@ -16,11 +16,18 @@ class ShopgoodsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-
+        //遍历商品导航
         $list = navig::get()->toHierarchy();
-        return view('home.shop_good',['list'=>$list]);
+
+        //查询商品详情
+        $goodList = good::findOrFail($id);
+        // dd($goodList);
+        return view('home.shop_good',[
+            'list'=>$list,
+            'goodList'=>$goodList,
+        ]);
 
     }
 

@@ -33,12 +33,7 @@ class GoodtypevalsController extends Controller
      */
     public function index()
     {
-        $nav = Navig::get(['id','name'])->toArray();
-        $data = [];
-        foreach ($nav as $k => $v) {
-           $data[$v['id']]=$v['name'];
-        }
-       
+        // dd($data);
         $where=[];
         $keywords = Request()->gtv_name;
         if ($keywords != '') {
@@ -46,10 +41,17 @@ class GoodtypevalsController extends Controller
             $count = goodtypeval::where('gtv_name','like',"%$keywords%")->count();
 
         }else{
-            $goodtypeval = goodtypeval::orderBy('id','desc')->paginate(10);
+            $goodtypeval = goodtypeval::orderBy('gt_id','desc')->paginate(10);
             // dd($goodtypeval->toArray());
             $count = goodtypeval::count();
         }
+
+        $nav = Navig::get(['id','name'])->toArray();
+        $data = [];
+        foreach ($nav as $k => $v) {
+           $data[$v['id']]=$v['name'];
+        }
+        // dd($data);
         return view('admin.goodtypeval.index',['goodtypeval'=>$goodtypeval,'count'=>$count,'keywords'=>$keywords ,'data'=>$data]);
 
     }
@@ -81,6 +83,7 @@ class GoodtypevalsController extends Controller
         $this->validate($request,$this->rules,$this->messages);
 
         $input=$request->except('_token');
+        // dd($input);
         $gtv = new goodtypeval;
         $gtv->yiji_id = $input['yiji_id'];
         $gtv->erji_id = $input['erji_id'];

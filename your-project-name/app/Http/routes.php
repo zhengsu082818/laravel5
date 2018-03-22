@@ -18,14 +18,11 @@ Route::get('/', function (){
 
 
 // 加载后台主页面
-Route::get('/admin/welcome', function(){
+Route::get('admin/welcome', function(){
 	return view('admin.zhuye');
 });
 
-// 加载前台主页面
-Route::get('/', function(){
-	return view('home.login');
-});
+
 //登录路由
 Route::get('auth/login', 'Auth\AuthController@getLogin');//加载登录
 Route::post('auth/login', 'Auth\AuthController@postLogin');//执行登录

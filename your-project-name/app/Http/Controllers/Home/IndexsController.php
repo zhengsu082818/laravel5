@@ -21,7 +21,6 @@ class IndexsController extends Controller
     {   
         //遍历商品导航
         $list = navig::get()->toHierarchy();
-        // dd($list->toArray());
 
         //遍历轮播图片
         $banner = banner::where('static','启用')->get();
@@ -34,23 +33,22 @@ class IndexsController extends Controller
 
         //遍历母婴儿童
         $mother_id = navig::where('name','母婴儿童')->first()->id;
-        $mother  = navig::where('id',$mother_id)->first()->immediateDescendants()->limit(6)->get();
-        // dd($mother);
+        $mother  = navig::where('parent_id',$mother_id)->orderBy('id','desc')->limit(6)->get();
         //遍历母婴儿童的换一换
         $mhyh = good::where('djid',$mother_id)->orderBy('nums')->limit(3)->get();
     
         //遍历美容美妆
         $mei_id = navig::where('name','美容美妆')->first()->id;
-        $mei_rong  = navig::where('id',$mei_id)->first()->immediateDescendants()->get();
+        $mei_rong  = navig::where('parent_id',$mei_id)->orderBy('id','desc')->limit(6)->get();
         //遍历美容美妆的换一换
         $mrhyh = good::where('djid',$mei_id)->orderBy('nums')->limit(3)->get();
 
         //遍历手表配饰
         $watch = navig::where('name','手表配饰')->first()->id;
-        $wt_ps  = navig::where('id',$watch)->first()->immediateDescendants()->limit(6)->get();
-        // dd($wt_ps);
+        $wt_ps  = navig::where('parent_id',$watch)->orderBy('id','desc')->limit(6)->get();
         //遍历手表配饰的换一换
-        $wthyh = good::where('djid',$watch)->orderBy('nums')->limit(8)->get();
+        $wthyh = good::where('djid',$watch)->orderBy('created_at','desc')->limit(4)->get();
+        $wthyh2 = good::where('djid',$watch)->orderBy('nums')->limit(4)->get();
 
         return view('home.index',[
             'list'=>$list,
@@ -62,6 +60,8 @@ class IndexsController extends Controller
             'mei_rong'=>$mei_rong,
             'mrhyh'=>$mrhyh,
             'wt_ps'=>$wt_ps,
+            'wthyh'=>$wthyh,
+            'wthyh2'=>$wthyh2,
         ]);
     }
 

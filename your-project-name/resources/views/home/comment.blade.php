@@ -47,11 +47,11 @@
             </div>
             <ul>
                 <li class="default">
-                    <a href="My orders.html">我的订单</a>
+                    <a href="">我的订单</a>
                 </li>
                 <span>丨</span>
                 <li class="second">
-                    <a href="My orders.html">个人中心</a>
+                    <a href="">个人中心</a>
                     <img src="{{asset('static/images/index_images/sanjiao.png')}}">
                     <div class="per_cen">
                         <a href="@if(!session('phone')==null)
@@ -69,11 +69,11 @@
                 </li>
                 <span>丨</span>
                 <li class="third">
-                    <a href="">客户服务</a>
+                    <a href="javascript:;">客户服务</a>
                     <img src="{{asset('static/images/index_images/sanjiao.png')}}">
                     <div class="per_cen">
-                        <a href="">联系客服</a>
-                        <a href="">帮助中心</a>
+                        <a href="javascript:;">联系客服</a>
+                        <a href="javascript:;">帮助中心</a>
                     </div>
                 </li>
                 <span>丨</span>
@@ -82,13 +82,13 @@
                 </li>
                 <span>丨</span>
                 <li class="lastli">
-                    <a href="">更多</a>
+                    <a href="javascript:;">更多</a>
                     <img src="{{asset('static/images/index_images/sanjiao.png')}}">
                     <div class="per_more">
-                        <a href="">关于我们</a>
-                        <a href="">品牌招商</a>
-                        <a href="">考拉招聘</a>
-                        <a href="">官方博客</a>
+                        <a href="javascript:;">关于我们</a>
+                        <a href="javascript:;">品牌招商</a>
+                        <a href="javascript:;">考拉招聘</a>
+                        <a href="javascript:;">官方博客</a>
                     </div>
                 </li>
             </ul>
@@ -113,7 +113,7 @@
         <div class="shopcarbox">
             <div class="shopcar">
                 <img src="{{asset('static/images/index_images/shopcar1.png')}}">
-                <a href="shopcar.html"><span>购物车</span></a>
+                <a href=""><span>购物车</span></a>
             </div>
         </div>
         <div class="log-box-last"></div>
@@ -127,24 +127,22 @@
             <div class="ce-box">
                 <ul class="cbl">
                     @foreach($list as $v1)
-                       
                         <li>
                             <img src="/{{$v1['url']}}">
                             <a href=""><span>{{$v1['name']}}</span></a>
                             <span>></span>
                             <div class="erji">
-                                
                                 <div class="erji-1" style="border-right: 1px solid #000;">
                                     @foreach($v1['children'] as $k => $v2)
                                     <div class="ej-cont">
-                                       
                                         <div> 
                                             <a href="">{{$v2['name']}}</a>
                                             <a href="">更多 > </a>
                                         </div>
-                                        <p>
+
+                                        <p style="line-height: 15px;margin-top: 2px;">
                                             @foreach($v2['children'] as $v3)
-                                                <a href="{{url('home/prolistindex')}}">{{$v3['name']}}</a>
+                                                <a href='{{url("home/prolistindex/$v3[id]")}}'>{{$v3['name']}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                                             @endforeach
                                         </p>
                                        
@@ -162,7 +160,7 @@
         </div>
         
         <ul class="cbl2">
-            <li><a href="javascript:;">首页</a></li>
+            <li><a href="{{url('/')}}">首页</a></li>
             <li><a href="">每日上新</a></li>
             <li><a href="">国家馆</a></li>
             <li><a href="">全球旗舰</a></li>

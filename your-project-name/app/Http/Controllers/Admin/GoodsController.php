@@ -212,19 +212,19 @@ class GoodsController extends Controller
         return ['code'=>0,'msg'=>'','data'=>$all];
     }
     
-    //执行三级联动2
+    //执行五级联动2
     public function goodwjld2(Request $request){
         $all2 = navig::where('parent_id',$request->id)->get()->toArray();
         return ['code'=>0,'msg'=>'','data'=>$all2];
     }
 
-    //执行三级联动3
+    //执行五级联动3
     public function goodwjld3(Request $request){
         $all3 = goodtype::where('nav_id',$request->id)->get()->toArray();
         return ['code'=>0,'msg'=>'','data'=>$all3];
     }
 
-    //执行三级联动4
+    //执行五级联动4
     public function goodwjld4(Request $request){
         $all4 = goodtypeval::where('gt_id',$request->id)->get()->toArray();
         return ['code'=>0,'msg'=>'','data'=>$all4];

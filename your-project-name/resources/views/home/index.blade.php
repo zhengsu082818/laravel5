@@ -6,6 +6,7 @@
 @section('css js')
     <script type="text/javascript" src="{{asset('static/js/index.js')}}"></script>
     <link rel="stylesheet" href="{{asset('static/css/index.css')}}" type="text/css">
+    
 @endsection
     
     @section('content')
@@ -54,7 +55,8 @@
                 @foreach($gengxin as $v)
                 <li>
                     <a href="" class="img-img">
-                        <img src="/storage/uploads/shopping/{{$v->img}}" alt="">
+                        <img src="/storage/uploads/shopping/{{$v->img}}" alt="" style=" width: 157px;
+                        height: 157px;">
                     </a>
                     <p class="img-cont1">
                         {{$v->title}}
@@ -234,64 +236,26 @@
                     </div>
                     <div class="watch-three-box">
                         <ul>
+                            @foreach($wthyh  as $v)
                             <li>
-                                <img src="{{asset('static/images/index_images/watch8.png')}}">
+                                <img src="/storage/uploads/shopping/{{$v->img}}">
                                 <div class="watch-box-cont">
-                                    <p>气质小方盘时尚女表潮流秀气女士学生休闲皮带表简约韩版新款手表</p>
-                                    <p>¥ 38.50</p>
+                                    <p> {{$v->title}}</p>
+                                    <p>¥ {{$v->price}}</p>
                                 </div>
                             </li>
-                            <li>
-                                <img src="../images/index_images/watch9.png">
-                                <div class="watch-box-cont">
-                                    <p>贝雷帽女秋冬甜美可爱韩版日系百搭画家帽女羊毛呢帽时尚潮蓓蕾帽</p>
-                                    <p>¥ 25.90</p>
-                                </div>
-                            </li>
-                            <li>
-                                <img src="../images/index_images/watch10.png">
-                                <div class="watch-box-cont">
-                                    <p>韩国个性三角形坠环女腰带百搭皮带休闲装饰裙子针扣学生牛仔裤带</p>
-                                    <p>¥ 15.90</p>
-                                </div>
-                            </li>
-                            <li>
-                                <img src="../images/index_images/watch11.png">
-                                <div class="watch-box-cont">
-                                    <p>YTK 学院风加厚冬季围巾披肩百搭仿羊绒围巾韩版保暖纯色围巾</p>
-                                    <p>¥ 38.90</p>
-                                </div>
-                            </li>
+                            @endforeach
                         </ul>
                         <ul class="watch-three-box-two">
+                            @foreach($wthyh2  as $v)
                             <li>
-                                <img src="{{asset('static/images/index_images/watch12.png')}}">
+                                <img src="/storage/uploads/shopping/{{$v->img}}">
                                 <div class="watch-box-cont">
-                                    <p>香港蒂米妮品牌清新优雅手表女学生韩版简约百搭时尚女士手表防水</p>
-                                    <p>¥ 229.50</p>
+                                    <p>{{$v->title}}</p>
+                                    <p>¥ {{$v->price}}</p>
                                 </div>
                             </li>
-                            <li>
-                                <img src="{{asset('static/images/index_images/watch13.png')}}">
-                                <div class="watch-box-cont">
-                                    <p>【漂】水洗做旧纯棉芒果黄棒球帽百搭韩版男女情侣鸭舌帽子四季款</p>
-                                    <p>¥ 25.20</p>
-                                </div>
-                            </li>
-                            <li>
-                                <img src="../images/index_images/watch14.png">
-                                <div class="watch-box-cont">
-                                    <p>韩版触屏手套男女冬季加厚保暖学生可爱情侣骑车五指针织毛线手套</p>
-                                    <p>¥ 15.90</p>
-                                </div>
-                            </li>
-                            <li>
-                                <img src="../images/index_images/watch15.png">
-                                <div class="watch-box-cont">
-                                    <p>小清新韩版针织围巾女冬长款毛线围脖学院风纯色情侣披肩百搭两用</p>
-                                    <p>¥ 35.90</p>
-                                </div>
-                            </li>
+                           @endforeach
                         </ul>
                     </div>
                 </div>

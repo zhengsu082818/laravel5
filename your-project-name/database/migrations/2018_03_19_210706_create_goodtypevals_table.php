@@ -15,10 +15,10 @@ class CreateGoodtypevalsTable extends Migration
         if (!Schema::hasTable('goodtypevals')) {
             Schema::create('goodtypevals', function (Blueprint $table) {
                 $table->increments('id');
-                $table->tinyInteger('yiji_id');
-                $table->tinyInteger('erji_id');
-                $table->tinyInteger('sanji_id');
-                $table->tinyInteger('gt_id');
+                $table->Integer('yiji_id');
+                $table->Integer('erji_id');
+                $table->Integer('sanji_id');
+                $table->Integer('gt_id');
                 $table->string('gtv_name',255);//商品属性名
                 $table->timestamps();
             });

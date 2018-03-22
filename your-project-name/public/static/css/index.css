@@ -380,17 +380,12 @@ a{
 }
 .ej-cont p{
 	width: 500px;
-	
 }
 .ej-cont p a{
 	font-size: 12px;
 	color: #666;
-	margin: 3px 0px 0px 10px;
 	line-height: 25px;
 	display: inline-block;
-}
-.ej-cont p a:first-child{
-	margin:0;
 }
 .ej-cont p a:hover{
 	color: #e31436;
@@ -573,7 +568,7 @@ a{
     float: left;
     box-sizing: border-box;
 }
-.day-box .mrsx li .img-img{
+.day-box .mrsx li .img-img {
 	display: block;
     margin: 12px 11px;
     width: 157px;
@@ -959,6 +954,9 @@ del{
 	cursor: pointer;
 	font-size: 13px;
 }
+.about-box .about-two dl dd a:hover{
+	color: #e31436;
+}
 .about-box ul li:last-child img{
 	margin-left: 30px;
 }
@@ -974,26 +972,27 @@ del{
 	border:1px solid #333;
 	box-sizing: border-box;
 	background: #333;
+	/*margin-top: 500px;*/
 }
 .foot-two-box .foot-two-cont{
 	width: 1090px;
 	height: 160px;
-	margin:20px auto;
+	margin:10px auto;
 	text-align: center;
 }
 .foot-two-box .foot-two-cont p{
 	width: 900px;
-	height: 30px;
+	height: 40px;
 	margin:0 auto;
 }
 .foot-two-box .foot-two-cont p a{
-	line-height: 30px;
-	font-size: 12px;
+	line-height: 40px;
+	font-size: 13px;
 	color: #c2c2c2;
 }
 .foot-two-box .foot-two-cont p span{
-	line-height: 30px;
-	font-size: 12px;
+	line-height: 40px;
+	font-size: 13px;
 	color: #c2c2c2;
 	margin: 0 10px;
 }
@@ -1002,7 +1001,7 @@ del{
 }
 .foot-two-box .foot-two-cont div{
 	width: 900px;
-	height: 30px;
+	height: 40px;
 	margin:0 auto;
 }
 .foot-two-box .foot-two-cont div img{

@@ -102,10 +102,16 @@ class Navig extends Node {
   // http://laravel.com/docs/5.0/eloquent#model-events
   // 
   
+  //定义那个三级类别的对应商品//一对多
   public function pro()
   {
-      return $this->hasMany('App\Models\Good','djid','id');
+      return $this->hasMany('App\Models\Good','sj_id','id');
   }
   
-
+  //定义类型下的属性名
+  public function gtype()
+  {
+      return $this->hasMany('App\Models\Goodtype','nav_id','id');
+  }
+  
 }
