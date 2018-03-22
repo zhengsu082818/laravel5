@@ -38,7 +38,6 @@ class AuthController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected $redirectPath = '/admin';//注册成功后定向的位置
-
     protected $redirectAfterLogout = '/auth/login';//退出登录定向的位置
     protected function validator(array $data)
     {

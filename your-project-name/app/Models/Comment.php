@@ -40,7 +40,6 @@ class Comment extends Node {
         $array = [];
         foreach($a as $v){
            $array[$v['id']] = $v['title'];
-           // dd($array[$v['id']]);
         }
         return $array[$value];
     }

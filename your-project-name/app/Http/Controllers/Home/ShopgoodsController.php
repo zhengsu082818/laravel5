@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Navig;
-
+use App\Models\Comment;
 
 class ShopgoodsController extends Controller
 {
@@ -18,10 +18,10 @@ class ShopgoodsController extends Controller
      */
     public function index()
     {
-
         $list = navig::get()->toHierarchy();
+        $comment = Comment::all();
+        dd($comment);
         return view('home.shop_good',['list'=>$list]);
-
     }
 
     /**
@@ -31,7 +31,7 @@ class ShopgoodsController extends Controller
      */
     public function create()
     {
-
+      // 
     }
 
     /**

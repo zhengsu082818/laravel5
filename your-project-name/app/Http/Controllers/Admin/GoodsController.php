@@ -3,13 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use App\Models\Good;
 use App\Models\Navig;
-
 use App\Models\Goodtype;
 use App\Models\Goodtypeval;
 
@@ -80,6 +77,8 @@ class GoodsController extends Controller
     public function create()
     {
         $data = Navig::where('depth','0')->get()->toArray();
+        $data1 = Navig::where('depth','1')->get()->toArray();
+        // dd($data);
         // $list = good::with('gt')->get()->toArray();
         // dd($list);
         return view('admin.good.create',['data' => $data]);
@@ -118,7 +117,6 @@ class GoodsController extends Controller
         }
         $this->validate($request,$this->rules,$this->messages);
         $input=$request->except('_token');
-        
         $good = new good;
         $good->djid = $input['djid'];
         $good->cjid = $input['cjid'];
@@ -131,10 +129,8 @@ class GoodsController extends Controller
         $good->nums = $input['nums'];
         $good->content = $input['content'];
         $good->save();
-
         flash()->overlay('添加成功','1');
         return redirect('admin/goodindex');
-
     }
 
     /**
@@ -157,7 +153,6 @@ class GoodsController extends Controller
     public function edit($id)
     {
         $good = good::findOrFail($id);
-
         return view('admin.good.edit',['good'=>$good]);
     }
 
@@ -181,7 +176,6 @@ class GoodsController extends Controller
              flash()->overlay('修改失败','5');
              return back();
          }
-        
     }
 
     /**
@@ -207,6 +201,7 @@ class GoodsController extends Controller
     //执行五级联动1
     public function goodwjld(Request $request){
         $all = navig::where('parent_id',$request->id)->get()->toArray();
+        // dd($all);
         return ['code'=>0,'msg'=>'','data'=>$all];
     }
     

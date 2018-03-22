@@ -1,18 +1,13 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use App\Models\Goodtypeval;
 use App\Models\Goodtype;
 use App\Models\Good;
-
 use App\Models\Navig;
-
 
 class GoodtypevalsController extends Controller
 {
@@ -63,7 +58,7 @@ class GoodtypevalsController extends Controller
     {
         $nav = Navig::where('depth',0)->get()->toArray();
         // dd($nav);
-       return view('admin.goodtypeval.create',['nav'=>$nav]);
+        return view('admin.goodtypeval.create',['nav'=>$nav]);
     }
 
     /**
@@ -79,7 +74,6 @@ class GoodtypevalsController extends Controller
             return back();
         }
         $this->validate($request,$this->rules,$this->messages);
-
         $input=$request->except('_token');
         $gtv = new goodtypeval;
         $gtv->yiji_id = $input['yiji_id'];
@@ -90,9 +84,6 @@ class GoodtypevalsController extends Controller
         $gtv->save();
         flash()->overlay('添加成功', '1');
         return redirect("admin/goodtypevalindex");
-
-        
-        
     }
 
     /**
@@ -182,14 +173,12 @@ class GoodtypevalsController extends Controller
     //执行四级联动2
     public function goodtypevalfour2(Request $request){
         $all2 = navig::where('parent_id',$request->id)->get()->toArray();
-
         return ['code'=>0,'msg'=>'','data'=>$all2];
     }
 
     //执行四级联动3
     public function goodtypevalfour3(Request $request){
         $all3 = goodtype::where('nav_id',$request->id)->get()->toArray();
-        
         return ['code'=>0,'msg'=>'','data'=>$all3];
     }
     

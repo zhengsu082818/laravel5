@@ -17,11 +17,9 @@
           <cite>图片轮播列表</cite>
         </a>
       </span>
-      
       <a class="layui-btn" style="line-height:38px;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
        <i class="layui-icon" style="line-height:38px">ဂ</i></a>
     </div>
-    
     <div class="x-body">
         <form class="layui-form layui-col-md12 x-so" action="{{url('admin/bannerindex')}}" method="get">
           <input type="text" name="static"  placeholder="根据状态搜索" autocomplete="off" class="layui-input" 
@@ -43,12 +41,10 @@
           @foreach ($banner as $v)
               <tr>
                 <td style="text-align: center;">{{$v->id}}</td>
-
                 <td style="text-align: center;"><img src='{{ URL::asset("storage/uploads/banner/$v->img") }}'></td>
-
                 <td style="text-align: center;">{{$v->created_at}}</td>
                 <td style="text-align: center;">
-                   @if($v->static === '启用')
+                  @if($v->static === '启用')
                   <span class="layui-btn layui-btn-mini layui-btn-normal ">启用</span>
                   @endif
                   @if($v->static === '禁用')
@@ -66,10 +62,8 @@
               </tr>
           @endforeach
         </tbody>
-         
            @include('flash::message')
       </table>
-
             <center>
              {!! $banner->appends(['static' => $keywords])->render() !!}  
             </center>

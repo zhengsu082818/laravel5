@@ -10,8 +10,5 @@ class Goodtype extends Model
     public function goodtypeval()
     {
     	return $this->hasMany('App\Models\Goodtypeval','gt_id','id');
-        
     }
-
-    
 }

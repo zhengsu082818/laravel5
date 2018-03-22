@@ -56,9 +56,9 @@ class PermissionsController extends Controller
      */
     public function store(Request $request)
     {
-         $this->validate($request,$this->rules,$this->messages);//验证添加的字段
-         $input  = $request->except('_token');//接收除_token字段的值
-         $permission =new Permission;
+        $this->validate($request,$this->rules,$this->messages);//验证添加的字段
+        $input  = $request->except('_token');//接收除_token字段的值
+        $permission =new Permission;
         $permission->name = $input['name'];//更新赋值
         $permission->display_name = $input['display_name'];
         $permission->description = $input['description'];
@@ -123,7 +123,7 @@ class PermissionsController extends Controller
     {
        
        $des =Permission::where('id',$id)->first();//查询
-        $info=$des->delete();//执行删除
+       $info=$des->delete();//执行删除
         if($info){
             flash()->overlay('删除成功', '1');
             return redirect("admin/permission");

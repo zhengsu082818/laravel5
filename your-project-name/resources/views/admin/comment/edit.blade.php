@@ -48,28 +48,6 @@
                   <input type="text" id="L_email" name="reply"  class="layui-input"  value="{{$comment->reply}}"  >
               </div>
           </div>
-          @foreach($parent as $v)
-            <div class="layui-form-item">
-              <label for="L_email" style="width:100px;color:red" class="layui-form-label">
-                @if(!$v->depth == 0)
-                  <span class="x-red">*</span>追加评论
-                @else
-                   <span class="x-red" >*</span>首次评论
-                @endif
-              </label>
-              <div class="layui-input-inline">
-                  <input type="text" id="L_email" name="comment"  class="layui-input" disabled="disabled" style="background:#efefe0;" value="{{$v->comment}}"  >
-              </div>
-          </div>
-          <div class="layui-form-item">
-              <label for="L_email" class="layui-form-label" style="width:100px;">
-                  <span class="x-red">*</span>回复
-              </label>
-              <div class="layui-input-inline">
-                  <input type="text" id="L_email" name="reply" disabled="disabled" class="layui-input" style="background:#efefe0;" value="{{$v->reply}}"  >
-              </div>
-          </div>
-          @endforeach
           <div class="layui-form-item">
               <label for="L_repass" class="layui-form-label">
               </label>

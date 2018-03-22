@@ -47,11 +47,6 @@ class AdminuserController extends Controller
             $count = User::count();
         }
         return view('admin.adminuser.list',['stus'=>$stus,'count'=>$count,'keywords'=>$keywords]);
-
-        // $stus = User::paginate(5);
-        // //dd($stus);
-        // $count =count(User::all());
-        // return view('admin.huiyuan.list',['stus' => $stus,'count'=>$count]);
     }
 
     /**
@@ -75,7 +70,6 @@ class AdminuserController extends Controller
     public function store(Request $request)
     {
         //验证信息 
-
         $this->validate($request,$this->rules,$this->messages);
         $input  = $request->except('password_confirmation');
         $add= User::create([
@@ -84,8 +78,6 @@ class AdminuserController extends Controller
             'stated' => $input['stated'],
             'password' => bcrypt($input['password']),
         ]);
-      
-          
         //判断是否添加成功
         if ($add) {
             flash()->overlay('添加成功', '1');
@@ -105,7 +97,7 @@ class AdminuserController extends Controller
      */
     public function show($id)
     {
-        
+        // 
     }
 
     /**
@@ -159,6 +151,5 @@ class AdminuserController extends Controller
             flash()->overlay('删除失败', '5');
             return redirect('admin/list');
         }
-
     }
 }

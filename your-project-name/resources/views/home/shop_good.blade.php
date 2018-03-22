@@ -13,7 +13,6 @@
 	@section('content')
 		
 	@include('home.comment')
-
 	<!-- 分类表头 -->
 	<p class="fjx"></p>
     <article>
@@ -93,9 +92,6 @@
                     <strong style="display: block;clear:both;"></strong>    
                 </div>
             </div>
-             
-           
-
             <div id="detail" style="margin-bottom: 30px;">
                
                 <h2 class="title"><span style="color: red;">商品详情</span><span>买家评论</span></h2>
@@ -218,15 +214,9 @@
                              </div>
                             </li>
                         </ul>
-                       
                     </div>
-                </div>
-                    
+                </div>   
             </div>
-
-
-
-           
             <strong style="display: block;clear: both;"></strong>
         </div>
 
