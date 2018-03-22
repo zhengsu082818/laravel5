@@ -8,7 +8,6 @@
 @endsection
 
 @section('content')
-
     <div class="x-body">
       <div class="x-nav">
       <span class="layui-breadcrumb">
@@ -22,18 +21,15 @@
           <cite>修改轮播</cite>
         </a>
       </span>
-      
       <a class="layui-btn" style="line-height:38px;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
        <i class="layui-icon" style="line-height:38px">ဂ</i></a>
         <a  class="layui-btn" href="{{url('admin/bannerindex')}}" style="line-height:38px;margin-top:3px;margin-right: 10px;float:right">返回上一层</a>
     </div>
     <div style="height: 40px;">
-      
     </div>
         @include('flash::message')
         <form class="layui-form" method="post" action='{{url("admin/bannerupdate/$banner->id")}}' enctype="multipart/form-data" >
           {{csrf_field()}}
-         
           <div class="layui-form-item">
               <label for="L_email" class="layui-form-label">
                   <span class="x-red">*</span>状态
@@ -70,8 +66,6 @@
                   <button type="button" class="layui-btn" id="test1">
                 <i class="layui-icon">&#xe67c;</i>上传图片
               </button>
-                
-                  
               </div>
           </div>
           <div class="layui-form-item">
@@ -80,10 +74,8 @@
               <button  class="layui-btn">
                   提交
               </button>
-
           </div>
         </form>
-
     </div>
 @endsection
 
@@ -109,7 +101,6 @@
            $('#cc').attr('src',"/storage/uploads/banner/"+res.data.src);
           }
           ,error: function(){
-            
           }
         });
       });

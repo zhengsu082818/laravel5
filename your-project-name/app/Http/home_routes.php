@@ -30,3 +30,5 @@ Route::post('home/home/number/tupiana','Admin\HomeuserController@tupiana');
 //执行修改个人信息页面
 Route::post('home/home/store/{id}', 'Admin\HomeuserController@store');
 
+
+

@@ -16,7 +16,6 @@ class PasswordController extends Controller
    }
 
    public function code(Request $request){
-
      $sms = new SendSMS();
    	 return $sms->send();
    }

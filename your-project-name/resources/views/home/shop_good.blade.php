@@ -13,7 +13,6 @@
 	@section('content')
 		
 	@include('home.comment')
-
 	<!-- 分类表头 -->
 	<p class="fjx"></p>
     <article>
@@ -212,14 +211,13 @@
                              </div>
                             </li>
                         </ul>
-                       
                     </div>
                 </div>     
             </div>
 
             @endforeach
-
-           
+                </div>   
+            </div>
             <strong style="display: block;clear: both;"></strong>
         </div>
 

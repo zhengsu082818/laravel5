@@ -22,16 +22,21 @@ Route::get('/admin/welcome', function(){
 	return view('admin.zhuye');
 });
 
-// 加载前台主页面
-Route::get('/', function(){
-	return view('home.login');
-});
+
+
 //登录路由
 Route::get('auth/login', 'Auth\AuthController@getLogin');//加载登录
 Route::post('auth/login', 'Auth\AuthController@postLogin');//执行登录
 Route::get('auth/logout', 'Auth\AuthController@getLogout');//退出登录
-
-
+// 注册路由...
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
+// 密码重置链接的路由...
+Route::get('password/email', 'Auth\PasswordController@getEmail');
+Route::post('password/email', 'Auth\PasswordController@postEmail');
+// 密码重置的路由...
+Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
+Route::post('password/reset', 'Auth\PasswordController@postReset');
 //认证成功后重定向页面
 Route::get('/admin',function(){
 	return view('admin.index');

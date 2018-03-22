@@ -23,13 +23,11 @@
     </div>
     <div class="x-body">
         <form class="layui-form layui-col-md12 x-so" action="{{ url('navig/index') }}" method="get">
-
           <input type="text" name="name"  placeholder="请输入类别名" autocomplete="off" class="layui-input" 
           value="{{$keywords?$keywords:''}}">
           <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
         </form>
         <span class="x-left layui-btn" style="line-height:40px">共有数据：<a href="javascript:;" style="color:#fff;">{{$count}}</a>  条</span>
-
         <a href="{{url('navig/create').'?id='.''}}" style="color:#fff;"><span class="x-left layui-btn" style="line-height:40px;float: right;">添加主类</span></a>
        <table class="layui-table">
       <table class="layui-table">
@@ -46,11 +44,8 @@
         </thead>
         <tbody>
           @foreach ($Navig as $v)
-        
                <tr>
-
                 <td style="text-align: center;">{{$v->name}}</td>
-
                 <td style="text-align: center;">
                   @if(!$v->url=='')
                   <img src='{{asset("$v->url")}}' style="width: 20px;height: 20px;">
@@ -106,7 +101,6 @@
                   <a href="{{url('navig/create').'?id='.$v->id}}" style="color: #fff;" title="添加分类">
                     <button class="layui-btn layui-btn-mini">添加分类</button></a>
                   @endif
-
                    @if($v->depth=='2')
                   <a href="{{url('navig/create').'?id='.$v->id}}" style="color: #fff;" title="添加分类">
                     <button class="layui-btn layui-btn-mini">添加分类</button></a>
@@ -126,15 +120,11 @@
                   </a>
                 </td>
               </tr>
-          
           @endforeach    
         </tbody>
-
       </table>
-
             <center>
             {!! $Navig->appends(['name' => $keywords])->render() !!}
             </center>
     </div>
-
 @endsection

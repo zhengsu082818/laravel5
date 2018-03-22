@@ -1,22 +1,14 @@
-
 @extends('layouts.master')
-
 @section('title', '后台登录-考拉')
-
 @section('css')
-
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
 @endsection
 <body @section('class', 'class="login-bg"')>
-  
     @section('content')
-   
     <div class="login">
         <div class="message">考拉海购-后台登录</div>
         <div id="darkbannerwrap"></div>
-        
          <form method="post" action="{{url('auth/login')}}" class="layui-form" >    
              {{csrf_field()}}        
             <input name="email" placeholder="邮箱"  type="text"  class="layui-input" >
@@ -39,6 +31,9 @@
                 </ul>
             </div>
         @endif
+        <a href="{{url('auth/register')}}">没有账号?去注册</a>
+        <br>
+        <a href="{{url('password/email')}}">忘记密码?通过邮箱找回</a>
      @include('flash::message')
     </div>
     @endsection

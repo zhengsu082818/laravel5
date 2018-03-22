@@ -1,6 +1,4 @@
-
-     
-    <!-- 上下滚动 -->
+<!-- 上下滚动 -->
     <div class="sxgd">
         <div class="log-box">
             <div class="login">
@@ -18,15 +16,10 @@
             </div>
         </div>  
     </div>  
-
     <!-- 标头 -->
     <div class="header">
         <div class="header-cont">
-
-         
-
             <div class="hc-box1" style="background: none;"> 
-
                 @if(session('phone')==null)
                 <span>考拉欢迎你！</span>
                 <a href="{{url('authindex/login')}}" class="log">登录</a>
@@ -66,7 +59,6 @@
                             @endif
                         "
                         >管理收货地址</a>
-                        
                     </div>
                 </li>
                 <span>丨</span>
@@ -110,7 +102,6 @@
                         <img src="{{asset('static/images/index_images/search1.png')}}">
                     </button>
                 </form>
-                
         </div>
         <div class="shopcarbox">
             <div class="shopcar">
@@ -120,7 +111,6 @@
         </div>
         <div class="log-box-last"></div>
     </div>
-
      <!-- 动画 + 分类 -->
     <div class="dhxg">
         <div class="dhxg1">
@@ -134,7 +124,6 @@
                             <a href=""><span>{{$v1['name']}}</span></a>
                             <span>></span>
                             <div class="erji">
-                                
                                 <div class="erji-1" style="border-right: 1px solid #000;">
                                     @foreach($v1['children'] as $k => $v2)
                                     <div class="ej-cont">
@@ -147,20 +136,15 @@
                                                 <a href="{{url('home/prolistindex')}}">{{$v3['name']}}</a>
                                             @endforeach
                                         </p>
-                                       
                                     </div> 
                                     @endforeach
                                 </div>
-                              
-                                
                             </div>
-                           
                         </li>
                     @endforeach
                 </ul> 
             </div>
         </div>
-        
         <ul class="cbl2">
             <li><a href="javascript:;">首页</a></li>
             <li><a href="">每日上新</a></li>

@@ -8,8 +8,6 @@
 	<script src="{{asset('etsc/lib/layui/layui.js')}}" charset="utf-8"></script>
 </head>
 <body>
- 
- 	
  	@include('flash::message')
 	<div class="logo">
 		<a href="{{url('/')}}"><img class="one" src="../home/images/logres_images/login1.jpg"></a>
@@ -48,13 +46,10 @@
 				                       <li style="color:red;font-size: 12px;list-style: none;margin:3px;">{{ $error }}</li>
 				                    @endforeach
 				        @endif
-
 						<button class="denglu" style="margin-bottom:3px;">登录</button>
 						</form>
-						
 						<p><a href="{{url('authindex/password')}}">忘记密码?</a>
 						</p>
-
 					</div>
 				</div>
 			</div>
