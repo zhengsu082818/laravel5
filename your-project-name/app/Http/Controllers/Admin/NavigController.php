@@ -84,7 +84,7 @@ class NavigController extends Controller
         $this->validate($request,$this->rules,$this->messages);
         //接收除_token字段的数据
         $input=$request->except('_token');
-       
+        // dd($input);
         //判断id是否为空
         if(!$request->input('id')){
             // dd($input);
@@ -163,10 +163,10 @@ class NavigController extends Controller
 
         if (!$input['url']) {
             $updatee =Navig::where('id',$id)
-                ->update(['name'=>$input['name']]);
+                ->update(['name'=>$input['name'],'stated'=>$input['stated'],'tjadd'=>$input['tjadd']]);
         }else{
             $updatee =Navig::where('id',$id)
-                ->update(['name'=>$input['name'],'url'=>$input['url']]);
+                ->update(['name'=>$input['name'],'url'=>$input['url'],'stated'=>$input['stated'],'tjadd'=>$input['tjadd']]);
         }
         //判断是否修改成功
         if ($updatee) {

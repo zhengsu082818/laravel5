@@ -28,8 +28,8 @@ class AuthindexController extends Controller
      */
     public function create(Request $request)
     {
-        // dd($request->all());
-        // 编写验证规则
+            // dd($request->all());
+            // 编写验证规则
             $this->validate($request, [
                 'phone' => 'required', 'password' => 'required','captcha'=>'required|captcha'
             ],[
@@ -37,29 +37,25 @@ class AuthindexController extends Controller
               'password.required'=>'密码必填',
               'captcha.required'=>'验证码必填',
             ]);
-        // 获取表单提交账号密码
+            // 获取表单提交账号密码
             $a = ['phone'=>$request->phone,'password'=>$request->password];
             // dd($a);
-        // 查案数据库和表单账号
+            // 查案数据库和表单账号
             $b = Homeuser::where('phone',$a['phone'])->first();
             if(!$a['phone'] = $b){
                  flash()->overlay('账号不存在','5');
                  return back();
             }
-            
-       
-            if(!$a['password']==$c){
-                $password = md5($a['password']);
-                // 查看数据库和表单提交密码
-
-                $c = Homeuser::where('password',$password)->first();   
+            $password =md5($a['password']);
+            $c = Homeuser::where('password',$password)->first(); 
+                  
 
 
             if(!$a['password'] = $c){
                  flash()->overlay('密码不正确','5');
                  return back();
             }
-        // 判断账号状态
+            // 判断账号状态
             $d = Homeuser::get(['stated'])->toArray();
             foreach($d as $v){
                 if($v['stated'] == '禁用'){
@@ -80,24 +76,25 @@ class AuthindexController extends Controller
                 // 存入session
                 $request->session()->put('phone',$request->phone); 
                 // 加载模板文件
-                return redirect('/');
+                
             }
-        // 存入session
+            // 存入session
            $request->session()->put('phone',$request->phone); 
            // dd(session('phone'));
            $phone =session('phone');//获取当前用户的登录号
-         // dd($phone);
+            // dd($phone);
             $personals =Homeuser::where('phone',$phone)->firstOrFail()->toArray();//
             // dd($personals);
             //存入session
-           $request->session()->put($personals); 
+            $request->session()->put($personals); 
             // dd(session('username'));
 
-        // 加载模板文件
+            // 加载模板文件
 
            return redirect('/');
 
-    }   
+        }   
+    }
 
     /**
      * Store a newly created resource in storage.

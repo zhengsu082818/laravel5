@@ -72,12 +72,38 @@
                     <i class="layui-icon">&#xe67c;</i>上传图片
                   </button>
                 <input type="hidden"  name="url"  class="layui-input" value="" id="imgur">
-                <input type="hidden"  name="img"  class="layui-input" value="" id="img">
                   @if (count($errors) > 0)
 
                     <span class="x-red">{{ $errors->first('url') }}</span>  
                     @endif
               </div>
+          </div>
+          <div class="layui-form-item">
+            <label for="L_email" class="layui-form-label" style="width: 90px;">
+                  <span class="x-red">*</span>是否推荐
+              </label>
+              <input style="width:26px;height:12px;margin-right:20px;" name="tjadd" type="radio" value="1" checked="" title="YES">
+              <input style="width:26px;height:12px;" name="tjadd" type="radio" value="0" title="NO">
+          </div>
+          <div class="layui-form-item">
+              <label for="L_email" class="layui-form-label">
+                  <span class="x-red">*</span>状态
+              </label>
+
+             
+              <div class="layui-input-inline">
+                  <select name="stated">
+                    <option value="1" >启用
+                    </option>
+                    
+                    <option value="0"  
+                     >禁用
+                    </option>
+                     
+                  
+                  </select>
+              </div>
+           
           </div>
 
           <div class="layui-form-item">

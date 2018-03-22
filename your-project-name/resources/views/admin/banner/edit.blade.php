@@ -38,8 +38,6 @@
               <label for="L_email" class="layui-form-label">
                   <span class="x-red">*</span>状态
               </label>
-
-             
               <div class="layui-input-inline">
                   <select name="static">
                     <option value="启用" 
@@ -47,17 +45,13 @@
                         selected
                       @endif >启用
                     </option>
-                    
                     <option value="禁用"  
                       @if($banner->static === '禁用')
                          selected
                       @endif>禁用
                     </option>
-                     
-                  
                   </select>
               </div>
-           
           </div>
           <div class="layui-form-item">
             <input type="hidden" name="id" value="">

@@ -139,9 +139,6 @@ Route::get('password/yanz','Authindex\PasswordController@Verification');
 Route::get('password/reset','Authindex\PasswordController@reset');
 // 加载主页
 Route::get('authindex/redirect','Authindex\AuthindexController@index');
-
-
-
 // 加载商品属性
 Route::get('admin/goodtypeindex', 'Admin\GoodtypesController@index');
 //加载商品属性添加页

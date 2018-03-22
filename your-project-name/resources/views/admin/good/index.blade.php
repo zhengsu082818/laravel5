@@ -39,12 +39,6 @@
               <th style="text-align: center;">主图</th>
               <th style="text-align: center;">副图</th>
               <th style="text-align: center;">副图</th>
-
-               <th style="text-align: center;">价格</th>
-                <th style="text-align: center;">库存数量</th>
-                <th style="text-align: center;">商品详情</th>
-            <th style="text-align: center;">标题</th>
-            <th style="text-align: center;">图片</th>
             <th style="text-align: center;">价格</th>
             <th style="text-align: center;">库存数量</th>
             <th style="text-align: center;">商品详情</th>
