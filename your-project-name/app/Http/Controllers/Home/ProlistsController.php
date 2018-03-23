@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Models\Navig;
+use App\Models\Goodtypeval;
+use App\Models\Goodtype;
+use App\Models\Good;
 class ProlistsController extends Controller
 {
     /**
@@ -14,9 +17,35 @@ class ProlistsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        return view('home.product_list');
+        //遍历商品导航
+        $list = navig::get()->toHierarchy();
+
+        $proList = navig::findOrFail($id);//加载三级类别id的所有内容
+
+        $aa = $proList->getAncestors(); //通过三级id查询顶级id,二级id
+
+        $nav = Navig::get(['id','name'])->toArray();//通过类别id查询类别名
+        $data = [];
+        foreach ($nav as $k => $v) {
+           $data[$v['id']]=$v['name'];
+        }
+
+        $gt = navig::with('gtype.goodtypeval')->findOrFail($id)->toArray();//遍历属性名属性值
+        
+        $goodList = good::where('sj_id',$id)->paginate(12);//商品分页
+
+        //加载商品列表模板
+        return view('home.product_list',[
+            'list'=>$list,
+            'proList'=>$proList,
+            'data'=>$data,
+            'aa'=>$aa,
+            'gt'=>$gt,
+            'goodList'=>$goodList,
+
+        ]);
     }
 
     /**

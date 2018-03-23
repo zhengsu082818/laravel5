@@ -16,15 +16,12 @@ class Bannerscontroller extends Controller
      */
     public function index(Request $request)
     {
-
-        $where=[];
         $keywords = $request->static;
         if ($keywords != '') {
-            $banner = Banner::where('static','like',"%$keywords%")->orderBy('id','desc')->paginate(5);
+            $banner = Banner::where('static','like',"%$keywords%")->orderBy('id','desc')->paginate(6);
             $count = Banner::where('static','like',"%$keywords%")->count();
-
         }else{
-            $banner = Banner::orderBy('id','desc')->paginate(5);
+            $banner = Banner::orderBy('id','desc')->paginate(6);
             $count = Banner::count();
         }
         return view('admin.banner.index',['banner'=>$banner,'count'=>$count,'keywords'=>$keywords]);
@@ -69,10 +66,10 @@ class Bannerscontroller extends Controller
        $banner = new Banner;
        $banner->img = $request->img;
        $banner->static = $request->static;
-       if(!$banner->img = $request->img ){
-        flash()->overlay('添加失败,没有图片上传','5');
-        return back();
-       }
+           if(!$banner->img = $request->img ){
+            flash()->overlay('添加失败,没有图片上传','5');
+            return back();
+           }
        $banner->save();
        flash()->overlay('添加成功','1');
        return redirect()->action('Admin\BannersController@index');

@@ -2,51 +2,55 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>考拉海购-用户登陆</title>
-	<link rel="icon" href="{{asset('home/images/index_images/log_tb.jpg')}}">
+
+	<title>网易考拉海购--登录</title>
+	<link rel="icon" href="{{asset('static/images/index_images/log_tb.jpg')}}">
+
 	<link rel="stylesheet" type="text/css" href="{{asset('home/css/register.css')}}">
 	<script src="{{asset('etsc/lib/layui/layui.js')}}" charset="utf-8"></script>
 </head>
 <body>
- <form action="{{url('authindex/index')}}" method="post">
- 	{{ csrf_field() }}
  	@include('flash::message')
 	<div class="logo">
-		<a href="index.html"><img class="one" src="{{asset('/home/images/logres_images/login1.jpg')}}"></a>
-		<img class="two" src="{{asset('/home/images/logres_images/login2.jpg')}}">
+
+		<a href="{{url('/')}}"><img class="one" src="../home/images/logres_images/login1.jpg"></a>
+		<img class="two" src="../home/images/logres_images/login2.jpg">
 	</div>
 	<div class="content">
 		<div>
-			<a href="index.html"><img src="{{asset('/home/images/logres_images/login3.jpg')}}"></a>
-			<div class="login" style="height:360px;">
+			<a href="index.html"><img src="../home/images/logres_images/login3.jpg"></a>
+			<div class="login" style="height:380px;">
 				<div>
 					<h3>欢迎登录
 						<span>没有账号?</span>
 						<a href="{{url('authindex/register')}}">去注册></a>
 					</h3>
 				</div>
-				<div class="Login_yan" >
-					<div class="Login_yanzheng">
+				<form action="{{url('authindex/index')}}" method="post">
+					{{ csrf_field() }}
+				<div class="Login_yan" style="height:320px;border:none;">
+					<div class="Login_yanzheng" style="border:none;">
 						<input type="" name="phone" placeholder="请输入手机号" >
 						@if (count($errors) > 0)
 				                    @foreach ($errors->get('phone') as $error)
-				                        <li style="color:red;">{{ $error }}</li>
+				                        <li style="color:red;font-size: 12px;list-style: none;margin:3px;">{{ $error }}</li>
 				                    @endforeach
 				        @endif
 				        <input type="password" name="password" placeholder="请输入密码">
 				        @if (count($errors) > 0)
 				                    @foreach ($errors->get('password') as $error)
-				                       <li style="color:red;">{{ $error }}</li>
+				                       <li style="color:red;font-size: 12px;list-style: none;margin:3px;">{{ $error }}</li>
 				                    @endforeach
 				        @endif
 						<input class="erge" style="width:130px;font-size:12px;float:left" type="" name="captcha" placeholder="请输入短信验证码">
 						<img style="margin:22px 0px 0px; height:36px;width:114px;" src="{{ url('/captcha') }}" onclick="this.src='{{ url('/captcha') }}?r='+Math.random();" alt="">
 						 @if (count($errors) > 0)
 				                    @foreach ($errors->get('captcha') as $error)
-				                       <li style="color:red;">{{ $error }}</li>
+				                       <li style="color:red;font-size: 12px;list-style: none;margin:3px;">{{ $error }}</li>
 				                    @endforeach
 				        @endif
-						<button class="denglu" >登录</button>
+						<button class="denglu" style="margin-bottom:3px;">登录</button>
+						</form>
 						<p><a href="{{url('authindex/password')}}">忘记密码?</a>
 						</p>
 					</div>
@@ -93,6 +97,6 @@
 			</div>
 		</div>
 	</div>
- </form>
+ 
 </body>
 </html>

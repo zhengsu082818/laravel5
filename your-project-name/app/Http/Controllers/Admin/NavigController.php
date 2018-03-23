@@ -7,12 +7,11 @@ use App\Models\Navig;
 use App\Http\Requests;
 use App\Http\Controllers\Tupian\TupianController;
 use App\Http\Controllers\Controller;
-
-//后台管理分类列表控制器
-
-
+use App\Models\Goodtype;
+use App\Models\Goodtypeval;
 use App\Models\Good;
 
+//后台管理分类列表控制器
 class NavigController extends Controller
 {
     // 编写验证规则
@@ -33,22 +32,16 @@ class NavigController extends Controller
     {
         
         $depth=['0'=>'顶级分类','1'=>'二级分类','2'=>'三级分类','3'=>'四级分类','4'=>'五级分类'];
-        
         $where=[];
         $keywords = Request()->name;
         if ($keywords != '') {
-            $Navig = Navig::where('name','like',"%$keywords%")->orderBy('lft')->paginate(10);
+            $Navig = Navig::where('name','like',"%$keywords%")->orderBy('rgt','desc')->paginate(10);
             $count = Navig::where('name','like',"%$keywords%")->count();
-
         }else{
-            $Navig = Navig::orderBy('lft')->paginate(10);
+            $Navig = Navig::orderBy('rgt','desc')->paginate(19);
             $count = Navig::count();
-
         }
-
         return view('admin.Navig.index',['Navig'=>$Navig,'count'=>$count,'keywords'=>$keywords,'depth'=>$depth]);
-
-
     }
 
     /**
@@ -58,17 +51,15 @@ class NavigController extends Controller
      */
     public function create()
     {
+        // 接受表单id 没有id就为空 
         $id =$_GET['id']?:null;
-
         if($id===null){
            return view('admin.Navig.navigadd',['id'=>$id]); 
         }else{
+            // 查出这个id的name字段
             $leiall = Navig::findOrFail($id)->name;
             return view('admin.Navig.navigadd',['id'=>$id,'leiall'=>$leiall]);
-        }
-        
-
-        
+        } 
     }
 
     /**
@@ -83,7 +74,7 @@ class NavigController extends Controller
         $this->validate($request,$this->rules,$this->messages);
         //接收除_token字段的数据
         $input=$request->except('_token');
-       
+        // dd($input);
         //判断id是否为空
         if(!$request->input('id')){
             // dd($input);
@@ -162,10 +153,10 @@ class NavigController extends Controller
 
         if (!$input['url']) {
             $updatee =Navig::where('id',$id)
-                ->update(['name'=>$input['name']]);
+                ->update(['name'=>$input['name'],'stated'=>$input['stated'],'tjadd'=>$input['tjadd']]);
         }else{
             $updatee =Navig::where('id',$id)
-                ->update(['name'=>$input['name'],'url'=>$input['url']]);
+                ->update(['name'=>$input['name'],'url'=>$input['url'],'stated'=>$input['stated'],'tjadd'=>$input['tjadd']]);
         }
         //判断是否修改成功
         if ($updatee) {
@@ -185,13 +176,39 @@ class NavigController extends Controller
      */
     public function destroy($id)
     {
+        $san = Navig::findOrFail($id)->depth;
+        //删除类别先判断是否为三级
+        if($san == 2){
+            //删除三级类别前判断该类别下是否有商品
+            $good = good::where('sj_id',$id)->first();
+            if($good == null){
+                //如果为空,先删除属性值,再删除属性名,最后删除类名
+                $gtv1 = goodtypeval::where('sanji_id',$id)->first();
+                $gt1 =  goodtype::where('nav_id',$id)->first();
+                if($gt1 == null || $gtv1 ==null){
+                    $nav1 = Navig::destroy($id);
+                    flash()->overlay('删除成功', '1');
+                    return redirect('navig/index');
+                }
+                
+                $gtv = goodtypeval::where('sanji_id',$id)->first()->id;
+                $gt = goodtype::where('nav_id',$id)->first()->id;
+                $dele = goodtypeval::destroy($gtv);
+                $dele = goodtype::destroy($gt);
+                $nav = Navig::destroy($id);
+                flash()->overlay('删除成功', '1');
+                return redirect('navig/index');
+            }else{
+                flash()->overlay('删除失败,该类别下还有商品','5');
+                return back();
+            }
 
-        $aa=Navig::where('parent_id',$id)->get()->toArray();
-        $idArray = good::where('nav_id',$id)->get()->toArray();
-       
-        if(!$idArray){
+        //如果不为三级
+        }else{
+            $aa=Navig::where('parent_id',$id)->get()->toArray();
             $des= Navig::where('id',$id)->first();
             $zl=$des->getDescendants()->toArray();
+               
             $va =[];
             foreach ($zl as  $k => $v) {
                $va[$k] = $v['name'];
@@ -205,11 +222,11 @@ class NavigController extends Controller
                 flash()->overlay('删除失败，请先删除'."“$va[$k]”类别", '5');
                 return back();
             }
-        }else{
-            flash()->overlay('删除失败,该类别下还有商品','5');
-            return redirect('navig/index');
         }
-
+      
+        
+        
+        
     }
 
 

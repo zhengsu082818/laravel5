@@ -34,20 +34,30 @@
         @include('flash::message')
         <thead>
           <tr >
-            <th style="text-align: center;">ID</th>
-            <th style="text-align: center;">分类名</th>
-            <th style="text-align: center;">属性名</th>
-            <th style="text-align: center;">属性值</th>
+            <th>分类名</th>
+            <th >属性名 > 属性值</th>
             <th style="text-align: center;">添加时间</th>
             <th style="text-align: center;">操作</th></tr>
         </thead>
         <tbody>
           @foreach ($goodtypeval as $v)
               <tr>
-                <td style="text-align: center;">{{$v->id}}</td>
-                <td style="text-align: center;">{{$data[$v->lei_id]}}</td>
-                <td style="text-align: center;">{{$v->goodtypes->gt_name}}</td>
-                <td style="text-align: center;">{{$v->gtv_name}}</td>
+                <td>
+                  <button class="layui-btn layui-btn-mini layui-btn-normal" value="">{{$data[$v->yiji_id]}}</button>
+                  <i class="layui-icon">&#xe602;</i>  
+                  <button class="layui-btn layui-btn-mini layui-btn-normal" value="">{{$data[$v->erji_id]}}</button>
+                  <i class="layui-icon">&#xe602;</i>
+                  <button class="layui-btn layui-btn-mini layui-btn-normal" value="">{{$data[$v->sanji_id]}}</button>
+                </td>
+                <td>
+                 
+                    {{$v->goodtypes->gt_name}}
+                  
+                  <i class="layui-icon">&#xe602;</i>
+                  
+                    {{$v->gtv_name}}
+                
+                </td>
 
                 <td style="text-align: center;">{{$v->created_at}}</td>
                 <td class="td-manage" style="text-align: center;">

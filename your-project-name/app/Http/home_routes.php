@@ -6,10 +6,13 @@
 Route::get('/', 'Home\IndexsController@index');
 
 // 加载商品列表页
-Route::get('home/prolistindex', 'Home\ProlistsController@index');
+Route::get('home/prolistindex/{id}', 'Home\ProlistsController@index');
+
 
 // 加载加入购物车页面
-Route::get('home/shopgoodindex', 'Home\ShopgoodsController@index');
+Route::get('home/shopgoodindex/{id}', 'Home\ShopgoodsController@index');
+
+
 
 //加载个人中心-收货地址页面
 Route::get('home/personal', 'Home\PersonalsController@index');
@@ -19,3 +22,14 @@ Route::post('home/personal/store', 'Home\PersonalsController@store');
 Route::get('home/personal/destroy/{id}', 'Home\PersonalsController@destroy');
 //加载修改收货地址
 Route::get('home/personal/edit/{id}', 'Home\PersonalsController@edit');
+
+
+//加载完善个人信息页面number
+Route::get('home/home/number', 'Admin\HomeuserController@create');
+//修改头像
+Route::post('home/home/number/tupiana','Admin\HomeuserController@tupiana');
+//执行修改个人信息页面
+Route::post('home/home/store/{id}', 'Admin\HomeuserController@store');
+
+
+

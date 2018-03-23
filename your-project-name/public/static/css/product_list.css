@@ -8,6 +8,7 @@ li{
 a{
 	text-decoration: none;
 }
+
 /*开头*/
 .header{
 	width: 100%;
@@ -24,7 +25,7 @@ a{
 .header-cont .hc-box1{
 	width: 200px;
 	height: 30px;
-	/*background: red;*/
+	background: red;
 	float: left;
 }
 .hc-box1 span{
@@ -202,7 +203,7 @@ a{
 	line-height: 36px;
 	border: 2px solid #444;
 	float:left;
-	margin-left:121px;
+	margin-left:125px;
 	text-indent: 5px;
 	color: #999;
 	
@@ -212,7 +213,7 @@ a{
 }
 .search_box .search_a{
 	width: 55px;
-	height: 40px;
+	height: 36px;
 	float:right;
 	border: #fff 0px solid;
 	border-top-right-radius:3px;
@@ -304,39 +305,41 @@ a{
 	cursor: pointer;
 	position: relative;
 }
-.cbl{
-	width: 160px;
+.ce-box{
 	height: 400px;
+}
+.ce-box .cbl{
+	width: 160px;
 	border-bottom: 1px solid #000;
-	display: none;
 	position:absolute;
 	top:41px;
 	z-index: 10;
+	display:none;
 }
-.dhxg .dhxg1:hover .cbl{
+.dhxg .dhxg1:hover .ce-box .cbl{
 	display: block;
 }
-.cbl li{
+.ce-box .cbl li{
 	width: 160px;
 	height: 40px;
 	background: rgba(15,15,15,0.82);
 	box-sizing: border-box;
 	cursor: pointer;
 }
-.cbl li img{
+.ce-box .cbl li img{
 	float: left;
 	height: 22px;
     color: #929496;
   	margin:9px 8px 0 25px;
     width: 22px;
 }
-.cbl li span{
+.ce-box .cbl li span{
 	display: inline-block;
 	margin:9px 0 0 9px;
 	font-size: 15px;
 	color: #fff;
 }
-.cbl li span:nth-child(3){
+.ce-box .cbl li span:nth-child(3){
 	color: #929496;
 }
 .cbl li:hover{
@@ -359,34 +362,7 @@ a{
 	background:#fff;
 	float: left;
 	border-bottom: 1px solid #000;
-}
-.cbl .erji .erji-2{
-	width: 265px;
-	height: 400px;
-	background: #f6f6f6;
-	float: left;
-	padding: 0 10px;
-	text-align: center;
-	border-bottom: 1px solid #000;
-	border-right: 1px solid #000;
-}
-.cbl .erji .erji-2 img{
-	width: 246px;
-	height: 246px;
-	margin: 15px 10px 0 10px;
-	float: left:;
-	text-align: center;
-}
-.cbl .erji .erji-2 a{
-	display: block;
-	width: 246px;
-	height: 110px;
-	margin: 275px 10px 10px 10px;
-}
-.cbl .erji .erji-2 a img{
-	width: 244px;
-	height: 100px;
-	float: right;
+
 }
 .erji .erji-1 .ej-cont{
 	width: 500px;
@@ -399,7 +375,7 @@ a{
 .ej-cont div a{
 	font-size: 14px;
 	color:#333;
-	line-height: 39px;
+	line-height: 33px;
 	font-weight: bold;
 }
 .ej-cont div a:last-child{
@@ -407,23 +383,18 @@ a{
 }
 .ej-cont p{
 	width: 500px;
-	height: 30px;
-	
 }
 .ej-cont p a{
 	font-size: 12px;
 	color: #666;
-	margin-left: 10px;
-	line-height: 30px;
 	display: inline-block;
 }
-.ej-cont p a:first-child{
-	margin:0;
-}
-.ej-cont .font-color{
+
+.ej-cont p a:hover{
 	color: #e31436;
+	text-decoration: none;
 }
-.cbl li:hover .erji{
+.ce-box .cbl li:hover .erji{
 	display: block;
 }
 .dhxg .dhxg1 img{
@@ -441,7 +412,6 @@ a{
 	display: inline-block;
 	margin-left: 18px;
 }
-
 .dhxg .cbl2{
 	width: 700px;
 	height: 40px;
@@ -473,13 +443,11 @@ a{
 .dhxg .dhxg-last{
 	clear: both;
 }
-
 /*分类表头*/
 .fjx{
 	width: 100%;
 	border-top:2px solid #333;
 }
-
 /*内容区域*/
 .content-box{
 	width: 100%;
@@ -502,8 +470,9 @@ a{
 	font-size: 15px;
 	line-height: 50px;
 	font-weight: bold;
+
 }
-.content-box .content1-box div a:last-child{
+.content-box .content1-box div span:last-child{
 	color: #e31436;
 }
 /*选项卡*/
@@ -514,7 +483,7 @@ a{
 }
 .content2-box .content2-flbt{
 	width: 1090px;
-	height: 150px;
+	
 	background: #fff;
 }
 .content2-box .content2-flbt div{
@@ -551,72 +520,59 @@ a{
 	height: 390px;
 	background:#fff;
 	float: left;
+	cursor: pointer;
 	margin:0 4px 7px 3px;
 }
 .content2-xuanxiang .content2-list ul li:hover{
-	margin-top: -3px;
+	box-sizing: border-box;
 	width: 265px;
-	height: 393px;
-	box-shadow: 0px,5px,6px,#000;
+	height: 392px;
+	/*border:1px solid #999;*/
+	box-shadow:0 4px 15px 0px rgba(0,0,0,.3);
+	margin-top:-2px;
 }
 .content2-xuanxiang .content2-list ul li img{
 	width: 265px;
 	height: 265px;
+	overflow: hidden;
+
 }
 .content2-xuanxiang .content2-list ul li .list-one{
 	width: 235px;
-	height: 70px;
-	margin:auto;
+	height: 40px;
+	overflow: hidden;
+	margin:10px auto 0px;
 }
-.content2-xuanxiang .content2-list ul li .list-one span b{
-	font-size: 24px;
-}
-.content2-xuanxiang .content2-list ul li .list-one span{
-	color:red;
-}
-
-.content2-xuanxiang .content2-list ul li .list-one p a{
+.content2-xuanxiang .content2-list ul li .list-one a{
 	font-size: 12px;
 	color: #000;
 }
-.content2-xuanxiang .content2-list ul li .list-one p a:hover{
-	color: red;
+.content2-xuanxiang .content2-list ul li .list-one a:hover{
+	color: #e31436;
 	text-decoration:underline;
 }
 .content2-xuanxiang .content2-list ul li .list-two{
 	width: 235px;
-	height: 20px;
+	height: 40px;
 	margin:auto;
 }
-.content2-xuanxiang .content2-list ul li .list-two img{
-	width: 12px;
-	height: 12px;
-}
 .content2-xuanxiang .content2-list ul li .list-two a{
+	display: inline-block;
+	/*height: 20px;*/
+	margin-top: 10px;
+	width: 60px;
+	color: #fff;
 	font-size: 12px;
-	color:#000;
-}
-.content2-xuanxiang .content2-list ul li .list-two a:hover{
-	text-decoration:underline;
+	background: #e31436;
+	text-align: center;
+	float: right;
 }
 .content2-xuanxiang .content2-list ul li .list-two span{
-	width: 70px;
-	height: 25px;
-	line-height: 25px;
-	background: #e91b51;
+	line-height: 40px;
+	color: #e31436;
 	display: inline-block;
-	font-size: 12px;
-	float:right;
-	margin-top: 2px;
-	cursor: pointer;
+	font-size: 20px;
 	text-align: center;
-}
-.content2-xuanxiang .content2-list ul li .list-two span a{
-	color:#f9f9f9;
-	
-}
-.content2-xuanxiang .content2-list ul li .list-two span:hover a{
-	text-decoration: none;
 }
 .content2-xuanxiang .content2-list ul li .list-three{
 	width: 235px;
@@ -630,11 +586,7 @@ a{
 }
 .content2-xuanxiang .content2-fenye{
 	width: 1090px;
-	height: 50px;
 	margin-top: 30px;
-	background: green;
-	
-	
 }
 
 /*底部1*/

@@ -8,7 +8,6 @@
 @endsection
 
 @section('content')
-
     <div class="x-body">
       <div class="x-nav">
       <span class="layui-breadcrumb">
@@ -22,42 +21,50 @@
           <cite>添加商品</cite>
         </a>
       </span>
-      
       <a class="layui-btn" style="line-height:38px;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
        <i class="layui-icon" style="line-height:38px">ဂ</i></a>
         <a  class="layui-btn" href="{{url('admin/goodindex')}}" style="line-height:38px;margin-top:3px;margin-right: 10px;float:right">返回上一层</a>
     </div>
     <div style="height: 40px;">
-      
     </div>
-      
         @include('flash::message')
-
         <form class="layui-form" method="post" action="{{url('admin/goodstore')}}" enctype="multipart/form-data">
           {{csrf_field()}}
-          <input type="hidden" name="img" value="" id="img">
+          
           <div class="layui-form-item">
               <label for="L_email" class="layui-form-label" style="width: 100px;">
                   <span class="x-red">*</span>选择类别
               </label>
               <div class="layui-input-inline">
-                  <select name='nav_id' lay-filter="test">
-                    <option value="0">请选择分类名</option>
+                  <select name='djid' lay-filter="good">
+                    <option value="0">请选择一级类名</option>
                     @foreach ($data as $k => $v) 
                     <option value="{{$v['id']}}">{{$v['name']}}</option>
                     @endforeach
                   </select>
               </div>
               <div class="layui-input-inline">
-                  <select name='gt_id' lay-filter="test2" id="ming1" >
-                    <option  value="{{$v['id']}}">请选择属性名</option>
-                   
+                  <select name='cjid' lay-filter="good1" id="erlei" >
+                     <option value="0">请选择二级类名</option>
+                    <option  value="{{$v['id']}}"></option>
+                  </select>
+              </div>
+              <div class="layui-input-inline">
+                  <select name='sj_id' lay-filter="good2" id="sanlei">
+                    <option value="0">请选择三级类名</option>
+                    <option value="{{$v['id']}}"></option>
+                  </select>
+              </div>
+              <div class="layui-input-inline">
+                  <select name='gt_id' lay-filter="good3" id="ming1" >
+                    <option value="0">请选择属性名</option>
+                    <option  value="{{$v['id']}}"></option>
                   </select>
               </div>
               <div class="layui-input-inline">
                   <select name='gtv_id' id="ming2" >
                     <option value="0">请选择属性值</option>
-                    
+                    <option></option>
                   </select>
               </div>
           </div>
@@ -75,7 +82,6 @@
                     @endif
               </div>  
           </div>
-
           <div class="layui-form-item">
               <label for="username" class="layui-form-label" style="margin-left: 20px;">
                   <span class="x-red">*</span>图片
@@ -83,16 +89,20 @@
               <div class="layui-form-mid layui-word-aux">
                 <button type="button" class="layui-btn" id="tubiao">
                   <i class="layui-icon">&#xe67c;</i>上传图片
+                  <input type="hidden" name="img" value="" id="img">
+                  
+                
                 </button>
+                
               </div>
               <div class="layui-form-item">
               <label for="L_email" class="layui-form-label" style="width: 100px;">
-                  <span class="x-red">*</span>显示图片
+                  <span class="x-red">*</span>显示主图
               </label>
               <img src=""  id="cc">
+
           </div>
           </div>
-          
            <div class="layui-form-item">
               <label for="username" class="layui-form-label" style="width: 100px;">
                   <span class="x-red">*</span>价格
@@ -104,10 +114,9 @@
                   <span class="x-red"></span>
                   @if (count($errors) > 0)
                     <span class="x-red">{{ $errors->first('price') }}</span>  
-                    @endif
+                  @endif
               </div>  
           </div>
-
            <div class="layui-form-item">
               <label for="username" class="layui-form-label" style="width: 100px;">
                   <span class="x-red">*</span>库存数量
@@ -119,10 +128,9 @@
                   <span class="x-red"></span>
                   @if (count($errors) > 0)
                     <span class="x-red">{{ $errors->first('nums') }}</span>  
-                    @endif
+                  @endif
               </div>  
           </div>
-          
           <div class="layui-form-item">
               <label for="username" class="layui-form-label" style="width: 100px;">
                   <span class="x-red">*</span>商品详情
@@ -133,6 +141,12 @@
                 <script id="container" name="content" type="text/plain" style='width:600px;height:200px;margin-left: -15px;'>  
                    
                 </script>  
+                <div class="layui-form-mid layui-word-aux">
+                  <span class="x-red"></span>
+                  @if (count($errors) > 0)
+                    <span class="x-red">{{ $errors->first('content') }}</span>  
+                  @endif
+                </div>  
                 <!-- 实例化编辑器 -->  
                 <script type="text/javascript">  
                     var ue = UE.getEditor('container');  
@@ -142,23 +156,20 @@
                 </script>  
               </div>  
           </div>
-
-
           <div class="layui-form-item">
               <label for="L_repass" class="layui-form-label" style="width: 100px;">
               </label>
               <button  class="layui-btn">
                   添加
               </button>
-
           </div>
         </form>
-
     </div>
 @endsection
 
 @section('js')
       <script>
+      
       layui.use(['upload','form'], function(){
         var upload = layui.upload;
          var $ = layui.$ ;
@@ -168,30 +179,80 @@
             }
         });
         //执行实例
-        var uploadInst = upload.render({
-          elem: '#tubiao' //绑定id
-          ,url: '{{ url("admin/gooduplode")}}'//上传接口到那个控制器
+
+      var name=[];
+        upload.render({
+          elem: '#tubiao'
+          ,url: '{{ url("admin/gooduplode")}}'
           ,field:'file'//设置字段名 控制器接受
-          ,done: function(res){
-           $name = res.data.src;
-           // alert($name);
-           $('#img').val($name);
+          ,multiple: true
+          ,allDone: function(obj){ //当文件全部被提交后，才触发
+            console.log(obj.total); //得到总文件数
+            console.log(obj.successful); //请求成功的文件数
+            console.log(obj.aborted); //请求失败的文件数
+          }
+          ,done: function(res, index, upload){ //每个文件提交一次触发一次。详见“请求成功的回调”
+            // for(){
+
+            // }
+            $name = res.data.src;
+
+            document.getElementById('img').value+=$name+',';
+             // imgs= $name+=$name;
+            // alert($(".hide").val );
+           // $('.hide')[i].val();
             $('#cc').attr("src","/storage/uploads/shopping/"+$name);
             $("#cc").css("width","100px","height","100px");
           }
-          ,error: function(){
-            
-          }
+        });
+        var form = layui.form;
+        form.on('select(good)', function(data){
+          $.ajax({
+            type:"GET",
+            url:'{{ url("admin/goodwjld") }}?id='+data.value,
+            success:function(msg){
+              var erlei = $("#erlei");
+              erlei.find("option").remove();
+              for(var i = 0; i<msg.data.length; i++){ 
+                erlei.append("<option value='"+msg.data[i].id+"'>"+msg.data[i].name+"</option>");
+              }
+             form.render('select'); 
+            },
+            error:function(data){
+
+            }
+          })
         });
 
         var form = layui.form;
-        form.on('select(test)', function(data){
+        form.on('select(good1)', function(data){
           $.ajax({
             type:"GET",
-            url:'{{ url("admin/goodSjld1") }}?id='+data.value,
+            url:'{{ url("admin/goodwjld2") }}?id='+data.value,
+            success:function(msg){
+              var sanlei = $("#sanlei");
+              sanlei.find("option").remove();
+
+              for(var i = 0; i<msg.data.length; i++){ 
+                sanlei.append("<option value='"+msg.data[i].id+"'>"+msg.data[i].name+"</option>");
+              }
+             form.render('select'); 
+            },
+            error:function(data){
+
+            }
+          })
+        });
+
+        var form = layui.form;
+        form.on('select(good2)', function(data){
+          $.ajax({
+            type:"GET",
+            url:'{{ url("admin/goodwjld3") }}?id='+data.value,
             success:function(msg){
               var ming1 = $("#ming1");
               ming1.find("option").remove();
+
               for(var i = 0; i<msg.data.length; i++){ 
                 ming1.append("<option value='"+msg.data[i].id+"'>"+msg.data[i].gt_name+"</option>");
               }
@@ -202,11 +263,12 @@
             }
           })
         });
-         var form = layui.form;
-        form.on('select(test2)', function(data){
+
+        var form = layui.form;
+        form.on('select(good3)', function(data){
           $.ajax({
             type:"GET",
-            url:'{{ url("admin/goodSjld2") }}?id='+data.value,
+            url:'{{ url("admin/goodwjld4") }}?id='+data.value,
             success:function(msg){
               var ming2 = $("#ming2");
               ming2.find("option").remove();
@@ -221,6 +283,7 @@
             }
           })
         });
+
 
         
       });

@@ -3,10 +3,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>register</title>
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<link rel="stylesheet" type="text/css" href="../home/css/register.css">
+	<script type="text/javascript" src="/home/js/jquery.js"></script>	
+	<script src="{{asset('etsc/lib/layui/layui.js')}}" charset="utf-8"></script>
 </head>
 <body>
-  <form method="get" action="/authindex/password">
+  <form method="get" action="{{url('password/yanz')}}">
+  		@include('flash::message')
 	<div class="logo">
 		<a href="index.html"><img class="one" src="../home/images/logres_images/login1.jpg"></a>
 		<img class="two" src="../home/images/logres_images/login2.jpg">
@@ -21,9 +25,14 @@
 				</div>
 				<div class="Login_yan">
 					<div class="Login_yanzheng">
-						<input  type="text" name="phone"  placeholder="请输入手机号">
-						<input class="erge"  type="text" name="captcha"  placeholder="请输入短信验证码" style="float: left;width: 40%">
-						<input id="zphone" type="button" value=" 发送手机验证码 " style="width: 50%;height: 35px;margin-left: 10px;">
+						<input  type="text" class="phone" name="mobile"  placeholder="请输入手机号">
+						<input class="erge"  type="text" name="captcha"  placeholder="请输入验证码" style="float: left;width: 40%">
+						<input id="code" type="button" value=" 发送手机验证码 " style="width: 50%;height: 35px;margin-left: 10px;">
+						@if (count($errors) > 0)
+				                    @foreach ($errors->get('captcha') as $error)
+				                        <li style="color:red;font-size: 12px;list-style: none;margin:3px;">{{ $error }}</li>
+				                    @endforeach
+				        @endif
 						<button class="denglu" >提交</button>
 						<p>我同意<a href=""><<服务条款>></a>和<a href=""><<网易隐私政策>></a></p>
 					</div>
@@ -72,4 +81,27 @@
 	</div>
  </form>
 </body>
-</html>
+</html>		
+      <script>
+      		document.getElementById('code').onclick=function(){
+      			var mobile=document.getElementsByClassName('phone')[0].value;
+      		$.ajaxSetup({
+        		headers: {
+            		'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        		}
+			})
+			$.ajax({
+                type:"POST",
+                url:"/password/code",
+                //dataType:"xml",
+                data:{
+                	'mobile':mobile
+                },
+                success:function(data){
+                   alert(data);
+                },
+                error:function(jqXHR){
+                }
+            })
+      	}
+      </script>

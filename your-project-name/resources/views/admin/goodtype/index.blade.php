@@ -42,7 +42,7 @@
         <tbody>
           @foreach ($goodtype as $v)
               <tr>
-                <td style="text-align: center;"> 
+                <td> 
                   <button class="layui-btn layui-btn-mini layui-btn-normal" value="">{{$data[$v->one_id]}}</button>
                   <i class="layui-icon">&#xe602;</i>  
                   <button class="layui-btn layui-btn-mini layui-btn-normal" value="">{{$data[$v->two_id]}}</button>

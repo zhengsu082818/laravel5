@@ -5,7 +5,6 @@
   @section('css')
      <link rel="stylesheet" href="{{asset('etsc/css/bootstrap.min.css')}}">      
   @endsection
-  
   @section('content')
    <div class="x-body">
       <div class="x-nav">
@@ -17,11 +16,9 @@
           <cite>管理员列表</cite>
         </a>
       </span>
-      
       <a class="layui-btn" style="line-height:38px;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
         <i class="layui-icon" style="line-height:38px">ဂ</i></a>
     </div>
-    
     <div class="x-body">
         <form class="layui-form layui-col-md12 x-so" action="{{ url('/admin/list') }}" method="get">
           <input type="text" name="name"  placeholder="请输入关键字" autocomplete="off" class="layui-input" value="{{$keywords?$keywords:''}}">
@@ -29,7 +26,6 @@
         </form>
          <a href="{{url('admin/create')}}" style="color:#fff;"><span class="x-left layui-btn" style="line-height:40px">添加管理员</span></a>
         <span class="x-right layui-btn" style="line-height:40px">共有数据：<a href="javascript:;" style="color:#fff;">{{$count}}</a>  条</span>
-       
       <table class="layui-table">
         @include('flash::message')
         <thead>
@@ -68,7 +64,6 @@
           @endforeach    
         </tbody>
       </table>
-
             <center>
             {!! $stus->appends(['name' => $keywords])->render() !!}
             </center>

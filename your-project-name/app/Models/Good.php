@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Good extends Model
 {
 	//定义商品属于什么哪个类名  多对一
-    public function navig()
+    public function nav()
     {
-        return $this->belongsTo('App\Models\Navig','nav_id','id');
+        return $this->belongsTo('App\Models\Navig','djid','id');
     }
 
     //定义商品属于哪个属性值 多对一

@@ -42,7 +42,7 @@
               </label>
               <div class="layui-input-inline">
                   <input type="text" name="" 
-                  class="layui-input" value="{{$data[$goodtypeval->lei_id]}}" disabled="disabled" style="background: #efefe0">
+                  class="layui-input" value="{{$data[$goodtypeval->sanji_id]}}" disabled="disabled" style="background: #efefe0">
               </div>
           </div>
           <div class="layui-form-item">

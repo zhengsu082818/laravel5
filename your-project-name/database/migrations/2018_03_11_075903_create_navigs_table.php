@@ -17,13 +17,12 @@ class CreateNavigsTable extends Migration {
             $table->integer('parent_id')->nullable()->index();//等级类别名
             $table->integer('lft')->nullable()->index();
             $table->integer('rgt')->nullable()->index();
-
-
             $table->integer('depth')->nullable();//嵌套等级
             $table->char('name');//类别名
             $table->string('url',255);//图片
-
-            $table->string('img',255);
+            $table->string('img1',255);
+            $table->string('img2',255);
+            $table->string('stated',255);
             $table->timestamps();
           });
     }

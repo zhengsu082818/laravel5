@@ -39,7 +39,7 @@ $(function(){
 	})
 	//自动轮播的实现
   function fade(){
- 		if(index1 == 5){
+ 		if(index1 == $('.banner-box ul li').length-1){
     	    index1 = 0;
  		}else{
  			index1++;
@@ -69,7 +69,7 @@ $(function(){
     //左箭头的方法
 	function fadeLeft(){
        if(index1 == 0){
-          index1 = 5;
+          index1 = $('.banner-box ul li').length-1;
        }else{
        	 index1--;
        }
@@ -97,27 +97,8 @@ $(function(){
   })
 
 
-  //侧边栏
-  $('.ce-box .cbl li').mouseover(function(){
-  	 var zs = $(this);
-  	 zs.css("background","#555 url(../images/index_images/bg-1.png) no-repeat").siblings().css("background", "rgba(15,15,15,0.82)");
-    }).mouseout(function(){
-	   var zs = $(this);
-	   zs.css("background", "rgba(15,15,15,0.82)");
-  })
 
   
-
-  //热门品牌换一换
-  var pinpai = 0;
-  $('.day-title .hyh').click(function(){
-    if(pinpai == $('.day-box .rm ul').length-1){
-      pinpai = 0;
-    }else{
-      pinpai++;
-    }
-    $('.day-box .rm ul').eq(pinpai).show().siblings('.day-box .rm ul').hide();
-  })
 
   //美妆换一换
   var mzhyh = 0;
@@ -160,9 +141,13 @@ $(function(){
     // ++++++++++++快速回顶部图标的隐藏和显示+++++++++++++++++
     $(window).scroll(function(){
         if($(window).scrollTop() > 1000){
+            
             $('#side > .top').show();
+           
         }else{
+           
             $('#side > .top').hide();
+          
         }
     })
 })

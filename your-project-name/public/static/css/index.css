@@ -306,12 +306,12 @@ a{
 }
 .ce-box{
 	width: 1090px;
-	height: 400px;
+	/*height: 400px;*/
 /*	background: red;*/
 }
 .ce-box .cbl{
 	width: 160px;
-	height: 400px;
+	/*height: 400px;*/
 	border-bottom: 1px solid #000;
 	position:absolute;
 	top:41px;
@@ -340,14 +340,14 @@ a{
 .ce-box .cbl li span:nth-child(3){
 	color: #929496;
 }
-.sty{
+.ce-box .cbl li:hover{
 	background:#555 url(../images/index_images/bg-1.png) no-repeat;
 }
 
 /*侧边二级导航*/
 .cbl .erji{
 	width: 860px;
-	height: 400px;
+	/*height: 400px;*/
 	position: absolute;
 	left:160px;
 	top:0;
@@ -361,34 +361,6 @@ a{
 	float: left;
 	border-bottom: 1px solid #000;
 }
-.cbl .erji .erji-2{
-	width: 265px;
-	height: 400px;
-	background: #f6f6f6;
-	float: left;
-	padding: 0 10px;
-	text-align: center;
-	border-bottom: 1px solid #000;
-	border-right: 1px solid #000;
-}
-.cbl .erji .erji-2 img{
-	width: 246px;
-	height: 246px;
-	margin: 15px 10px 0 10px;
-	float: left:;
-	text-align: center;
-}
-.cbl .erji .erji-2 a{
-	display: block;
-	width: 246px;
-	height: 110px;
-	margin: 275px 10px 10px 10px;
-}
-.cbl .erji .erji-2 a img{
-	width: 244px;
-	height: 100px;
-	float: right;
-}
 .erji .erji-1 .ej-cont{
 	width: 500px;
 	background: #fff;
@@ -400,7 +372,7 @@ a{
 .ej-cont div a{
 	font-size: 14px;
 	color:#333;
-	line-height: 39px;
+	line-height: 33px;
 	font-weight: bold;
 }
 .ej-cont div a:last-child{
@@ -408,22 +380,17 @@ a{
 }
 .ej-cont p{
 	width: 500px;
-	height: 30px;
-	
 }
 .ej-cont p a{
 	font-size: 12px;
 	color: #666;
-	margin-left: 10px;
-	line-height: 30px;
+	line-height: 25px;
 	display: inline-block;
 }
-.ej-cont p a:first-child{
-	margin:0;
-}
-.ej-cont .font-color{
+.ej-cont p a:hover{
 	color: #e31436;
 }
+
 .ce-box .cbl li:hover .erji{
 	display: block;
 }
@@ -496,8 +463,8 @@ a{
 	/*background: yellow;*/
 }
 .banner-box ol li{
-	width: 20px;
-	height: 22px;
+	width: 15px;
+	height: 15px;
 	float: left;
 	margin-left: 10px;
 	background: #666;
@@ -601,7 +568,7 @@ a{
     float: left;
     box-sizing: border-box;
 }
-.day-box .mrsx li .img-img{
+.day-box .mrsx li .img-img {
 	display: block;
     margin: 12px 11px;
     width: 157px;
@@ -726,7 +693,7 @@ del{
     border-width: 0 1px 1px 0;
     box-sizing: border-box;
 }
-.mz .mz-two ul li div:first-child{
+.mz .mz-two ul li .ttt{
 	width: 203px;
 	height: 22px;
 	margin:15px auto 0;
@@ -734,21 +701,13 @@ del{
 	line-height: 22px;
 	text-align: center;
 }
-.mz .mz-two ul li div:nth-child(2){
-	height: 17px;
-    width: 203px;
-    line-height: 17px;
-    font-size: 14px;
-    text-align: center;
-    color: #999;
-}
-.mz .mz-two ul li div:nth-child(3){
+.mz .mz-two ul li .iii{
 	width: 203px;
 	height: 120px;
 	text-align: center; 
 	position: relative;
 }
-.mz .mz-two ul li div:nth-child(3) img{
+.mz .mz-two ul li .iii img{
 	width: 140px;
 	height: 110px;
 	position: absolute;
@@ -757,7 +716,7 @@ del{
 	transition: transform 1s;
     transform: translateY(0);
 }
-.mz-two ul li div:nth-child(3):hover img{
+.mz-two ul li .iii:hover img{
     transition: transform 1s;
     transform: translateY(-5px);
 }
@@ -766,6 +725,7 @@ del{
 .mz .mz-three{
 	width: 240px;
 	height: 360px;
+	overflow: hidden;
 	float: left;
 }
 .mz .mz-three .mz-three-tit{
@@ -843,7 +803,10 @@ del{
 }
 .mz .mz-three .myet .pro{
 	font-size: 12px;
-
+	width: 200px;
+	height: 32px;
+	
+	overflow: hidden;
 }
 .mz .mz-three .myet .price{
 	font-size: 14px;
@@ -991,6 +954,9 @@ del{
 	cursor: pointer;
 	font-size: 13px;
 }
+.about-box .about-two dl dd a:hover{
+	color: #e31436;
+}
 .about-box ul li:last-child img{
 	margin-left: 30px;
 }
@@ -1006,26 +972,27 @@ del{
 	border:1px solid #333;
 	box-sizing: border-box;
 	background: #333;
+	/*margin-top: 500px;*/
 }
 .foot-two-box .foot-two-cont{
 	width: 1090px;
 	height: 160px;
-	margin:20px auto;
+	margin:10px auto;
 	text-align: center;
 }
 .foot-two-box .foot-two-cont p{
 	width: 900px;
-	height: 30px;
+	height: 40px;
 	margin:0 auto;
 }
 .foot-two-box .foot-two-cont p a{
-	line-height: 30px;
-	font-size: 12px;
+	line-height: 40px;
+	font-size: 13px;
 	color: #c2c2c2;
 }
 .foot-two-box .foot-two-cont p span{
-	line-height: 30px;
-	font-size: 12px;
+	line-height: 40px;
+	font-size: 13px;
 	color: #c2c2c2;
 	margin: 0 10px;
 }
@@ -1034,7 +1001,7 @@ del{
 }
 .foot-two-box .foot-two-cont div{
 	width: 900px;
-	height: 30px;
+	height: 40px;
 	margin:0 auto;
 }
 .foot-two-box .foot-two-cont div img{
@@ -1048,7 +1015,7 @@ del{
         height:165px;
         position:fixed;
         right:10px;
-        bottom:43px;
+        bottom:-20px;
     }
     #side .block{
         width:45px;

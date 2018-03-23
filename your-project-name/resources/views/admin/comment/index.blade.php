@@ -49,15 +49,8 @@
                 <td style="text-align: center;">{{$v->homeuser['name']}}</td> 
                 <td style="text-align: center;">
                   <!-- 判断这个字段是否为空 -->
-                @if($v->parent_id === null)
-                   <a href='javascript:;' style="color:red" layui-btn layui-btn-mini>
-                   首次评论
+                  <a href='javascript:;' style="color:red" layui-btn layui-btn-mini>
                   </a>{{$v->comment}}
-                @else
-                    <a href='javascript:;' style="color:pink" layui-btn layui-btn-mini>
-                   追加评论
-                  </a>{{$v->comment}}
-                @endif
                 </td>
                 <td style="text-align: center;">{{$v->reply}}</td>
                 <td style="text-align: center;">{{$v->created_at}}</td>

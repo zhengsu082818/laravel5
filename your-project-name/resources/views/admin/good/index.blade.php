@@ -17,7 +17,6 @@
           <cite>商品列表管理</cite>
         </a>
       </span>
-      
       <a class="layui-btn" style="line-height:38px;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
         <i class="layui-icon" style="line-height:38px">ဂ</i></a>
     </div>
@@ -33,31 +32,38 @@
       <table class="layui-table">
         @include('flash::message')
         <thead>
-          <tr >
-            <th style="text-align: center;">ID</th>
-            <th style="text-align: center;">所属分类</th>
-            <th style="text-align: center;">所属属性名</th>
-            <th style="text-align: center;">所属属性值</th>
-             <th style="text-align: center;">标题</th>
-              <th style="text-align: center;">图片</th>
-               <th style="text-align: center;">价格</th>
-                <th style="text-align: center;">库存数量</th>
-                <th style="text-align: center;">商品详情</th>
+            <th style="text-align: center;">所属分类 > 属性名 > 属性值</th>
+            <th style="text-align: center;">标题</th>
+            <th style="text-align: center;">主图</th>
+            <th style="text-align: center;">副图</th>
+            <th style="text-align: center;">副图</th>
+            <th style="text-align: center;">价格</th>
+            <th style="text-align: center;">库存数量</th>
             <th style="text-align: center;">添加时间</th>
             <th style="text-align: center;">操作</th></tr>
         </thead>
         <tbody>
           @foreach($goods as $v)
               <tr>
-                <td style="text-align: center;">{{$v->id}}</td>
-                <td style="text-align: center;">{{$v->nav_id}}</td>
-                <td style="text-align: center;">{{$data[$v->gt_id]}}</td>
-                <td style="text-align: center;">{{$v->gtv_id}}</td>
-                <td style="text-align: center;">{{$v->title}}</td>
+                <td>
+                  <button class="layui-btn layui-btn-mini layui-btn-normal" value="">{{$datas[$v->djid]}}</button>
+                  <button class="layui-btn layui-btn-mini layui-btn-normal" value="">{{$datas[$v->cjid]}}</button>
+                  <button class="layui-btn layui-btn-mini layui-btn-normal" value="">{{$datas[$v->sj_id]}}</button>
+                  <i class="layui-icon">&#xe602;</i>
+                  <button class="layui-btn layui-btn-mini layui-btn-normal" value=""> {{$data[$v->gt_id]}}</button>
+                  <i class="layui-icon">&#xe602;</i>
+                  <button class="layui-btn layui-btn-mini layui-btn-normal" value=""> {{$gtvs[$v->gtv_id]}}</button>
+                </td>
+                <td style="text-align: center;">
+                  <a href='{{url("/admin/goodshow/$v->id")}}' title="查看详情" style="color: #000;">
+                    {{mb_substr($v->title,0,5)}}
+                  </a>
+                </td>
                 <td style="text-align: center;"><img src='{{ URL::asset("storage/uploads/shopping/$v->img") }}' style="width: 50px;height: 50px;"></td>
+                <td style="text-align: center;"><img src='{{ URL::asset("storage/uploads/shopping/$v->img1") }}' style="width: 50px;height: 50px;"></td>
+                <td style="text-align: center;"><img src='{{ URL::asset("storage/uploads/shopping/$v->img2") }}' style="width: 50px;height: 50px;"></td>
                 <td style="text-align: center;">{{$v->price}}</td>
                 <td style="text-align: center;">{{$v->nums}}</td>
-                 <td style="text-align: center;">{!!$v->content!!}</td>
                 <td style="text-align: center;">{{$v->created_at}}</td>
                 <td class="td-manage" style="text-align: center;">
                   <a href='{{url("/admin/goodedit/$v->id")}}' style="color:#fff;">
@@ -70,9 +76,7 @@
               </tr>
           @endforeach    
         </tbody>
-
       </table>
-
             <center>
             {!! $goods->appends(['name' => $keywords])->render() !!}
             </center>

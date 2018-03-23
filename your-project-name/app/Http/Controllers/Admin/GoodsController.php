@@ -3,13 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use App\Models\Good;
 use App\Models\Navig;
-
 use App\Models\Goodtype;
 use App\Models\Goodtypeval;
 
@@ -20,6 +17,7 @@ class GoodsController extends Controller
         "title"=>'required|max:255',
         "price"=>'required|numeric',
         "nums"=>'required|numeric',
+        "content"=>'required',
     ];
     //编写错误信息
     protected $messages =[
@@ -29,6 +27,7 @@ class GoodsController extends Controller
         "price.numeric"=>'价格格式不正确',
         "nums.required"=>'数量必填',
         "nums.numeric"=>'数量格式不正确',
+        "content.required"=>'详情必填',
     ];
     /**
      * Display a listing of the resource.
@@ -40,20 +39,33 @@ class GoodsController extends Controller
         $where=[];
         $keywords = Request()->name;
         if ($keywords != '') {
-            $goods = good::with('navig')->where('title','like',"%$keywords%")->orderBy('id','desc')->paginate(10);
+            $goods = good::where('title','like',"%$keywords%")->orderBy('gtv_id','desc')->paginate(11);
             $count = good::where('title','like',"%$keywords%")->count();
         }else{
-            $goods = good::with('navig')->orderBy('id','desc')->paginate(10);
-            // dd($goods->toArray());
+            $goods = good::orderBy('gtv_id','desc')->paginate(11);
             $count = good::count();
         }
+
         $gt = goodtype::get(['id','gt_name'])->toArray();
         $data = [];
         foreach($gt as $k=>$v){
             $data[$v['id']] =$v['gt_name'];
         }
-        // dd($data);
-        return view('admin.good.index',['goods'=>$goods,'count'=>$count,'keywords'=>$keywords ,'data'=>$data]);
+
+        $nav = Navig::get(['id','name'])->toArray();
+        $datas = [];
+        foreach ($nav as $k => $v) {
+           $datas[$v['id']]=$v['name'];
+        }
+
+        $gtv = goodtypeval::get(['id','gtv_name'])->toArray();
+        $gtvs = [];
+        foreach ($gtv as $k => $v) {
+           $gtvs[$v['id']]=$v['gtv_name'];
+        }
+        // dd($gtvs);
+        return view('admin.good.index',['goods'=>$goods,'count'=>$count,'keywords'=>$keywords ,'data'=>$data,
+        'datas'=>$datas,'gtvs'=>$gtvs]);
         
     }
 
@@ -64,7 +76,9 @@ class GoodsController extends Controller
      */
     public function create()
     {
-        $data = Navig::where('depth','2')->get()->toArray();
+        $data = Navig::where('depth','0')->get()->toArray();
+        $data1 = Navig::where('depth','1')->get()->toArray();
+        // dd($data);
         // $list = good::with('gt')->get()->toArray();
         // dd($list);
         return view('admin.good.create',['data' => $data]);
@@ -97,30 +111,36 @@ class GoodsController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        if($request->nav_id==0 || $request->gt_id==0 || $request->gtv_id==0){
+        if($request->djid==0 || $request->cjid==0 || $request->sj_id==0 || $request->gt_id==0 || $request->gtv_id==0  ){
             flash()->overlay('添加失败,请选择类别', '5');
             return back();
         }
-        $this->validate($request,$this->rules,$this->messages);
+        // $this->validate($request,$this->rules,$this->messages);
         $input=$request->except('_token');
-        
+
+        $input['img']=explode(',', rtrim($input['img'],','));
+        // dd($input);
         $good = new good;
-        $good->nav_id = $input['nav_id'];
+        $good->djid = $input['djid'];
+        $good->cjid = $input['cjid'];
+        $good->sj_id = $input['sj_id'];
         $good->gt_id = $input['gt_id'];
         $good->gtv_id = $input['gtv_id'];
         $good->title = $input['title'];
-        $good->img = $input['img'];
+        $good->img = $input['img'][0];
+        $good->img1 = $input['img'][1];
+        $good->img2 = $input['img'][2];
+
         $good->price = $input['price'];
         $good->nums = $input['nums'];
         $good->content = $input['content'];
         $good->save();
-
         flash()->overlay('添加成功','1');
         return redirect('admin/goodindex');
-
     }
 
     /**
+     * 查看商品详情
      * Display the specified resource.
      *
      * @param  int  $id
@@ -128,7 +148,8 @@ class GoodsController extends Controller
      */
     public function show($id)
     {
-        //
+        $good = good::findOrFail($id);
+        return view('admin.good.show',['good'=>$good]);
     }
 
     /**
@@ -140,7 +161,6 @@ class GoodsController extends Controller
     public function edit($id)
     {
         $good = good::findOrFail($id);
-
         return view('admin.good.edit',['good'=>$good]);
     }
 
@@ -164,7 +184,6 @@ class GoodsController extends Controller
              flash()->overlay('修改失败','5');
              return back();
          }
-        
     }
 
     /**
@@ -175,29 +194,40 @@ class GoodsController extends Controller
      */
     public function destroy($id)
     {
-        $dele =good::destroy($id);
-        //判断是否删除成功
-        if ($dele) {
+        $del = good::findOrFail($id)->nums;
+        if($del == 0){
+            $dele =good::destroy($id);
             flash()->overlay('删除成功', '1');
             return redirect('admin/goodindex');
         }else{
-            flash()->overlay('删除失败', '5');
+            flash()->overlay('删除失败,该商品还有库存', '5');
             return redirect('admin/goodindex');
         }
     }
 
 
-    //执行三级联动1
-    public function goodSjld1(Request $request){
-        $all = goodtype::where('nav_id',$request->id)->get()->toArray();
-
+    //执行五级联动1
+    public function goodwjld(Request $request){
+        $all = navig::where('parent_id',$request->id)->get()->toArray();
+        // dd($all);
         return ['code'=>0,'msg'=>'','data'=>$all];
     }
     
-    //执行三级联动2
-    public function goodSjld2(Request $request){
-        $all2 = goodtypeval::where('gtt_id',$request->id)->get()->toArray();
-
+    //执行五级联动2
+    public function goodwjld2(Request $request){
+        $all2 = navig::where('parent_id',$request->id)->get()->toArray();
         return ['code'=>0,'msg'=>'','data'=>$all2];
+    }
+
+    //执行五级联动3
+    public function goodwjld3(Request $request){
+        $all3 = goodtype::where('nav_id',$request->id)->get()->toArray();
+        return ['code'=>0,'msg'=>'','data'=>$all3];
+    }
+
+    //执行五级联动4
+    public function goodwjld4(Request $request){
+        $all4 = goodtypeval::where('gt_id',$request->id)->get()->toArray();
+        return ['code'=>0,'msg'=>'','data'=>$all4];
     }
 }

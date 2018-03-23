@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Models\Personal;
 use App\Models\Homeuser;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -17,10 +16,14 @@ class PersonalsController extends Controller
         "cho_Area"=>'required',
         "shdz"=>'required|max:75',
         "name"=>'required',
+<<<<<<< HEAD
         "phone"=>'required|min:11|max:11',
 
 
 
+=======
+        "phone"=>'required|regex:/^1[34578][0-9]{9}$/|min:11|max:11',
+>>>>>>> 025986f31f95b8b1776e830fbacbc8d088cb8b71
     ];
     //编写错误信息
     protected $messages =[
@@ -28,9 +31,9 @@ class PersonalsController extends Controller
         "shdz.max"=>'请输入正确收货地址',
         "name.required"=>'请输入收件人的姓名',
         "phone.required"=>'请输入收件人的手机号码',
-        "phone.min"=>'请正确输入收件人的手机号',
+        "phone.regex"=>'收件人的手机号码格式不正确',
+        // "phone.min"=>'请正确输入收件人的手机号',
         "phone.max"=>'请正确输入收件人的手机号',
-
     ];
     /**
      * Display a listing of the resource.
@@ -39,14 +42,11 @@ class PersonalsController extends Controller
      */
     public function index()
     {
-
         $phone =session('phone');//获取当前用户的登录号
         // dd($phone);
         $id =Homeuser::where('phone',$phone)->firstOrFail()->id;//获取当前用户的id
-        
         $personals = Personal::where('pid',$id)->get();
         $count =Personal::where('pid',$id)->count();
-
         return view('home.good_receipt',['personals'=>$personals,'count'=>$count]);
     }
 
@@ -72,7 +72,6 @@ class PersonalsController extends Controller
         //接收除_token字段的值
         $input =$request->except('_token');
         $this->validate($request,$this->rules,$this->messages);//执行字段验证
-
         $phone =session('phone');//获取当前用户的登录号
         // dd($phone);
         $id =Homeuser::where('phone',$phone)->firstOrFail()->id;
@@ -82,11 +81,10 @@ class PersonalsController extends Controller
         $personals->name =$input['name'];
         $personals->phone =$input['phone'];
         $personals->pid =$id;
-
         $personals->shdz =$input['cho_Province'].' '.$input['cho_City'].' '.$input['cho_Area'].' '.$input['shdz'];
         $personals->save();//执行添加数据库
         flash()->overlay('添加成功', '1');
-            return redirect('home/personal');
+         return redirect('home/personal');
 
     }
 

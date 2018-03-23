@@ -21,7 +21,95 @@
 	
 	@section('content')
 		
-	@include('home.comment')
+	 <!-- 标头 -->
+    <div class="header">
+        <div class="header-cont">
+
+            <div class="hc-box1" style="background: none;"> 
+
+                @if(session('phone')==null)
+                <span>考拉欢迎你！</span>
+                <a href="{{url('authindex/login')}}" class="log">登录</a>
+                <b>丨</b>
+                <a href="{{url('authindex/register')}}">注册</a>
+                @endif
+                @if(!session('phone')==null)
+                 <span>您好！</span>
+                <a href="" class="log">{{session('phone')}}</a>
+                <b>丨</b>
+                <a href="{{url('authindex/out')}}">退出</a>
+                @endif
+            </div>
+            <div class="hc-box2">
+                <img src="{{asset('static/images/index_images/phone2.png')}}" class="shouji">
+                <a href="">手机考拉海购</a>
+                <div class="app">
+                    <img src="{{asset('static/images/index_images/erweima.jpg')}}">
+                </div>
+            </div>
+            <ul>
+                <li class="default">
+                    <a href="My orders.html">我的订单</a>
+                </li>
+                <span>丨</span>
+                <li class="second">
+                    <a href="My orders.html">个人中心</a>
+                    <img src="{{asset('static/images/index_images/sanjiao.png')}}">
+                    <div class="per_cen">
+                        <a href="@if(!session('phone')==null)
+                            {{url('home/home/number')}}
+                            @else  {{url('authindex/login')}}
+                            @endif">完善个人信息</a>
+                        <a href=" @if(!session('phone')==null)
+                            {{url('home/personal')}}
+                            @else  {{url('authindex/login')}}
+                            @endif
+                        "
+                        >管理收货地址</a>
+                        
+                    </div>
+                </li>
+                <span>丨</span>
+                <li class="third">
+                    <a href="">客户服务</a>
+                    <img src="{{asset('static/images/index_images/sanjiao.png')}}">
+                    <div class="per_cen">
+                        <a href="">联系客服</a>
+                        <a href="">帮助中心</a>
+                    </div>
+                </li>
+                <span>丨</span>
+                <li>
+                    <a href="">消费者告知书</a>
+                </li>
+                <span>丨</span>
+                <li class="lastli">
+                    <a href="">更多</a>
+                    <img src="{{asset('static/images/index_images/sanjiao.png')}}">
+                    <div class="per_more">
+                        <a href="">关于我们</a>
+                        <a href="">品牌招商</a>
+                        <a href="">考拉招聘</a>
+                        <a href="">官方博客</a>
+                    </div>
+                </li>
+            </ul>
+        </div>  
+    </div>
+	<!-- login-->
+	<div class="log-box">
+		<div class="login">
+			<a href="{{url('/')}}">
+				<img src="{{asset('static/images/logres_images/login.jpg')}}">
+			</a>
+		</div>
+		<div class="shopcarbox">
+            <div class="shopcar">
+                <img src="{{asset('static/images/index_images/shopcar1.png')}}">
+                <a href="shopcar.html"><span>购物车</span></a>
+            </div>
+        </div>
+	</div>
 	
 	<!-- 个人中心 -->
 	<div class="Chinese">
@@ -37,8 +125,8 @@
 			<ul>
 				<li>&nbsp;</li>
 				<li><a href="My orders.html">我的订单</a></li>
-				<li><a href="">账号管理</a></li>
-				<li style="border-left: 2px solid red;"><a href="My Receiving address.html"  style="color:red">管理收货地址</a></li>
+				<li><a href="{{url('home/home/number')}}">账号管理</a></li>
+				<li style="border-left: 2px solid red;"><a href=""  style="color:red">管理收货地址</a></li>
 			</ul>
 			<div class="ybcshdz">
 				<p>
@@ -97,7 +185,7 @@
 						<b>*</b> 所在地区
 						@include('flash::message')
 					<form method="post" action='{{ url("home/personal/store")}}'>
-						{{csrf_field()}}
+							{{csrf_field()}}
 						            <div class="infolist" style="margin-left:20px; margin-top: -14px;">
 						                <div class="liststyle" style="margin-left:0;">
 						                    <span id="Province" >
