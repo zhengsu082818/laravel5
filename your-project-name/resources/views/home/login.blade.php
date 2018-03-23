@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>register</title>
+	<title>考拉海购-用户登陆</title>
+	<link rel="icon" href="{{asset('home/images/index_images/log_tb.jpg')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('home/css/register.css')}}">
 	<script src="{{asset('etsc/lib/layui/layui.js')}}" charset="utf-8"></script>
 </head>
@@ -11,12 +12,12 @@
  	{{ csrf_field() }}
  	@include('flash::message')
 	<div class="logo">
-		<a href="index.html"><img class="one" src="../home/images/logres_images/login1.jpg"></a>
-		<img class="two" src="../home/images/logres_images/login2.jpg">
+		<a href="index.html"><img class="one" src="{{asset('/home/images/logres_images/login1.jpg')}}"></a>
+		<img class="two" src="{{asset('/home/images/logres_images/login2.jpg')}}">
 	</div>
 	<div class="content">
 		<div>
-			<a href="index.html"><img src="../home/images/logres_images/login3.jpg"></a>
+			<a href="index.html"><img src="{{asset('/home/images/logres_images/login3.jpg')}}"></a>
 			<div class="login" style="height:360px;">
 				<div>
 					<h3>欢迎登录
@@ -86,9 +87,9 @@
 				<a href="">互联网药品信息服务资格证书编号（浙）-2017-0027</a>
 			</p>
 			<div>
-				<img src="../home/images/logres_images/login6.jpg">
-				<img src="../home/images/logres_images/login7.jpg">
-				<img src="../home/images/logres_images/jinghui.png">
+				<img src="{{asset('/home/images/logres_images/login6.jpg')}}">
+				<img src="{{asset('/home/images/logres_images/login7.jpg')}}">
+				<img src="{{asset('/home/images/logres_images/jinghui.png')}}">
 			</div>
 		</div>
 	</div>

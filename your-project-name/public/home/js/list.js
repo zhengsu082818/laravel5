@@ -27,13 +27,13 @@ window.onload = function(){
 		right();
    		
    		bc_foodO.style="none";
-   		bc_food_rO.style.border="1px solid #00C3F5";
-   		bc_food_rO.style.color="#00C3F5";
+   		bc_food_rO.style.border="1px solid red";
+   		bc_food_rO.style.color="red";
    	}
 	bc_food_rO.onclick=function(){
 		left();
 		bc_food_rO.style="none";
-		bc_foodO.style.border="1px solid #00C3F5";
-   		bc_foodO.style.color="#00C3F5";
+		bc_foodO.style.border="1px solid red";
+   		bc_foodO.style.color="red";
 	}
 }

@@ -31,7 +31,7 @@ class ShoppingController extends Controller
      */
     public function create()
     {
-        // return index();
+        
     }
 
     /**
@@ -42,18 +42,17 @@ class ShoppingController extends Controller
      */
     public function store(Request $request)
     {
-        //暂时定义支付密码
-        $mima=123456;
-        $list=Input::get();
-        if($list['zhifu']!=$mima){
-                $error=1;
-             return back()->withInput()->with('mes','error');
-        }
-        $info=explode('.',rtrim($list['ids'],"."));
-        $all=DB::table('shopping')->whereIn('id',$info)->get();
-        print_r($all);
+        
 
-        return '订单页面';
+
+        // 加载支付页面
+        config(['database.fetch' => PDO::FETCH_ASSOC]);
+            
+        $input = $request->all();
+        $input['shopping']=DB::table('shopping')->whereIn('id',explode('.', rtrim($input['ids'],'.')))->get();
+        $input['personals']=DB::table('personals')->where('id',$input['shdz_id'])->get();
+        // dd($input);
+        return view('home/order_payment',['input'=>$input]);
     }
 
     /**
@@ -64,14 +63,30 @@ class ShoppingController extends Controller
      */
     public function show(Request $request, $id)
     {
+        //加载收货地址页面
+        $homeuser=$request->session()->all();
         config(['database.fetch' => PDO::FETCH_ASSOC]);
+        // dd($homeuser);
+        if(isset($homeuser['phone'])){
+           
+        $list['ids']=$id;
+        // dd($homeuser);
         $id=explode('.', rtrim($id,'.'));
         $list['alljg']=$request->alljg;
         $list['info']=DB::table('shopping')->whereIn('id',$id)->orderBy('id', 'desc')
-            ->paginate(2);
-        // dd($list['info']);
-        
-        return view('home/Purchase page',['list'=>$list]);
+            ->get();
+        $shdz=DB::table('homeusers')->where('phone',$homeuser['phone'])->first();
+        $list['personals']=DB::table('personals')->where('pid',$shdz['id'])->get();
+        // dd($list);
+
+        if($list['personals']!=null){
+            return view('home/Purchase page',['list'=>$list]);
+        }else{
+            return view('home/Purchase page',['list'=>$list]);
+        }
+        }else{
+            return view('home/login');
+        }
     }
 
     /**
@@ -80,9 +95,26 @@ class ShoppingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request ,$id)
     {
-        //
+        // //支付页面判定
+        // $input=Input::get();
+        // $homeuser=$request->session()->all();
+        // config(['database.fetch' => PDO::FETCH_ASSOC]);
+        // $shdz=DB::table('homeusers')->where('phone',$homeuser['phone'])->first();
+        // if($shdz['zfpassword']!=md5($input['zhifu'])){
+        //     return 111;
+        // }
+        // $shopping=DB::table('shopping')
+        //     ->whereIn('id',explode('.', rtrim($input['shoppingid'],'.')))
+        //     ->select('img','product','price','num','aotal','uid','gid')
+        //     ->get();
+        // foreach ($shopping as $key => $value) {
+        //     $insert=Db::table('commodity')->insert($value);
+        //     DB::table('shopping')->whereIn('id',explode('.', rtrim($input['shoppingid'],'.')))->delete();
+        // }
+        // // dd(md5(123456));
+        // return '去订单页';
     }
 
     /**

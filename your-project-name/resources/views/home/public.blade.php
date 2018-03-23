@@ -9,7 +9,7 @@
     <script type="text/javascript" src="{{asset('home/js/index.js')}}"></script>
     <link rel="stylesheet" href="{{asset('home/css/borderandfood.css')}}">
     @section('css')
-           
+     
     @show
      <!-- 导入外部js -->
     @section('js')
@@ -20,58 +20,56 @@
 <body @yield('class')>
     <!-- 头部 -->
     <!-- 上下滚动 -->
-    <div class="sxgd">
-        <div class="log-box">
-            <div class="login">
-                <a href="index.html">
-                    <img src="{{asset('home/images/logres_images/login.jpg')}}">
-                </a>
-            </div>
-            <div class="search_box">
-                <form action="" method="get">
-                    <input type="text" name="" class="search" value="男士面膜">
-                    <button class="search_a">
-                        <img src="{{asset('home/images/index_images/search1.png')}}">
-                    </button>
-                </form>
-            </div>
-        </div>  
-    </div>  
+    
 
     <!-- 标头 -->
-    <div class="header">
+   <div class="header">
         <div class="header-cont">
-            <div class="hc-box1">
+            <div class="hc-box1" style="background: none;">
+                
+                @if(session('phone')==null)
                 <span>考拉欢迎你！</span>
-                <a href="login.html" class="log">登录</a>
+                <a href="{{url('authindex/login')}}" class="log">登录</a>
                 <b>丨</b>
-                <a href="resgiter.html">注册</a>
+                <a href="register.html">注册</a>
+                @endif
+                @if(!session('phone')==null)
+                 <span>您好！</span>
+                <a href="" class="log">{{session('phone')}}</a>
+                <b>丨</b>
+                <a href="{{url('authindex/out')}}">退出</a>
+                @endif
             </div>
             <div class="hc-box2">
-                <img src="{{asset('home/images/index_images/phone2.png')}}" class="shouji">
+                <img src="{{asset('static/images/index_images/phone2.png')}}" class="shouji">
                 <a href="">手机考拉海购</a>
                 <div class="app">
-                    <img src="{{asset('home/images/index_images/erweima.jpg')}}">
+                    <img src="{{asset('static/images/index_images/erweima.jpg')}}">
                 </div>
             </div>
             <ul>
                 <li class="default">
-                    <a href="My orders.html">我的订单</a>
+                    <a href="{{url('home/orderform')}}">我的订单</a>
                 </li>
                 <span>丨</span>
                 <li class="second">
                     <a href="My orders.html">个人中心</a>
-                    <img src="{{asset('home/images/index_images/sanjiao.png')}}">
+                    <img src="{{asset('static/images/index_images/sanjiao.png')}}">
                     <div class="per_cen">
-                        <a href="">我的实名认证</a>
-                        <a href="">我收藏的商品</a>
-                        <a href="">售后管理</a>
+                        <a href="My Account management.html">完善个人信息</a>
+                        <a href=" @if(!session('phone')==null)
+                            {{url('home/personal')}}
+                            @else  {{url('authindex/login')}}
+                            @endif
+                        "
+                        >管理收货地址</a>
+                        
                     </div>
                 </li>
                 <span>丨</span>
                 <li class="third">
                     <a href="">客户服务</a>
-                    <img src="{{asset('home/images/index_images/sanjiao.png')}}">
+                    <img src="{{asset('static/images/index_images/sanjiao.png')}}">
                     <div class="per_cen">
                         <a href="">联系客服</a>
                         <a href="">帮助中心</a>
@@ -84,7 +82,7 @@
                 <span>丨</span>
                 <li class="lastli">
                     <a href="">更多</a>
-                    <img src="{{asset('home/images/index_images/sanjiao.png')}}">
+                    <img src="{{asset('static/images/index_images/sanjiao.png')}}">
                     <div class="per_more">
                         <a href="">关于我们</a>
                         <a href="">品牌招商</a>
@@ -96,7 +94,22 @@
         </div>  
     </div>
 
-    
+    <!-- login + 搜索 -->
+    <div class="log-box" style="background-color:none;">
+        <div class="login">
+            <a href="/">
+                <img src="{{asset('home/images/logres_images/logins.png')}}">
+            </a>
+        </div>
+        
+        <div class="shopcarbox">
+            <div class="shopcar">
+                <img src="{{asset('home/images/index_images/shopcar1.png')}}">
+                <a href="{{url('home/shopping')}}"><span>购物车</span></a>
+            </div>
+        </div>
+        <div class="log-box-last"></div>
+    </div>
 
     <!-- 内容 -->
     @section('content')

@@ -2,7 +2,7 @@
         *{margin:0;padding:0;list-style-type:none;}
         a{color:#666;text-decoration:none;}
         table{border-collapse:collapse;border-spacing:0;border:0;}
-        body{color:#666;font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
+        body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
         clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
         .clearfix{display:inline-table}
         *html .clearfix{height:1%}
@@ -10,7 +10,7 @@
         *+html .clearfix{min-height:1%}
         .fl{float:left;}
         .fr{float:right;}
-        .catbox{width:940px;margin:30px auto;}
+        .catbox{width:1090px;margin:30px auto;border:none;}
         .catbox table{text-align:center;width:100%;}
         .catbox table th,.catbox table td{border:1px solid #ccc;}
 

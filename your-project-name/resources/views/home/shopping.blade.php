@@ -20,11 +20,7 @@
 @section('content')
     <!-- 顶部开始 -->
  <!-- logo -->
-    <div class="sys">
-      <div class="sys1">
-         <a href="index.html" title="网易考拉海购"></a>
-      </div>
-    </div>
+    
 <!-- 购物车 -->
 <div class="catbox">
     <table id="cartTable">
@@ -52,6 +48,7 @@
             <td class="subtotal">1428.50</td>
             <td class="operation"><span class="delete">删除</span></td>
         </tr> -->
+        @if($info!=null)
          @for ($i = 0; $i < count($info); $i++)
         <tr class="on">
             <td class="checkbox"><input class="check-one check" type="checkbox"></td>
@@ -72,6 +69,11 @@
         </tr>
         
         @endfor
+        @else
+           <tr class="on">  
+                <p><td colspan="6" style="height:200px;font-size:20px;font-weight:900;">购物车空空如也~快去购买吧!</td></p>
+           </tr>
+        @endif
         </tbody>
     </table>
     <div class="foot" id="foot">
@@ -79,8 +81,8 @@
         <a class="fl delete" id="deleteAll" href="javascript:;">删除</a>
         <div class="fr closing">结 算</div>
         <input type="hidden" id="cartTotalPrice">
-        <div class="fr total">合计：￥<span id="priceTotal">11957.48</span></div>
-        <div class="fr selected" id="selected">已选商品<span id="selectedTotal">4</span>件<span class="arrow up"></span><span class="arrow down"></span></div>
+        <div class="fr total">合计：￥<span id="priceTotal">0.00</span></div>
+        <div class="fr selected" id="selected">已选商品<span id="selectedTotal">0</span>件<span class="arrow up"></span><span class="arrow down"></span></div>
         <div class="selected-view" style="display:none;">
             <div id="selectedViewList" class="clearfix" style="display:none;"><div><img src=""><span class="del" index="0">取消选择</span></div><div><img src=""><span class="del" index="1">取消选择</span></div><div><img src=""><span class="del" index="2">取消选择</span></div><div><img src=""><span class="del" index="3">取消选择</span></div></div>
             <span class="arrow" style="display:none;">◆<span>◆</span></span> </div>
@@ -198,6 +200,45 @@
 @section('htmljs')
 
 <script>
+
+
+    var js_boxO=document.getElementById('js_box');
+    var bc_foodO=document.getElementById('bc_food');
+    var bc_food_rO=document.getElementById('bc_food_r');
+    
+    var num=0;
+    function left(){
+      
+      js_boxO.style.left = -1240 + 'px';
+    }
+    function right(){
+      
+      js_boxO.style.left = 0 + 'px';
+    }
+    
+    //每隔30ms向上滚动
+    // 鼠标移入暂停
+    // scrollDiv.onmouseover = function(){
+    //  clearInterval(time);
+    // }
+    // //鼠标移出继续
+    // scrollDiv.onmouseout = function(){
+    //     time = setInterval(scroll,18);
+    // }
+    bc_foodO.onclick=function(){
+        right();
+        
+        bc_foodO.style="none";
+        bc_food_rO.style.border="1px solid red";
+        bc_food_rO.style.color="red";
+    }
+    bc_food_rO.onclick=function(){
+        left();
+        bc_food_rO.style="none";
+        bc_foodO.style.border="1px solid red";
+        bc_foodO.style.color="red";
+    }
+
     // getTotal();
     /**
      * Created by an www.jq22.com
@@ -494,43 +535,7 @@
 
 
 
-        var js_boxO=document.getElementById('js_box');
-    var bc_foodO=document.getElementById('bc_food');
-    var bc_food_rO=document.getElementById('bc_food_r');
     
-    var num=0;
-    function left(){
-      
-      js_boxO.style.left = -1240 + 'px';
-    }
-    function right(){
-      
-      js_boxO.style.left = 0 + 'px';
-    }
-    
-    //每隔30ms向上滚动
-    // 鼠标移入暂停
-    // scrollDiv.onmouseover = function(){
-    //  clearInterval(time);
-    // }
-    // //鼠标移出继续
-    // scrollDiv.onmouseout = function(){
-    //     time = setInterval(scroll,18);
-    // }
-    bc_foodO.onclick=function(){
-        right();
-        
-        bc_foodO.style="none";
-        bc_food_rO.style.border="1px solid red";
-        bc_food_rO.style.color="red";
-    }
-    bc_food_rO.onclick=function(){
-        left();
-        bc_food_rO.style="none";
-        bc_foodO.style.border="1px solid red";
-        bc_foodO.style.color="red";
-    }
-
                 // alert($(".delete"))
                 // $(".delete").click(function(){
                     

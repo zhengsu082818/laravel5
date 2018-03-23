@@ -25,7 +25,7 @@
           <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
         </form>
          
-        <span class="x-right layui-btn" style="line-height:40px">共有数据：<a href="javascript:;" style="color:#fff;"></a> {{$count}} 条</span>
+        <span class="x-right layui-btn" style="line-height:40px">所有用户订单：<a href="javascript:;" style="color:#fff;"></a> {{$count}} 条</span>
        
       <table class="layui-table">
         @include('flash::message')

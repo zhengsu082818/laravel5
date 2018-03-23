@@ -189,7 +189,7 @@ a{
 /*选择收货地址*/
 	.address{
 		width: 1090px;
-		height: 500px;
+		height: auto;
 		/*border:1px solid red;*/
 		margin:auto;
 	}
@@ -238,7 +238,6 @@ a{
 /*确定商品信息*/
 	.information{
 		width: 1090px;
-		height: 280px;
 		/*border:1px solid red;*/
 		margin:auto;
 	}

@@ -20,9 +20,7 @@ class OrderformController extends Controller
     {
          $where=Input::get('where')?Input::get('where'):null; 
 
-         $hcount = DB::table('homeusers')->count();
-         $ocount = DB::table('commodity')->count();
-         $count=$hcount+$ocount;
+         $count = DB::table('commodity')->where('state','<>','已删除')->count();
         $info = DB::table('homeusers')
             ->join('orderformcount', 'homeusers.id', '=', 'orderformcount.uid')
             ->where('name','like',"%$where%")
@@ -52,8 +50,9 @@ class OrderformController extends Controller
      */
     public function store(Request $request)
     {
-
+        // 修改订单状态
         $state = Input::get('state');
+
         $id = Input::get('id');
         $uid=DB::table('commodity')->where('id',$id)->value('uid');
         
@@ -77,10 +76,12 @@ class OrderformController extends Controller
      */
     public function show($id)
     {
+        // 每个用户具体订单
         $where=Input::get('where')?Input::get('where'):null; 
 
-        $count=DB::table('commodity')->where('uid',$id)->count();
+        $count=DB::table('commodity')->where('state','<>','已删除')->where('uid',$id)->count();
         $info=DB::table('commodity')
+                ->where('state','<>','已删除')
                 ->where('uid','=',$id)
                 ->where(function($query) {
                 $where=Input::get('where')?Input::get('where'):null; 
@@ -103,7 +104,6 @@ class OrderformController extends Controller
     {
         $uid=DB::table('commodity')->where('id',$id)->value('uid');
         $state=DB::table('commodity')->where('id',$id)->value('state');
-
         return view('orderform/edit',['id'=>$id,'uid'=>$uid,'state'=>$state]);
     }
 

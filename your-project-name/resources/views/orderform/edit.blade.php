@@ -32,7 +32,7 @@
       
     </div>
         
-        <form class="layui-form" method="post" action='' enctype="multipart/form-data" >
+        <form class="layui-form" method="post" action='{{url("order")}}' enctype="multipart/form-data" >
           {{csrf_field()}}
           <div class="layui-form-item">
               <label for="L_email" class="layui-form-label">
@@ -40,12 +40,9 @@
               </label>
               <input type="hidden" name='id' value="{{$id}}">
               <div class="layui-input-inline">
+                @if($state != '已删除')
                   <select name="state">
-                    <option value="待付款"
-                        @if($state === '待付款')
-                          selected
-                        @endif >待付款
-                    </option>
+                   
                     <option value="待发货"
                         @if($state === '待发货')
                           selected
@@ -62,6 +59,13 @@
                         @endif >待评价
                     </option>
                   </select> 
+                  @else
+                  <select name="state">      
+                    <option value="已删除" selected>
+                      已删除
+                    </option>
+                  </select> 
+                  @endif
               </div>
           </div>
 

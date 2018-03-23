@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{asset('home/css/payment.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('home/css/Purchase page.css')}}" type="text/css">
     <link href="{{asset('home/css/Province_css/city.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('home/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('home/css/dingdan.css')}}" rel="stylesheet" type="text/css" />
 @show
 
      <!-- 导入外部js -->
@@ -22,55 +22,40 @@
     <div class="address-one">
       <h3 style="color:#000;">选择收货地址</h3>
     </div>
-    <div class="xzshdi">
-        <div style="margin-left: 96px;">
-          <span>
-            <b>*</b> 所在地区
-                  <div class="infolist" style="margin-left:20px; margin-top: -14px;">
-                      <div class="liststyle" style="margin-left:0;">
-                          <span id="Province" >
-                              <i>请选择省份</i>
-                              <ul style="height:200px;overflow:auto;">
-                                  <li><a href="javascript:void(0)" alt="请选择省份">请选择省份</a></li>
-                              </ul>
-                              <input type="hidden" name="cho_Province" value="请选择省份">
-                          </span>
-                          <span id="City">
-                              <i>请选择城市</i>
-                             <ul style="height:200px;overflow:auto;">
-                                  <li><a href="javascript:void(0)" alt="请选择城市">请选择城市</a></li>
-                              </ul>
-                              <input type="hidden" name="cho_City" value="请选择城市">
-                          </span>
-                          <span id="Area">
-                              <i>请选择地区</i>
-                              <ul style="height:200px;overflow:auto;">
-                                  <li><a href="javascript:void(0)" alt="请选择地区">请选择地区</a></li>
-                              </ul>
-                              <input type="hidden" name="cho_Area" value="请选择地区">
-                          </span>
-                      </div>
-                  </div>
-          </span>
-        </div>
-        <div style="margin-left: 94px;">
-          <span class="ziti">
-            <b>*</b> 详细地址<input style="color:#333;text-indent:6px;" type="text" placeholder="请填写详细地址信息">
-          </span>
-        </div>
-        <div>
-          <span class="ziti">
-            <b>*</b> 收货人姓名<input style="color:#333;text-indent:6px;" type="text" placeholder="请使用真实姓名">
-          </span>
-        </div>
-        <div style="margin-left: 94px;">
-          <span class="ziti">
-            <b>*</b> 手机号码<input style="color:#333;text-indent:6px;" type="text" placeholder="手机号码必须填">
-          </span>
-        </div>
-        
-        <button>保存新地址</button>
-      </div>
+    
+ <ul class="dz_box_ul">
+   
+  @if($list['personals']!=null)
+    @foreach($list['personals'] as $k=>$v)
+      <li class="dz_box ">
+       <input type="hidden" class="shdz_ids" value="{{$v['id']}}">
+        <div>{{$v['name']}}</div>
+        <div style="border-bottom:1px solid #ccc;height:10px;"></div>
+        <div>{{$v['shdz']}}</div>
+        <div>{{$v['phone']}}</div>
+      </li>
+    @endforeach
+  @else
+  <li class="dz_box ">
+  <div class="box">
+      <h4>您还没有收货地址请添加!</h4>
+  </div>
+    <div class="zzr">
+      <p>*****     收</p>
+      <hr>
+      <p>*************</p>
+      <p>*************</p>
+      <p>*************</p>
+    </div>
+    </li>
+  @endif
+ </ul>
+    
+ <div style="clear:both;"></div>
+<span class="adddd" id="showModel" style="text-align:left;border-radius:6px;margin-left:20px;border:1px solid #ccc;display:inline-block;margin-top:10px;padding:4px;background-color:#fff;"><a href="{{url('home/personal')}}"  class="a_">+添加收货地址</a></span>
+<!-- 模态框 -->
+<form action="{{url('home/shopping')}}" method="post">
+
   </div>
   <!-- 确定商品信息 -->
 <div class="information">
@@ -84,12 +69,14 @@
       <span style="width: 200px;">数量</span>
       <span style="width: 200px;">金额(元)</span>
     </div>
-    
+    {{ csrf_field() }}
+    <input type="hidden" name="ids" value="{{$list['ids']}}">
+
     @foreach ($list['info'] as $k=>$v)
       <div class="information-five" style="margin-top:10px;">
         <div style="width: 400px; margin-left: 30px;">
           <img style="width:78px" src="../images/product_details/details2.jpg">
-          <p style="margin-top: 24px;">{{$v['product']}}name</p>
+          <p style="margin-top: 24px;">{{$v['product']}}</p>
           <br>
           <br>
           <br>  
@@ -107,10 +94,8 @@
         </div>
       </div>
     @endforeach
-  </div>
-          <center>
-           {!! $list['info']->render() !!}
-          </center>
+</div>
+          
   <!-- 提交订单 -->
   <div class="Submit" style="margin-top:20px;">
     <div class="Submit-one" style="margin-top: 30px;">
@@ -119,18 +104,45 @@
     
     <div class="Submit-one">
       <p style="margin-top: 6px;">总计金额：</p><b>¥{{$list['alljg']}}</b>
+      <input type="hidden" name="alljg" value="{{$list['alljg']}}">
+      <input type="hidden" class="shdz_id" name="shdz_id" value="">
+
     </div>
     <div class="Submit-two">
       <a href='{{url("home/shopping")}}'><span>返回购物车修改</span></a>
-      <button><a href="">去购买</a></button>
+      <button style="color:#Fff;">去购买</button>
     </div>
   </div>
-
+</form>
 @endsection
 
 
-<!--  内外部js -->
+<!--  内部js -->
 @section('htmljs')
+<script>  
+        window.onload=function(){
+document.getElementsByClassName('shdz_id')[0].value=document.getElementsByClassName('shdz_ids')[0].value
 
+          document.getElementsByClassName('dz_box')[0].className='dz_box xz';
+          var shdz_ids=document.getElementsByClassName('shdz_ids');
+          var shdz_id=document.getElementsByClassName('shdz_id')[0];
+          var dz_boxO=document.getElementsByClassName('dz_box');
+
+          for (var i = 0;i < dz_boxO.length; i++) {
+            dz_boxO[i].onclick=function(){
+              for (var j = 0; j < dz_boxO.length; j++) {
+                if(dz_boxO[j]==this){
+                  dz_boxO[j].className='dz_box xz';
+                  shdz_id.value=shdz_ids[j].value;
+                }else{
+                  dz_boxO[j].className='dz_box';
+                }
+              }
+            }
+          }
+          
+        }
+        
+</script>  
 @show
 
