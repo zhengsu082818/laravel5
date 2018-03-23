@@ -1,6 +1,4 @@
-
-     
-    <!-- 上下滚动 -->
+<!-- 上下滚动 -->
     <div class="sxgd">
         <div class="log-box">
             <div class="login">
@@ -18,13 +16,10 @@
             </div>
         </div>  
     </div>  
-
     <!-- 标头 -->
     <div class="header">
         <div class="header-cont">
-
             <div class="hc-box1" style="background: none;"> 
-
                 @if(session('phone')==null)
                 <span>考拉欢迎你！</span>
                 <a href="{{url('authindex/login')}}" class="log">登录</a>
@@ -64,7 +59,6 @@
                             @endif
                         "
                         >管理收货地址</a>
-                        
                     </div>
                 </li>
                 <span>丨</span>
@@ -108,7 +102,6 @@
                         <img src="{{asset('static/images/index_images/search1.png')}}">
                     </button>
                 </form>
-                
         </div>
         <div class="shopcarbox">
             <div class="shopcar">
@@ -118,7 +111,6 @@
         </div>
         <div class="log-box-last"></div>
     </div>
-
      <!-- 动画 + 分类 -->
     <div class="dhxg">
         <div class="dhxg1">
@@ -145,20 +137,15 @@
                                                 <a href='{{url("home/prolistindex/$v3[id]")}}'>{{$v3['name']}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                                             @endforeach
                                         </p>
-                                       
                                     </div> 
                                     @endforeach
                                 </div>
-                              
-                                
                             </div>
-                           
                         </li>
                     @endforeach
                 </ul> 
             </div>
         </div>
-        
         <ul class="cbl2">
             <li><a href="{{url('/')}}">首页</a></li>
             <li><a href="">每日上新</a></li>

@@ -9,6 +9,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Navig;
 use App\Models\Good;
 
+use App\Models\Comment;
+
+//商品详情控制器
 class ShopgoodsController extends Controller
 {
     /**
@@ -38,7 +41,7 @@ class ShopgoodsController extends Controller
      */
     public function create()
     {
-
+      // 
     }
 
     /**

@@ -18,12 +18,7 @@ class Commentcontroller extends Controller
      */
     public function index(Request $request)
     {
-        // $a = Good::all();
-        // dd($a);
-        // 接受传的name值
        $keywords= $request->name;
-        // dd( $keywords);
-        // 判断name值是否为空
        if ($keywords != '') {
             $homeuser = Comment::where('comment','like',"%$keywords%")->orderBy('id','desc')->with('homeuser')->paginate(10);
             $count = Comment::where('comment','like',"%$keywords%")->count();
@@ -43,25 +38,9 @@ class Commentcontroller extends Controller
      */
     public function create()
     {
-
+      // 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        // $root = Comment::create(['sid'=>'2','uid'=>'1','comment'=>'wwww','reply'=>'wwwwwww']);
-        // $root1 = $root -> children() ->create(['sid'=>'2','uid'=>'1','comment'=>'wwww1','reply'=>'wwwwwww1']);
-        // $root2 = $root1 -> children() ->create(['sid'=>'2','uid'=>'1','comment'=>'wwww2','reply'=>'wwwwwww2']);
-        // $root3= $root2 -> children() ->create(['sid'=>'2','uid'=>'1','comment'=>'wwww3','reply'=>'wwwwwww3']);
-        // $root11 = Comment::create(['sid'=>'2','uid'=>'2','comment'=>'qqq','reply'=>'qqq']);
-        // $root12 = $root11 -> children() ->create(['sid'=>'2','uid'=>'2','comment'=>'wwww12','reply'=>'wwwwwww12']);
-        // $root13 = $root12 -> children() ->create(['sid'=>'2','uid'=>'2','comment'=>'wwww13','reply'=>'wwwwwww13']);
-    }
     /**
      * Display the specified resource.
      *
@@ -72,12 +51,9 @@ class Commentcontroller extends Controller
     {
         // 接受id传过来的数据
         $comment = Comment::findOrFail($id);
-        // dd($comment->toArray());
-        // baum安装包方法 查看这个节点以上所有的父节点
-        $parent = $comment->getAncestors();
-        // dd($comment->getAncestors()->toArray());
+        // dd($comment);
         // 加载回复页面
-        return view('admin.comment.edit',['comment'=>$comment,'parent'=>$parent]);
+        return view('admin.comment.edit',['comment'=>$comment]);
     }
 
     /**

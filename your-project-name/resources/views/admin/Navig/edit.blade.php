@@ -67,6 +67,39 @@
                     @endif
               </div>
           </div>
+          <div class="layui-form-item">
+              <label for="L_email" class="layui-form-label" style="width: 100px;">
+                  <span class="x-red">*</span>状态
+              </label>
+              <div class="layui-input-inline">
+                  <select name="stated">
+                    <option value="1" 
+                      @if($Navig->stated === '1')
+                        selected
+                      @endif >启用
+                    </option>
+                    <option value="0"  
+                      @if($Navig->stated === '0')
+                         selected
+                      @endif>禁用
+                    </option>
+                  </select>
+              </div>
+             
+          </div>
+          <div class="myid_info">
+                <label for="L_email" class="layui-form-label" style="width: 90px;margin-left: 13px;">
+                  <span class="x-red">*</span>是否推荐
+              </label>
+              <input style="width:26px;height:12px;margin-right:20px;" name="tjadd" type="radio" value="1" title="YES"
+              @if ($Navig->tjadd ==='1')
+                    checked
+                  @endif>
+              <input style="width:26px;height:12px;" name="tjadd" type="radio" value="0" title="NO"
+              @if ($Navig->tjadd ==='0')
+                    checked
+                  @endif>
+              </div>
 
           <div class="layui-form-item">
               <label for="L_repass" class="layui-form-label" style="width: 100px;">

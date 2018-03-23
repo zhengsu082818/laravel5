@@ -12,20 +12,23 @@
     @section('content')
 
     @include('home.comment')
-   
     <!-- 轮播 -->
     <div class="banner-box">
         <ul class="lb">
-             @foreach($banner as $v)
-             <li><img src="/storage/uploads/banner/{{$v->img}}"></li>
-             @endforeach
+             <li><img src="{{asset('static/images/index_images/banner1.jpg')}}"></li>
+             <li><img src="{{asset('static/images/index_images/banner2.jpg')}}"></li>
+             <li><img src="{{asset('static/images/index_images/banner3.jpg')}}"></li>
+             <li><img src="{{asset('static/images/index_images/banner4.jpg')}}"></li>
+             <li><img src="{{asset('static/images/index_images/banner5.jpg')}}"></li>
+             <li><img src="{{asset('static/images/index_images/banner6.jpg')}}"></li>
         </ul>
         <ol>
-         
-          <li class="selected"></li>
-          @for($i = 1;$i < $bancount;$i++)
-            <li></li>
-          @endfor
+          <li class="selected">1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+          <li>5</li>
+          <li>6</li>
         </ol>
         <img src="{{asset('static/images/index_images/left.png')}}" class="arrow leftjt">
         <img src="{{asset('static/images/index_images/right.png')}}" class="arrow right">
@@ -63,10 +66,10 @@
                     </p>
                     <p class="img-cont2"> 
                         <b>¥ {{$v->price}}</b>
-                       
                     </p>
                 </li>
                 @endforeach
+
             </ul>
         </div>
         

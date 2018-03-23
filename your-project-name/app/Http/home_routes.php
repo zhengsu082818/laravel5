@@ -8,9 +8,9 @@ Route::get('/', 'Home\IndexsController@index');
 // 加载商品列表页
 Route::get('home/prolistindex/{id}', 'Home\ProlistsController@index');
 
+
 // 加载加入购物车页面
 Route::get('home/shopgoodindex/{id}', 'Home\ShopgoodsController@index');
-
 
 
 
@@ -30,4 +30,6 @@ Route::get('home/home/number', 'Admin\HomeuserController@create');
 Route::post('home/home/number/tupiana','Admin\HomeuserController@tupiana');
 //执行修改个人信息页面
 Route::post('home/home/store/{id}', 'Admin\HomeuserController@store');
+
+
 

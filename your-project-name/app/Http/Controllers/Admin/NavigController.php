@@ -7,13 +7,11 @@ use App\Models\Navig;
 use App\Http\Requests;
 use App\Http\Controllers\Tupian\TupianController;
 use App\Http\Controllers\Controller;
-
 use App\Models\Goodtype;
 use App\Models\Goodtypeval;
 use App\Models\Good;
 
 //后台管理分类列表控制器
-
 class NavigController extends Controller
 {
     // 编写验证规则
@@ -34,22 +32,16 @@ class NavigController extends Controller
     {
         
         $depth=['0'=>'顶级分类','1'=>'二级分类','2'=>'三级分类','3'=>'四级分类','4'=>'五级分类'];
-        
         $where=[];
         $keywords = Request()->name;
         if ($keywords != '') {
             $Navig = Navig::where('name','like',"%$keywords%")->orderBy('rgt','desc')->paginate(10);
             $count = Navig::where('name','like',"%$keywords%")->count();
-
         }else{
             $Navig = Navig::orderBy('rgt','desc')->paginate(19);
             $count = Navig::count();
-
         }
-
         return view('admin.Navig.index',['Navig'=>$Navig,'count'=>$count,'keywords'=>$keywords,'depth'=>$depth]);
-
-
     }
 
     /**
@@ -59,17 +51,15 @@ class NavigController extends Controller
      */
     public function create()
     {
+        // 接受表单id 没有id就为空 
         $id =$_GET['id']?:null;
-
         if($id===null){
            return view('admin.Navig.navigadd',['id'=>$id]); 
         }else{
+            // 查出这个id的name字段
             $leiall = Navig::findOrFail($id)->name;
             return view('admin.Navig.navigadd',['id'=>$id,'leiall'=>$leiall]);
-        }
-        
-
-        
+        } 
     }
 
     /**
@@ -84,7 +74,7 @@ class NavigController extends Controller
         $this->validate($request,$this->rules,$this->messages);
         //接收除_token字段的数据
         $input=$request->except('_token');
-       
+        // dd($input);
         //判断id是否为空
         if(!$request->input('id')){
             // dd($input);
@@ -163,10 +153,10 @@ class NavigController extends Controller
 
         if (!$input['url']) {
             $updatee =Navig::where('id',$id)
-                ->update(['name'=>$input['name']]);
+                ->update(['name'=>$input['name'],'stated'=>$input['stated'],'tjadd'=>$input['tjadd']]);
         }else{
             $updatee =Navig::where('id',$id)
-                ->update(['name'=>$input['name'],'url'=>$input['url']]);
+                ->update(['name'=>$input['name'],'url'=>$input['url'],'stated'=>$input['stated'],'tjadd'=>$input['tjadd']]);
         }
         //判断是否修改成功
         if ($updatee) {

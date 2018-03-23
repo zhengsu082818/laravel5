@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use App\Models\Goodtype;
 use App\Models\Goodtypeval;
 use App\Models\Navig;
@@ -44,10 +42,7 @@ class GoodtypesController extends Controller
             $goodtype = goodtype::orderBy('nav_id','desc')->paginate(9);
             $count = goodtype::count();
         }
-        return view('admin.goodtype.index',['goodtype'=>$goodtype,'count'=>$count,'keywords'=>$keywords,'data'=>$data]);
-
-
-       
+        return view('admin.goodtype.index',['goodtype'=>$goodtype,'count'=>$count,'keywords'=>$keywords,'data'=>$data]); 
     }
 
     /**
@@ -81,13 +76,8 @@ class GoodtypesController extends Controller
         $gt->nav_id =  $input['nav_id'];
         $gt->gt_name = $input['gt_name'];
         $gt->save();
-        
         flash()->overlay('添加成功', '1');
         return redirect("admin/goodtypeindex");
-        
-           
-        
-        
     }
 
     /**
@@ -109,11 +99,8 @@ class GoodtypesController extends Controller
      */
     public function edit($id)
     {
-       
         $goodtype = goodtype::findOrFail($id);
-
         $name = goodtype::findOrFail($id)->nav_id;
-
         $name2 = Navig::where('id',$name)->first();
         return view('admin.goodtype.edit',['goodtype'=>$goodtype,'name2'=>$name2]);
     }
@@ -130,7 +117,6 @@ class GoodtypesController extends Controller
         $this->validate($request,$this->rules,$this->messages);
         $input = $request->except('_token');
         $update = goodtype::where('id',$id)->update($input);
-        
         //判断是否修改成功
         if($update) {
             flash()->overlay('修改成功', '1');
@@ -170,14 +156,12 @@ class GoodtypesController extends Controller
     //执行三级联动1
     public function goodtypeSjld1(Request $request){
         $all = navig::where('parent_id',$request->id)->get()->toArray();
-
         return ['code'=>0,'msg'=>'','data'=>$all];
     }
     
     //执行三级联动2
     public function goodtypeSjld2(Request $request){
         $all2 = navig::where('parent_id',$request->id)->get()->toArray();
-
         return ['code'=>0,'msg'=>'','data'=>$all2];
     }
 }

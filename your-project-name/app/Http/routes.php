@@ -23,12 +23,20 @@ Route::get('admin/welcome', function(){
 });
 
 
+
 //登录路由
 Route::get('auth/login', 'Auth\AuthController@getLogin');//加载登录
 Route::post('auth/login', 'Auth\AuthController@postLogin');//执行登录
 Route::get('auth/logout', 'Auth\AuthController@getLogout');//退出登录
-
-
+// 注册路由...
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
+// 密码重置链接的路由...
+Route::get('password/email', 'Auth\PasswordController@getEmail');
+Route::post('password/email', 'Auth\PasswordController@postEmail');
+// 密码重置的路由...
+Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
+Route::post('password/reset', 'Auth\PasswordController@postReset');
 //认证成功后重定向页面
 Route::get('/admin',function(){
 	return view('admin.index');
@@ -90,18 +98,7 @@ Route::post('admin/bannerupdate/{id}', 'Admin\BannersController@update');
 // ajax图片上传
 Route::post('admin/banneruplode', 'Admin\BannersController@uplode');
 
-// 加载导航
-Route::get('admin/navindex','Admin\NavController@index');
-// 加载导航添加页面
-Route::get('admin/navcreate','Admin\NavController@create');
-// 导航添加
-Route::post('admin/navstore','Admin\NavController@store');
-// 删除导航
-Route::get('admin/navdestroy/{id}','Admin\NavController@destroy');
-// 加载修改页面
-Route::get('admin/navedit/{id}','Admin\NavController@edit');
-// 执行修改
-Route::post('admin/navupdate/{id}','Admin\NavController@update');
+
 
 // 加载商品评论页面
 Route::get('admin/comment','Admin\Commentcontroller@index');
@@ -136,9 +133,6 @@ Route::get('password/yanz','Authindex\PasswordController@Verification');
 Route::get('password/reset','Authindex\PasswordController@reset');
 // 加载主页
 Route::get('authindex/redirect','Authindex\AuthindexController@index');
-
-
-
 // 加载商品属性
 Route::get('admin/goodtypeindex', 'Admin\GoodtypesController@index');
 //加载商品属性添加页

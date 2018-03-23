@@ -165,21 +165,8 @@
                 </ul>
             </li>
 
-            <li>
-                <a href="javascript:;">
-                    <i class="iconfont">&#xe6b8;</i>
-                    <cite>导航管理</cite>
-                    <i class="iconfont nav_right">&#xe697;</i>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="{{url('admin/navindex')}}">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>导航列表</cite>
-                        </a>
-                    </li >
-                </ul>
-            </li>
+           
+           
 
         </ul>
       </div>

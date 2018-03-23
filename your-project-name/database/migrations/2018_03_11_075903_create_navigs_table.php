@@ -20,7 +20,9 @@ class CreateNavigsTable extends Migration {
             $table->integer('depth')->nullable();//嵌套等级
             $table->char('name');//类别名
             $table->string('url',255);//图片
-            $table->string('img',255);
+            $table->string('stated',255);
+            $table->string('tjadd',255);
+
             $table->timestamps();
           });
     }

@@ -31,7 +31,6 @@ class HomeuserController extends Controller
             $count = homeuser::count();
         }
         return view('admin.homeuser.list',['stus'=>$stus,'count'=>$count,'keywords'=>$keywords]);
-
     }
 
     /**
@@ -41,7 +40,6 @@ class HomeuserController extends Controller
      */
     public function create()
     {
-        
         $phone =session('phone');//获取当前用户的登录号
         // dd($phone);
         $personals =Homeuser::where('phone',$phone)->firstOrFail();//获取当前用户的完整数据
@@ -57,11 +55,9 @@ class HomeuserController extends Controller
      */
     public function store(Request $request,$id)
     {
-
         $input = $request->except('_token');//接收除_token字段的数据
         $update = homeuser::where('id',$id)->update($input);
         return redirect('home/home/number');
-        
     }
 
     /**
@@ -107,7 +103,4 @@ class HomeuserController extends Controller
             return redirect('admin/homeindex');       
         }
     }
-
-    
-    
 }
