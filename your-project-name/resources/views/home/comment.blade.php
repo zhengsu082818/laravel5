@@ -94,12 +94,12 @@
                     </button>
                 </form>
         </div>
-        <div class="shopcarbox">
+        <div class="shopcarbox"><a href="{{url('home/shopping')}}">
            <div class="shopcar">
                 <img src="{{asset('static/images/index_images/shopcar1.png')}}">
                
-                <a href=""><span>购物车</span></a>
-            </div>
+                <span>购物车</span>
+            </div></a>
 
         </div>
         <div class="log-box-last"></div>

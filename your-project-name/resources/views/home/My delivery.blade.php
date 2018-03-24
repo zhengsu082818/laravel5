@@ -67,7 +67,7 @@
         <ul class="ul">
             <li>
                 <!-- 所有订单 -->
-                @if($info['alldind1']!=null || $info['alldind']!=null)
+                @if($info['alldind1']!=null or $info['alldind']!=null)
                 <table class="table">
                     <tr>
                         <th>订单号</th>

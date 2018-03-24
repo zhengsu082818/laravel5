@@ -10,7 +10,7 @@
 @endsection
  @section('js')
             
- @show
+@endsection
 	
 <body @section('class', 'bgcolor="#f7f7f7"')>
 

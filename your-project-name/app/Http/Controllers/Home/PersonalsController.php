@@ -16,14 +16,9 @@ class PersonalsController extends Controller
         "cho_Area"=>'required',
         "shdz"=>'required|max:75',
         "name"=>'required',
-<<<<<<< HEAD
-        "phone"=>'required|min:11|max:11',
 
-
-
-=======
         "phone"=>'required|regex:/^1[34578][0-9]{9}$/|min:11|max:11',
->>>>>>> 025986f31f95b8b1776e830fbacbc8d088cb8b71
+
     ];
     //编写错误信息
     protected $messages =[

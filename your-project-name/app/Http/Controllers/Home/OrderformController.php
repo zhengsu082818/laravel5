@@ -28,12 +28,13 @@ class OrderformController extends Controller
         $info['alldind']=DB::table('commodity')
             ->where('uid',$user->id)
             ->where('product','like',"%$where%")
-            ->Where('orderid','like',"%$where%") 
+            ->orWhere('orderid','like',"%$where%") 
             ->orderBy('id', 'desc')
             ->get();
         // dd($info['alldind']);
         $info['alldind1']=DB::table('shopping')
             ->where('uid',$user->id)
+            ->orwhere('product','like',"%$where%")
             ->orderBy('id', 'desc')
             ->get();
         $count['dfk']=DB::table('shopping')

@@ -25,7 +25,7 @@
     <!-- 标头 -->
    <div class="header">
         <div class="header-cont">
-            <div class="hc-box1" style="background: none;">
+            <div class="hc-box1" style="background: none;width: 220px;">
                 
                 @if(session('phone')==null)
                 <span>考拉欢迎你！</span>
