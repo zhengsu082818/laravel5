@@ -13,6 +13,7 @@
 		
 	@include('home.comment')
 
+
 	<!-- 分类表头 -->
 	<p class="fjx" style="margin:0;"></p>
 	<!-- 内容区域 -->
@@ -24,7 +25,7 @@
 				@foreach($aa as $v)
 				<span>{{$data[$v->id]}} ></span>
 				@endforeach
-				<span>{{$data[$proList->id]}} </span>
+				<a href="" onclick="location.reload()">{{$data[$proList->id]}} </a>
 			</div>
 		</div>
 		<div class="content2-box">
@@ -33,7 +34,7 @@
 				<div>
 					<span>{{$v['gt_name']}}&nbsp;&nbsp;:</span>
 					@foreach($v['goodtypeval'] as $v2)
-					<a href="">{{$v2['gtv_name']}}</a>
+					<a href=''>{{$v2['gtv_name']}}</a>
 					@endforeach
 				</div>
 				@endforeach
@@ -44,7 +45,7 @@
 						@foreach($goodList as $v)
 						<li>
 							<div style="width: 266px; height: 265px;overflow: hidden;">
-								<a href="{{url('home/shopgoodindex')}}">
+								<a href='{{url("home/shopgoodindex/$v->id")}}'>
 									<img src="/storage/uploads/shopping/{{$v->img}}">
 								</a>
 							</div>

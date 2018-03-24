@@ -73,24 +73,19 @@
 
          
           <div class="layui-form-item">
-              <label for="L_email" class="layui-form-label">
+
+              <label for="L_email" class="layui-form-label" style="width: 90px;">
                   <span class="x-red">*</span>状态
               </label>
-
-             
               <div class="layui-input-inline">
                   <select name="stated">
                     <option value="1" >启用
                     </option>
-                    
                     <option value="0"  
                      >禁用
                     </option>
-                     
-                  
                   </select>
               </div>
-           
           </div>
 
           <div class="layui-form-item">

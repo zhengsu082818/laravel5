@@ -11,7 +11,7 @@ use App\Models\Navig;
 //商品属性名控制器
 class GoodtypesController extends Controller
 {
-     // 编写验证规则
+    // 编写验证规则
     protected $rules =[
         "gt_name"=>'required|max:32',
     ];
@@ -35,11 +35,11 @@ class GoodtypesController extends Controller
         $where=[];
         $keywords = Request()->gt_name;
         if ($keywords != '') {
-            $goodtype = goodtype::where('gt_name','like',"%$keywords%")->orderBy('nav_id','desc')->paginate(9);
+            $goodtype = goodtype::where('gt_name','like',"%$keywords%")->orderBy('two_id','desc')->paginate(9);
             $count = goodtype::where('gt_name','like',"%$keywords%")->count();
 
         }else{
-            $goodtype = goodtype::orderBy('nav_id','desc')->paginate(9);
+            $goodtype = goodtype::orderBy('two_id','desc')->paginate(9);
             $count = goodtype::count();
         }
         return view('admin.goodtype.index',['goodtype'=>$goodtype,'count'=>$count,'keywords'=>$keywords,'data'=>$data]); 

@@ -15,8 +15,6 @@
           <li class="layui-nav-item">
             <a href="javascript:;">{{Auth::user()->name}}</a>
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
-              <dd><a onclick="x_admin_show('个人信息','http://www.baidu.com')">个人信息</a></dd>
-              <dd><a onclick="x_admin_show('切换帐号','http://www.baidu.com')">切换帐号</a></dd>
               <dd><a href="{{url('auth/logout')}}">退出</a></dd>
             </dl>
           </li>
@@ -32,7 +30,7 @@
         <ul id="nav">
             <li>
                 <a href="javascript:;">
-                    <i class="iconfont">&#xe6b8;</i>
+                    <i class="iconfont layui-icon">&#xe613;</i>
                     <cite>前台用户中心</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
@@ -55,7 +53,7 @@
             
             <li>
                 <a href="javascript:;">
-                    <i class="iconfont">&#xe6b8;</i>
+                    <i class="iconfont layui-icon">&#xe60d;</i>
                     <cite>首页轮播管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
@@ -68,10 +66,24 @@
                     </li >
                 </ul>
             </li>
-            
             <li>
                 <a href="javascript:;">
-                    <i class="iconfont">&#xe6b8;</i>
+                    <i class="iconfont layui-icon">&#xe68e;</i>
+                    <cite>首页推荐管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="{{url('admin/sytjindex')}}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>查看推荐列表</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont layui-icon">&#xe705;</i>
                     <cite>商品分类管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
@@ -94,7 +106,7 @@
            
             <li>
                 <a href="javascript:;">
-                    <i class="iconfont">&#xe6b8;</i>
+                    <i class="iconfont layui-icon">&#xe60a;</i>
                     <cite>商品管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
@@ -122,7 +134,7 @@
             </li>
             <li>
                 <a href="javascript:;">
-                    <i class="iconfont">&#xe726;</i>
+                    <i class="iconfont layui-icon">&#xe612;</i>
                     <cite>管理员管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
@@ -151,7 +163,7 @@
 
              <li>
                 <a href="javascript:;">
-                    <i class="iconfont">&#xe726;</i>
+                    <i class="iconfont layui-icon">&#xe639;</i>
                     <cite>商品评论管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
@@ -172,7 +184,7 @@
 
             <li>
                 <a href="javascript:;">
-                    <i class="iconfont">&#xe726;</i>
+                    <i class="iconfont layui-icon">&#xe65e;</i>
                     <cite>订单管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>

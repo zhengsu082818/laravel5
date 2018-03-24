@@ -12,19 +12,17 @@ $(function(){
 	$('.search_box .search').focus(function(){
 		$(this).val("");
 	})
-	$('.search_box .search').blur(function(){
-		$(this).val("男士面膜");
-	})
+	
 
-	// 上下滚动
-	$(window).scroll(function(){
-       	if($(window).scrollTop()>100){
-             $('.sxgd').css('display','block');
-             $('.sxgd').css('width','100%');
-       	}else if($(window).scrollTop()<=30){
-             $('.sxgd').css('display','none');
-        }
-  })
+	// // 上下滚动
+	// $(window).scroll(function(){
+ //       	if($(window).scrollTop()>100){
+ //             $('.sxgd').css('display','block');
+ //             $('.sxgd').css('width','100%');
+ //       	}else if($(window).scrollTop()<=30){
+ //             $('.sxgd').css('display','none');
+ //        }
+ //  })
 
 	// 轮播
 	var time = null;

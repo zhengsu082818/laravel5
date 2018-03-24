@@ -9,6 +9,7 @@ Route::get('/', 'Home\IndexsController@index');
 Route::get('home/prolistindex/{id}', 'Home\ProlistsController@index');
 
 
+
 // 加载加入购物车页面
 Route::get('home/shopgoodindex/{id}', 'Home\ShopgoodsController@index');
 

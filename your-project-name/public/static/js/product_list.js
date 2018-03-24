@@ -4,10 +4,10 @@ $(function(){
 	$('.search_box .search').focus(function(){
 		$(this).val("");
 	})
-	$('.search_box .search').blur(function(){
-		$(this).val("男士面膜");
-	})
+	
 
-
+	 $('.content2-box .content2-flbt div a').click(function(){
+           $(this).addClass('selected').siblings('.content2-box .content2-flbt div a').removeClass('selected');
+      })
   	
 })

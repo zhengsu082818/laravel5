@@ -38,7 +38,7 @@ class NavigController extends Controller
             $Navig = Navig::where('name','like',"%$keywords%")->orderBy('rgt','desc')->paginate(10);
             $count = Navig::where('name','like',"%$keywords%")->count();
         }else{
-            $Navig = Navig::orderBy('rgt','desc')->paginate(19);
+            $Navig = Navig::orderBy('rgt','desc')->paginate(16);
             $count = Navig::count();
         }
         return view('admin.Navig.index',['Navig'=>$Navig,'count'=>$count,'keywords'=>$keywords,'depth'=>$depth]);
@@ -125,6 +125,7 @@ class NavigController extends Controller
     public function edit($id)
     {
         $Navig = Navig::where('id',$id)->first();
+        // dd($Navig);
         $idd = $Navig->parent_id;
         if($idd != null){
             $upname = Navig::findOrFail($idd)->name;
@@ -153,10 +154,10 @@ class NavigController extends Controller
 
         if (!$input['url']) {
             $updatee =Navig::where('id',$id)
-                ->update(['name'=>$input['name'],'stated'=>$input['stated'],'tjadd'=>$input['tjadd']]);
+                ->update(['name'=>$input['name'],'stated'=>$input['stated']]);
         }else{
             $updatee =Navig::where('id',$id)
-                ->update(['name'=>$input['name'],'url'=>$input['url'],'stated'=>$input['stated'],'tjadd'=>$input['tjadd']]);
+                ->update(['name'=>$input['name'],'url'=>$input['url'],'stated'=>$input['stated']]);
         }
         //判断是否修改成功
         if ($updatee) {
@@ -176,28 +177,44 @@ class NavigController extends Controller
      */
     public function destroy($id)
     {
-        $san = Navig::findOrFail($id)->depth;
-        //删除类别先判断是否为三级
-        if($san == 2){
-            //删除三级类别前判断该类别下是否有商品
-            $good = good::where('sj_id',$id)->first();
-            if($good == null){
-                //如果为空,先删除属性值,再删除属性名,最后删除类名
-                $gtv1 = goodtypeval::where('sanji_id',$id)->first();
-                $gt1 =  goodtype::where('nav_id',$id)->first();
-                if($gt1 == null || $gtv1 ==null){
-                    $nav1 = Navig::destroy($id);
-                    flash()->overlay('删除成功', '1');
-                    return redirect('navig/index');
+        $san = Navig::findOrFail($id)->depth; //根据id查询是几级类别
+        if($san == 2){ //如果为三级
+            $good = good::where('sj_id',$id)->get()->toArray(); //根据三级类别的id查询是否有商品
+            if($good == []){ //如果没有商品
+                $gtv1 = goodtypeval::where('sanji_id',$id)->get()->toArray();//根据id查询属性值表所有属于该类别的属性值
+                if($gtv1 == [] ){ //如果没有属性值
+                    $gtv = goodtype::where('nav_id',$id)->get()->toArray();//根据id查询属性名表属于所有该类别的所有属性名
+                    if($gtv == []){ //如果没有属性名
+                        $nav = Navig::destroy($id); //直接删除类别
+                    }else{  //否则先删除所有属性名,再删除类别
+                        foreach ($gtv as $k => $v) {
+                           $arr2[] = $v['id'];
+                        }
+                        foreach ($arr2 as $key => $value) {
+                            goodtype::destroy($value);
+                        }
+                        $nav = Navig::destroy($id);
+                    }
+                }else{
+                    //如果有属性值,先删除所有属性值,再删除属性名,最后删除类别
+                    foreach ($gtv1 as $k => $v) {
+                        $arr[] = $v['id'];
+                    }
+                    foreach ($arr as $key => $value) {
+                        goodtypeval::destroy($value);
+                    }
+                    foreach ($gtv as $k => $v) {
+                       $arr2[] = $v['id'];
+                    }
+                    foreach ($arr2 as $key => $value) {
+                        goodtype::destroy($value);
+                    }
+                    $nav = Navig::destroy($id);
                 }
-                
-                $gtv = goodtypeval::where('sanji_id',$id)->first()->id;
-                $gt = goodtype::where('nav_id',$id)->first()->id;
-                $dele = goodtypeval::destroy($gtv);
-                $dele = goodtype::destroy($gt);
-                $nav = Navig::destroy($id);
+               
                 flash()->overlay('删除成功', '1');
                 return redirect('navig/index');
+
             }else{
                 flash()->overlay('删除失败,该类别下还有商品','5');
                 return back();
@@ -205,16 +222,18 @@ class NavigController extends Controller
 
         //如果不为三级
         }else{
-            $aa=Navig::where('parent_id',$id)->get()->toArray();
+            $aa=Navig::where('parent_id',$id)->get()->toArray();//根据id查询是否为顶级类别
+
             $des= Navig::where('id',$id)->first();
+        
             $zl=$des->getDescendants()->toArray();
-               
+            
             $va =[];
             foreach ($zl as  $k => $v) {
                $va[$k] = $v['name'];
             }
-            $bb = [];
-            if($bb === $aa){
+          
+            if($aa == [] ){
                 $des->delete();
                 flash()->overlay('删除成功', '1');
                 return redirect('navig/index');
@@ -223,9 +242,6 @@ class NavigController extends Controller
                 return back();
             }
         }
-      
-        
-        
         
     }
 

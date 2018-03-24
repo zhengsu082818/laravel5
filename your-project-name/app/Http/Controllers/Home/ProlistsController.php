@@ -20,7 +20,7 @@ class ProlistsController extends Controller
     public function index($id)
     {
         //遍历商品导航
-        $list = navig::get()->toHierarchy();
+        $list = navig::where('stated',1)->get()->toHierarchy();
 
         $proList = navig::findOrFail($id);//加载三级类别id的所有内容
 
@@ -66,7 +66,7 @@ class ProlistsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -77,7 +77,7 @@ class ProlistsController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**

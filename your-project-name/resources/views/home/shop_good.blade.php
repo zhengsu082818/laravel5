@@ -14,6 +14,8 @@
 	@section('content')
 		
 	@include('home.comment')
+
+   
 	<!-- 分类表头 -->
 	<p class="fjx"></p>
 
@@ -26,10 +28,10 @@
                     <img src="/storage/uploads/shopping/{{$goodList->img}}"  width="350" height="350" >
                 </li>
                 <li>
-                    <img src="/storage/uploads/shopping/{{$goodList->img}}"  width="350" height="350" >
+                    <img src="/storage/uploads/shopping/{{$goodList->img1}}"  width="350" height="350" >
                 </li>
                 <li>
-                     <img src="/storage/uploads/shopping/{{$goodList->img}}" width="350" height="350" >
+                     <img src="/storage/uploads/shopping/{{$goodList->img2}}" width="350" height="350" >
                 </li>                
             </ul>
             <ol>
@@ -37,10 +39,10 @@
                     <img src="/storage/uploads/shopping/{{$goodList->img}}" width="55" height="55">
                 </li>
                  <li>
-                   <img src="/storage/uploads/shopping/{{$goodList->img}}" width="55" height="55">
+                   <img src="/storage/uploads/shopping/{{$goodList->img1}}" width="55" height="55">
                 </li>
                 <li>
-                    <img src="/storage/uploads/shopping/{{$goodList->img}}" width="55" height="55">
+                    <img src="/storage/uploads/shopping/{{$goodList->img2}}" width="55" height="55">
                 </li>
             </ol>
         </div> 
@@ -90,13 +92,7 @@
     <div class="cont">
         <div calss="img" style="display: block">
             <div class="img_deai">
-                <img src="{{asset('static/images/deai/lame1.jpg')}}" alt="">
-                <img src="{{asset('static/images/deai/lame2.jpg')}}" alt="">
-                <img src="{{asset('static/images/deai/lame3.jpg')}}" alt="">
-                <img src="{{asset('static/images/deai/lame4.jpg')}}" alt="">
-                <img src="{{asset('static/images/deai/lame5.jpg')}}" alt="">
-                <img src="{{asset('static/images/deai/lame6.jpg')}}" alt="">
-                <img src="{{asset('static/images/deai/lame7.jpg')}}" alt="">
+                {!!$goodList->content!!}
             </div>
             <strong style="display: block;clear: both;"></strong>
         </div>
@@ -110,25 +106,14 @@
                       
                     <div class="content">
                         <p class="text">
-                          <span class="name">Andy：</span>
-                          哈哈哈哈哈谁还没个妈～//@我的朋友是个呆B: 饮水机那个蕾丝罩我给跪了//@八卦_我实在是太CJ了:仿佛看到了自己家
+                          <span class="name">用户名</span>
                         </p> 
-                        <div class="pic">
-                            <img src="../images/deai/lame7.jpg" width="30px" height="30px">
-                            <img src="../images/deai/lame7.jpg" width="30px" height="30px">
-                            <img src="../images/deai/lame7.jpg" width="30px" height="30px">
-                        </div>
-                        
-                   
                         <div class="good">
-                            <span class="date">02-14 23:01</span>
-                            <a class="dzan" href="javascript:;">赞</a>
+                            <span class="date">评论时间</span>
                         </div>
-                        <div class="people" total="2980">2980人觉得很赞</div>
                     <div class="comment-list">
                         <div class="comment" user="self">
                             <div class="comment-left"> <img src="../images/deai/lame7.jpg" width="30px" height="30px"></div>
-                       
                    
                             <div class="comment-right">
                                 <div class="comment-text">
@@ -136,7 +121,6 @@
                                      我住隔壁我姓王
                                 </div>
                                 <div class="comment-date">02-14 22:00
-                                     <a class="comment-zan" href="javascript:;" total="23" my="1">23 取消赞</a>
                                      <a class="comment-dele" href="javascript:;">回复</a>
                                 </div>
                             </div>

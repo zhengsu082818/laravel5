@@ -37,7 +37,8 @@
             <th>分类名</th>
             <th >属性名 > 属性值</th>
             <th style="text-align: center;">添加时间</th>
-            <th style="text-align: center;">操作</th></tr>
+            <th style="text-align: center;">操作</th>
+          </tr>
         </thead>
         <tbody>
           @foreach ($goodtypeval as $v)
@@ -50,13 +51,13 @@
                   <button class="layui-btn layui-btn-mini layui-btn-normal" value="">{{$data[$v->sanji_id]}}</button>
                 </td>
                 <td>
-                 
+                   <button class="layui-btn layui-btn-mini layui-btn-normal" value="">
                     {{$v->goodtypes->gt_name}}
-                  
+                  </button>
                   <i class="layui-icon">&#xe602;</i>
-                  
+                   <button class="layui-btn layui-btn-mini layui-btn-normal" value="">
                     {{$v->gtv_name}}
-                
+                  </button>
                 </td>
 
                 <td style="text-align: center;">{{$v->created_at}}</td>
