@@ -42,7 +42,7 @@
           @for ($i = 0; $i < count($info); $i++)
  
               <tr>
-                <td style="text-align: center;">{{$id=$info[$i]->id}}</td>
+                <td style="text-align: center;">{{$id=$info[$i]->uid}}</td>
                 <td style="text-align: center;">{{$info[$i]->name}}</td>
                 <td style="text-align: center;">{{$info[$i]->phone}}</td>
                 <td style="text-align: center;">{{$info[$i]->num}}</td>

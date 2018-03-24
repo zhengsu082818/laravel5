@@ -104,10 +104,12 @@
 			</a>
 		</div>
 		<div class="shopcarbox">
+			<a href="{{url('home/shopping')}}">
             <div class="shopcar">
                 <img src="{{asset('static/images/index_images/shopcar1.png')}}">
                 <a href="shopcar.html"><span>购物车</span></a>
             </div>
+            </a>
         </div>
 	</div>
 	
