@@ -49,7 +49,12 @@
             </div>
             <ul>
                 <li class="default">
+                    @if(session('phone')!=null)
                     <a href="{{url('home/orderform')}}">我的订单</a>
+                    @else
+                    <a id='dd' style="cursor:pointer;">我的订单</a>
+
+                    @endif
                 </li>
                 <span>丨</span>
                 <li class="second">
@@ -327,6 +332,10 @@
           var obj = document.getElementById(id);
           var oPos = obj.offsetTop;
           return window.scrollTo(0, oPos-36);
+    }
+    var dd=document.getElementById('dd');
+        dd.onclick=function(){
+            alert('请先登陆!')
     }
 </script>
 <!--  内外部js -->

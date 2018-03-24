@@ -38,7 +38,6 @@
             <th style="text-align: center;">图片</th>
             <th style="text-align: center;">嵌套等级</th>
             <th style="text-align: center;">状态</th>
-            <th style="text-align: center;">推荐</th>
             <th style="text-align: center;">添加时间</th>
             <th style="text-align: center;">操作</th></tr>
         </thead>
@@ -83,14 +82,6 @@
                   <span class="layui-btn layui-btn-mini layui-btn-warm">禁用</span>
                   @endif
                 </td>
-                <td class="td-status" style="text-align: center;">
-                  @if($v->tjadd == '1')
-                  <span class="layui-btn layui-btn-mini layui-btn-normal">YES</span>
-                  @endif
-                  @if($v->tjadd == '0')
-                  <span class="layui-btn layui-btn-mini layui-btn-warm">NO</span>
-                  @endif
-                </td>
                 <td style="text-align: center;">{{$v->created_at}}</td>
                 <td class="td-manage" style="text-align: center;">
                    @if($v->depth=='0')
@@ -103,7 +94,7 @@
                   @endif
                    @if($v->depth=='2')
                   <a href="{{url('navig/create').'?id='.$v->id}}" style="color: #fff;" title="添加分类">
-                    <button class="layui-btn layui-btn-mini">添加分类</button></a>
+                    <button class="layui-btn layui-btn-mini">添加分类</button>s</a>
                   @endif
                    @if($v->depth=='3')
                   <a href="{{url('navig/create').'?id='.$v->id}}" style="color: #fff;" title="添加分类">

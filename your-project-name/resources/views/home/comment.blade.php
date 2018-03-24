@@ -111,12 +111,23 @@
                 </form>
         </div>
         <div class="shopcarbox">
-           <div class="shopcar">
+            @if(session('phone')!=null)
+             <a href="{{url('home/shopping')}}">
+                <div class="shopcar">
                 <img src="{{asset('static/images/index_images/shopcar1.png')}}">
                
-                <a href=""><span>购物车</span></a>
+               <span>购物车</span>
             </div>
-
+            </a>
+            @else
+            <a class='dd'>
+                <div class="shopcar">
+                <img src="{{asset('static/images/index_images/shopcar1.png')}}">
+               
+               <span>购物车</span>
+            </div>
+            </a>
+            @endif
         </div>
         <div class="log-box-last"></div>
     </div>
@@ -174,6 +185,11 @@
 
     <script>
         var dd=document.getElementById('dd');
+        dd.onclick=function(){
+            alert('请先登陆!')
+        }
+
+        var dd=document.getElementsByClassName('dd')[0];
         dd.onclick=function(){
             alert('请先登陆!')
         }

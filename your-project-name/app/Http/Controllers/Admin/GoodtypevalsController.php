@@ -36,7 +36,7 @@ class GoodtypevalsController extends Controller
             $count = goodtypeval::where('gtv_name','like',"%$keywords%")->count();
 
         }else{
-            $goodtypeval = goodtypeval::orderBy('gt_id','desc')->paginate(10);
+            $goodtypeval = goodtypeval::orderBy('id','desc')->paginate(10);
             // dd($goodtypeval->toArray());
             $count = goodtypeval::count();
         }
