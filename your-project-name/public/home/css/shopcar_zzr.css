@@ -1,0 +1,125 @@
+.dind{
+	width:1090px;
+	height:auto;
+	margin:0 auto 40px;
+}
+.dind_con{
+	width:110px;
+	height:auto;
+	float:left;
+}
+.dind_con h2{
+	line-height:3;
+	font-weight:900;
+	font-size:20px;
+}
+.dind_tit{
+	margin-top:50px;
+}
+.dind_tit p{
+	font-size:14px;
+	text-indent:6px;
+	margin-top:10px;
+}
+.dind_bor{
+	border-left:1px solid red;
+}
+
+
+.dind_tab{
+	width:900px;
+	height:auto;
+	border-bottom:1px solid #999;
+	box-sizing:border-box;
+	float:right;
+}
+.dind_tab ol li{
+	font-size:16px;
+	float:left;
+	margin-right:40px;
+	line-height:60px;
+}
+.dind_tab ol li:hover{
+	cursor:pointer;
+}
+.dind_tab ol li h2 span{
+	font-weight:700;
+	color:red;
+}
+.dind_tab ol li p{
+	width:110px;
+	float:right;
+}
+.input{
+	width:900px;
+	height:40px;
+	float:right;
+	margin-top:20px;
+}
+.input button{
+	display: inline-block;
+    width: 38px;
+    height: 30px;
+    border: 1px solid #ddd;
+    background: #f7f7f7;
+    color: #333;
+    font-size: 14px;
+    margin:0;
+}
+.input button:hover{
+	background: red;
+    color: #fff;
+}
+.input input{
+	width:180px;
+	height:30px;
+	margin:0;
+	display: inline-block;
+	text-indent:6px;
+}
+
+.dind_dind{
+	width:900px;
+	height:300px;
+	float:right;
+	padding-bottom:40px;
+	overflow:hidden;
+	position:relative;
+}
+.dind_dind ul{
+	width:5400px;
+	height:300px;
+	position:absolute;
+	left:0px;
+}
+.dind_dind ul li{
+	width:900px;
+	height:300px;
+	background-color:rgba(0,0,0,.1);
+	float:left;
+	overflow:auto;
+}
+.dind_tab_li{
+	color:red;
+	box-sizing:border-box;
+}
+
+.table{
+	width:880px;
+	text-align: center;
+}
+.table tr{
+	line-height:40px;
+	font-size:14px;
+}
+.table tr td{
+	line-height:52px;
+	font-size:14px;
+}
+.table tr:hover{
+	color:red;
+}
+.table tr td:hover{
+	background-color:#fff;
+	 text-decoration: underline;
+}

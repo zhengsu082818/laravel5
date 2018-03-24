@@ -25,7 +25,14 @@
             </div>
             <ul>
                 <li class="default">
-                    <a href="">我的订单</a>
+
+                    @if(session('phone')!=null)
+                    <a href="{{url('home/orderform')}}">我的订单</a>
+                    @else
+                    <a id='dd' style="cursor:pointer;">我的订单</a>
+
+                    @endif
+
                 </li>
                 <span>丨</span>
                 <li class="second">
@@ -88,10 +95,12 @@
                 </form>
         </div>
         <div class="shopcarbox">
-            <div class="shopcar">
+           <div class="shopcar">
                 <img src="{{asset('static/images/index_images/shopcar1.png')}}">
+               
                 <a href=""><span>购物车</span></a>
             </div>
+
         </div>
         <div class="log-box-last"></div>
     </div>
@@ -147,3 +156,10 @@
         </div>
         <div class="dhxg-last"></div>
     </div>
+
+    <script>
+        var dd=document.getElementById('dd');
+        dd.onclick=function(){
+            alert('请先登陆!')
+        }
+    </script>

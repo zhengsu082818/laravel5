@@ -182,6 +182,26 @@
            
            
 
+            <!-- 订单管理 -->
+
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe726;</i>
+                    <cite>订单管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                   
+                    <li>
+                        <a _href="{{url('order/')}}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>所有用户订单</cite>
+                        </a>
+                    </li >
+                  
+                </ul>
+            </li>
+
         </ul>
       </div>
     </div>

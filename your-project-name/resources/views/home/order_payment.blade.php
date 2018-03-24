@@ -1,93 +1,34 @@
-@extends('layouts.homemaster')
+@extends('home.public')
 
 @section('title', '去支付-网易考拉海购')
 
-@section('css js')
+@section('css')
 
-	<link rel="stylesheet" href="{{asset('static/css/My receipt.css')}}" type="text/css">
-	<link rel="stylesheet" href="{{asset('static/css/payment.css')}}" type="text/css">
+	<link rel="stylesheet" href="{{asset('home/css/My receipt.css')}}" type="text/css">
+	<link rel="stylesheet" href="{{asset('home/css/payment.css')}}" type="text/css">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
-
+ @section('js')
+            
+ @show
 	
 <body @section('class', 'bgcolor="#f7f7f7"')>
 
 	@section('content')
-	<!-- 标头 -->
-	<div class="header">
-		<div class="header-cont">
-			<div class="hc-box1">
-				<span>您好,137****9028</span>
-				<b>丨</b>
-				<a href="login.html">退出</a>
-			</div>
-			<div class="hc-box2">
-				<img src="../images/index_images/phone2.png" class="shouji">
-				<a href="">手机考拉海购</a>
-				<div class="app">
-					<img src="../images/index_images/erweima.jpg">
-				</div>
-			</div>
-			<ul>
-				<li class="default">
-					<a href="My orders.html">我的订单</a>
-				</li>
-				<span>丨</span>
-				<li class="second">
-					<a href="My orders.html">个人中心</a>
-					<img src="../images/index_images/sanjiao.png">
-					<div class="per_cen">
-						<a href="My Account management.html">完善个人信息</a>
-						<a href="My Receiving address.html">管理收货地址</a>
-					</div>
-				</li>
-				<span>丨</span>
-				<li class="third">
-					<a href="">客户服务</a>
-					<img src="../images/index_images/sanjiao.png">
-					<div class="per_cen">
-						<a href="">联系客服</a>
-						<a href="">帮助中心</a>
-					</div>
-				</li>
-				<span>丨</span>
-				<li>
-					<a href="">消费者告知书</a>
-				</li>
-				<span>丨</span>
-				<li class="lastli">
-					<a href="">更多</a>
-					<img src="../images/index_images/sanjiao.png">
-					<div class="per_more">
-						<a href="">关于我们</a>
-						<a href="">品牌招商</a>
-						<a href="">考拉招聘</a>
-						<a href="">官方博客</a>
-					</div>
-				</li>
-			</ul>
-		</div>	
-	</div>
-	<!-- login + 搜索 -->
-	<div class="log-box">
-		<div style="background-color:#f7f7f7;"  class="login">
-			<a href="index.html">
-				<img src="../images/logres_images/logins.png">
-			</a>
-		</div>
-		
-		<div class="log-box-last"></div>
-	</div>
 	
 
 	<!-- 支付 -->
 	<div class="contents">
 		<div class="con_con">
 			<b></b><strong>订单提交成功，现在只差最后一步啦！</strong>
-			<p>请您在提交订单后1小时59分内完成支付，否则订单会自动取消！</p>
+			<p>请您在提交订单后尽快支付,祝您购物愉快!</p>
 			<hr/>
-			<p>ACQUA ALLE ROSE 玫瑰爽肤水 300毫升      保税区直发 郑州保税2号仓发货</p>
-			<p>收货信息：山西省,太原市,小店区,山西太原市小店区,zzr，手机：132****7856</p>
-
+			@foreach($input['shopping'] as $k=>$v)
+			<p>{{$v['product']}}</p>
+			@endforeach
+			@foreach($input['personals'] as $k=>$v)
+			<p>收货信息：{{$v['shdz']}}</p>
+			@endforeach
 			<!-- 定位  我的订单> -->
 			<div class="pos_dingdan">
 				<a href="">我的订单></a>
@@ -97,40 +38,11 @@
 		<div class="con_zhifu">
 			<div class="zhifu_con">
 				<p>支付金额
-				<span>￥00.1</span>
+				<span>￥{{$input['alljg']}}</span>
 				<a href="">没有/忘记支付密码?</a>
 				</p>
 				<hr/>
 				<div class="cen">
-					<!-- <div id="wrap" class="cen_con">
-						<ul>
-							<li>
-						<input type="password" maxlength="1">
-								
-							</li>
-							<li>
-						<input type="password" maxlength="1">
-								
-							</li>
-							<li>
-						<input type="password" maxlength="1">
-								
-							</li>
-							<li>
-						<input type="password" maxlength="1">
-								
-							</li>
-							<li>
-						<input type="password" maxlength="1">
-								
-							</li>
-							<li>
-						<input type="password" maxlength="1">
-								
-							</li>
-						</ul>
-					</div> -->
-					
 					<div class="content">
 					<!--  <div class="title">支付宝支付密码：</div> -->
 					 <div class="box"></div>
@@ -140,8 +52,11 @@
 					 <div class="errorPoint">请输入数字！</div>
 					 
 					</div>
+					
+						
+						<input type="hidden" class="ids" name='shoppingid' value="{{$input['ids']}}">
 						<input class="zhifu_value" type="hidden" name="zhifu">
-						<button class="getPasswordBtn">去支付</button>
+						<button id="zzr" class="getPasswordBtn">去支付</button>
 				</div>
 			</div>
 			
@@ -150,54 +65,16 @@
 	
 	
 	
-	<!-- 底部2 -->
-	<div class="foot-two-box">
-		<div class="foot-two-cont">
-			<p>
-				<a href="">About NetEase -</a>
-				<a href="">公司简介 -</a>
-				<a href="">联系方法 -</a>
-				<a href="">友情链接 -</a>
-				<a href="">招聘信息 -</a>			
-				<a href="">客户服务 -</a>
-				<a href="">隐私政策 -</a>			
-				<a href="">网络营销 -</a>			
-				<a href="">网站新闻</a>
-			</p>
-			<p>
-				<span>
-					网络文化经营许可证：浙网文[2016]0155-055号
-				</span>
-				<span> 
-					增值电信业务经营许可证：浙B2-20160288 
-				</span>
-				<span>自营经营者信息</span>
-			</p>
-			<p>
-				<a href="">
-					浙公网安备 33010802002216号
-				</a>
-				<span> 
-					网易公司版权所有©1997-2018 
-				</span>
-				<a href="">互联网药品信息服务资格证书编号（浙）-2017-0027</a>
-			</p>
-			<div>
-				<img src="../images/logres_images/login6.jpg">
-				<img src="../images/logres_images/login7.jpg">
-				<img src="../images/logres_images/jinghui.png">
-			</div>
-		</div>
-	</div>
-
 	@endsection
 	
 </body>
 
-@section('srcjs')
+@section('htmljs')
 
 <script>
+
 	/*动态生成*/
+window.onload=function(){
 var box=document.getElementsByClassName("box")[0];
 function createDIV(num){
  for(var i=0;i<num;i++){
@@ -318,14 +195,50 @@ var getPassword=function(){
 var getPasswordBtn=document.getElementsByClassName("getPasswordBtn")[0];
  
 getPasswordBtn.addEventListener("click",getPassword);
- 
+
 /*键盘事件*/
 document.onkeyup=function(event){
  if(event.keyCode=="13") {
   /*回车事件*/
   getPassword();
  }
-};
+}
+
+var zzr=document.getElementById("zzr")[0];
+
+
+
+getPasswordBtn.onclick=function(){
+
+var zhifu_v=document.getElementsByClassName('zhifu_value')[0].value;
+var idsO=document.getElementsByClassName("ids")[0].value;
+	$.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            })
+
+	$.ajax({
+	   type: "post",
+	   url: "/home/orderform",
+	   data: {
+	    'zhifu_value':zhifu_v,
+	    'ids':idsO
+	   },
+	   dataType: "json",
+	   success: function(msg){
+	   	if(msg.error=='y'){
+	   		window.location.href='{{url("/home/orderform")}}';
+	   	}else{
+	       alert(msg.error);
+
+	   	}
+	   }
+	})
+
+}
+}
+
 </script>
 
 @endsection

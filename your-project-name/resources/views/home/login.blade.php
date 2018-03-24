@@ -2,14 +2,17 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+
 	<title>网易考拉海购--登录</title>
 	<link rel="icon" href="{{asset('static/images/index_images/log_tb.jpg')}}">
+
 	<link rel="stylesheet" type="text/css" href="{{asset('home/css/register.css')}}">
 	<script src="{{asset('etsc/lib/layui/layui.js')}}" charset="utf-8"></script>
 </head>
 <body>
  	@include('flash::message')
 	<div class="logo">
+
 		<a href="{{url('/')}}"><img class="one" src="../home/images/logres_images/login1.jpg"></a>
 		<img class="two" src="../home/images/logres_images/login2.jpg">
 	</div>
@@ -88,9 +91,9 @@
 				<a href="">互联网药品信息服务资格证书编号（浙）-2017-0027</a>
 			</p>
 			<div>
-				<img src="../home/images/logres_images/login6.jpg">
-				<img src="../home/images/logres_images/login7.jpg">
-				<img src="../home/images/logres_images/jinghui.png">
+				<img src="{{asset('/home/images/logres_images/login6.jpg')}}">
+				<img src="{{asset('/home/images/logres_images/login7.jpg')}}">
+				<img src="{{asset('/home/images/logres_images/jinghui.png')}}">
 			</div>
 		</div>
 	</div>

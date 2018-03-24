@@ -20,4 +20,5 @@ class Homeuser extends Model
     {
         return $this->hasMany('App\Models\Comment','id');
     }
+
 }

@@ -30,7 +30,6 @@ a{
 .shop{
 	margin:0 auto;
 	width: 1090px;
-	/*height: 1514px;*/
 }
 h3{
 	width: 1090px;
@@ -102,7 +101,7 @@ h3{
 	color: #999;
 }
 .goods{
-	width: 1090px;
+
 	margin-top: 20px;
 }
 .goods input{
@@ -765,7 +764,9 @@ h3{
 .foot-two-box .foot-two-cont{
 	width: 1090px;
 	height: 160px;
+
 	margin:20px auto;
+
 	text-align: center;
 }
 .foot-two-box .foot-two-cont p{

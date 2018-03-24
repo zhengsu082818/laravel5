@@ -37,6 +37,7 @@ Route::post('password/email', 'Auth\PasswordController@postEmail');
 // 密码重置的路由...
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
+
 //认证成功后重定向页面
 Route::get('/admin',function(){
 	return view('admin.index');
@@ -94,9 +95,19 @@ Route::get('admin/bannerdestroy/{id}', 'Admin\BannersController@destroy');
 //执行图片轮播添加
 Route::post('admin/bannerstore', 'Admin\BannersController@store');
 //执行图片轮播修改
+Route::post('admin/bannerupdate/{id}', 'Admin\BannerController@update');
+
+Route::post('admin/banneruplode', 'Admin\BannersController@uplode');
+
+//加载订单操作页面
+Route::resource('order','Order\OrderformController');
+
+
+
 Route::post('admin/bannerupdate/{id}', 'Admin\BannersController@update');
 // ajax图片上传
 Route::post('admin/banneruplode', 'Admin\BannersController@uplode');
+
 
 
 
@@ -110,6 +121,15 @@ Route::post('admin/commentupdate/{id}','Admin\Commentcontroller@edit');
 
 
 
+
+
+
+//购物车前台功能实现
+Route::resource('home/shopping','Home\ShoppingController');
+//支付验证页面and订单遍历
+Route::resource('home/orderform','Home\OrderformController');
+//加载订单转跳商品详情带id
+Route::resource('home/goodsinfo','Home\GoodsinfoController');
 
 //加载登录页面
 Route::get('authindex/login','Authindex\AuthindexController@store');
@@ -241,6 +261,7 @@ Route::get('admin/goodwjld4','Admin\GoodsController@goodwjld4');
 //加载用户中心收货地址主页
 Route::get('admin/personalindex', 'Admin\PersonalsController@index');
 
+
 //加载首页推荐列表
 Route::get('admin/sytjindex', 'Admin\SytjsController@index');
 Route::get('admin/sytjcreate', 'Admin\SytjsController@create');
@@ -249,3 +270,5 @@ Route::get('admin/sytjshow/{id}', 'Admin\SytjsController@show');
 Route::post('admin/sytjupdate/{id}', 'Admin\SytjsController@update');
 //执行删除
 Route::get('admin/sytjdestroy/{id}', 'Admin\SytjsController@destroy');
+
+
