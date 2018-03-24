@@ -83,25 +83,15 @@
               </div>  
           </div>
           <div class="layui-form-item">
-              <label for="username" class="layui-form-label" style="margin-left: 20px;">
+              <label for="username" class="layui-form-label" style="width: 100px;">
                   <span class="x-red">*</span>图片
               </label>
               <div class="layui-form-mid layui-word-aux">
                 <button type="button" class="layui-btn" id="tubiao">
                   <i class="layui-icon">&#xe67c;</i>上传图片
                   <input type="hidden" name="img" value="" id="img">
-                  
-                
                 </button>
-                
               </div>
-              <div class="layui-form-item">
-              <label for="L_email" class="layui-form-label" style="width: 100px;">
-                  <span class="x-red">*</span>显示主图
-              </label>
-              <img src=""  id="cc">
-
-          </div>
           </div>
            <div class="layui-form-item">
               <label for="username" class="layui-form-label" style="width: 100px;">
@@ -178,8 +168,8 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        //执行实例
-
+        
+      //执行图片上传
       var name=[];
         upload.render({
           elem: '#tubiao'
@@ -192,19 +182,14 @@
             console.log(obj.aborted); //请求失败的文件数
           }
           ,done: function(res, index, upload){ //每个文件提交一次触发一次。详见“请求成功的回调”
-            // for(){
-
-            // }
             $name = res.data.src;
-
             document.getElementById('img').value+=$name+',';
-             // imgs= $name+=$name;
-            // alert($(".hide").val );
-           // $('.hide')[i].val();
-            $('#cc').attr("src","/storage/uploads/shopping/"+$name);
-            $("#cc").css("width","100px","height","100px");
+             
           }
+
         });
+
+        //执行五级联动的ajax
         var form = layui.form;
         form.on('select(good)', function(data){
           $.ajax({

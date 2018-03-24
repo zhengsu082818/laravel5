@@ -68,7 +68,21 @@
                     </li >
                 </ul>
             </li>
-            
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe6b8;</i>
+                    <cite>首页推荐管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="{{url('admin/sytjindex')}}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>查看推荐列表</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe6b8;</i>

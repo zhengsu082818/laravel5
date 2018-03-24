@@ -1,4 +1,3 @@
-
 @extends('layouts.homemaster')
 
 @section('title', '网易考拉海购-网易旗下_正品低价_海外直采_海外直邮')
@@ -12,23 +11,21 @@
     @section('content')
 
     @include('home.comment')
+
+   
     <!-- 轮播 -->
     <div class="banner-box">
+
         <ul class="lb">
-             <li><img src="{{asset('static/images/index_images/banner1.jpg')}}"></li>
-             <li><img src="{{asset('static/images/index_images/banner2.jpg')}}"></li>
-             <li><img src="{{asset('static/images/index_images/banner3.jpg')}}"></li>
-             <li><img src="{{asset('static/images/index_images/banner4.jpg')}}"></li>
-             <li><img src="{{asset('static/images/index_images/banner5.jpg')}}"></li>
-             <li><img src="{{asset('static/images/index_images/banner6.jpg')}}"></li>
+            @foreach($banner as $v)
+            <li><img src="/storage/uploads/banner/{{$v->img}}"></li>
+            @endforeach
         </ul>
         <ol>
-          <li class="selected">1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-          <li>5</li>
-          <li>6</li>
+            <li class="selected"></li>
+            @for($i = 1;$i<$bancount;$i++)
+                <li></li>
+            @endfor
         </ol>
         <img src="{{asset('static/images/index_images/left.png')}}" class="arrow leftjt">
         <img src="{{asset('static/images/index_images/right.png')}}" class="arrow right">
@@ -76,15 +73,15 @@
         <!-- 母婴 -->
         <div class="day-box">
             <div class="day-title">
-                <b>母婴儿童</b>
+                <b>{{$mother_name}}</b>
                 <span>品牌直销,妈妈的放心之选</span>
                 <span>查看全部> </span>
             </div>
             <div class="mz">
                 <div class="mz-one my-one">
                     <div class="mz-leibie">
-                        @foreach($mother as $v)
-                        <a href="">{{$v->name}}</a>
+                       @foreach($mother as $v)
+                        <a href="javascript:;">{{$v->name}}</a>
                         @endforeach
                     </div>
                     <div> 初冬换新 </div>
@@ -95,9 +92,9 @@
                 </div>
                 <div class="mz-two">
                     <ul>
-                        @foreach($mother as $v)
+                       @foreach($mother as $v)
                         <li>
-                            <div class="ttt">  {{$v->name}}  </div>
+                            <div class="ttt"> {{$v->name}}  </div>
                             <div class="iii">
                                 <img src="{{$v->url}}">
                             </div>
@@ -113,21 +110,22 @@
                             <img src="{{asset('static/images/index_images/hyh.png')}}">
                         </span>
                     </div>
-                    @foreach($mhyh as $v)
+                   @foreach($mhyh as $v)
                     <div class="myet ">
                         <img src="/storage/uploads/shopping/{{$v->img}}">
                         <div>
                         </div>
                         <p class="pro">
-                            {{$v->title}}
+                           {{$v->title}}
                         </p>
                         <div></div>
                         <p class="price">
-                            ¥  {{$v->price}}
-                            <a href="" style="float: right;">查看详情</a>
+                            <span>¥  {{$v->price}}</span>
+                            
+                            <a href='{{url("home/shopgoodindex/$v->id")}}' style="float: right;">查看详情</a>
                         </p>
                     </div>
-                    @endforeach
+                   @endforeach
                 </div>
                 <div class="mz-four"></div>
             </div>
@@ -136,32 +134,30 @@
         <!-- 美容美妆 -->
         <div class="day-box">
             <div class="day-title">
-                <b>美容美妆</b>
+                <b>{{$mei_name}}</b>
                 <span>湿润肌肤 , 甜蜜奢享</span>
                 <span>查看全部> </span>
             </div>
             <div class="mz">
-                <div class="mz-one">
+                <div class="mz-one my-two">
                     <div class="mz-leibie">
-                        @foreach($mei_rong as $v)
-                        <a href="">{{$v->name}}</a>
+                       @foreach($meirong as $v)
+                        <a href="javascript:;">{{$v->name}}</a>
                         @endforeach
-                        
                     </div>
-                    <div>护肤彩妆</div>
-                    <div>买1送1 大牌满减 </div>
+                    <div> 全新系列 </div>
+                    <div>买1送1 大牌满减  </div>
                     <div>
                         <img src="{{asset('static/images/index_images/mz1.png')}}">
                     </div>
                 </div>
                 <div class="mz-two">
                     <ul>
-                        @foreach($mei_rong as $v)
+                       @foreach($meirong as $v)
                         <li>
-                            <div class="ttt">  {{$v->name}} </div>
-                            
+                            <div class="ttt"> {{$v->name}}  </div>
                             <div class="iii">
-                                 <img src="{{$v->url}}">
+                                <img src="{{$v->url}}">
                             </div>
                         </li>
                         @endforeach
@@ -175,18 +171,19 @@
                             <img src="{{asset('static/images/index_images/hyh.png')}}">
                         </span>
                     </div>
-                    @foreach($mrhyh as $v)
+                   @foreach($mrhyh as $v)
                     <div class="mz-three-img ">
                         <img src="/storage/uploads/shopping/{{$v->img}}">
                         <div>
                         </div>
                         <p class="pro">
-                             {{$v->title}}
+                           {{$v->title}}
                         </p>
                         <div></div>
                         <p class="price">
-                            ¥ {{$v->price}}
-                            <a href="" style="float: right;">查看详情</a>
+                            <span>¥  {{$v->price}}</span>
+                            
+                            <a href='{{url("home/shopgoodindex/$v->id")}}' style="float: right;">查看详情</a>
                         </p>
                     </div>
                    @endforeach
@@ -195,76 +192,7 @@
             </div>
         </div>
 
-        <!-- 手表配饰 -->
-        <div class="day-box">
-            <div class="day-title">
-                <b>手表配饰</b>
-                <span>潮人必备,赚足回头率</span>
-                <span>查看全部> </span>
-            </div>
-            <div class="mz">
-                <div class="mz-one watch-one">
-                    <div class="mz-leibie">
-                       @foreach($wt_ps as $v)
-                        <a href="">{{$v->name}}</a>
-                        @endforeach
-                    </div>
-                    <div> 气质礼帽 </div>
-                    <div>秋日搭配的一点小心机</div>
-                    <div>
-                        <img src="{{asset('static/images/index_images/watch1.png')}}">
-                    </div>
-                </div>
-                <div class="mz-two">
-                    <ul>
-                        @foreach($wt_ps  as $v)
-                        <li>
-                            <div class="ttt">  {{$v->name}} </div>
-                            
-                            <div class="iii">
-                                 <img src="{{$v->url}}">
-                            </div>
-                        </li>
-                        @endforeach
-                        
-                    </ul>
-                </div>
-                <div class="mz-three">
-                    <div class="mz-three-tit">
-                        <span>大家都在买</span>
-                        <span class="hyh4">
-                            换一批
-                            <img src="{{asset('static/images/index_images/hyh.png')}}">
-                        </span>
-                    </div>
-                    <div class="watch-three-box">
-                        <ul>
-                            @foreach($wthyh  as $v)
-                            <li>
-                                <img src="/storage/uploads/shopping/{{$v->img}}">
-                                <div class="watch-box-cont">
-                                    <p> {{$v->title}}</p>
-                                    <p>¥ {{$v->price}}</p>
-                                </div>
-                            </li>
-                            @endforeach
-                        </ul>
-                        <ul class="watch-three-box-two">
-                            @foreach($wthyh2  as $v)
-                            <li>
-                                <img src="/storage/uploads/shopping/{{$v->img}}">
-                                <div class="watch-box-cont">
-                                    <p>{{$v->title}}</p>
-                                    <p>¥ {{$v->price}}</p>
-                                </div>
-                            </li>
-                           @endforeach
-                        </ul>
-                    </div>
-                </div>
-                <div class="mz-four"></div>
-            </div>
-        </div>
+     
     </div>
 
     <!-- 侧边栏 -->

@@ -32,7 +32,7 @@ class GoodtypevalsController extends Controller
         $where=[];
         $keywords = Request()->gtv_name;
         if ($keywords != '') {
-            $goodtypeval = goodtypeval::where('gtv_name','like',"%$keywords%")->orderBy('id','desc')->paginate(10);
+            $goodtypeval = goodtypeval::where('gtv_name','like',"%$keywords%")->orderBy('gt_id','desc')->paginate(10);
             $count = goodtypeval::where('gtv_name','like',"%$keywords%")->count();
 
         }else{

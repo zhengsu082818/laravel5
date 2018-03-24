@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Navig;
 use App\Models\Good;
-
+use App\Models\Homeuser;
 use App\Models\Comment;
 
 //商品详情控制器
@@ -22,14 +22,16 @@ class ShopgoodsController extends Controller
     public function index($id)
     {
         //遍历商品导航
-        $list = navig::get()->toHierarchy();
-
+        $list = navig::where('stated',1)->get()->toHierarchy();
+    
+       
         //查询商品详情
         $goodList = good::findOrFail($id);
         // dd($goodList);
         return view('home.shop_good',[
             'list'=>$list,
             'goodList'=>$goodList,
+            
         ]);
 
     }

@@ -241,3 +241,11 @@ Route::get('admin/goodwjld4','Admin\GoodsController@goodwjld4');
 //加载用户中心收货地址主页
 Route::get('admin/personalindex', 'Admin\PersonalsController@index');
 
+//加载首页推荐列表
+Route::get('admin/sytjindex', 'Admin\SytjsController@index');
+Route::get('admin/sytjcreate', 'Admin\SytjsController@create');
+Route::post('admin/sytjstore', 'Admin\SytjsController@store');
+Route::get('admin/sytjshow/{id}', 'Admin\SytjsController@show');
+Route::post('admin/sytjupdate/{id}', 'Admin\SytjsController@update');
+//执行删除
+Route::get('admin/sytjdestroy/{id}', 'Admin\SytjsController@destroy');

@@ -1,21 +1,4 @@
-<!-- 上下滚动 -->
-    <div class="sxgd">
-        <div class="log-box">
-            <div class="login">
-                <a href="index.html">
-                    <img src="{{asset('static/images/logres_images/login.jpg')}}">
-                </a>
-            </div>
-            <div class="search_box">
-                <form action="" method="get">
-                    <input type="text" name="" class="search" value="男士面膜">
-                    <button class="search_a">
-                        <img src="{{asset('static/images/index_images/search1.png')}}">
-                    </button>
-                </form>
-            </div>
-        </div>  
-    </div>  
+
     <!-- 标头 -->
     <div class="header">
         <div class="header-cont">
@@ -88,16 +71,17 @@
             </ul>
         </div>  
     </div>
+
     <!-- login + 搜索 -->
     <div class="log-box">
         <div class="login">
-            <a href="javascript:;">
+            <a href="{{url('/')}}">
                 <img src="{{asset('static/images/logres_images/login.jpg')}}">
             </a>
         </div>
         <div class="search_box">
-                <form action="" method="get">
-                    <input type="text" name="" class="search" value="男士面膜">
+                <form action="{{url('home/prosearch')}}" method="get">
+                    <input type="text" name="title" class="search" value='爱他美'>
                     <button class="search_a">
                         <img src="{{asset('static/images/index_images/search1.png')}}">
                     </button>
@@ -111,6 +95,7 @@
         </div>
         <div class="log-box-last"></div>
     </div>
+
      <!-- 动画 + 分类 -->
     <div class="dhxg">
         <div class="dhxg1">

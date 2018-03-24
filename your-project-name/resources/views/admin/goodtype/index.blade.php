@@ -34,7 +34,7 @@
         @include('flash::message')
         <thead>
           <tr >
-            <th style="text-align: center;">所属分类</th>
+            <th>所属分类</th>
             <th style="text-align: center;">属性名</th>
             <th style="text-align: center;">添加时间</th>
             <th style="text-align: center;">操作</th></tr>

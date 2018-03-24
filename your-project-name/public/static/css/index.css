@@ -499,9 +499,10 @@ a{
 /*背景颜色*/
 .back-color{
 	width: 100%;
+	height: 1750px;
 	background: #f6f6f6;
-	margin-top: 30px;
-	height: 2200px;
+	margin: 30px 0px;
+	
 }
 
 /*四张图片*/
@@ -522,7 +523,7 @@ a{
 /*每日上新*/
 .day-box{
 	width: 1090px;
-	margin:50px auto 0;
+	margin:50px auto;
 }
 .day-box .day-title{
 	width:1090px;
@@ -759,6 +760,8 @@ del{
 	margin:0 auto;
 }
 .mz .mz-three .mz-three-img img{
+	width: 200px;
+	height: 200px;
 	float: left;
 }
 .mz .mz-three .mz-three-img div{
@@ -767,12 +770,20 @@ del{
 	clear: both;
 }
 .mz .mz-three .mz-three-img .pro{
+	width: 200px;
+	height: 32px;
+	overflow: hidden;
 	font-size: 12px;
 
 }
-.mz .mz-three .mz-three-img .price{
+.mz .mz-three .mz-three-img .price {
 	font-size: 14px;
+}
+.mz .mz-three .mz-three-img .price span{
 	color: #e31436;
+}
+.mz .mz-three .mz-three-img .price a{
+	color:#551a88;
 }
 .mz .mz-three .mz-hyh{
 	display: none;
@@ -794,6 +805,8 @@ del{
 	margin:0 auto;
 }
 .mz .mz-three .myet img{
+	width: 200px;
+	height: 200px;
 	float: left;
 }
 .mz .mz-three .myet div{
@@ -805,72 +818,18 @@ del{
 	font-size: 12px;
 	width: 200px;
 	height: 32px;
-	
 	overflow: hidden;
 }
 .mz .mz-three .myet .price{
 	font-size: 14px;
+}
+.mz .mz-three .myet .price span{
 	color: #e31436;
 }
+.mz .mz-three .myet .price a{
+	color:#551a88;
+}
 
-/*手表配饰*/
-.mz .watch-one{
-	background: #deeaff;
-}
-.mz .mz-three .mz-three-tit .hyh4{
-	margin-left: 25px;
-	font-size: 14px;
-	cursor: pointer;
-}
-.mz-three .watch-three-box{
-	width: 200px;
-	height: 304px;
-	margin:0 auto;
-	cursor: pointer;
-}
-.mz-three .watch-three-box ul{
-	width: 200px;
-	height: 304px;
-}
-.mz-three .watch-three-box li{
-	width: 200px;
-	height: 66px;
-	margin-top: 10px;
-}
-.mz-three .watch-three-box li:first-child{
-	margin:0;
-}
-.mz-three .watch-three-box li img{
-	width: 66px;
-	height: 66px;
-	float: left;
-}
-.mz-three .watch-three-box li .watch-box-cont{
-	width: 114px;
-	height: 100%;
-	float: right;
-	overflow: hidden;
-}
-.mz-three .watch-three-box li .watch-box-cont p:first-child{
-	width: 114px;
-	height: 40px;
-    overflow: hidden;
-    font-size: 12px;
-    color: #5f5f5f;
-    background: #fff;
-    line-height: 20px;
-}
-.mz-three .watch-three-box li .watch-box-cont p:last-child{
-	color: #ff5777;
-   	width: 114px;
-   	height: 26px;
-   	line-height: 26px;
-    font-size: 13px;
-    margin-top: 5px;
-}
-.watch-three-box-two{
-	display: none;
-}
 
 /*底部1*/
 .foot-one-box{

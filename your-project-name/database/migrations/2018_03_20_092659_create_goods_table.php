@@ -21,7 +21,9 @@ class CreateGoodsTable extends Migration
                 $table->Integer('gt_id');//商品属性名
                 $table->Integer('gtv_id');//属性值id
                 $table->string('title',255);//商品标题
-                $table->string('img',255);//商品图片
+                $table->string('img',255);//商品主图片
+                $table->string('img1',255);//商品f附图
+                $table->string('img2',255);//商品f附图
                 $table->decimal('price','11');//商品价格
                 $table->Integer('nums');//商品库存数量
                 $table->text('content');//商品详情

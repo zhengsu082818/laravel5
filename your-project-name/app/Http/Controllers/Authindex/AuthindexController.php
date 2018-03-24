@@ -49,7 +49,7 @@ class AuthindexController extends Controller
            
             // 查看数据库和表单提交密码
             if($bb !== $password ){
-                flash()->overlay('密码不正确','5');
+                flash()->overlay('账号密码不匹配','5');
                 return back();
             }
             // 判断账号状态

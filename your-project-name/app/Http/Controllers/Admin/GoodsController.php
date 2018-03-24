@@ -77,10 +77,6 @@ class GoodsController extends Controller
     public function create()
     {
         $data = Navig::where('depth','0')->get()->toArray();
-        $data1 = Navig::where('depth','1')->get()->toArray();
-        // dd($data);
-        // $list = good::with('gt')->get()->toArray();
-        // dd($list);
         return view('admin.good.create',['data' => $data]);
     }
 
@@ -115,12 +111,16 @@ class GoodsController extends Controller
             flash()->overlay('添加失败,请选择类别', '5');
             return back();
         }
-        // $this->validate($request,$this->rules,$this->messages);
-        $input=$request->except('_token');
-
-        $input['img']=explode(',', rtrim($input['img'],','));
-        // dd($input);
         $good = new good;
+        $this->validate($request,$this->rules,$this->messages);
+        $input=$request->except('_token');
+        if(!$good->img = $input['img'] ){
+            flash()->overlay('添加失败,没有图片上传','5');
+            return back();
+        }
+        $input['img']=explode(',', rtrim($input['img'],','));
+
+       
         $good->djid = $input['djid'];
         $good->cjid = $input['cjid'];
         $good->sj_id = $input['sj_id'];
@@ -194,13 +194,13 @@ class GoodsController extends Controller
      */
     public function destroy($id)
     {
-        $del = good::findOrFail($id)->nums;
-        if($del == 0){
-            $dele =good::destroy($id);
+        $good = good::findOrFail($id);
+        $del = $good->delete();
+        if($del > 0){
             flash()->overlay('删除成功', '1');
             return redirect('admin/goodindex');
         }else{
-            flash()->overlay('删除失败,该商品还有库存', '5');
+            flash()->overlay('删除失败', '5');
             return redirect('admin/goodindex');
         }
     }
