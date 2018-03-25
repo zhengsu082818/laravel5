@@ -64,12 +64,7 @@ class IndexsController extends Controller
             'mei_name'=>$mei_name,
             'meirong'=>$meirong,
             'mrhyh'=>$mrhyh,
-<<<<<<< HEAD
-         
-=======
 
-
->>>>>>> c801ea516bc50b0f4e4c0bd77c067ccd2e765dc1
         ]);
     }
 

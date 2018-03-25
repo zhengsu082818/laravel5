@@ -39,6 +39,8 @@ Route::post('home/home/store/{id}', 'Admin\HomeuserController@store');
 //购物车前台功能实现
 Route::resource('home/shopping','Home\ShoppingController');
 //支付验证页面and订单遍历
+
 Route::resource('home/orderform','Home\OrderformController');
+
 //加载订单转跳商品详情带id
 Route::resource('home/goodsinfo','Home\GoodsinfoController');

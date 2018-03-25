@@ -255,10 +255,11 @@ body{
 	position:relative;
 	transition: all .2s ease;
 }
-.food_box>ul>li>img{
+.food_box>ul>li>a>img{
 	margin-top:40px;
 	width:180px;
 	height:180px;
+	cursor: pointer;
 }
 .food_box>ul>li:hover img{
 	margin-top:30px;
@@ -269,6 +270,7 @@ body{
 	margin-top:-10px;
 }
 .box_com_food{
+
 	color:#ccc;
 	font-size:14px;
 }
@@ -276,7 +278,10 @@ body{
 	color: #555757;
 	font-size:14px;
 	font-weight:400;
+	width: 200px;
+	height: 40px;
 	margin-bottom:0;
+	overflow: hidden;
 }
 .box_com_food p{
 	margin-top:4px;
@@ -286,7 +291,7 @@ body{
 	font-size:14px;
 	font-weight:400;
 	color: #e02b41;
-	margin-top:-6px;
+	margin-top:6px;
 }
 .box_com_food span{
 	font-size:16px;

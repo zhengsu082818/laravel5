@@ -3,12 +3,12 @@
 @section('title', '网易海购-美容彩妆_基础护肤_洁面')
 
 @section('css js')
-  <script type="text/javascript" src="{{asset('static/js/index.js')}}"></script>
+  
   
 	<link rel="stylesheet" href="{{asset('static/css/product_details.css')}}" type="text/css">
 	<link rel="stylesheet" type="text/css" href="{{asset('static/css/detail.css')}}">
 
-	
+	<script type="text/javascript" src="{{asset('static/js/index.js')}}"></script>
   <script src="{{asset('static/js/detail.js')}}" type="text/javascript"></script>
 	<script src="{{asset('static/js/detail_zzr.js')}}" type="text/javascript"></script>
 
@@ -102,7 +102,7 @@
             @else
             <div class="buy">
 
-              <p class="immediately"><a style=" cursor:pointer">请登录!</a></p>
+              <p class="immediately"><a style=" cursor:pointer"><button style="background-color:#e31436;border:none;color:#fff;width:160px;height:40px;margin-top:10px;">请登录!</button></a></p>
 
             </div>
             @endif

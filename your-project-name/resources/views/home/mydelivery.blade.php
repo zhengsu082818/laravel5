@@ -296,95 +296,18 @@
         </ul>
         <div class="food_box">
             <ul id="js_box">
+                @foreach($gengxin as $v)
                 <li>
-                    <img src="" alt="">
+                    <a href='{{url("home/shopgoodindex/$v->id")}}'>
+                    <img src="/storage/uploads/shopping/{{$v->img}}" alt="">
+                    </a>
                     <div class="box_com_food">
-                        <h5>魅族 PRO 7</h5>
-                        <p>3月2日前购机赠199...</p>
-                        <h4>￥<span>1999</span>起</h4>        
+                        <h5>{{$v->title}}</h5>
+                     
+                        <h4>￥<span>{{$v->price}}</span></h4>        
                     </div>
                 </li>
-
-                <li>
-                    <img src="" alt="">
-                    <div class="box_com_food">
-                        <h5>魅族 PRO 7</h5>
-                        <p>3月2日前购机赠199...</p>
-                        <h4>￥<span>1999</span>起</h4>        
-                    </div>
-                </li>
-
-                <li>
-                    <img src="" alt="">
-                    <div class="box_com_food">
-                        <h5>魅族 PRO 7</h5>
-                        <p>3月2日前购机赠199...</p>
-                        <h4>￥<span>1999</span>起</h4>        
-                    </div>
-                </li>
-
-                <li>
-                    <img src="" alt="">
-                    <div class="box_com_food">
-                        <h5>魅族 PRO 7</h5>
-                        <p>3月2日前购机赠199...</p>
-                        <h4>￥<span>1999</span>起</h4>        
-                    </div>
-                </li>
-
-                <li>
-                    <img src="" alt="">
-                    <div class="box_com_food">
-                        <h5>魅族 PRO 7</h5>
-                        <p>3月2日前购机赠199...</p>
-                        <h4>￥<span>1999</span>起</h4>        
-                    </div>
-                </li>
-
-                <li>
-                    <img src="" alt="">
-                    <div class="box_com_food">
-                        <h5>魅族 PRO 7</h5>
-                        <p>3月2日前购机赠199...</p>
-                        <h4>￥<span>1999</span>起</h4>        
-                    </div>
-                </li>
-
-                <li>
-                    <img src="" alt="">
-                    <div class="box_com_food">
-                        <h5>魅族 PRO 7</h5>
-                        <p>3月2日前购机赠199...</p>
-                        <h4>￥<span>1999</span>起</h4>        
-                    </div>
-                </li>
-
-                <li>
-                    <img src="" alt="">
-                    <div class="box_com_food">
-                        <h5>魅族 PRO 7</h5>
-                        <p>3月2日前购机赠199...</p>
-                        <h4>￥<span>1999</span>起</h4>        
-                    </div>
-                </li>
-
-                <li>
-                    <img src="" alt="">
-                    <div class="box_com_food">
-                        <h5>魅族 PRO 7</h5>
-                        <p>3月2日前购机赠199...</p>
-                        <h4>￥<span>1999</span>起</h4>        
-                    </div>
-                </li>
-
-                <li>
-                    <img src="" alt="">
-                    <div class="box_com_food">
-                        <h5>魅族 PRO 7</h5>
-                        <p>3月2日前购机赠199...</p>
-                        <h4>￥<span>1999</span>起</h4>        
-                    </div>
-                </li>
+                @endforeach
             </ul>
         </div>
     </div>
@@ -412,6 +335,43 @@
                     }
                 }
             }
+        }
+
+        var js_boxO=document.getElementById('js_box');
+        var bc_foodO=document.getElementById('bc_food');
+        var bc_food_rO=document.getElementById('bc_food_r');
+        
+        var num=0;
+        function left(){
+          
+          js_boxO.style.left = -1240 + 'px';
+        }
+        function right(){
+          
+          js_boxO.style.left = 0 + 'px';
+        }
+        
+        //每隔30ms向上滚动
+        // 鼠标移入暂停
+        // scrollDiv.onmouseover = function(){
+        //  clearInterval(time);
+        // }
+        // //鼠标移出继续
+        // scrollDiv.onmouseout = function(){
+        //     time = setInterval(scroll,18);
+        // }
+        bc_foodO.onclick=function(){
+            right();
+            
+            bc_foodO.style="none";
+            bc_food_rO.style.border="1px solid red";
+            bc_food_rO.style.color="red";
+        }
+        bc_food_rO.onclick=function(){
+            left();
+            bc_food_rO.style="none";
+            bc_foodO.style.border="1px solid red";
+            bc_foodO.style.color="red";
         }
     }
 </script>

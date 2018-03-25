@@ -134,7 +134,7 @@
 							<div class="myid_info">
 								<p style="position:relative;top:-20px;"><span style="color:red">*</span>当前头像:</p><img class="via" src="/storage/uploads/banner/{{$personals->img}}" alt="" />
 								<button type="button" class="layui-btn" id="test1">
-			                    修改头像
+			                    上传头像
 			                  	</button>
 								<input type="hidden"  name="img"  class="layui-input" value="" id="imgur">
 							</div>
@@ -143,7 +143,7 @@
 									@if($personals->username)
 									disabled="disabled"
 									@endif
-								> <span style="font-size:12px;">* 此项只可修改一次</span>
+								> 
 							</div>
 							<div class="myid_info">
 								<p><span style="color:red">*</span>真实姓名:</p><input type="text" value="{{$personals->name}}" name="name">

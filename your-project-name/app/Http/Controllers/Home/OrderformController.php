@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\Good;
 
 class OrderformController extends Controller
 {
@@ -77,7 +78,10 @@ class OrderformController extends Controller
             ->orderBy('id', 'desc')
             ->get();
         
-        return view('home.mydelivery',['info'=>$info,'count'=>$count]);
+         //遍历为你推荐,根据每次添加商品的时间倒叙
+        $gengxin = good::orderBy('created_at','desc')->limit(10)->get();
+
+        return view('home.mydelivery',['info'=>$info,'count'=>$count,'gengxin'=>$gengxin]);
     }
 
     /**

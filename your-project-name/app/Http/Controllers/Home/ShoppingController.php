@@ -8,6 +8,9 @@ use PDO;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
+
+use App\Models\Good;
+
 class ShoppingController extends Controller
 {
     /**
@@ -32,8 +35,12 @@ class ShoppingController extends Controller
         );
         }
         $info=DB::table('shopping')->get();
-        // $info['nums']=200;
-        return view('home.shopping',['info'=>$info]);
+
+        //遍历为你推荐,根据每次添加商品的时间倒叙
+        $gengxin = good::orderBy('created_at','desc')->limit(10)->get();
+        
+
+         return view('home.shopping',['info'=>$info,'gengxin'=>$gengxin]);
     }
 
     /**
@@ -55,8 +62,6 @@ class ShoppingController extends Controller
     public function store(Request $request)
     {
         
-
-
         // 加载支付页面
         config(['database.fetch' => PDO::FETCH_ASSOC]);
             
@@ -92,12 +97,12 @@ class ShoppingController extends Controller
         // dd($list);
 
         if($list['personals']!=null){
-            return view('home/Purchase page',['list'=>$list]);
+            return view('home.purchase page',['list'=>$list]);
         }else{
-            return view('home/Purchase page',['list'=>$list]);
+            return view('home.purchase page',['list'=>$list]);
         }
         }else{
-            return view('home/login');
+            return view('home.login');
         }
     }
 

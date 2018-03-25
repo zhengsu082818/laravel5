@@ -7,7 +7,8 @@
      <link rel="stylesheet" type="text/css" href="{{asset('home/css/shopcar.css')}}">
      <link rel="stylesheet" type="text/css" href="{{asset('home/css/list.css')}}">
      <meta name="csrf-token" content="{{ csrf_token() }}">
-@show
+@endsection
+
 
      <!-- 导入外部js -->
 @section('js')
@@ -36,18 +37,6 @@
         </tr>
         </thead>
         <tbody>
-        
-        
-        <!-- <tr class="on">
-            <td class="checkbox"><input class="check-one check" type="checkbox"></td>
-            <td class="goods"><img src="" alt=""><span>Sony/索尼 DSC-WX300</span></td>
-            <td class="price">1428.50</td>
-            <td class="count"><span class="reduce"></span>
-                <input class="count-input" type="text" value="1">
-                <span class="add">+</span></td>
-            <td class="subtotal">1428.50</td>
-            <td class="operation"><span class="delete">删除</span></td>
-        </tr> -->
         @if($info!=null)
          @for ($i = 0; $i < count($info); $i++)
         <tr class="on">
@@ -56,18 +45,13 @@
             <td class="price">{{$id=$info[$i]->price}}</td>
             <td class="count"><span class="reduce">-</span>
                 <input class="count-input" type="text" value="{{$id=$info[$i]->num}}" readonly="readonly">
-
-
                 <input type="hidden" class="max_input" value="200">
-
-
                 <span class="add">+</span></td>
             <td class="subtotal" value="">{{$id=$info[$i]->aotal}}</td>
             <td class="operation"><span class="mydelete">
             <input class="idden_id" type="hidden" name="id" value="{{$id=$info[$i]->id}}">
             删除</span></td>
         </tr>
-        
         @endfor
         @else
            <tr class="on">  
@@ -98,95 +82,17 @@
         </ul>
         <div class="food_box">
             <ul id="js_box">
+                @foreach($gengxin as $v)
                 <li>
-                    <img src="" alt="">
+                    <a href='{{url("home/shopgoodindex/$v->id")}}'>
+                    <img src="/storage/uploads/shopping/{{$v->img}}" alt="">
+                    </a>
                     <div class="box_com_food">
-                        <h5>魅族 PRO 7</h5>
-                        <p>3月2日前购机赠199...</p>
-                        <h4>￥<span>1999</span>起</h4>        
+                        <h5>{{$v->title}}</h5>
+                        <h4>￥<span>{{$v->price}}</span></h4>        
                     </div>
                 </li>
-
-                <li>
-                    <img src="" alt="">
-                    <div class="box_com_food">
-                        <h5>魅族 PRO 7</h5>
-                        <p>3月2日前购机赠199...</p>
-                        <h4>￥<span>1999</span>起</h4>        
-                    </div>
-                </li>
-
-                <li>
-                    <img src="" alt="">
-                    <div class="box_com_food">
-                        <h5>魅族 PRO 7</h5>
-                        <p>3月2日前购机赠199...</p>
-                        <h4>￥<span>1999</span>起</h4>        
-                    </div>
-                </li>
-
-                <li>
-                    <img src="" alt="">
-                    <div class="box_com_food">
-                        <h5>魅族 PRO 7</h5>
-                        <p>3月2日前购机赠199...</p>
-                        <h4>￥<span>1999</span>起</h4>        
-                    </div>
-                </li>
-
-                <li>
-                    <img src="" alt="">
-                    <div class="box_com_food">
-                        <h5>魅族 PRO 7</h5>
-                        <p>3月2日前购机赠199...</p>
-                        <h4>￥<span>1999</span>起</h4>        
-                    </div>
-                </li>
-
-                <li>
-                    <img src="" alt="">
-                    <div class="box_com_food">
-                        <h5>魅族 PRO 7</h5>
-                        <p>3月2日前购机赠199...</p>
-                        <h4>￥<span>1999</span>起</h4>        
-                    </div>
-                </li>
-
-                <li>
-                    <img src="" alt="">
-                    <div class="box_com_food">
-                        <h5>魅族 PRO 7</h5>
-                        <p>3月2日前购机赠199...</p>
-                        <h4>￥<span>1999</span>起</h4>        
-                    </div>
-                </li>
-
-                <li>
-                    <img src="" alt="">
-                    <div class="box_com_food">
-                        <h5>魅族 PRO 7</h5>
-                        <p>3月2日前购机赠199...</p>
-                        <h4>￥<span>1999</span>起</h4>        
-                    </div>
-                </li>
-
-                <li>
-                    <img src="" alt="">
-                    <div class="box_com_food">
-                        <h5>魅族 PRO 7</h5>
-                        <p>3月2日前购机赠199...</p>
-                        <h4>￥<span>1999</span>起</h4>        
-                    </div>
-                </li>
-
-                <li>
-                    <img src="" alt="">
-                    <div class="box_com_food">
-                        <h5>魅族 PRO 7</h5>
-                        <p>3月2日前购机赠199...</p>
-                        <h4>￥<span>1999</span>起</h4>        
-                    </div>
-                </li>
+                @endforeach
             </ul>
         </div>
     </div>

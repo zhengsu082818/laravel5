@@ -12,7 +12,7 @@
 
     @include('home.comment')
 
-   
+  
     <!-- 轮播 -->
     <div class="banner-box">
 
