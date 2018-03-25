@@ -36,7 +36,7 @@ class GoodsinfoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

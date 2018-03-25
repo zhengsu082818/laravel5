@@ -61,7 +61,10 @@
                     <a href="My orders.html">个人中心</a>
                     <img src="{{asset('static/images/index_images/sanjiao.png')}}">
                     <div class="per_cen">
-                        <a href="My Account management.html">完善个人信息</a>
+                        <a href="@if(!session('phone')==null)
+                            {{url('home/home/number')}}
+                            @else  {{url('authindex/login')}}
+                            @endif">完善个人信息</a>
                         <a href=" @if(!session('phone')==null)
                             {{url('home/personal')}}
                             @else  {{url('authindex/login')}}

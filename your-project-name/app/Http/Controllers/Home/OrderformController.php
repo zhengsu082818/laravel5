@@ -98,7 +98,19 @@ class OrderformController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+        config(['database.fetch' => PDO::FETCH_ASSOC]);
+        
+        $homeuser=$request->session()->all();
+        $shdz=DB::table('homeusers')->where('phone',$homeuser['phone'])->first();
+        $input['zfmm1']=$request->zfmm1;
+        if($input['zfmm1']){
+            $zfpassword=md5($input['zfmm1']);
+            DB::table('homeusers')->where('id',$shdz['id'])->update(['zfpassword'=>$zfpassword]);
+
+        }else{
+
+
         //随机字符串
         function GetRandStr($len)   
         {   
@@ -122,11 +134,10 @@ class OrderformController extends Controller
         //支付页面判定
         $input['shoppingid']=$request->ids;
         $input['zhifu_value']=$request->zhifu_value;
-        $homeuser=$request->session()->all();
-        config(['database.fetch' => PDO::FETCH_ASSOC]);
+        
 
         //获取用户信息
-        $shdz=DB::table('homeusers')->where('phone',$homeuser['phone'])->first();
+        
         if($shdz['zfpassword']!=md5($input['zhifu_value'])){
             if($shdz['zfpassword']==null){
                 $info['error']='请设置支付密码!';
@@ -164,6 +175,7 @@ class OrderformController extends Controller
            
             $info['error']='y';
             return $info;
+        }
         }
         
     }
