@@ -287,114 +287,12 @@
 </div>
     
 <!-- 推荐 -->
-<div class="content">
-    <div class="con_food">
-        <h3>为您推荐</h3>
-        <ul>
-            <li id="bc_food"><</li>
-            <li id="bc_food_r" style="border:1px solid red;color:red;">></li>
-        </ul>
-        <div class="food_box">
-            <ul id="js_box">
-                <li>
-                    <img src="" alt="">
-                    <div class="box_com_food">
-                        <h5>魅族 PRO 7</h5>
-                        <p>3月2日前购机赠199...</p>
-                        <h4>￥<span>1999</span>起</h4>        
-                    </div>
-                </li>
 
-                <li>
-                    <img src="" alt="">
-                    <div class="box_com_food">
-                        <h5>魅族 PRO 7</h5>
-                        <p>3月2日前购机赠199...</p>
-                        <h4>￥<span>1999</span>起</h4>        
-                    </div>
-                </li>
-
-                <li>
-                    <img src="" alt="">
-                    <div class="box_com_food">
-                        <h5>魅族 PRO 7</h5>
-                        <p>3月2日前购机赠199...</p>
-                        <h4>￥<span>1999</span>起</h4>        
-                    </div>
-                </li>
-
-                <li>
-                    <img src="" alt="">
-                    <div class="box_com_food">
-                        <h5>魅族 PRO 7</h5>
-                        <p>3月2日前购机赠199...</p>
-                        <h4>￥<span>1999</span>起</h4>        
-                    </div>
-                </li>
-
-                <li>
-                    <img src="" alt="">
-                    <div class="box_com_food">
-                        <h5>魅族 PRO 7</h5>
-                        <p>3月2日前购机赠199...</p>
-                        <h4>￥<span>1999</span>起</h4>        
-                    </div>
-                </li>
-
-                <li>
-                    <img src="" alt="">
-                    <div class="box_com_food">
-                        <h5>魅族 PRO 7</h5>
-                        <p>3月2日前购机赠199...</p>
-                        <h4>￥<span>1999</span>起</h4>        
-                    </div>
-                </li>
-
-                <li>
-                    <img src="" alt="">
-                    <div class="box_com_food">
-                        <h5>魅族 PRO 7</h5>
-                        <p>3月2日前购机赠199...</p>
-                        <h4>￥<span>1999</span>起</h4>        
-                    </div>
-                </li>
-
-                <li>
-                    <img src="" alt="">
-                    <div class="box_com_food">
-                        <h5>魅族 PRO 7</h5>
-                        <p>3月2日前购机赠199...</p>
-                        <h4>￥<span>1999</span>起</h4>        
-                    </div>
-                </li>
-
-                <li>
-                    <img src="" alt="">
-                    <div class="box_com_food">
-                        <h5>魅族 PRO 7</h5>
-                        <p>3月2日前购机赠199...</p>
-                        <h4>￥<span>1999</span>起</h4>        
-                    </div>
-                </li>
-
-                <li>
-                    <img src="" alt="">
-                    <div class="box_com_food">
-                        <h5>魅族 PRO 7</h5>
-                        <p>3月2日前购机赠199...</p>
-                        <h4>￥<span>1999</span>起</h4>        
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-    <!-- 底部结束 -->
+<div style="clear:both;"></div>
 @endsection
 
 
-<!--  内外部js -->
+<!--  内部js -->
 @section('htmljs')
 <script>
     window.onload=function(){

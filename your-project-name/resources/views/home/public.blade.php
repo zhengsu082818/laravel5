@@ -308,6 +308,9 @@
    
 </body>
 </html>
+
+<!--  内外部js -->
+@section('htmljs')
 <script>
     function maodian(id){
           var obj = document.getElementById(id);
@@ -319,7 +322,4 @@
             alert('请先登陆!')
     }
 </script>
-<!--  内外部js -->
-@section('htmljs')
-    
 @show
