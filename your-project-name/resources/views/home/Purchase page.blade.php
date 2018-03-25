@@ -110,7 +110,7 @@
     </div>
     <div class="Submit-two">
       <a href='{{url("home/shopping")}}'><span>返回购物车修改</span></a>
-      <button style="color:#Fff;">去购买</button>
+      <button style="color:#Fff;margin-top:-20px;">去购买</button>
     </div>
   </div>
 </form>
