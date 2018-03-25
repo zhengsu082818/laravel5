@@ -52,7 +52,7 @@
          @for ($i = 0; $i < count($info); $i++)
         <tr class="on">
             <td class="checkbox"><input class="check-one check" type="checkbox"></td>
-            <td class="goods"><img src="" alt=""><span>{{$id=$info[$i]->product}}</span></td>
+            <td class="goods"><img src="{{$id=$info[$i]->img}}" alt=""><span>{{$id=$info[$i]->product}}</span></td>
             <td class="price">{{$id=$info[$i]->price}}</td>
             <td class="count"><span class="reduce">-</span>
                 <input class="count-input" type="text" value="{{$id=$info[$i]->num}}" readonly="readonly">

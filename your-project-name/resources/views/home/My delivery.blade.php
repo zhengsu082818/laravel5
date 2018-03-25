@@ -82,7 +82,7 @@
                     @foreach($info['alldind1'] as $k=>$v)
                     <tr>
                         <td>未付款不支持</td>
-                        <td>{{$v->img}}</td>
+                        <td><img src="{{$v->img}}" style="width:40px;"></td>
                         <td>{{$v->product}}</td>
                         <td>{{$v->price}}</td>
                         <td>{{$v->num}}</td>
@@ -94,7 +94,7 @@
                     @foreach($info['alldind'] as $k=>$v)
                     <tr>
                         <td>{{$v->orderid}}</td>
-                        <td>{{$v->img}}</td>
+                        <td><img src="{{$v->img}}" style="width:40px;"></td>
                         <td>{{$v->product}}</td>
                         <td>{{$v->price}}</td>
                         <td>{{$v->num}}</td>
@@ -128,7 +128,7 @@
                     @foreach($info['alldind1'] as $k=>$v)
                     <tr>
                         <td>未付款不支持</td>
-                        <td>{{$v->img}}</td>
+                        <td><img src="{{$v->img}}" style="width:40px;"></td>
                         <td>{{$v->product}}</td>
                         <td>{{$v->price}}</td>
                         <td>{{$v->num}}</td>
@@ -162,7 +162,7 @@
                     @foreach($info['alldind2'] as $k=>$v)
                     <tr>
                         <td>{{$v->orderid}}</td>
-                        <td>{{$v->img}}</td>
+                        <td><img src="{{$v->img}}" style="width:40px;"></td>
                         <td>{{$v->product}}</td>
                         <td>{{$v->price}}</td>
                         <td>{{$v->num}}</td>
@@ -196,7 +196,7 @@
                     @foreach($info['alldind3'] as $k=>$v)
                     <tr>
                         <td>{{$v->orderid}}</td>
-                        <td>{{$v->img}}</td>
+                        <td><img src="{{$v->img}}" style="width:40px;"></td>
                         <td>{{$v->product}}</td>
                         <td>{{$v->price}}</td>
                         <td>{{$v->num}}</td>
@@ -230,7 +230,7 @@
                     @foreach($info['alldind4'] as $k=>$v)
                     <tr>
                         <td>{{$v->orderid}}</td>
-                        <td>{{$v->img}}</td>
+                        <td><img src="{{$v->img}}" style="width:40px;"></td>
                         <td>{{$v->product}}</td>
                         <td>{{$v->price}}</td>
                         <td>{{$v->num}}</td>
@@ -264,7 +264,7 @@
                     @foreach($info['alldind5'] as $k=>$v)
                     <tr>
                         <td>{{$v->orderid}}</td>
-                        <td>{{$v->img}}</td>
+                        <td><img src="{{$v->img}}" style="width:40px;"></td>
                         <td>{{$v->product}}</td>
                         <td>{{$v->price}}</td>
                         <td>{{$v->num}}</td>

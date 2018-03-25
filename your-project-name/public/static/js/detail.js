@@ -1,28 +1,28 @@
-$(function(){
-	$('.fadeLeft > ol > li').click(function(){
-	    var index = $(this).index();
-	    $(this).addClass('selected').siblings().removeClass('selected');
-	    $('.fadeLeft > ul > li').eq(index).css({'display':'block'}).siblings().css({'display':'none'});
-	})	
+// $(function(){
+// 	$('.fadeLeft > ol > li').click(function(){
+// 	    var index = $(this).index();
+// 	    $(this).addClass('selected').siblings().removeClass('selected');
+// 	    $('.fadeLeft > ul > li').eq(index).css({'display':'block'}).siblings().css({'display':'none'});
+// 	})	
 
 
-	$("#num_box ul li").mouseover(function(){
-		$(this).addClass("patterm").siblings().removeClass("patterm");
-	var oplu=parseInt($("#number").val());
-	$("#num_box ul li.plus").click(function(){		
-		oplu++;
-		$("#number").val(oplu);
-	})
-	$("#num_box ul li.reduce").click(function(){
+// 	$("#num_box ul li").mouseover(function(){
+// 		$(this).addClass("patterm").siblings().removeClass("patterm");
+// 	var oplu=parseInt($("#number").val());
+// 	$("#num_box ul li.plus").click(function(){		
+// 		oplu++;
+// 		$("#number").val(oplu);
+// 	})
+// 	$("#num_box ul li.reduce").click(function(){
 		
-		if(oplu>1){
-			oplu--;
-		}
-		$("#number").val(oplu);
+// 		if(oplu>1){
+// 			oplu--;
+// 		}
+// 		$("#number").val(oplu);
 
-	 })
-	})
-})
+// 	 })
+// 	})
+// })
 
 
 $(function(){
@@ -32,6 +32,7 @@ $(function(){
         $('#detail div.cont > div').eq(index).css({'display':'block'}).siblings().css('display','none');
     })
 })
+
 
 
 // 热卖推荐

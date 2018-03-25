@@ -77,7 +77,6 @@ class GoodsController extends Controller
     public function create()
     {
         $data = Navig::where('depth','0')->get()->toArray();
-
         return view('admin.good.create',['data' => $data]);
     }
 
@@ -107,7 +106,7 @@ class GoodsController extends Controller
      */
     public function store(Request $request)
     {
-         // dd($request->all());
+        // dd($request->all());
         if($request->djid==0 || $request->cjid==0 || $request->sj_id==0 || $request->gt_id==0 || $request->gtv_id==0  ){
             flash()->overlay('添加失败,请选择类别', '5');
             return back();

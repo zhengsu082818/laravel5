@@ -144,6 +144,9 @@ class OrderformController extends Controller
                 $value['uid']=$shdz['id'];
                 $value['orderid']=GetRandStr(9);
                 $insert=Db::table('commodity')->insert($value);
+                $nums=Db::table('goods')->where('id',$value['gid'])->lists('nums');
+                $kc=$nums[0]-$value['num'];
+                Db::table('goods')->where('id',$value['gid'])->update(['nums'=>$kc]);
                 if($insert){
                     DB::table('shopping')->whereIn('id',explode('.', rtrim($input['shoppingid'],'.')))->delete();
                 }

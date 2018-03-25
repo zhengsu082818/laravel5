@@ -18,7 +18,18 @@ class ShoppingController extends Controller
     public function index()
     {
         //从商品详情体挑选过来的商品标信息
-// =========================需要联查商品表中的库存===================
+        $uid=DB::table('homeusers')->where('phone',session('phone'))->lists('id');
+        // dd();
+        $input=input::get();
+        if($input){
+        $input['aotal']=$input['price']*$input['num'];
+
+        
+        // dd($input);
+        DB::table('shopping')->insert(
+            ['num' => $input['num'], 'img' => $input['img'],'product'=>$input['product'],'gid'=>$input['gid'],'uid'=>$uid[0],'price'=>$input['price'],'aotal'=>$input['aotal']]
+        );
+        }
         $info=DB::table('shopping')->get();
         // $info['nums']=200;
         return view('home/shopping',['info'=>$info]);

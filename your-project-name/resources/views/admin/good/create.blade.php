@@ -22,7 +22,7 @@
         </a>
       </span>
       <a class="layui-btn" style="line-height:38px;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
-       <i class="layui-icon" style="line-height:38px">ဂ</i></a>
+       <i class="layui-icon" style="line-height:38px">?</i></a>
         <a  class="layui-btn" href="{{url('admin/goodindex')}}" style="line-height:38px;margin-top:3px;margin-right: 10px;float:right">返回上一层</a>
     </div>
     <div style="height: 40px;">
@@ -273,6 +273,4 @@
         
       });
       </script>
-@endsection
-
-
+@endsection 

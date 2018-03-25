@@ -7,7 +7,8 @@
 	<link rel="stylesheet" href="{{asset('static/css/product_details.css')}}" type="text/css">
 	<link rel="stylesheet" type="text/css" href="{{asset('static/css/detail.css')}}">
 	<script type="text/javascript" src="{{asset('static/js/product_list.js')}}"></script>
-	<script src="{{asset('static/js/detail.js')}}" type="text/javascript"></script>
+  <script src="{{asset('static/js/detail.js')}}" type="text/javascript"></script>
+	<script src="{{asset('static/js/detail_zzr.js')}}" type="text/javascript"></script>
     
 @endsection
 	
@@ -65,23 +66,43 @@
                  <p class="font">服务: <span>本商品由 自营保税仓 发货</span></b></p>
                  <strong style="display: block;clear:both;"></strong>
             </div>
+            <form action="{{url('home/shopping')}}" action="get">
+
             <div class="price">
                  <p class="font">数量:
                     <div id="num_box">
-                        <input id="number" type="text" value="1">
+                        <input id="number" name="num" type="text" value="1" >
                         <ul style="width:24px; margin-top: 10px;">
                             <li class="plus">+</li>
                             <li class="reduce">-</li>
                         </ul>
-                        <span class="font" style="margin-left: 20px;">库存数量 ( <span style="color:#e31436;">{{$goodList->nums}}</span> )</span>
+                        <span class="font" style="margin-left: 20px;">
+                          库存数量 ( 
+                          <span style="color:#e31436;" class="nums">
+                            {{$goodList->nums}}
+                          </span> )
+                        </span>
                         <strong style="display: block;clear:both;"></strong>
                     </div>
                  </p> 
             </div>
-
+            @if(session('phone')!=null)
             <div class="buy">
-                <p class="immediately"><a href="">加入购物车</a></p>
+                <input type="hidden" name="img" value="/storage/uploads/shopping/{{$goodList->img}}">
+                
+                <input type="hidden" name="price" value="{{$goodList->price}}">
+                <input type="hidden" name="product" value="{{$goodList->title}}">
+                <input type="hidden" name="gid" value="{{$goodList->id}}">
+                <p class="immediately"><a><button style="background-color:#e31436;border:none;color:#fff;width:160px;height:40px;margin-top:10px;">加入购物车</button></a></p>
             </div>
+
+            @else
+            <div class="buy">
+              <p class="immediately"><a style=" cursor:pointer">请登录!</a></p>
+            </div>
+            @endif
+            </form>
+
         </div> 
   </div>
              

@@ -303,25 +303,6 @@
         </div>
     </div>
 
-    <!-- 侧边栏 -->
-    <div id="side">
-        <div class="erweima block">
-            <img src="{{asset('home/images/index_images/phone.png')}}" width="25">
-            <p>
-                <img src="{{asset('home/images/index_images/ewm.jpg')}}">
-            </p>
-        </div>
-        <div class="service block">
-            <img src="{{asset('home/images/index_images/service.png')}}" width="25">
-            <p>
-                <span class="txt">客服电话</span>
-                <span class="phone">400-800-8820</span>
-                <span class="line"></span>
-                <a href="javascript:;" class="btn">在线客服</a>
-            </p>
-        </div>
-        <div class="top block" style="display: none;"><a href="#"><img src="{{asset('home/images/index_images/top.png')}}" width="21"></a></div>
-    </div> 
     @show
 
    
