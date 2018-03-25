@@ -47,7 +47,7 @@
       <p>*************</p>
       <p>*************</p>
     </div>
-    </li>
+  </li>
   @endif
  </ul>
     
@@ -75,7 +75,7 @@
     @foreach ($list['info'] as $k=>$v)
       <div class="information-five" style="margin-top:10px;">
         <div style="width: 400px; margin-left: 30px;">
-          <img style="width:78px" src="../images/product_details/details2.jpg">
+          <img style="width:78px;height:78px;margin-top: 1px;margin-right:20px;" src="{{$v['img']}}">
           <p style="margin-top: 24px;">{{$v['product']}}</p>
           <br>
           <br>

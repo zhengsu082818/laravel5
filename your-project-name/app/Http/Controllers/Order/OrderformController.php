@@ -18,6 +18,19 @@ class OrderformController extends Controller
      */
     public function index()
     {
+
+        //提前更新orderformcount
+        $homeid=DB::table('homeusers')->lists('id');
+        foreach ($homeid as $k => $v) {
+           $commoditycount[$v]= DB::table('commodity')->where('uid',$v)->where('state','<>','已删除')->count();
+
+        }
+        DB::table('orderformcount')->delete();
+        foreach ($commoditycount as $key => $value) {
+            DB::table('orderformcount')->insert(['uid'=>$key,'num'=>$value]);
+        }
+
+
          $where=Input::get('where')?Input::get('where'):null; 
 
          $count = DB::table('commodity')->where('state','<>','已删除')->count();

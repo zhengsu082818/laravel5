@@ -31,6 +31,7 @@ class IndexsController extends Controller
         //遍历每日上新,根据每次添加商品的时间倒叙
         $gengxin = good::orderBy('created_at','desc')->limit(11)->get();
 
+
         $sytj = sytj::where('stated',1)->orderBy('id','desc')->take(2)->get()->toArray();
         foreach ($sytj as $k => $v) {
            $arr[] =$v['name'];
@@ -63,7 +64,12 @@ class IndexsController extends Controller
             'mei_name'=>$mei_name,
             'meirong'=>$meirong,
             'mrhyh'=>$mrhyh,
+<<<<<<< HEAD
          
+=======
+
+
+>>>>>>> c801ea516bc50b0f4e4c0bd77c067ccd2e765dc1
         ]);
     }
 

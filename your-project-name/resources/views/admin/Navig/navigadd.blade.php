@@ -73,6 +73,7 @@
 
          
           <div class="layui-form-item">
+
               <label for="L_email" class="layui-form-label" style="width: 90px;">
                   <span class="x-red">*</span>状态
               </label>

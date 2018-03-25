@@ -96,8 +96,9 @@
                     </button>
                 </form>
         </div>
+
         <div class="shopcarbox">
-           @if(session('phone')!=null)
+            @if(session('phone')!=null)
              <a href="{{url('home/shopping')}}">
                 <div class="shopcar">
                 <img src="{{asset('static/images/index_images/shopcar1.png')}}">
@@ -114,6 +115,8 @@
             </div>
             </a>
             @endif
+
+
 
 
         </div>

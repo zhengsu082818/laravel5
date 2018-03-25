@@ -74,7 +74,6 @@
                   <span class="layui-btn layui-btn-mini layui-btn-danger">禁用</span>
                   @endif
                 </td>
-                
                 <td style="text-align: center;">{{$v->created_at}}</td>
                 <td class="td-manage" style="text-align: left;">
                   
@@ -92,6 +91,10 @@
                    @if($v->depth=='1')
                   <a href="{{url('navig/create').'?id='.$v->id}}" style="color: #fff;" title="添加分类">
                     <button class="layui-btn layui-btn-mini">添加分类</button></a>
+                  @endif
+                   @if($v->depth=='2')
+                  <a href="{{url('navig/create').'?id='.$v->id}}" style="color: #fff;" title="添加分类">
+                    <button class="layui-btn layui-btn-mini">添加分类</button>s</a>
                   @endif
                 </td>
               </tr>

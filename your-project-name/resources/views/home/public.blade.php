@@ -49,7 +49,12 @@
             </div>
             <ul>
                 <li class="default">
+                    @if(session('phone')!=null)
                     <a href="{{url('home/orderform')}}">我的订单</a>
+                    @else
+                    <a id='dd' style="cursor:pointer;">我的订单</a>
+
+                    @endif
                 </li>
                 <span>丨</span>
                 <li class="second">
@@ -300,25 +305,6 @@
         </div>
     </div>
 
-    <!-- 侧边栏 -->
-    <div id="side">
-        <div class="erweima block">
-            <img src="{{asset('home/images/index_images/phone.png')}}" width="25">
-            <p>
-                <img src="{{asset('home/images/index_images/ewm.jpg')}}">
-            </p>
-        </div>
-        <div class="service block">
-            <img src="{{asset('home/images/index_images/service.png')}}" width="25">
-            <p>
-                <span class="txt">客服电话</span>
-                <span class="phone">400-800-8820</span>
-                <span class="line"></span>
-                <a href="javascript:;" class="btn">在线客服</a>
-            </p>
-        </div>
-        <div class="top block" style="display: none;"><a href="#"><img src="{{asset('home/images/index_images/top.png')}}" width="21"></a></div>
-    </div> 
     @show
 
    
@@ -329,6 +315,10 @@
           var obj = document.getElementById(id);
           var oPos = obj.offsetTop;
           return window.scrollTo(0, oPos-36);
+    }
+    var dd=document.getElementById('dd');
+        dd.onclick=function(){
+            alert('请先登陆!')
     }
 </script>
 <!--  内外部js -->
