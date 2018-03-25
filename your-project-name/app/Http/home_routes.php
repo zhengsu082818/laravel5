@@ -7,10 +7,13 @@ Route::get('/', 'Home\IndexsController@index');
 
 // 加载商品列表页
 Route::get('home/prolistindex/{id}', 'Home\ProlistsController@index');
+//加载搜索属性值页面
+Route::get('home/prolistshow/{id}/{name}', 'Home\ProlistsController@show');
+//加载搜索商品页面
+Route::get('home/prosearch', 'Home\ProlistsController@store');
 
 
-
-// 加载加入购物车页面
+// 加载商品详情页面
 Route::get('home/shopgoodindex/{id}', 'Home\ShopgoodsController@index');
 
 
@@ -33,4 +36,9 @@ Route::post('home/home/number/tupiana','Admin\HomeuserController@tupiana');
 Route::post('home/home/store/{id}', 'Admin\HomeuserController@store');
 
 
-
+//购物车前台功能实现
+Route::resource('home/shopping','Home\ShoppingController');
+//支付验证页面and订单遍历
+Route::resource('home/orderform','Home\OrderformController');
+//加载订单转跳商品详情带id
+Route::resource('home/goodsinfo','Home\GoodsinfoController');

@@ -35,7 +35,7 @@ class PermissionsController extends Controller
     {
         $permission = Permission::orderBy('id','desc')->paginate(5);//根据id大小排序查询
         $count = Permission::count();//查询长度
-        return view('admin.Permission.index',['permission'=>$permission,'count'=>$count]);//加载模板并赋值
+        return view('admin.permission.index',['permission'=>$permission,'count'=>$count]);//加载模板并赋值
     }
 
     /**
@@ -45,7 +45,7 @@ class PermissionsController extends Controller
      */
     public function create()
     {
-        return view('admin.Permission.create');//加载权限添加页面
+        return view('admin.permission.create');//加载权限添加页面
     }
 
     /**
@@ -88,7 +88,7 @@ class PermissionsController extends Controller
     {
         $permission =Permission::findOrFail($id);//查询要更改的单条数据
         // dd($permission);
-        return view('admin.Permission.edit',['permission' => $permission]);//加载修改页面并赋值
+        return view('admin.permission.edit',['permission' => $permission]);//加载修改页面并赋值
     }
 
     /**

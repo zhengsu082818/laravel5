@@ -505,8 +505,8 @@ a{
 	font-size: 12px;
 	text-decoration: none;
 }
-.selected{
-	color: #e31436;
+.content2-box .content2-flbt div a:hover{
+	color:#e31436;
 }
 .content2-box .content2-xuanxiang{
 	width: 1090px;

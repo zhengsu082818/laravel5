@@ -25,9 +25,9 @@
          <h2>个人中心</h2>
          <hr style="background-color:#999;">
          <div class="dind_tit">
-             <p  class="dind_bor"><a href="">我的订单</a></p>
-             <p><a href="">账号管理</a></p>
-             <p><a href="">收货地址管理</a></p>
+             <p  class="dind_bor"><a href="javascript:;">我的订单</a></p>
+             <p><a href="{{url('home/home/number')}}">账号管理</a></p>
+             <p><a href="{{url('home/personal')}}">管理收货地址</a></p>
          </div>
     </div>
     <div class="dind_tab">
@@ -416,5 +416,5 @@
     }
 </script>
 
-@show
+@endsection
 

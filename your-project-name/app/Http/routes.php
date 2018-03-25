@@ -111,16 +111,6 @@ Route::post('admin/commentupdate/{id}','Admin\Commentcontroller@edit');
 
 
 
-
-
-
-//购物车前台功能实现
-Route::resource('home/shopping','Home\ShoppingController');
-//支付验证页面and订单遍历
-Route::resource('home/orderform','Home\OrderformController');
-//加载订单转跳商品详情带id
-Route::resource('home/goodsinfo','Home\GoodsinfoController');
-
 //加载登录页面
 Route::get('authindex/login','Authindex\AuthindexController@store');
 // 登录成功

@@ -41,7 +41,7 @@ class NavigController extends Controller
             $Navig = Navig::orderBy('rgt','desc')->paginate(16);
             $count = Navig::count();
         }
-        return view('admin.Navig.index',['Navig'=>$Navig,'count'=>$count,'keywords'=>$keywords,'depth'=>$depth]);
+        return view('admin.navig.index',['Navig'=>$Navig,'count'=>$count,'keywords'=>$keywords,'depth'=>$depth]);
     }
 
     /**
@@ -54,11 +54,11 @@ class NavigController extends Controller
         // 接受表单id 没有id就为空 
         $id =$_GET['id']?:null;
         if($id===null){
-           return view('admin.Navig.navigadd',['id'=>$id]); 
+           return view('admin.navig.navigadd',['id'=>$id]); 
         }else{
             // 查出这个id的name字段
             $leiall = Navig::findOrFail($id)->name;
-            return view('admin.Navig.navigadd',['id'=>$id,'leiall'=>$leiall]);
+            return view('admin.navig.navigadd',['id'=>$id,'leiall'=>$leiall]);
         } 
     }
 
@@ -133,7 +133,7 @@ class NavigController extends Controller
             $upname = '顶级分类';
         }
     
-        return view('admin.Navig.edit',['Navig' => $Navig,'upname'=>$upname ]);
+        return view('admin.navig.edit',['Navig' => $Navig,'upname'=>$upname ]);
     }
 
     /**

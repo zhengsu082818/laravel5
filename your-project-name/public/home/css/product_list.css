@@ -517,25 +517,24 @@ a{
 	height: 150px;
 	background: #fff;
 }
-.content2-box .content2-flbt div{
+.content2-box .content2-flbt .goodtype{
 	width: 1090px;
 	height: 50px;
 	line-height: 50px;
 	border-bottom:1px dotted #ccc;
 	box-sizing: border-box;
 }
-.content2-box .content2-flbt div span{
+.content2-box .content2-flbt .goodtype span{
 	margin-left: 55px;
 	font-size: 15px;
 }
-.content2-box .content2-flbt div a{
+.content2-box .content2-flbt .goodtype a{
 	margin-left: 20px;
-	color: #333;
+	color: green;
 	font-size: 12px;
+	/*color: #e31436;*/
 }
-.content2-box .content2-flbt div a:hover{
-	color: #e31436;
-}
+
 .content2-box .content2-xuanxiang{
 	width: 1090px;
 	margin-top: 30px;

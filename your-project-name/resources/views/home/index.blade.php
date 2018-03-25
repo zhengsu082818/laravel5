@@ -191,8 +191,6 @@
                 <div class="mz-four"></div>
             </div>
         </div>
-
-     
     </div>
 
     <!-- 侧边栏 -->
@@ -206,6 +204,7 @@
         
         <div class="top block" style="display: none;"><a href="#"><img src="{{asset('static/images/index_images/top.png')}}" width="21"></a></div>
     </div>
-
+    
+  
     @endsection
 

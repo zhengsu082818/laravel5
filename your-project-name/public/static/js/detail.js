@@ -28,7 +28,7 @@ $(function(){
 $(function(){
     $('#detail h2.title span').click(function(){
         var index = $(this).index();
-        $(this).css({'color':'red'}).siblings().css('color','#434343');
+        $(this).css({'color':'#e31436'}).siblings().css('color','#434343');
         $('#detail div.cont > div').eq(index).css({'display':'block'}).siblings().css('display','none');
     })
 })

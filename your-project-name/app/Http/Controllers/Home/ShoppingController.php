@@ -17,11 +17,12 @@ class ShoppingController extends Controller
      */
     public function index()
     {
+
         //从商品详情体挑选过来的商品标信息
 // =========================需要联查商品表中的库存===================
         $info=DB::table('shopping')->get();
         // $info['nums']=200;
-        return view('home/shopping',['info'=>$info]);
+        return view('home.shopping',['info'=>$info]);
     }
 
     /**

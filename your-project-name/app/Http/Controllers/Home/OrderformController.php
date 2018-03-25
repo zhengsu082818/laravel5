@@ -77,7 +77,7 @@ class OrderformController extends Controller
             ->orderBy('id', 'desc')
             ->get();
         
-        return view('home/My delivery',['info'=>$info,'count'=>$count]);
+        return view('home.mydelivery',['info'=>$info,'count'=>$count]);
     }
 
     /**

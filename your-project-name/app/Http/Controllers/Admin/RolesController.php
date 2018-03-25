@@ -35,7 +35,7 @@ class RolesController extends Controller
     {
         $role = Role::orderBy('id','desc')->paginate(5);//根据id大小查询所有数据
             $count = Role::count();//查询数据条数
-             return view('admin.Rights.index',['role'=>$role,'count'=>$count]);//加载列表页面并赋值
+             return view('admin.rights.index',['role'=>$role,'count'=>$count]);//加载列表页面并赋值
     }
 
     /**
@@ -45,7 +45,7 @@ class RolesController extends Controller
      */
     public function create()
     {
-        return view('admin.Rights.create');//加载职位添加页面
+        return view('admin.rights.create');//加载职位添加页面
     }
 
     /**
@@ -93,7 +93,7 @@ class RolesController extends Controller
         $role = Role::with('perms')->findOrFail($id);//查询需要修改的职位
         $perms =Permission::all();//查询所有的权限
         // dd($role->toArray());
-        return view('admin.Rights.edit',['role' => $role,'perms'=>$perms]);//加载职位修改页面
+        return view('admin.rights.edit',['role' => $role,'perms'=>$perms]);//加载职位修改页面
     }
 
     /**

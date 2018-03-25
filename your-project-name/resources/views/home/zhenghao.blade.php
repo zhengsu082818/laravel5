@@ -46,11 +46,11 @@
             </div>
             <ul>
                 <li class="default">
-                    <a href="My orders.html">我的订单</a>
+                    <a href="{{url('home/orderform')}}">我的订单</a>
                 </li>
                 <span>丨</span>
                 <li class="second">
-                    <a href="My orders.html">个人中心</a>
+                    <a href="javascript:;">个人中心</a>
                     <img src="{{asset('static/images/index_images/sanjiao.png')}}">
                     <div class="per_cen">
                         <a href="@if(!session('phone')==null)

@@ -36,7 +36,9 @@
                 </li>
                 <span>丨</span>
                 <li class="second">
-                    <a href="">个人中心</a>
+                   
+                    <a href="javascript:;">个人中心</a>
+                   
                     <img src="{{asset('static/images/index_images/sanjiao.png')}}">
                     <div class="per_cen">
                         <a href="@if(!session('phone')==null)
@@ -88,18 +90,31 @@
         </div>
         <div class="search_box">
                 <form action="{{url('home/prosearch')}}" method="get">
-                    <input type="text" name="title" class="search" value='爱他美'>
+                    <input type="text" name="title" class="search" value="{{session()->pull('search','')}}" placeholder="请输入商品名">
                     <button class="search_a">
                         <img src="{{asset('static/images/index_images/search1.png')}}">
                     </button>
                 </form>
         </div>
-        <div class="shopcarbox"><a href="{{url('home/shopping')}}">
-           <div class="shopcar">
+        <div class="shopcarbox">
+           @if(session('phone')!=null)
+             <a href="{{url('home/shopping')}}">
+                <div class="shopcar">
                 <img src="{{asset('static/images/index_images/shopcar1.png')}}">
                
-                <span>购物车</span>
-            </div></a>
+               <span>购物车</span>
+            </div>
+            </a>
+            @else
+            <a class='dd'>
+                <div class="shopcar">
+                <img src="{{asset('static/images/index_images/shopcar1.png')}}">
+               
+               <span>购物车</span>
+            </div>
+            </a>
+            @endif
+
 
         </div>
         <div class="log-box-last"></div>
@@ -162,4 +177,10 @@
         dd.onclick=function(){
             alert('请先登陆!')
         }
+
+        var dd=document.getElementsByClassName('dd')[0];
+        dd.onclick=function(){
+            alert('请先登陆!')
+        }
+
     </script>

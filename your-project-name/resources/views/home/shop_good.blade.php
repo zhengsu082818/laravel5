@@ -3,10 +3,10 @@
 @section('title', '网易海购-美容彩妆_基础护肤_洁面')
 
 @section('css js')
-
+    <script type="text/javascript" src="{{asset('static/js/index.js')}}"></script>
+  
 	<link rel="stylesheet" href="{{asset('static/css/product_details.css')}}" type="text/css">
 	<link rel="stylesheet" type="text/css" href="{{asset('static/css/detail.css')}}">
-	<script type="text/javascript" src="{{asset('static/js/product_list.js')}}"></script>
 	<script src="{{asset('static/js/detail.js')}}" type="text/javascript"></script>
     
 @endsection
@@ -80,7 +80,7 @@
             </div>
 
             <div class="buy">
-                <p class="immediately"><a href="">加入购物车</a></p>
+                <p class="immediately"><a href=''>加入购物车</a></p>
             </div>
         </div> 
   </div>
@@ -88,7 +88,7 @@
            
   <div id="detail" style="margin-bottom: 30px;">
                
-    <h2 class="title"><span style="color: red;">商品详情</span><span>买家评论</span></h2>
+    <h2 class="title"><span style="color: #e31436;">商品详情</span><span>买家评论</span></h2>
     <div class="cont">
         <div calss="img" style="display: block">
             <div class="img_deai">

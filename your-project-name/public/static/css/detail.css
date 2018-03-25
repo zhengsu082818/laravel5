@@ -151,13 +151,13 @@
 
 #detail .img_deai{
 	width:710px;
-	margin:0px auto;
 }
 #detail h2.title{
 	width: 100%;
 	line-height: 30px;
-	text-align: center;
-	background: #ccc;
+	background: #f2f2f2;	
+	border-top: 1px solid #b3b3b3;
+	border-bottom: 1px solid #b3b3b3;
 }
 #detail h2.title>span{
 	display: inline-block;
@@ -248,7 +248,7 @@ table{
 	}
 .name{
 	color: #eb7350;
-	 }
+}
 .pic{
 	margin: 5px 0;
 }
