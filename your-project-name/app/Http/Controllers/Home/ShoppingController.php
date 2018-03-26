@@ -27,7 +27,7 @@ class ShoppingController extends Controller
         
         // dd($input);
         DB::table('shopping')->insert(
-            ['num' => $input['num'], 'img' => $input['img'],'product'=>$input['product'],'gid'=>$input['gid'],'uid'=>$uid[0],'price'=>$input['price'],'aotal'=>$input['aotal']]
+            ['num' => $input['num'], 'img' => $input['img'],'product'=>$input['product'],'gid'=>$input['gid'],'uid'=>$uid[0],'price'=>$input['price'],'aotal'=>$input['aotal'],'created_at' => date('Y-m-d H:i:s'),'updated_at' => date('Y-m-d H:i:s')]
         );
         }
         $info=DB::table('shopping')->get();

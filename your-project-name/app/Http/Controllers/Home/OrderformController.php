@@ -154,6 +154,8 @@ class OrderformController extends Controller
                 $value['state']='待发货';
                 $value['uid']=$shdz['id'];
                 $value['orderid']=GetRandStr(9);
+                $value['created_at']=date('Y-m-d H:i:s');
+                $value['updated_at']=date('Y-m-d H:i:s');
                 $insert=Db::table('commodity')->insert($value);
                 $nums=Db::table('goods')->where('id',$value['gid'])->lists('nums');
                 $kc=$nums[0]-$value['num'];
@@ -167,7 +169,7 @@ class OrderformController extends Controller
             $orderformcount=DB::table('orderformcount')->where('uid',$shdz['id'])->first();
             if($orderformcount==null){
                 $count=Db::table('commodity')->where('uid',$shdz['id'])->count();
-                Db::table('orderformcount')->insert(['uid'=>$shdz['id'],'num'=>$count]);
+                Db::table('orderformcount')->insert(['uid'=>$shdz['id'],'num'=>$count,'created_at' => date('Y-m-d H:i:s'),'updated_at' => date('Y-m-d H:i:s')]);
             }else{
                 $count=Db::table('commodity')->where('uid',$shdz['id'])->count();
                 Db::table('orderformcount')->where('uid',$shdz['id'])->update(['num'=>$count]);
