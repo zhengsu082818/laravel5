@@ -76,7 +76,8 @@ class GoodsController extends Controller
      */
     public function create()
     {
-        $data = Navig::where('depth','0')->get()->toArray();
+         $data = Navig::where('depth','0')->get()->toArray();
+
         return view('admin.good.create',['data' => $data]);
     }
 
@@ -174,16 +175,25 @@ class GoodsController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,$this->rules,$this->messages);
+        $good = good::findOrFail($id);
         $input = $request->except('_token');
-        $list = good::where('id', $id)->update($input);
-     
-         if($list > 0){
+        $input['img']=explode(',', rtrim($input['img'],','));
+        // dd($input);
+        
+        $good->title = $input['title'];
+        $good->img = $input['img'][0];
+        $good->img1 = $input['img'][1];
+        $good->img2 = $input['img'][2];
+
+        $good->price = $input['price'];
+        $good->nums = $input['nums'];
+        $good->content = $input['content'];
+        
+     $good->save();
+         
              flash()->overlay('修改成功','1');
              return redirect('admin/goodindex');
-         }else{
-             flash()->overlay('修改失败','5');
-             return back();
-         }
+         
     }
 
     /**

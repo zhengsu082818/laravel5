@@ -35,8 +35,6 @@
 
         <form class="layui-form" method="post" action='{{url("admin/goodupdate/$good->id")}}' enctype="multipart/form-data">
           {{csrf_field()}}
-         
-          <input type="hidden" name="img"  value="{{$good->img}}" id="img">
           <div class="layui-form-item">
               <label for="username" class="layui-form-label" style="width: 100px;">
                   <span class="x-red">*</span>商品名
@@ -51,14 +49,7 @@
                     @endif
               </div>  
           </div>
-
-          <div class="layui-form-item">
-              <label for="L_email" class="layui-form-label" style="width: 100px;">
-                  <span class="x-red">*</span>图片
-              </label>
-              <img src="/storage/uploads/shopping/{{$good->img}}" style="width:100px;height:100px;" id="cc">
-          </div>
-          <div class="layui-form-item">
+        <!--   <div class="layui-form-item">
               <label for="username" class="layui-form-label" style="width: 100px;">
                   <span class="x-red">*</span>图标
               </label>
@@ -67,6 +58,17 @@
                   <button type="button" class="layui-btn" id="tubiao">
                 <i class="layui-icon">&#xe67c;</i>上传图片
               </button>
+              </div>
+          </div> -->
+           <div class="layui-form-item">
+              <label for="username" class="layui-form-label" style="width: 100px;">
+                  <span class="x-red">*</span>图片
+              </label>
+              <div class="layui-form-mid layui-word-aux">
+                <button type="button" class="layui-btn" id="tubiao">
+                  <i class="layui-icon">&#xe67c;</i>上传图片
+                  <input type="hidden" name="img" value="" id="img">
+                </button>
               </div>
           </div>
           <div class="layui-form-item">
@@ -145,22 +147,26 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
         });
-         //执行实例
-        var uploadInst = upload.render({
-          elem: '#tubiao' //绑定id
-          ,url: '{{ url("admin/gooduplode")}}'//上传接口到那个控制器
-          ,field:'file'//设置字段名 控制器接受
-          ,done: function(res){
-           $name = res.data.src;
-           
-           $('#img').val($name);
-            $('#cc').attr("src","/storage/uploads/shopping/"+res.data.src);
-            $("#cc").css("width","100px","height","100px");
+        
 
+         //执行图片上传
+        var name=[];
+        upload.render({
+          elem: '#tubiao'
+          ,url: '{{ url("admin/gooduplode")}}'
+          ,field:'file'//设置字段名 控制器接受
+          ,multiple: true
+          ,allDone: function(obj){ //当文件全部被提交后，才触发
+            console.log(obj.total); //得到总文件数
+            console.log(obj.successful); //请求成功的文件数
+            console.log(obj.aborted); //请求失败的文件数
           }
-          ,error: function(){
-            
+          ,done: function(res, index, upload){ //每个文件提交一次触发一次。详见“请求成功的回调”
+            $name = res.data.src;
+            document.getElementById('img').value+=$name+',';
+             
           }
+
         });
       });
       </script>

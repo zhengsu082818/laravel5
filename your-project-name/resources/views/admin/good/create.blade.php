@@ -21,8 +21,9 @@
           <cite>添加商品</cite>
         </a>
       </span>
+      
       <a class="layui-btn" style="line-height:38px;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
-       <i class="layui-icon" style="line-height:38px">?</i></a>
+       <i class="layui-icon" style="line-height:38px">ဂ</i></a>
         <a  class="layui-btn" href="{{url('admin/goodindex')}}" style="line-height:38px;margin-top:3px;margin-right: 10px;float:right">返回上一层</a>
     </div>
     <div style="height: 40px;">
@@ -35,11 +36,10 @@
               <label for="L_email" class="layui-form-label" style="width: 100px;">
                   <span class="x-red">*</span>选择类别
               </label>
-              <div class="layui-input-inline">
-                  <select name='djid' lay-filter="good">
-                    <option value="0">请选择一级类名</option>
-                    @foreach ($data as $k => $v) 
-                    <option value="{{$v['id']}}">{{$v['name']}}</option>
+              <div class="layui-input-inline" style="height: 50px">
+                  <select name='djid' lay-filter="good" >
+                     @foreach ($data as $k => $v) 
+                    <option value="{{$v['id']}}" style="line-height: 10px">{{$v['name']}}</option>
                     @endforeach
                   </select>
               </div>
@@ -121,6 +121,8 @@
                   @endif
               </div>  
           </div>
+
+          <div style="width: 100px;height: 100px;"></div>
           <div class="layui-form-item">
               <label for="username" class="layui-form-label" style="width: 100px;">
                   <span class="x-red">*</span>商品详情

@@ -95,7 +95,7 @@
       </div>
     @endforeach
 </div>
-          
+          <div style="clear: both;"></div>
   <!-- 提交订单 -->
   <div class="Submit" style="margin-top:20px;">
     <div class="Submit-one" style="margin-top: 30px;">

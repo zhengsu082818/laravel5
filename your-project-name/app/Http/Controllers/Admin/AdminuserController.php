@@ -39,6 +39,7 @@ class AdminuserController extends Controller
         $where=[];
         $keywords = $request->name;
         if ($keywords != '') {
+            //根据搜索条件查询
             $stus = User::where('name','like',"%$keywords%")->orderBy('id','desc')->paginate(env('PAGE_SIZE',5));
             $count = User::where('name','like',"%$keywords%")->count();
 
