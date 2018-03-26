@@ -25,55 +25,56 @@ class OrderformController extends Controller
         $homeuser=session('phone');
         $user=DB::table('homeusers')->where('phone',$homeuser)->get()[0];
         $where=Input::get('where')?Input::get('where'):null;
-
+        $id=$user->id;
+ 
         $info['alldind']=DB::table('commodity')
-            ->where('uid',$user->id)
+            ->where('uid',$id)
             ->where('product','like',"%$where%")
-            ->orWhere('orderid','like',"%$where%") 
+            ->Where('orderid','like',"%$where%") 
             ->orderBy('id', 'desc')
             ->get();
         // dd($info['alldind']);
         $info['alldind1']=DB::table('shopping')
-            ->where('uid',$user->id)
-            ->orwhere('product','like',"%$where%")
+            ->where('uid',$id)
+            ->where('product','like',"%$where%")
             ->orderBy('id', 'desc')
             ->get();
         $count['dfk']=DB::table('shopping')
-            ->where('uid',$user->id)
+            ->where('uid',$id)
             ->orderBy('id', 'desc')
             ->count();
         $info['alldind2']=DB::table('commodity')
-            ->where('uid',$user->id)
+            ->where('uid',$id)
             ->where('state','待发货')
             ->orderBy('id', 'desc')
             ->get();
         $count['dfh']=DB::table('commodity')
-            ->where('uid',$user->id)
+            ->where('uid',$id)
             ->where('state','待发货')
             ->orderBy('id', 'desc')
             ->count();
         $info['alldind3']=DB::table('commodity')
-            ->where('uid',$user->id)
+            ->where('uid',$id)
             ->where('state','待收货')
             ->orderBy('id', 'desc')
             ->get();
         $count['dsh']=DB::table('commodity')
-            ->where('uid',$user->id)
+            ->where('uid',$id)
             ->where('state','待收货')
             ->orderBy('id', 'desc')
             ->count();
         $count['dpl']=DB::table('commodity')
-            ->where('uid',$user->id)
+            ->where('uid',$id)
             ->where('state','待评价')
             ->orderBy('id', 'desc')
             ->count();
         $info['alldind4']=DB::table('commodity')
-            ->where('uid',$user->id)
+            ->where('uid',$id)
             ->where('state','待评价')
             ->orderBy('id', 'desc')
             ->get();
         $info['alldind5']=DB::table('commodity')
-            ->where('uid',$user->id)
+            ->where('uid',$id)
             ->where('state','已删除')
             ->orderBy('id', 'desc')
             ->get();

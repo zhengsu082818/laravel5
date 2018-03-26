@@ -92,10 +92,7 @@
                   <a href="{{url('navig/create').'?id='.$v->id}}" style="color: #fff;" title="添加分类">
                     <button class="layui-btn layui-btn-mini">添加分类</button></a>
                   @endif
-                   @if($v->depth=='2')
-                  <a href="{{url('navig/create').'?id='.$v->id}}" style="color: #fff;" title="添加分类">
-                    <button class="layui-btn layui-btn-mini">添加分类</button>s</a>
-                  @endif
+                  
                 </td>
               </tr>
           @endforeach    

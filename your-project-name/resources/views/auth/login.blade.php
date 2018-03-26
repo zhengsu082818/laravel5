@@ -19,7 +19,7 @@
             <hr class="hr15">
             <input name="captcha" type="text" placeholder="验证码" style="width:55%;"> <img src="{{ url('/captcha') }}" onclick="this.src='{{ url('/captcha') }}?r='+Math.random();" alt="">
             <hr class="hr15">
-            <input type="checkbox" name="remember"> 记住密码
+           
             <hr class="hr15">
             <input value="登录" lay-submit lay-filter="login" style="width:100%;" type="submit">
             <hr class="hr20" >

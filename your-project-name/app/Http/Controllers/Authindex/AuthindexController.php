@@ -137,6 +137,7 @@ class AuthindexController extends Controller
         $home->password = md5($request->password);
         $home->save();
     // 添加到数据库跳转到登录页面
+        flash()->overlay('注册成功','1');
         return redirect('authindex/login');
     }
 

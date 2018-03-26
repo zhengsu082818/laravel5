@@ -145,7 +145,7 @@
                             <cite>管理员列表</cite>
                         </a>
                     </li >
-                    <li>
+                   <!--  <li>
                         <a _href="{{url('admin/role')}}">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>职位管理</cite>
@@ -156,7 +156,7 @@
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>权限管理</cite>
                         </a>
-                    </li >
+                    </li > -->
                   
                 </ul>
             </li>

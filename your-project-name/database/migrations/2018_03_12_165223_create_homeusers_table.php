@@ -18,7 +18,7 @@ class CreateHomeusersTable extends Migration
                 $table->string('img',255);
                 $table->string('username',32);
                 $table->string('name',32);
-                $table->enum('sex', ['w', 'm'])->default('w');
+                $table->enum('sex', ['w', 'm']);
                 $table->string('password', 60);
                 $table->string('zfpassword', 60);
                 $table->string('address',255);

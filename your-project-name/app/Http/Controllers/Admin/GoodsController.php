@@ -195,14 +195,22 @@ class GoodsController extends Controller
     public function destroy($id)
     {
         $good = good::findOrFail($id);
-        $del = $good->delete();
-        if($del > 0){
-            flash()->overlay('删除成功', '1');
-            return redirect('admin/goodindex');
+        $num = good::findOrFail($id)->nums;
+        if($num == 0){
+            $del = $good->delete();
+            if($del > 0){
+                flash()->overlay('删除成功', '1');
+                return redirect('admin/goodindex');
+            }else{
+                flash()->overlay('删除失败', '5');
+                return redirect('admin/goodindex');
+            }
         }else{
-            flash()->overlay('删除失败', '5');
+            flash()->overlay('删除失败,该商品还有库存', '5');
             return redirect('admin/goodindex');
         }
+
+       
     }
 
 

@@ -62,7 +62,12 @@
                 </td>
 
                 <td style="text-align: center;">
+                  @if($v->img == null)
+                    <span>个人信息还没完善</span>
+                  @endif
+                  @if($v->img != null)
                   <img src='{{asset("storage/uploads/banner/$v->img")}}' style="width: 50px;height: 50px;">
+                  @endif
                 </td>
                 <td style="text-align: center;">{{$v->phone}}</td>
                 <td style="text-align: center;">{{$v->address}}</td>

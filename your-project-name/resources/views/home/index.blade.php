@@ -54,7 +54,7 @@
                 </li>
                 @foreach($gengxin as $v)
                 <li>
-                    <a href="" class="img-img">
+                    <a href='{{url("home/shopgoodindex/$v->id")}}' class="img-img">
                         <img src="/storage/uploads/shopping/{{$v->img}}" alt="" style=" width: 157px;
                         height: 157px;">
                     </a>

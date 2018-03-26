@@ -84,7 +84,7 @@
                     <tr>
                         <td>未付款不支持</td>
                         <td><img src="{{$v->img}}" style="width:40px;"></td>
-                        <td>{{$v->product}}</td>
+                        <td style="display:inline-block;width:100px;height:40px;overflow: hidden;">{{$v->product}}111</td>
                         <td>{{$v->price}}</td>
                         <td>{{$v->num}}</td>
                         <td>{{$v->aotal}}</td>
@@ -96,7 +96,7 @@
                     <tr>
                         <td>{{$v->orderid}}</td>
                         <td><img src="{{$v->img}}" style="width:40px;"></td>
-                        <td>{{$v->product}}</td>
+                        <td style="display:inline-block;width:100px;height:40px;overflow: hidden;">{{$v->product}}111</td>
                         <td>{{$v->price}}</td>
                         <td>{{$v->num}}</td>
                         <td>{{$v->aotal}}</td>
@@ -130,7 +130,7 @@
                     <tr>
                         <td>未付款不支持</td>
                         <td><img src="{{$v->img}}" style="width:40px;"></td>
-                        <td>{{$v->product}}</td>
+                        <td style="display:inline-block;width:100px;height:40px;overflow: hidden;">{{$v->product}}111</td>
                         <td>{{$v->price}}</td>
                         <td>{{$v->num}}</td>
                         <td>{{$v->aotal}}</td>
@@ -164,7 +164,7 @@
                     <tr>
                         <td>{{$v->orderid}}</td>
                         <td><img src="{{$v->img}}" style="width:40px;"></td>
-                        <td>{{$v->product}}</td>
+                        <td style="display:inline-block;width:100px;height:40px;overflow: hidden;">{{$v->product}}111</td>
                         <td>{{$v->price}}</td>
                         <td>{{$v->num}}</td>
                         <td>{{$v->aotal}}</td>
@@ -198,7 +198,7 @@
                     <tr>
                         <td>{{$v->orderid}}</td>
                         <td><img src="{{$v->img}}" style="width:40px;"></td>
-                        <td>{{$v->product}}</td>
+                        <td style="display:inline-block;width:100px;height:40px;overflow: hidden;">{{$v->product}}111</td>
                         <td>{{$v->price}}</td>
                         <td>{{$v->num}}</td>
                         <td>{{$v->aotal}}</td>
@@ -232,7 +232,7 @@
                     <tr>
                         <td>{{$v->orderid}}</td>
                         <td><img src="{{$v->img}}" style="width:40px;"></td>
-                        <td>{{$v->product}}</td>
+                        <td style="display:inline-block;width:100px;height:40px;overflow: hidden;">{{$v->product}}111</td>
                         <td>{{$v->price}}</td>
                         <td>{{$v->num}}</td>
                         <td>{{$v->aotal}}</td>
@@ -266,7 +266,7 @@
                     <tr>
                         <td>{{$v->orderid}}</td>
                         <td><img src="{{$v->img}}" style="width:40px;"></td>
-                        <td>{{$v->product}}</td>
+                        <td style="display:inline-block;width:100px;height:40px;overflow: hidden;">{{$v->product}}111</td>
                         <td>{{$v->price}}</td>
                         <td>{{$v->num}}</td>
                         <td>{{$v->aotal}}</td>
