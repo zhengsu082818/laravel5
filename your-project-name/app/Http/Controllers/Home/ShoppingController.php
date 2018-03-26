@@ -31,7 +31,7 @@ class ShoppingController extends Controller
         
         // dd($input);
         DB::table('shopping')->insert(
-            ['num' => $input['num'], 'img' => $input['img'],'product'=>$input['product'],'gid'=>$input['gid'],'uid'=>$uid[0],'price'=>$input['price'],'aotal'=>$input['aotal']]
+            ['num' => $input['num'], 'img' => $input['img'],'product'=>$input['product'],'gid'=>$input['gid'],'uid'=>$uid[0],'price'=>$input['price'],'aotal'=>$input['aotal'],'created_at' => date('Y-m-d H:i:s'),'updated_at' => date('Y-m-d H:i:s')]
         );
         }
         $info=DB::table('shopping')->get();
@@ -61,7 +61,8 @@ class ShoppingController extends Controller
      */
     public function store(Request $request)
     {
-        
+
+
         // 加载支付页面
         config(['database.fetch' => PDO::FETCH_ASSOC]);
             
@@ -69,6 +70,10 @@ class ShoppingController extends Controller
         $input['shopping']=DB::table('shopping')->whereIn('id',explode('.', rtrim($input['ids'],'.')))->get();
         $input['personals']=DB::table('personals')->where('id',$input['shdz_id'])->get();
         // dd($input);
+        $zfpassword=input::get();
+        if($zfpassword){
+            
+        }
         return view('home/order_payment',['input'=>$input]);
     }
 

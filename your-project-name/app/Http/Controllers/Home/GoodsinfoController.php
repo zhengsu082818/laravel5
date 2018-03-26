@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Models\Navig;
+use App\Models\Good;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -36,7 +38,7 @@ class GoodsinfoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -58,7 +60,19 @@ class GoodsinfoController extends Controller
      */
     public function edit($id)
     {
-        return '商品详情';
+                //遍历商品导航
+        $gid=DB::table('commodity')->where('id',$id)->value('gid');
+        $list = navig::where('stated',1)->get()->toHierarchy();
+    
+       
+        //查询商品详情
+        $goodList = good::findOrFail($gid);
+        // dd($goodList);
+        return view('home.shop_good',[
+            'list'=>$list,
+            'goodList'=>$goodList,
+            
+        ]);
     }
 
     /**

@@ -122,7 +122,7 @@
 		<div class="Chinese-lie">
 			<ul>
 				<li>&nbsp;</li>
-				<li><a href="My orders.html">我的订单</a></li>
+				<li><a href="{{url('home/orderform')}}">我的订单</a></li>
 				<li style="border-left: 2px solid red;"><a href="{{url('home/home/number')}}"  style="color:red">账号管理</a></li>
 				<li><a href="{{url('home/personal')}}">管理收货地址</a></li>
 			</ul>

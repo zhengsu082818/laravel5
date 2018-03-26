@@ -61,7 +61,9 @@
                     <a href="javascript:;">个人中心</a>
                     <img src="{{asset('static/images/index_images/sanjiao.png')}}">
                     <div class="per_cen">
+
                           <a href="@if(!session('phone')==null)
+
                             {{url('home/home/number')}}
                             @else  {{url('authindex/login')}}
                             @endif">完善个人信息</a>
@@ -310,6 +312,9 @@
    
 </body>
 </html>
+
+<!--  内外部js -->
+@section('htmljs')
 <script>
     function maodian(id){
           var obj = document.getElementById(id);
@@ -321,7 +326,4 @@
             alert('请先登陆!')
     }
 </script>
-<!--  内外部js -->
-@section('htmljs')
-    
 @show

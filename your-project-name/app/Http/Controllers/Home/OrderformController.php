@@ -102,7 +102,19 @@ class OrderformController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+        config(['database.fetch' => PDO::FETCH_ASSOC]);
+        
+        $homeuser=$request->session()->all();
+        $shdz=DB::table('homeusers')->where('phone',$homeuser['phone'])->first();
+        $input['zfmm1']=$request->zfmm1;
+        if($input['zfmm1']){
+            $zfpassword=md5($input['zfmm1']);
+            DB::table('homeusers')->where('id',$shdz['id'])->update(['zfpassword'=>$zfpassword]);
+
+        }else{
+
+
         //随机字符串
         function GetRandStr($len)   
         {   
@@ -126,11 +138,10 @@ class OrderformController extends Controller
         //支付页面判定
         $input['shoppingid']=$request->ids;
         $input['zhifu_value']=$request->zhifu_value;
-        $homeuser=$request->session()->all();
-        config(['database.fetch' => PDO::FETCH_ASSOC]);
+        
 
         //获取用户信息
-        $shdz=DB::table('homeusers')->where('phone',$homeuser['phone'])->first();
+        
         if($shdz['zfpassword']!=md5($input['zhifu_value'])){
             if($shdz['zfpassword']==null){
                 $info['error']='请设置支付密码!';
@@ -147,6 +158,8 @@ class OrderformController extends Controller
                 $value['state']='待发货';
                 $value['uid']=$shdz['id'];
                 $value['orderid']=GetRandStr(9);
+                $value['created_at']=date('Y-m-d H:i:s');
+                $value['updated_at']=date('Y-m-d H:i:s');
                 $insert=Db::table('commodity')->insert($value);
                 $nums=Db::table('goods')->where('id',$value['gid'])->lists('nums');
                 $kc=$nums[0]-$value['num'];
@@ -160,7 +173,7 @@ class OrderformController extends Controller
             $orderformcount=DB::table('orderformcount')->where('uid',$shdz['id'])->first();
             if($orderformcount==null){
                 $count=Db::table('commodity')->where('uid',$shdz['id'])->count();
-                Db::table('orderformcount')->insert(['uid'=>$shdz['id'],'num'=>$count]);
+                Db::table('orderformcount')->insert(['uid'=>$shdz['id'],'num'=>$count,'created_at' => date('Y-m-d H:i:s'),'updated_at' => date('Y-m-d H:i:s')]);
             }else{
                 $count=Db::table('commodity')->where('uid',$shdz['id'])->count();
                 Db::table('orderformcount')->where('uid',$shdz['id'])->update(['num'=>$count]);
@@ -168,6 +181,7 @@ class OrderformController extends Controller
            
             $info['error']='y';
             return $info;
+        }
         }
         
     }

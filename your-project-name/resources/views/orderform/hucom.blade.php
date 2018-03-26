@@ -55,7 +55,7 @@
  
               <tr>
                 <td style="text-align: center;">{{$id=$info[$i]->id}}</td>
-                <td style="text-align: center;">{{$info[$i]->img}}</td>
+                <td style="text-align: center;"><img src="{{$info[$i]->img}}" alt=""></td>
                 <td style="text-align: center;">{{$info[$i]->orderid}}</td>
                 <td style="text-align: center;">{{$info[$i]->product}}</td>
                 <td style="text-align: center;">{{$info[$i]->price}}</td>

@@ -6,6 +6,7 @@
 
 	<link rel="stylesheet" href="{{asset('home/css/My receipt.css')}}" type="text/css">
 	<link rel="stylesheet" href="{{asset('home/css/payment.css')}}" type="text/css">
+	<link rel="stylesheet" href="{{asset('home/css/zfzzr.css')}}" type="text/css">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
  @section('js')
@@ -31,7 +32,7 @@
 			@endforeach
 			<!-- 定位  我的订单> -->
 			<div class="pos_dingdan">
-				<a href="">我的订单></a>
+				<a href="{{url('home/orderform')}}">我的订单></a>
 			</div>
 		</div>
 	
@@ -39,7 +40,21 @@
 			<div class="zhifu_con">
 				<p>支付金额
 				<span>￥{{$input['alljg']}}</span>
-				<a href="">没有/忘记支付密码?</a>
+				<a id="zfpassword" style="cursor:pointer">没有/忘记支付密码?</a>
+					<div class="zf">
+						<div class="zf_con">
+							<h2 style="padding-top:20px;">设置/修改.支付密码!</h2>
+							<div class="zf_content">
+								
+									
+									<p>新密码:<input class="zfmm" name="zfpassword" type="password"  min="6" max="6" placeholder="输入支付密码"></p>
+									<p>确认密码:<input class="zfmm" name="zfpassword" type="password" min="6" max="6" placeholder="再次输入支付密码"></p>
+									<button class="none" style="margin-top:28px;margin-left:22px">确认</button>
+								
+							</div>
+							
+						</div>
+					</div>
 				</p>
 				<hr/>
 				<div class="cen">
@@ -75,6 +90,38 @@
 
 	/*动态生成*/
 window.onload=function(){
+	document.getElementById('zfpassword').onclick=function(){
+		document.getElementsByClassName('zf')[0].style.display='block';
+	}
+
+	document.getElementsByClassName('none')[0].onclick=function(){
+
+
+		var zfmm1=document.getElementsByClassName("zfmm")[1].value;
+			$.ajaxSetup({
+		                headers: {
+		                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		                }
+		            })
+
+			$.ajax({
+			   type: "post",
+			   url: "/home/orderform",
+			   data: {
+			    'zfmm1':zfmm1
+			   },
+			   dataType: "json",
+			   success: function(msg){
+			   	
+			   }
+			})
+		document.getElementsByClassName('zf')[0].style.display='none';
+	}
+
+
+
+
+
 var box=document.getElementsByClassName("box")[0];
 function createDIV(num){
  for(var i=0;i<num;i++){

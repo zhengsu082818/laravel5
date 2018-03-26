@@ -25,6 +25,7 @@
          <h2>个人中心</h2>
          <hr style="background-color:#999;">
          <div class="dind_tit">
+
              <p  class="dind_bor"><a href="javascript:;">我的订单</a></p>
              <p><a href="{{url('home/home/number')}}">账号管理</a></p>
              <p><a href="{{url('home/personal')}}">管理收货地址</a></p>
@@ -287,6 +288,7 @@
 </div>
     
 <!-- 推荐 -->
+
 <div class="content">
     <div class="con_food">
         <h3>为您推荐</h3>
@@ -313,11 +315,12 @@
     </div>
 </div>
 
-    <!-- 底部结束 -->
+
+<div style="clear:both;"></div>
 @endsection
 
 
-<!--  内外部js -->
+<!--  内部js -->
 @section('htmljs')
 <script>
     window.onload=function(){
